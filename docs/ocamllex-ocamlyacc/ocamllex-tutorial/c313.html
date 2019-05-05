@@ -1,0 +1,243 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN""http://www.w3.org/TR/html4/loose.dtd">
+<HTML
+><HEAD
+><TITLE
+>The generated scanner</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet Version 1.79"><LINK
+REL="HOME"
+TITLE="Ocamllex Tutorial"
+HREF="index.html"><LINK
+REL="PREVIOUS"
+TITLE="Actions"
+HREF="c255.html"><LINK
+REL="NEXT"
+TITLE="Start conditions"
+HREF="c336.html"></HEAD
+><BODY
+CLASS="chapter"
+BGCOLOR="#FFFFFF"
+TEXT="#000000"
+LINK="#0000FF"
+VLINK="#840084"
+ALINK="#0000FF"
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+SUMMARY="Header navigation table"
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="3"
+ALIGN="center"
+>Ocamllex Tutorial</TH
+></TR
+><TR
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="bottom"
+><A
+HREF="c255.html"
+ACCESSKEY="P"
+>Prev</A
+></TD
+><TD
+WIDTH="80%"
+ALIGN="center"
+VALIGN="bottom"
+></TD
+><TD
+WIDTH="10%"
+ALIGN="right"
+VALIGN="bottom"
+><A
+HREF="c336.html"
+ACCESSKEY="N"
+>Next</A
+></TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="100%"></DIV
+><DIV
+CLASS="chapter"
+><H1
+><A
+NAME="sec-ocamllex-generated-scanner"
+></A
+>Chapter 7. The generated scanner</H1
+><P
+>&#13;The output of <TT
+CLASS="literal"
+>ocamllex</TT
+> is the file
+<SPAN
+CLASS="emphasis"
+><I
+CLASS="emphasis"
+>lex</I
+></SPAN
+>.ml when it is invoked as
+<TT
+CLASS="literal"
+>ocamllex</TT
+> <SPAN
+CLASS="emphasis"
+><I
+CLASS="emphasis"
+>lex</I
+></SPAN
+><TT
+CLASS="literal"
+>.mll</TT
+>.
+The generated file contains the
+<SPAN
+CLASS="emphasis"
+><I
+CLASS="emphasis"
+>scanning functions</I
+></SPAN
+>,
+a number of tables used by it for matching
+tokens, and a number of auxiliary routines.
+The <SPAN
+CLASS="emphasis"
+><I
+CLASS="emphasis"
+>scanning functions</I
+></SPAN
+> are declared as followings:
+</P
+><PRE
+CLASS="programlisting"
+>&#13;let <SPAN
+CLASS="emphasis"
+><I
+CLASS="emphasis"
+>entrypoint [arg1... argn]</I
+></SPAN
+> lexbuf =
+  ...
+and ...
+</PRE
+><P
+>&#13;where the fuction <SPAN
+CLASS="emphasis"
+><I
+CLASS="emphasis"
+>entrypoint</I
+></SPAN
+> has <TT
+CLASS="literal"
+>n + 1</TT
+>
+arguments.
+<TT
+CLASS="literal"
+>n</TT
+> arguments come from the definition of the <SPAN
+CLASS="emphasis"
+><I
+CLASS="emphasis"
+>rules</I
+></SPAN
+> secton.
+And the resulting scanning function has one more argument named <TT
+CLASS="literal"
+>lexbuf</TT
+> of <TT
+CLASS="literal"
+>Lexing.lexbuf</TT
+> type as the last one.
+</P
+><P
+>&#13;Whenever <SPAN
+CLASS="emphasis"
+><I
+CLASS="emphasis"
+>entrypoint</I
+></SPAN
+> is called, it scans tokens from the <TT
+CLASS="literal"
+>lexbuf</TT
+> argument.
+When it finds a match in patterns, it executes the corresponding action and returns.
+If you want to continue the lexical analyze
+after evaluating of the action,
+you must call the <SPAN
+CLASS="emphasis"
+><I
+CLASS="emphasis"
+>scanning function</I
+></SPAN
+> recursively.
+</P
+></DIV
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+SUMMARY="Footer navigation table"
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="c255.html"
+ACCESSKEY="P"
+>Prev</A
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="index.html"
+ACCESSKEY="H"
+>Home</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="c336.html"
+ACCESSKEY="N"
+>Next</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>Actions</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+>&nbsp;</TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>Start conditions</TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>

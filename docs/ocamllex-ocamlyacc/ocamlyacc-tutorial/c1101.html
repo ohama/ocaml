@@ -1,0 +1,288 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN""http://www.w3.org/TR/html4/loose.dtd">
+<HTML
+><HEAD
+><TITLE
+>Error Recovery</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet Version 1.79"><LINK
+REL="HOME"
+TITLE="Ocamlyacc Tutorial"
+HREF="index.html"><LINK
+REL="PREVIOUS"
+TITLE="Mysterious Reduce/Reduce Conflicts"
+HREF="x1067.html"><LINK
+REL="NEXT"
+TITLE="Debugging Your Parser"
+HREF="c1132.html"></HEAD
+><BODY
+CLASS="chapter"
+BGCOLOR="#FFFFFF"
+TEXT="#000000"
+LINK="#0000FF"
+VLINK="#840084"
+ALINK="#0000FF"
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+SUMMARY="Header navigation table"
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="3"
+ALIGN="center"
+>Ocamlyacc Tutorial</TH
+></TR
+><TR
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="bottom"
+><A
+HREF="x1067.html"
+ACCESSKEY="P"
+>Prev</A
+></TD
+><TD
+WIDTH="80%"
+ALIGN="center"
+VALIGN="bottom"
+></TD
+><TD
+WIDTH="10%"
+ALIGN="right"
+VALIGN="bottom"
+><A
+HREF="c1132.html"
+ACCESSKEY="N"
+>Next</A
+></TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="100%"></DIV
+><DIV
+CLASS="chapter"
+><H1
+><A
+NAME="chap-error-recovery"
+></A
+>Chapter 7. Error Recovery</H1
+><P
+>&#13;It is not usually acceptable to have a program terminate on a parse
+error.  For example, a compiler should recover sufficiently to parse the
+rest of the input file and check it for errors; a calculator should accept
+another expression.
+</P
+><P
+>&#13;In a simple interactive command parser where each input is one line, it may
+be sufficient to have the caller catch the exception and ignore the rest of the input line when that happens (and then call
+<SPAN
+CLASS="emphasis"
+><I
+CLASS="emphasis"
+>parse function</I
+></SPAN
+> again).
+But this is inadequate for a compiler, because it
+forgets all the syntactic context leading up to the error.  A syntax error
+deep within a function in the compiler input should not cause the compiler
+to treat the following line like the beginning of a source file.
+</P
+><P
+>&#13;You can define how to recover from a syntax error by writing rules to
+recognize the special token <TT
+CLASS="literal"
+>error</TT
+>.
+This is a terminal symbol that
+is reserved for error
+handling.
+The Ocamlyacc parser generates an <TT
+CLASS="literal"
+>error</TT
+> token whenever a
+syntax error happens; if you have provided a rule to recognize this token
+in the current context, the parse can continue.
+</P
+><P
+>&#13;For example:
+</P
+><PRE
+CLASS="programlisting"
+>&#13;stmnts:  /* empty string */		{}
+        | stmnts NEWLINE		{}
+        | stmnts exp NEWLINE	{}
+        | stmnts error NEWLINE	{}
+</PRE
+><P
+>&#13;The fourth rule in this example says that an error followed by a newline
+makes a valid addition to any <TT
+CLASS="literal"
+>stmnts</TT
+>.
+</P
+><P
+>&#13;What happens if a syntax error occurs in the middle of an <TT
+CLASS="literal"
+>exp</TT
+>?
+The error recovery rule, interpreted strictly, applies to the precise sequence
+of a <TT
+CLASS="literal"
+>stmnts</TT
+>, an <TT
+CLASS="literal"
+>error</TT
+> and a newline.
+If an error occurs in the middle of an <TT
+CLASS="literal"
+>exp</TT
+>,
+there will probably be some additional tokens
+and subexpressions on the stack after the last <TT
+CLASS="literal"
+>stmnts</TT
+>,
+and there
+will be tokens to read before the next newline.  So the rule is not
+applicable in the ordinary way.
+</P
+><P
+>&#13;But Ocamlyacc can force the situation to fit the rule, by discarding part of
+the semantic context and part of the input.  First it discards states and
+objects from the stack until it gets back to a state in which the
+<TT
+CLASS="literal"
+>error</TT
+> token is acceptable.
+(This means that the subexpressions
+already parsed are discarded, back to the last complete
+<TT
+CLASS="literal"
+>stmnts</TT
+>.)  At
+this point the <TT
+CLASS="literal"
+>error</TT
+> token can be shifted.  Then, if the old
+look-ahead token is not acceptable to be shifted next, the parser reads
+tokens and discards them until it finds a token which is acceptable.  In
+this example, Ocamlyacc reads and discards input until the next newline
+so that the fourth rule can apply.
+</P
+><P
+>&#13;The choice of error rules in the grammar is a choice of strategies for
+error recovery.  A simple and useful strategy is simply to skip the rest of
+the current input line or current statement if an error is detected:
+</P
+><PRE
+CLASS="programlisting"
+>&#13;stmnt: error SEMICOLON	{}	/* on error, skip until SEMICOLON is read */
+</PRE
+><P
+>&#13;It is also useful to recover to the matching close-delimiter of an
+opening-delimiter that has already been parsed.  Otherwise the
+close-delimiter will probably appear to be unmatched, and generate another,
+spurious error message:
+</P
+><PRE
+CLASS="programlisting"
+>&#13;primary:  LPAREN expr RPAREN	{}
+        | LPAREN error RPAREN	{}
+        ...
+        ;
+</PRE
+><P
+>&#13;Error recovery strategies are necessarily guesses.  When they guess wrong,
+one syntax error often leads to another.  In the above example, the error
+recovery rule guesses that an error is due to bad input within one
+<TT
+CLASS="literal"
+>stmnt</TT
+>. 
+Suppose that instead a spurious semicolon is inserted in the
+middle of a valid <TT
+CLASS="literal"
+>stmnt</TT
+>. 
+After the error recovery rule recovers
+from the first error, another syntax error will be found straightaway,
+since the text following the spurious semicolon is also an invalid
+<TT
+CLASS="literal"
+>stmnt</TT
+>.
+</P
+><P
+>&#13;To prevent an outpouring of error messages, the parser will output no error
+message for another syntax error that happens shortly after the first; only
+after three consecutive input tokens have been successfully shifted will
+error messages resume.
+</P
+></DIV
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+SUMMARY="Footer navigation table"
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="x1067.html"
+ACCESSKEY="P"
+>Prev</A
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="index.html"
+ACCESSKEY="H"
+>Home</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="c1132.html"
+ACCESSKEY="N"
+>Next</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>Mysterious Reduce/Reduce Conflicts</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+>&nbsp;</TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>Debugging Your Parser</TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>

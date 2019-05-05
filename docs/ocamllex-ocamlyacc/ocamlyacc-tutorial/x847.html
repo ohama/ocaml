@@ -1,0 +1,212 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN""http://www.w3.org/TR/html4/loose.dtd">
+<HTML
+><HEAD
+><TITLE
+>The Error Reporting Function</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet Version 1.79"><LINK
+REL="HOME"
+TITLE="Ocamlyacc Tutorial"
+HREF="index.html"><LINK
+REL="UP"
+TITLE="Parser Interface"
+HREF="c819.html"><LINK
+REL="PREVIOUS"
+TITLE="The Lexical Analyzer Function"
+HREF="x839.html"><LINK
+REL="NEXT"
+TITLE="The Ocamlyacc Parser Algorithm"
+HREF="c865.html"></HEAD
+><BODY
+CLASS="sect1"
+BGCOLOR="#FFFFFF"
+TEXT="#000000"
+LINK="#0000FF"
+VLINK="#840084"
+ALINK="#0000FF"
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+SUMMARY="Header navigation table"
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="3"
+ALIGN="center"
+>Ocamlyacc Tutorial</TH
+></TR
+><TR
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="bottom"
+><A
+HREF="x839.html"
+ACCESSKEY="P"
+>Prev</A
+></TD
+><TD
+WIDTH="80%"
+ALIGN="center"
+VALIGN="bottom"
+>Chapter 5. Parser Interface</TD
+><TD
+WIDTH="10%"
+ALIGN="right"
+VALIGN="bottom"
+><A
+HREF="c865.html"
+ACCESSKEY="N"
+>Next</A
+></TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="100%"></DIV
+><DIV
+CLASS="sect1"
+><H1
+CLASS="sect1"
+><A
+NAME="sec-error-reporting-function"
+>5.3. The Error Reporting Function</A
+></H1
+><P
+>&#13;The Ocamlyacc parser detects a <TT
+CLASS="literal"
+>parse error</TT
+> or <TT
+CLASS="literal"
+>syntax error</TT
+>
+whenever it reads a token which cannot satisfy any syntax rule.  An
+action in the grammar can also explicitly proclaim an error, using the
+<TT
+CLASS="literal"
+>raise Parsing.Parse_error</TT
+>.
+</P
+><P
+>&#13;The Ocamlyacc parser expects to report the error by calling an error
+reporting function named <TT
+CLASS="literal"
+>parse_error</TT
+>, which is optional.
+The default <TT
+CLASS="literal"
+>parse_error</TT
+> function does nothing and returns.
+It is called by the parser function whenever a syntax error is found, and it
+receives one argument.  For a parse error, the string is normally
+<TT
+CLASS="literal"
+>"syntax error"</TT
+>.
+</P
+><P
+>&#13;The following definition suffices in simple programs:
+</P
+><PRE
+CLASS="programlisting"
+>&#13;let parse_error s = print_endline s
+</PRE
+><P
+>&#13;After <TT
+CLASS="literal"
+>parse_error</TT
+> returns to
+the <SPAN
+CLASS="emphasis"
+><I
+CLASS="emphasis"
+>parse function</I
+></SPAN
+>, the latter will attempt
+error recovery if you have written suitable error recovery grammar rules
+(see <A
+HREF="c1101.html"
+>Error Recovery</A
+>).
+If recovery is impossible, the <SPAN
+CLASS="emphasis"
+><I
+CLASS="emphasis"
+>parse function</I
+></SPAN
+> will
+raise <TT
+CLASS="literal"
+>Parsing.Parse_error</TT
+> exception.
+</P
+></DIV
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+SUMMARY="Footer navigation table"
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="x839.html"
+ACCESSKEY="P"
+>Prev</A
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="index.html"
+ACCESSKEY="H"
+>Home</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="c865.html"
+ACCESSKEY="N"
+>Next</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>The Lexical Analyzer Function</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="c819.html"
+ACCESSKEY="U"
+>Up</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>The Ocamlyacc Parser Algorithm</TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>

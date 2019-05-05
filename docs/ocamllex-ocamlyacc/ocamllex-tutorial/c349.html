@@ -1,0 +1,200 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN""http://www.w3.org/TR/html4/loose.dtd">
+<HTML
+><HEAD
+><TITLE
+>Interfacing with ocamlyacc</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet Version 1.79"><LINK
+REL="HOME"
+TITLE="Ocamllex Tutorial"
+HREF="index.html"><LINK
+REL="PREVIOUS"
+TITLE="Start conditions"
+HREF="c336.html"><LINK
+REL="NEXT"
+TITLE="Options"
+HREF="c363.html"></HEAD
+><BODY
+CLASS="chapter"
+BGCOLOR="#FFFFFF"
+TEXT="#000000"
+LINK="#0000FF"
+VLINK="#840084"
+ALINK="#0000FF"
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+SUMMARY="Header navigation table"
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="3"
+ALIGN="center"
+>Ocamllex Tutorial</TH
+></TR
+><TR
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="bottom"
+><A
+HREF="c336.html"
+ACCESSKEY="P"
+>Prev</A
+></TD
+><TD
+WIDTH="80%"
+ALIGN="center"
+VALIGN="bottom"
+></TD
+><TD
+WIDTH="10%"
+ALIGN="right"
+VALIGN="bottom"
+><A
+HREF="c363.html"
+ACCESSKEY="N"
+>Next</A
+></TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="100%"></DIV
+><DIV
+CLASS="chapter"
+><H1
+><A
+NAME="sec-ocamllex-interfacing"
+></A
+>Chapter 9. Interfacing with <TT
+CLASS="literal"
+>ocamlyacc</TT
+></H1
+><P
+>&#13;   One of the main uses of <TT
+CLASS="literal"
+>ocamllex</TT
+> is as a companion to the <TT
+CLASS="literal"
+>ocamlyacc</TT
+>
+parser-generator.
+<TT
+CLASS="literal"
+>ocamlyacc</TT
+> parsers call
+one of the <SPAN
+CLASS="emphasis"
+><I
+CLASS="emphasis"
+>scanning functions</I
+></SPAN
+>
+to find the next input token. 
+The routine is supposed to
+return the type of the next token with an associated value.
+To use <TT
+CLASS="literal"
+>ocamllex</TT
+> with <TT
+CLASS="literal"
+>ocamlyacc</TT
+>, scanner
+functions should use parser module to refer token types,
+which are defined in `%tokens' attributes appearing
+in the <TT
+CLASS="literal"
+>ocamlyacc</TT
+> input.
+For example, if input filename of <TT
+CLASS="literal"
+>ocamlyacc</TT
+> is
+<SPAN
+CLASS="emphasis"
+><I
+CLASS="emphasis"
+>parse.mly</I
+></SPAN
+> and
+one of the tokens is "NUMBER", part of the scanner might look
+like:
+</P
+><PRE
+CLASS="programlisting"
+>&#13;{
+  open Parse
+}
+
+rule token = parse
+  ...
+  | ['0'-'9']+ as num { NUMBER (int_of_string num) }
+  ...
+</PRE
+></DIV
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+SUMMARY="Footer navigation table"
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="c336.html"
+ACCESSKEY="P"
+>Prev</A
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="index.html"
+ACCESSKEY="H"
+>Home</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="c363.html"
+ACCESSKEY="N"
+>Next</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>Start conditions</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+>&nbsp;</TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>Options</TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>

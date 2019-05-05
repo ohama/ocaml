@@ -1,0 +1,236 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN""http://www.w3.org/TR/html4/loose.dtd">
+<HTML
+><HEAD
+><TITLE
+>Semantic Values</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet Version 1.79"><LINK
+REL="HOME"
+TITLE="Ocamlyacc Tutorial"
+HREF="index.html"><LINK
+REL="UP"
+TITLE="The Concepts of Ocamlyacc"
+HREF="c41.html"><LINK
+REL="PREVIOUS"
+TITLE="From Formal Rules to Ocamlyacc Input"
+HREF="x76.html"><LINK
+REL="NEXT"
+TITLE="Semantic Actions"
+HREF="x120.html"></HEAD
+><BODY
+CLASS="sect1"
+BGCOLOR="#FFFFFF"
+TEXT="#000000"
+LINK="#0000FF"
+VLINK="#840084"
+ALINK="#0000FF"
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+SUMMARY="Header navigation table"
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="3"
+ALIGN="center"
+>Ocamlyacc Tutorial</TH
+></TR
+><TR
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="bottom"
+><A
+HREF="x76.html"
+ACCESSKEY="P"
+>Prev</A
+></TD
+><TD
+WIDTH="80%"
+ALIGN="center"
+VALIGN="bottom"
+>Chapter 2. The Concepts of Ocamlyacc</TD
+><TD
+WIDTH="10%"
+ALIGN="right"
+VALIGN="bottom"
+><A
+HREF="x120.html"
+ACCESSKEY="N"
+>Next</A
+></TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="100%"></DIV
+><DIV
+CLASS="sect1"
+><H1
+CLASS="sect1"
+><A
+NAME="sec-semantic-values"
+>2.3. Semantic Values</A
+></H1
+><P
+>&#13;A formal grammar selects tokens only by their classifications: for example,
+if a rule mentions the terminal symbol `integer constant', it means that
+<SPAN
+CLASS="emphasis"
+><I
+CLASS="emphasis"
+>any</I
+></SPAN
+> integer constant is grammatically valid in that position.  The
+precise value of the constant is irrelevant to how to parse the input: if
+<TT
+CLASS="literal"
+>x+4</TT
+> is grammatical then <TT
+CLASS="literal"
+>x+1</TT
+> or <TT
+CLASS="literal"
+>x+3989</TT
+> is equally
+grammatical.
+</P
+><P
+>&#13;But the precise value is very important for what the input means once it is
+parsed.  A compiler is useless if it fails to distinguish between 4, 1 and
+3989 as constants in the program!  Therefore, each token in a Ocamlyacc grammar
+has both a token type and a <SPAN
+CLASS="emphasis"
+><I
+CLASS="emphasis"
+>semantic value</I
+></SPAN
+>.
+See <A
+HREF="x622.html"
+>Defining Language Semantics</A
+>,
+for details.
+</P
+><P
+>&#13;The token type is a terminal symbol defined in the grammar, such as
+<TT
+CLASS="literal"
+>INTEGER</TT
+>, <TT
+CLASS="literal"
+>IDENTIFIER</TT
+> or <TT
+CLASS="literal"
+>SEMICOLON</TT
+>.  It tells everything
+you need to know to decide where the token may validly appear and how to
+group it with other tokens.  The grammar rules know nothing about tokens
+except their types.
+</P
+><P
+>&#13;The semantic value has all the rest of the information about the
+meaning of the token, such as the value of an integer, or the name of an
+identifier.  (A token such as <TT
+CLASS="literal"
+>SEMICOLON</TT
+> which is just punctuation doesn't
+need to have any semantic value.)
+</P
+><P
+>&#13;For example, an input token might be classified as token type
+<TT
+CLASS="literal"
+>INTEGER</TT
+> and have the semantic value 4.  Another input token might
+have the same token type <TT
+CLASS="literal"
+>INTEGER</TT
+> but value 3989.  When a grammar
+rule says that <TT
+CLASS="literal"
+>INTEGER</TT
+> is allowed, either of these tokens is
+acceptable because each is an <TT
+CLASS="literal"
+>INTEGER</TT
+>.  When the parser accepts the
+token, it keeps track of the token's semantic value.
+</P
+><P
+>&#13;Each grouping can also have a semantic value as well as its nonterminal
+symbol.  For example, in a calculator, an expression typically has a
+semantic value that is a number.  In a compiler for a programming
+language, an expression typically has a semantic value that is a tree
+structure describing the meaning of the expression.
+</P
+></DIV
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+SUMMARY="Footer navigation table"
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="x76.html"
+ACCESSKEY="P"
+>Prev</A
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="index.html"
+ACCESSKEY="H"
+>Home</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="x120.html"
+ACCESSKEY="N"
+>Next</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>From Formal Rules to Ocamlyacc Input</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="c41.html"
+ACCESSKEY="U"
+>Up</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>Semantic Actions</TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>
