@@ -1,0 +1,206 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN""http://www.w3.org/TR/html4/loose.dtd">
+<HTML
+><HEAD
+><TITLE
+>Introduction</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet Version 1.79"><LINK
+REL="HOME"
+TITLE="Ocamllex Tutorial"
+HREF="index.html"><LINK
+REL="PREVIOUS"
+TITLE="Ocamllex Tutorial"
+HREF="index.html"><LINK
+REL="NEXT"
+TITLE="Some simple examples"
+HREF="c47.html"></HEAD
+><BODY
+CLASS="chapter"
+BGCOLOR="#FFFFFF"
+TEXT="#000000"
+LINK="#0000FF"
+VLINK="#840084"
+ALINK="#0000FF"
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+SUMMARY="Header navigation table"
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="3"
+ALIGN="center"
+>Ocamllex Tutorial</TH
+></TR
+><TR
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="bottom"
+><A
+HREF="index.html"
+ACCESSKEY="P"
+>Prev</A
+></TD
+><TD
+WIDTH="80%"
+ALIGN="center"
+VALIGN="bottom"
+></TD
+><TD
+WIDTH="10%"
+ALIGN="right"
+VALIGN="bottom"
+><A
+HREF="c47.html"
+ACCESSKEY="N"
+>Next</A
+></TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="100%"></DIV
+><DIV
+CLASS="chapter"
+><H1
+><A
+NAME="chap-ocamllex"
+></A
+>Chapter 1. Introduction</H1
+><P
+>&#13;<TT
+CLASS="literal"
+>ocamllex</TT
+> is a tool for generating <SPAN
+CLASS="emphasis"
+><I
+CLASS="emphasis"
+>scanners</I
+></SPAN
+>:
+programs which recognized lexical
+patterns in text. <TT
+CLASS="literal"
+>ocamllex</TT
+> reads the given input files, for a description of
+a scanner to generate. The description is in the form of pairs of regular
+expressions and Ocaml code, called <SPAN
+CLASS="emphasis"
+><I
+CLASS="emphasis"
+>rules</I
+></SPAN
+>.
+<TT
+CLASS="literal"
+>ocamllex</TT
+> generates as output a Ocaml
+source file which defines lexical analyzer functions.
+This file is compiled and linked to produce an executable.
+When the executable is run, it analyzes its input for occurrences
+of the regular expressions. Whenever it finds one, it executes
+the corresponding Ocaml code. 
+</P
+><P
+>&#13;If you execute the following command with the input file named
+<SPAN
+CLASS="emphasis"
+><I
+CLASS="emphasis"
+>lexer</I
+></SPAN
+><TT
+CLASS="literal"
+>.mll</TT
+>
+</P
+><PRE
+CLASS="programlisting"
+>&#13;        ocamllex <SPAN
+CLASS="emphasis"
+><I
+CLASS="emphasis"
+>lexer</I
+></SPAN
+>.mll
+</PRE
+><P
+>&#13;you will get Caml code for a lexical analyzer in file
+<SPAN
+CLASS="emphasis"
+><I
+CLASS="emphasis"
+>lexer</I
+></SPAN
+><TT
+CLASS="literal"
+>.ml</TT
+>.
+</P
+></DIV
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+SUMMARY="Footer navigation table"
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="index.html"
+ACCESSKEY="P"
+>Prev</A
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="index.html"
+ACCESSKEY="H"
+>Home</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="c47.html"
+ACCESSKEY="N"
+>Next</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>Ocamllex Tutorial</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+>&nbsp;</TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>Some simple examples</TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>

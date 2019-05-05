@@ -1,0 +1,343 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN""http://www.w3.org/TR/html4/loose.dtd">
+<HTML
+><HEAD
+><TITLE
+>Actions</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet Version 1.79"><LINK
+REL="HOME"
+TITLE="Ocamllex Tutorial"
+HREF="index.html"><LINK
+REL="PREVIOUS"
+TITLE="How the input is matched"
+HREF="c223.html"><LINK
+REL="NEXT"
+TITLE="The generated scanner"
+HREF="c314.html"></HEAD
+><BODY
+CLASS="chapter"
+BGCOLOR="#FFFFFF"
+TEXT="#000000"
+LINK="#0000FF"
+VLINK="#840084"
+ALINK="#0000FF"
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+SUMMARY="Header navigation table"
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="3"
+ALIGN="center"
+>Ocamllex Tutorial</TH
+></TR
+><TR
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="bottom"
+><A
+HREF="c223.html"
+ACCESSKEY="P"
+>Prev</A
+></TD
+><TD
+WIDTH="80%"
+ALIGN="center"
+VALIGN="bottom"
+></TD
+><TD
+WIDTH="10%"
+ALIGN="right"
+VALIGN="bottom"
+><A
+HREF="c314.html"
+ACCESSKEY="N"
+>Next</A
+></TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="100%"></DIV
+><DIV
+CLASS="chapter"
+><H1
+><A
+NAME="sec-ocamllex-actions"
+></A
+>Chapter 6. Actions</H1
+><P
+>&#13;   Each pattern in a rule has a corresponding action, which can be any
+arbitrary Ocaml expression.
+For example, here is the specification for a program
+which deletes all occurrences of "zap me" from its input:
+</P
+><PRE
+CLASS="programlisting"
+>&#13;{}
+rule token = parse
+  | "zap me"	{ token lexbuf }	(* ignore this token: no processing and continue *)
+  | _ as c	{ print_char c; token lexbuf }
+</PRE
+><P
+>&#13;   Here is a program which compresses multiple blanks and tabs down to
+a single blank, and throws away whitespace found at the end of a line:
+</P
+><PRE
+CLASS="programlisting"
+>&#13;{}
+rule token = parse
+  | [' ' '\t']+		{ print_char ' '; token lexbuf }
+  | [' ' '\t']+ '\n'	{ token lexbuf }      (* ignore this token *)
+</PRE
+><P
+>&#13;Actions can include arbitrary Ocaml code which returns a value.
+Each time the lexical analyzer function is called
+it continues processing tokens from where it last
+left off until it either reaches the end of the file.
+</P
+><P
+>&#13;Actions are evaluated
+after the <TT
+CLASS="literal"
+>lexbuf</TT
+> is bound to the current lexer buffer and
+the identifer following the keyword <TT
+CLASS="literal"
+>as</TT
+> to the matched string.
+The usage of <TT
+CLASS="literal"
+>lexbuf</TT
+> is provided by the Lexing standard library module; 
+</P
+><P
+></P
+><UL
+><LI
+><P
+><TT
+CLASS="literal"
+>Lexing.lexeme lexbuf</TT
+></P
+><P
+>&#13;Return the matched string.
+  </P
+></LI
+><LI
+><P
+><TT
+CLASS="literal"
+>Lexing.lexeme_char lexbuf</TT
+> <SPAN
+CLASS="emphasis"
+><I
+CLASS="emphasis"
+>n</I
+></SPAN
+></P
+><P
+>&#13;Return the <SPAN
+CLASS="emphasis"
+><I
+CLASS="emphasis"
+>n</I
+></SPAN
+>th character in the matched string.
+The index number of the first character starts from 0.
+  </P
+></LI
+><LI
+><P
+><TT
+CLASS="literal"
+>Lexing.lexeme_start lexbuf</TT
+></P
+><P
+><TT
+CLASS="literal"
+>Lexing.lexeme_end lexbuf</TT
+></P
+><P
+>&#13;Return the absolute position in the input text of the beginning/end of the matched string. The position of the first character is 0.
+  </P
+></LI
+><LI
+><P
+><TT
+CLASS="literal"
+>Lexing.lexeme_start_p lexbuf</TT
+></P
+><P
+><TT
+CLASS="literal"
+>Lexing.lexeme_end_p lexbuf</TT
+></P
+><P
+>&#13;  (Since Ocaml 3.08) Return the position of type <TT
+CLASS="literal"
+>position</TT
+>
+  (See <A
+HREF="c256.html#sec-position"
+>Position</A
+>).
+  </P
+></LI
+><LI
+><P
+><SPAN
+CLASS="emphasis"
+><I
+CLASS="emphasis"
+>entrypoint [exp1... expn]</I
+></SPAN
+> <TT
+CLASS="literal"
+>lexbuf</TT
+></P
+><P
+>&#13;Call the other lexer on the given entry point.
+Notice that <TT
+CLASS="literal"
+>lexbuf</TT
+> is the last argument.
+  </P
+></LI
+></UL
+><DIV
+CLASS="sect1"
+><H1
+CLASS="sect1"
+><A
+NAME="sec-position"
+>6.1. Position</A
+></H1
+><P
+>&#13;The position information on scanning the input text is recorded
+in the <TT
+CLASS="literal"
+>lexbuf</TT
+>
+which has a field <TT
+CLASS="literal"
+>lex_curr_p</TT
+> of the type <TT
+CLASS="literal"
+>position</TT
+>:
+</P
+><PRE
+CLASS="programlisting"
+>&#13;  type position = {
+     pos_fname : string;		(* file name *)
+     pos_lnum : int;		(* line number *)
+     pos_bol : int;		(* the offset of the beginning of the line *)
+     pos_cnum : int;		(* the offset of the position *)
+  } 
+</PRE
+><P
+>&#13;The value of <TT
+CLASS="literal"
+>pos_bol</TT
+> field is the number of characters between the beginning of the file and the beginning of the line
+while the value of <TT
+CLASS="literal"
+>pos_cnum</TT
+> field is the number of characters between the beginning of the file and the position.
+</P
+><P
+>&#13;The lexing engine manages only the <TT
+CLASS="literal"
+>pos_cnum</TT
+> field of
+<TT
+CLASS="literal"
+>lexbuf.lex_curr_p</TT
+> with the number of characters read
+from the start of <TT
+CLASS="literal"
+>lexbuf</TT
+>. So you are reponsible for the other fields to be accurate.
+Typically, whenever the lexer meets a newline character,
+the action contains a call to the following function:
+</P
+><PRE
+CLASS="programlisting"
+>&#13;  let incr_linenum lexbuf =
+    let pos = lexbuf.Lexing.lex_curr_p in
+    lexbuf.Lexing.lex_curr_p &#60;- { pos with
+      Lexing.pos_lnum = pos.Lexing.pos_lnum + 1;
+      Lexing.pos_bol = pos.Lexing.pos_cnum;
+    }
+  ;;
+</PRE
+></DIV
+></DIV
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+SUMMARY="Footer navigation table"
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="c223.html"
+ACCESSKEY="P"
+>Prev</A
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="index.html"
+ACCESSKEY="H"
+>Home</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="c314.html"
+ACCESSKEY="N"
+>Next</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>How the input is matched</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+>&nbsp;</TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>The generated scanner</TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>
