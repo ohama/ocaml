@@ -1,0 +1,384 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN""http://www.w3.org/TR/html4/loose.dtd">
+<HTML
+><HEAD
+><TITLE
+>Location Tracking Calculator: ltcalc</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet Version 1.79"><LINK
+REL="HOME"
+TITLE="Ocamlyacc Tutorial"
+HREF="index.html"><LINK
+REL="UP"
+TITLE="Examples"
+HREF="c193.html"><LINK
+REL="PREVIOUS"
+TITLE="Simple Error Recovery"
+HREF="x367.html"><LINK
+REL="NEXT"
+TITLE="Multi-Function Calculator: mfcalc"
+HREF="x417.html"></HEAD
+><BODY
+CLASS="sect1"
+BGCOLOR="#FFFFFF"
+TEXT="#000000"
+LINK="#0000FF"
+VLINK="#840084"
+ALINK="#0000FF"
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+SUMMARY="Header navigation table"
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="3"
+ALIGN="center"
+>Ocamlyacc Tutorial</TH
+></TR
+><TR
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="bottom"
+><A
+HREF="x367.html"
+ACCESSKEY="P"
+>Prev</A
+></TD
+><TD
+WIDTH="80%"
+ALIGN="center"
+VALIGN="bottom"
+>Chapter 3. Examples</TD
+><TD
+WIDTH="10%"
+ALIGN="right"
+VALIGN="bottom"
+><A
+HREF="x417.html"
+ACCESSKEY="N"
+>Next</A
+></TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="100%"></DIV
+><DIV
+CLASS="sect1"
+><H1
+CLASS="sect1"
+><A
+NAME="sec-location-tracking-calculator"
+>3.4. Location Tracking Calculator: ltcalc</A
+></H1
+><P
+>&#13;This example extends the infix notation calculator with location
+tracking.  This feature will be used to improve the error messages.  For
+the sake of clarity, this example is a simple integer calculator, since
+most of the work needed to use locations will be done in the lexical
+analyser.
+
+</P
+><DIV
+CLASS="sect2"
+><H2
+CLASS="sect2"
+><A
+NAME="sec-declarations-for-ltcalc"
+>3.4.1. Declarations for ltcalc</A
+></H2
+><P
+>&#13;The Ocaml and Ocamlyacc declarations for the location tracking calculator are
+the same as the declarations for the infix notation calculator
+except <TT
+CLASS="literal"
+>open Lexing</TT
+>.
+</P
+><PRE
+CLASS="programlisting"
+>&#13;/* file: ltcalc.mly */
+/* Location tracking calculator. */
+%{
+open Printf
+open Lexing
+%}
+
+/* Ocamlyacc Declarations */
+%token NEWLINE
+%token LPAREN RPAREN
+%token &#60;float&#62; NUM
+%token PLUS MINUS MULTIPLY DIVIDE CARET
+
+%left PLUS MINUS
+%left MULTIPLY DIVIDE
+%left NEG	/* negation -- unary minus */
+%right CARET	/* exponentiation */
+
+%start input
+%type &#60;unit&#62; input
+
+/* Grammar follows */
+%%
+</PRE
+><P
+>&#13;Note there are no declarations specific to locations.  Defining a data
+type for storing locations is not needed: we will use the type provided
+by default
+(see <A
+HREF="x658.html#sec-data-type-of-locations"
+>Data Type of Locations</A
+>),
+which is a
+four member structure with the following fields:
+</P
+><PRE
+CLASS="programlisting"
+>&#13;type Lexing.position = {
+  pos_fname : string; 
+  pos_lnum : int; 
+  pos_bol : int; 
+  pos_cnum : int; 
+} 
+</PRE
+></DIV
+><DIV
+CLASS="sect2"
+><H2
+CLASS="sect2"
+><A
+NAME="sec-grammar-rules-for-ltcalc"
+>3.4.2. Grammar Rules for ltcalc</A
+></H2
+><P
+>&#13;Whether handling locations or not has no effect on the syntax of your
+language.  Therefore, grammar rules for this example will be very close
+to those of the previous example: we will only modify them to benefit
+from the new information.
+</P
+><P
+>&#13;Here, we will use locations to report divisions by zero, and locate the
+wrong expressions or subexpressions.
+</P
+><PRE
+CLASS="programlisting"
+>&#13;input:	/* empty */	{ }
+	| input line	{ }
+;
+line:	NEWLINE		{ }
+	| exp NEWLINE	{ Printf.printf "\t%.10g\n" $1; flush stdout }
+;
+exp:	NUM			{ $1 }
+	| exp PLUS exp		{ $1 +. $3 }
+	| exp MINUS exp		{ $1 -. $3 }
+	| exp MULTIPLY exp		{ $1 *. $3 }
+	| exp DIVIDE exp		{ if $3 &#60;&#62; 0.0 then $1 /. $3
+				  else (
+				    let start_pos = Parsing.rhs_start_pos 3 in
+				    let end_pos = Parsing.rhs_end_pos 3 in
+				    printf "%d.%d-%d.%d: division by zero"
+				      start_pos.pos_lnum (start_pos.pos_cnum - start_pos.pos_bol)
+				      end_pos.pos_lnum (end_pos.pos_cnum - end_pos.pos_bol);
+				    1.0
+				  )
+				}
+	| MINUS exp %prec NEG	{ -. $2 }
+	| exp CARET exp		{ $1 ** $3 }
+	| LPAREN exp RPAREN	{ $2 }
+;
+
+</PRE
+><P
+>&#13;This code shows how to reach locations inside of semantic actions.
+For rule components, use the following functions,
+</P
+><PRE
+CLASS="programlisting"
+>&#13;val Parsing.rhs_start_pos : int -&#62; Lexing.position
+val Parsing.rhs_end_pos : int -&#62; Lexing.position
+</PRE
+><P
+>&#13;where the integer parameter says the position of the components on
+the right-hand side of the rule.
+It is 1 for the leftmost component.
+</P
+><P
+>&#13;For groupings, use the following functions.
+</P
+><PRE
+CLASS="programlisting"
+>&#13;val Parsing.symbol_start_pos : unit -&#62; Lexing.position
+val Parsing.symbol_end_pos : unit -&#62; Lexing.position
+</PRE
+><P
+>&#13;We don't need to calculate the values of the position: the output parser does it
+automatically.
+<TT
+CLASS="literal"
+>symbol_start_pos</TT
+> is set to the beginning of
+the leftmost component,
+and <TT
+CLASS="literal"
+>symbol_end_pos</TT
+> to the end of the rightmost component.
+</P
+></DIV
+><DIV
+CLASS="sect2"
+><H2
+CLASS="sect2"
+><A
+NAME="sec-ltcalc-lexical-analyzer"
+>3.4.3. The "ltcalc" Lexical Analyzer</A
+></H2
+><P
+>&#13;Until now, we relied on Ocamlyacc's defaults to enable location
+tracking. The next step is to rewrite the lexical analyser, and make it
+able to feed the parser with the token locations, as it already does for
+semantic values.
+</P
+><P
+>&#13;To this end, we must take into account every single character of the
+input text, to avoid the computed locations of being fuzzy or wrong.
+<TT
+CLASS="literal"
+>lexbuf.lex_curr_p.pos_cnum</TT
+> is updated automatically
+for scanning a character by the lexer engine, so you have to update
+only <TT
+CLASS="literal"
+>lexbuf.lex_curr_p.pos_lnum</TT
+> and
+<TT
+CLASS="literal"
+>lexbuf.lex_curr_p.pos_bol</TT
+>.
+</P
+><PRE
+CLASS="programlisting"
+>&#13;(* file: lexer.mll *)
+(* Lexical analyzer returns one of the tokens:
+   the token NUM of a floating point number,
+   operators (PLUS, MINUS, MULTIPLY, DIVIDE, CARET, UMINUS),
+   or NEWLINE.  It skips all blanks and tabs, and unknown characters
+   and raises End_of_file on EOF. *)
+
+{
+  open Ltcalc
+  open Lexing
+  let incr_lineno lexbuf =
+    let pos = lexbuf.lex_curr_p in
+    lexbuf.lex_curr_p &#60;- { pos with
+      pos_lnum = pos.pos_lnum + 1;
+      pos_bol = pos.pos_cnum;
+    }
+}
+let digit = ['0'-'9']
+rule token = parse
+  | [' ' '\t']	{ token lexbuf }
+  | '\n'		{ incr_lineno lexbuf; NEWLINE }
+  | digit+
+  | "." digit+
+  | digit+ "." digit* as num
+		{ NUM (float_of_string num) }
+  | '+'		{ PLUS }
+  | '-'		{ MINUS }
+  | '*'		{ MULTIPLY }
+  | '/'		{ DIVIDE }
+  | '^'		{ CARET }
+  | '('		{ LPAREN }
+  | ')'		{ RPAREN }
+  | _		{ token lexbuf }
+  | eof		{ raise End_of_file }
+</PRE
+><P
+>&#13;Basically, the lexical analyzer performs the same processing as before:
+it skips blanks and tabs, and reads numbers, operators or delimiters.
+In addition, it updates <TT
+CLASS="literal"
+>lexbuf.lex_curr_p</TT
+>
+containing the token's location.
+</P
+><P
+>&#13;Now, each time this function returns a token, the parser has its number
+as well as its semantic value, and its location in the text.
+</P
+><P
+>&#13;Remember that computing locations is not a matter of syntax.  Every
+character must be associated to a location update, whether it is in
+valid input, in comments, in literal strings, and so on.
+</P
+></DIV
+></DIV
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+SUMMARY="Footer navigation table"
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="x367.html"
+ACCESSKEY="P"
+>Prev</A
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="index.html"
+ACCESSKEY="H"
+>Home</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="x417.html"
+ACCESSKEY="N"
+>Next</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>Simple Error Recovery</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="c193.html"
+ACCESSKEY="U"
+>Up</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>Multi-Function Calculator: mfcalc</TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>

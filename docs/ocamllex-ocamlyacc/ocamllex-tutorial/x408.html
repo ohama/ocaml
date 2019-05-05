@@ -1,0 +1,231 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN""http://www.w3.org/TR/html4/loose.dtd">
+<HTML
+><HEAD
+><TITLE
+>Nested Comments</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet Version 1.79"><LINK
+REL="HOME"
+TITLE="Ocamllex Tutorial"
+HREF="index.html"><LINK
+REL="UP"
+TITLE="Usage Tips"
+HREF="c395.html"><LINK
+REL="PREVIOUS"
+TITLE="Usage Tips"
+HREF="c395.html"><LINK
+REL="NEXT"
+TITLE="Examples"
+HREF="c424.html"></HEAD
+><BODY
+CLASS="sect1"
+BGCOLOR="#FFFFFF"
+TEXT="#000000"
+LINK="#0000FF"
+VLINK="#840084"
+ALINK="#0000FF"
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+SUMMARY="Header navigation table"
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="3"
+ALIGN="center"
+>Ocamllex Tutorial</TH
+></TR
+><TR
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="bottom"
+><A
+HREF="c395.html"
+ACCESSKEY="P"
+>Prev</A
+></TD
+><TD
+WIDTH="80%"
+ALIGN="center"
+VALIGN="bottom"
+>Chapter 11. Usage Tips</TD
+><TD
+WIDTH="10%"
+ALIGN="right"
+VALIGN="bottom"
+><A
+HREF="c424.html"
+ACCESSKEY="N"
+>Next</A
+></TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="100%"></DIV
+><DIV
+CLASS="sect1"
+><H1
+CLASS="sect1"
+><A
+NAME="sec-nested-comments"
+>11.2. Nested Comments</A
+></H1
+><P
+>&#13;Some language such as Ocaml support nested comment.
+It can be implemented like this:
+</P
+><PRE
+CLASS="programlisting"
+>&#13;{ }
+
+rule token = parse
+  | "(*"		{ print_endline "comments start"; comments 0 lexbuf }
+  | [' ' '\t' '\n']	{ token lexbuf }
+  | ['a'-'z']+ as word
+  		{ Printf.printf "word: %s\n" word; token lexbuf }
+  | _ as c	{ Printf.printf "char %c\n" c; token lexbuf }
+  | eof		{ raise End_of_file }
+
+and comments level = parse
+  | "*)"	{ Printf.printf "comments (%d) end\n" level;
+  		  if level = 0 then token lexbuf
+		  else comments (level-1) lexbuf
+		}
+  | "(*"	{ Printf.printf "comments (%d) start\n" (level+1);
+  		  comments (level+1) lexbuf
+		}
+  | _		{ comments level lexbuf }
+  | eof		{ print_endline "comments are not closed";
+  		  raise End_of_file
+		}
+</PRE
+><P
+>&#13;When the scanner function meets <SPAN
+CLASS="emphasis"
+><I
+CLASS="emphasis"
+>comments start</I
+></SPAN
+> token
+<TT
+CLASS="literal"
+>"(*"</TT
+>
+in evaluating <TT
+CLASS="literal"
+>token</TT
+> rule, it enters
+<TT
+CLASS="literal"
+>comments</TT
+> rule with level of 0.
+<TT
+CLASS="literal"
+>token</TT
+> rule is invoked again
+when all comments are closed.
+Comments nesting level is increased whenever there is
+<SPAN
+CLASS="emphasis"
+><I
+CLASS="emphasis"
+>comment start</I
+></SPAN
+> token
+<TT
+CLASS="literal"
+>"(*"</TT
+> in the input text.
+</P
+><P
+>&#13;If the scanner function meets <SPAN
+CLASS="emphasis"
+><I
+CLASS="emphasis"
+>end of comments</I
+></SPAN
+> token
+<TT
+CLASS="literal"
+>"*)"</TT
+>, it tests the comments nesting level.
+When the nesting level is not zero, it decrements the level by one and continues
+to scan comments.
+It returns to <TT
+CLASS="literal"
+>token</TT
+> rule
+when all the comments are closed i.e., the nesting level is zero.
+</P
+></DIV
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+SUMMARY="Footer navigation table"
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="c395.html"
+ACCESSKEY="P"
+>Prev</A
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="index.html"
+ACCESSKEY="H"
+>Home</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="c424.html"
+ACCESSKEY="N"
+>Next</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>Usage Tips</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="c395.html"
+ACCESSKEY="U"
+>Up</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>Examples</TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>
