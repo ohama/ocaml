@@ -1,0 +1,218 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN">
+<HTML
+><HEAD
+><TITLE
+>Stages in Using Ocamlyacc</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet Version 1.7"><LINK
+REL="HOME"
+TITLE="Ocamlyacc Tutorial"
+HREF="ocamlyacc-tutorial.html"><LINK
+REL="UP"
+TITLE="The Concepts of Ocamlyacc"
+HREF="chap-concepts-of-ocamlyacc.html"><LINK
+REL="PREVIOUS"
+TITLE="Ocamlyacc Output: the Parser File"
+HREF="sec-ocamlyacc-output.html"><LINK
+REL="NEXT"
+TITLE="The Overall Layout of a Ocamlyacc Grammar"
+HREF="sec-overall-layout-of-a-ocamlyacc-grammar.html"><LINK
+REL="STYLESHEET"
+TYPE="text/css"
+HREF="./ocamlyacc-tutorial.css"></HEAD
+><BODY
+CLASS="sect1"
+BGCOLOR="#FFFFFF"
+TEXT="#000000"
+LINK="#0000FF"
+VLINK="#840084"
+ALINK="#0000FF"
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+SUMMARY="Header navigation table"
+WIDTH="95%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="3"
+ALIGN="center"
+>Ocamlyacc Tutorial</TH
+></TR
+><TR
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="bottom"
+><A
+HREF="sec-ocamlyacc-output.html"
+ACCESSKEY="P"
+>&#60;&#60;&#60; Previous</A
+></TD
+><TD
+WIDTH="80%"
+ALIGN="center"
+VALIGN="bottom"
+>Chapter 2. The Concepts of Ocamlyacc</TD
+><TD
+WIDTH="10%"
+ALIGN="right"
+VALIGN="bottom"
+><A
+HREF="sec-overall-layout-of-a-ocamlyacc-grammar.html"
+ACCESSKEY="N"
+>Next &#62;&#62;&#62;</A
+></TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="95%"></DIV
+><DIV
+CLASS="sect1"
+><H1
+CLASS="sect1"
+><A
+NAME="sec-stages-in-using-ocamlyacc"
+>2.7. Stages in Using Ocamlyacc</A
+></H1
+><P
+>&#13;The actual language-design process using Ocamlyacc, from grammar specification
+to a working compiler or interpreter, has these parts:
+</P
+><P
+></P
+><UL
+><LI
+><P
+>&#13;  Formally specify the grammar in a form recognized by Ocamlyacc
+  (see <A
+HREF="chap-grammar-files.html"
+>Ocamlyacc Grammar Files</A
+>).
+  For each grammatical rule in the language,
+  describe the action that is to be taken when an instance of that rule
+  is recognized.  The action is described by a sequence of Ocaml statements.
+  </P
+></LI
+><LI
+><P
+>&#13;  Write a lexical analyzer to process input and pass tokens to the
+  parser.  The lexical analyzer may be written by hand in Ocaml
+  (see <A
+HREF="sec-lexical-analyzer-function.html"
+>The Lexical Analyzer Function</A
+>).
+  It could also be produced using <TT
+CLASS="literal"
+>ocamllex</TT
+>, but the use
+  of <TT
+CLASS="literal"
+>ocamllex</TT
+> is not discussed in this manual.
+  </P
+></LI
+><LI
+><P
+>&#13;  Write a controlling function that calls the Ocamlyacc-produced parser.
+  </P
+></LI
+><LI
+><P
+>&#13;  Write error-reporting routines.
+  </P
+></LI
+></UL
+><P
+>&#13;To turn this source code as written into a runnable program, you
+must follow these steps:
+</P
+><P
+></P
+><UL
+><LI
+><P
+>&#13;  Run Ocamlyacc on the grammar to produce the parser.
+  </P
+></LI
+><LI
+><P
+>&#13;  Compile the code output by Ocamlyacc, as well as any other source files.
+  </P
+></LI
+><LI
+><P
+>&#13;  Link the object files to produce the finished product.
+  </P
+></LI
+></UL
+></DIV
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="95%"><TABLE
+SUMMARY="Footer navigation table"
+WIDTH="95%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="sec-ocamlyacc-output.html"
+ACCESSKEY="P"
+>&#60;&#60;&#60; Previous</A
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="ocamlyacc-tutorial.html"
+ACCESSKEY="H"
+>Home</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="sec-overall-layout-of-a-ocamlyacc-grammar.html"
+ACCESSKEY="N"
+>Next &#62;&#62;&#62;</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>Ocamlyacc Output: the Parser File</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="chap-concepts-of-ocamlyacc.html"
+ACCESSKEY="U"
+>Up</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>The Overall Layout of a Ocamlyacc Grammar</TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>

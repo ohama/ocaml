@@ -1,0 +1,228 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN">
+<HTML
+><HEAD
+><TITLE
+>The Overall Layout of a Ocamlyacc Grammar</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet Version 1.7"><LINK
+REL="HOME"
+TITLE="Ocamlyacc Tutorial"
+HREF="ocamlyacc-tutorial.html"><LINK
+REL="UP"
+TITLE="The Concepts of Ocamlyacc"
+HREF="chap-concepts-of-ocamlyacc.html"><LINK
+REL="PREVIOUS"
+TITLE="Stages in Using Ocamlyacc"
+HREF="sec-stages-in-using-ocamlyacc.html"><LINK
+REL="NEXT"
+TITLE="Examples"
+HREF="chap-examples.html"><LINK
+REL="STYLESHEET"
+TYPE="text/css"
+HREF="./ocamlyacc-tutorial.css"></HEAD
+><BODY
+CLASS="sect1"
+BGCOLOR="#FFFFFF"
+TEXT="#000000"
+LINK="#0000FF"
+VLINK="#840084"
+ALINK="#0000FF"
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+SUMMARY="Header navigation table"
+WIDTH="95%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="3"
+ALIGN="center"
+>Ocamlyacc Tutorial</TH
+></TR
+><TR
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="bottom"
+><A
+HREF="sec-stages-in-using-ocamlyacc.html"
+ACCESSKEY="P"
+>&#60;&#60;&#60; Previous</A
+></TD
+><TD
+WIDTH="80%"
+ALIGN="center"
+VALIGN="bottom"
+>Chapter 2. The Concepts of Ocamlyacc</TD
+><TD
+WIDTH="10%"
+ALIGN="right"
+VALIGN="bottom"
+><A
+HREF="chap-examples.html"
+ACCESSKEY="N"
+>Next &#62;&#62;&#62;</A
+></TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="95%"></DIV
+><DIV
+CLASS="sect1"
+><H1
+CLASS="sect1"
+><A
+NAME="sec-overall-layout-of-a-ocamlyacc-grammar"
+>2.8. The Overall Layout of a Ocamlyacc Grammar</A
+></H1
+><P
+>&#13;The input file for the Ocamlyacc utility is a <TT
+CLASS="literal"
+>Ocamlyacc grammar file</TT
+>.  The
+general form of a Ocamlyacc grammar file is as follows:
+</P
+><TABLE
+BORDER="0"
+BGCOLOR="#e3e3c4"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="programlisting"
+>&#13;%{
+    <I
+CLASS="emphasis"
+>Header</I
+> (Ocaml code)
+%}
+    <I
+CLASS="emphasis"
+>Ocamlyacc declarations</I
+>
+%%
+    <I
+CLASS="emphasis"
+>Grammar rules</I
+>
+%%
+    <I
+CLASS="emphasis"
+>Trailer</I
+> (Additional Ocaml code)
+</PRE
+></TD
+></TR
+></TABLE
+><P
+>&#13;The <TT
+CLASS="literal"
+>%%</TT
+>, <TT
+CLASS="literal"
+>%{</TT
+> and <TT
+CLASS="literal"
+>%}</TT
+> are punctuation that appears
+in every Ocamlyacc grammar file to separate the sections.
+</P
+><P
+>&#13;The <I
+CLASS="emphasis"
+>header</I
+> may define types, variables and functions used in the actions.
+
+</P
+><P
+>&#13;The <I
+CLASS="emphasis"
+>Ocamlyacc declarations</I
+> declare the names of the terminal and nonterminal
+symbols, and may also describe operator precedence and the data types of
+semantic values of various symbols.
+</P
+><P
+>&#13;The <I
+CLASS="emphasis"
+>grammar rules</I
+> define how to construct each nonterminal symbol from its
+parts.
+</P
+><P
+>&#13;The <I
+CLASS="emphasis"
+>Trailer</I
+> can contain any Ocaml code you want to use.
+
+</P
+></DIV
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="95%"><TABLE
+SUMMARY="Footer navigation table"
+WIDTH="95%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="sec-stages-in-using-ocamlyacc.html"
+ACCESSKEY="P"
+>&#60;&#60;&#60; Previous</A
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="ocamlyacc-tutorial.html"
+ACCESSKEY="H"
+>Home</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="chap-examples.html"
+ACCESSKEY="N"
+>Next &#62;&#62;&#62;</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>Stages in Using Ocamlyacc</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="chap-concepts-of-ocamlyacc.html"
+ACCESSKEY="U"
+>Up</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>Examples</TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>

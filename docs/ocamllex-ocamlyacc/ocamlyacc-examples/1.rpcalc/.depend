@@ -1,0 +1,6 @@
+lexer.cmo: rpcalc.cmi 
+lexer.cmx: rpcalc.cmx 
+main.cmo: lexer.cmo rpcalc.cmi 
+main.cmx: lexer.cmx rpcalc.cmx 
+rpcalc.cmo: rpcalc.cmi 
+rpcalc.cmx: rpcalc.cmi 

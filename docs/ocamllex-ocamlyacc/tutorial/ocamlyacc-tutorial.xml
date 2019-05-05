@@ -46,15 +46,20 @@
 
       <para>
 	You can find the source of this document in
-	<ulink url="https://ohama.github.io/ocaml/ocamllex-ocamlyacc/ocamlyacc-tutorial-src.tar.gz">ocamlyacc-tutorial-src.tar.gz</ulink>.
+	<ulink url="https://ohama.github.io/ocaml/ocamllex-ocamlyacc/tutorial">tutorial</ulink> directory.
 	For who wants the other form,
-	<ulink url="https://ohama.github.io/ocaml/ocamllex-ocamlyacc/ocamlyacc-tutorial.pdf">pdf (A4 size)</ulink> for printing
-	and <ulink url="https://ohama.github.io/ocaml/ocamllex-ocamlyacc/ocamlyacc-tutorial.tar.gz">html (tar.gz)</ulink> are presented.
+	<ulink url="https://ohama.github.io/ocaml/ocamllex-ocamlyacc/ocamlyacc-tutorial.pdf">pdf</ulink> for printing.
       </para>
 
       <para>
 	The source of the examples used in this document can be found
-	<ulink url="https://ohama.github.io/ocaml/ocamllex-ocamlyacc/ocamlyacc-examples.tar.gz">ocamlyacc-examples.tar.gz</ulink>.
+	<ulink url="https://ohama.github.io/ocaml/ocamllex-ocamlyacc/ocamlyacc-examples">ocamlyacc-examples</ulink> directory.
+      </para>
+
+      <para>
+<emphasis>
+This document is just a re-formatting of the old one. There have been many improvements since then in Ocaml programming language but those are not reflected in this document.
+</emphasis>
       </para>
 
       <para>

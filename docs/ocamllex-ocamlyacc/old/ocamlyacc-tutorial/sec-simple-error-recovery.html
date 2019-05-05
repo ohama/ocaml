@@ -1,0 +1,215 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN">
+<HTML
+><HEAD
+><TITLE
+>Simple Error Recovery</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet Version 1.7"><LINK
+REL="HOME"
+TITLE="Ocamlyacc Tutorial"
+HREF="ocamlyacc-tutorial.html"><LINK
+REL="UP"
+TITLE="Examples"
+HREF="chap-examples.html"><LINK
+REL="PREVIOUS"
+TITLE="Infix Notation Calculator: calc"
+HREF="sec-infix-notation-calculator.html"><LINK
+REL="NEXT"
+TITLE="Location Tracking Calculator: ltcalc"
+HREF="sec-location-tracking-calculator.html"><LINK
+REL="STYLESHEET"
+TYPE="text/css"
+HREF="./ocamlyacc-tutorial.css"></HEAD
+><BODY
+CLASS="sect1"
+BGCOLOR="#FFFFFF"
+TEXT="#000000"
+LINK="#0000FF"
+VLINK="#840084"
+ALINK="#0000FF"
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+SUMMARY="Header navigation table"
+WIDTH="95%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="3"
+ALIGN="center"
+>Ocamlyacc Tutorial</TH
+></TR
+><TR
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="bottom"
+><A
+HREF="sec-infix-notation-calculator.html"
+ACCESSKEY="P"
+>&#60;&#60;&#60; Previous</A
+></TD
+><TD
+WIDTH="80%"
+ALIGN="center"
+VALIGN="bottom"
+>Chapter 3. Examples</TD
+><TD
+WIDTH="10%"
+ALIGN="right"
+VALIGN="bottom"
+><A
+HREF="sec-location-tracking-calculator.html"
+ACCESSKEY="N"
+>Next &#62;&#62;&#62;</A
+></TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="95%"></DIV
+><DIV
+CLASS="sect1"
+><H1
+CLASS="sect1"
+><A
+NAME="sec-simple-error-recovery"
+>3.3. Simple Error Recovery</A
+></H1
+><P
+>&#13;Up to this point, this manual has not addressed the issue of
+<I
+CLASS="emphasis"
+>error recovery</I
+>---how to continue parsing after the parser detects a syntax
+error.  All we have handled is error reporting with <TT
+CLASS="literal"
+>parse_error</TT
+>.
+Recall that by default, the parser function raises exception after calling
+<TT
+CLASS="literal"
+>parse_error</TT
+>.
+This means that an erroneous input line causes the
+calculator program to raise exception and exit.
+Now we show how to rectify this deficiency.
+</P
+><P
+>&#13;The Ocamlyacc language itself includes the reserved word <TT
+CLASS="literal"
+>error</TT
+>, which
+may be included in the grammar rules.  In the example below it has
+been added to one of the alternatives for <TT
+CLASS="literal"
+>line</TT
+>:
+</P
+><TABLE
+BORDER="0"
+BGCOLOR="#e3e3c4"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="programlisting"
+>&#13;line:     NEWLINE
+        | exp NEWLINE		{ printf "\t%.10g\n" $1; flush stdout }
+        | error NEWLINE		{ }
+;
+</PRE
+></TD
+></TR
+></TABLE
+><P
+>&#13;This addition to the grammar allows for simple error recovery in the
+event of a parse error.  If an expression that cannot be evaluated is
+read, the error will be recognized by the third rule for <TT
+CLASS="literal"
+>line</TT
+>,
+and parsing will continue.  (The <TT
+CLASS="literal"
+>parse_error</TT
+> function is still called.)
+The action executes the statement and continues to parse.
+</P
+><P
+>&#13;This form of error recovery deals with syntax errors.  There are other
+kinds of errors; for example, division by zero, which raises an exception
+that is normally fatal.  A real calculator program must handle this
+exception and resume parsing
+input lines; it would also have to discard the rest of the current line of
+input.  We won't discuss this issue further because it is not specific to
+Ocamlyacc programs.
+</P
+></DIV
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="95%"><TABLE
+SUMMARY="Footer navigation table"
+WIDTH="95%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="sec-infix-notation-calculator.html"
+ACCESSKEY="P"
+>&#60;&#60;&#60; Previous</A
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="ocamlyacc-tutorial.html"
+ACCESSKEY="H"
+>Home</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="sec-location-tracking-calculator.html"
+ACCESSKEY="N"
+>Next &#62;&#62;&#62;</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>Infix Notation Calculator: calc</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="chap-examples.html"
+ACCESSKEY="U"
+>Up</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>Location Tracking Calculator: ltcalc</TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>

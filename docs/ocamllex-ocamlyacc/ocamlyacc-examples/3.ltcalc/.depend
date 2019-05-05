@@ -1,0 +1,6 @@
+lexer.cmo: ltcalc.cmi 
+lexer.cmx: ltcalc.cmx 
+ltcalc.cmo: ltcalc.cmi 
+ltcalc.cmx: ltcalc.cmi 
+main.cmo: lexer.cmo ltcalc.cmi 
+main.cmx: lexer.cmx ltcalc.cmx 
