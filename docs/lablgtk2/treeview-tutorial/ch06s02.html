@@ -1,0 +1,21 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"><title>Double-Clicks on a Row</title><meta name="generator" content="DocBook XSL Stylesheets V1.61.2"><link rel="home" href="index.html" title="GTK+ 2.0 Tree View Tutorial using Ocaml"><link rel="up" href="ch06.html" title="Chapter 6. Selections, Double-Clicks and Context Menus"><link rel="previous" href="ch06.html" title="Chapter 6. Selections, Double-Clicks and Context Menus"><link rel="next" href="ch06s03.html" title="Context Menus on Right Click"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">Double-Clicks on a Row</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="ch06.html">Prev</a> </td><th width="60%" align="center">Chapter 6. Selections, Double-Clicks and Context Menus</th><td width="20%" align="right"> <a accesskey="n" href="ch06s03.html">Next</a></td></tr></table><hr></div><div class="sect1" lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="sec-selections-double-click"></a>Double-Clicks on a Row</h2></div></div><div></div></div><p>
+Catching double-clicks on a row is quite easy and is done by connecting
+to a tree view's <tt class="literal">"row-activated"</tt> signal, like this:
+</p><pre class="programlisting">
+...
+
+let on_row_activated (view:GTree.view) path column =
+  let model = view#model in
+  let row = model#get_iter path in
+  let name = model#get ~row ~column:col_name in
+  Printf.printf "Double-clicked row contains name %s\n" name;
+  flush stdout
+  
+let create_view ~model ~packing () =
+  let view = GTree.view ~model ~packing () in
+  ...
+  view#connect#row_activated ~callback:(on_row_activated view);
+  ...
+
+...
+</pre></div><div class="navfooter"><hr><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="ch06.html">Prev</a> </td><td width="20%" align="center"><a accesskey="u" href="ch06.html">Up</a></td><td width="40%" align="right"> <a accesskey="n" href="ch06s03.html">Next</a></td></tr><tr><td width="40%" align="left" valign="top">Chapter 6. Selections, Double-Clicks and Context Menus </td><td width="20%" align="center"><a accesskey="h" href="index.html">Home</a></td><td width="40%" align="right" valign="top"> Context Menus on Right Click</td></tr></table></div></body></html>

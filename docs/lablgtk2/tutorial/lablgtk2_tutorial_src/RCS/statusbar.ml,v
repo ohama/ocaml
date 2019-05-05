@@ -1,0 +1,63 @@
+head	1.1;
+access;
+symbols;
+locks
+	shoh:1.1; strict;
+comment	@; @;
+
+
+1.1
+date	2004.07.29.04.57.31;	author shoh;	state Exp;
+branches;
+next	;
+
+
+desc
+@statusbar widget example
+@
+
+
+1.1
+log
+@Initial revision
+@
+text
+@(* $Id$ *)
+(* file: statusbar.ml *)
+
+let count = ref 0
+
+let push_item context () =
+  incr count;
+  context#push (Printf.sprintf "item %d" !count);
+  ()
+
+let pop_item context () =
+  context#pop ();
+  ()
+
+let main () =
+  (* Create a new window; set title and border width *)
+  let window = GWindow.window ~title:"Statusbar" () in
+
+  (* Set a handler for destroy event that immediately exits GTK. *)
+  window#connect#destroy ~callback:GMain.Main.quit;
+
+  let vbox = GPack.vbox ~packing:window#add () in
+
+  let statusbar = GMisc.statusbar ~packing:vbox#add () in
+  let context = statusbar#new_context ~name:"Statusbar example" in
+
+  let button = GButton.button ~label:"push item" ~packing:vbox#add () in
+  button#connect#clicked ~callback:(push_item context);
+
+  let button = GButton.button ~label:"pop last item" ~packing:vbox#add () in
+  button#connect#clicked ~callback:(pop_item context);
+
+  (* always display the window as the last step so it all splashes on
+   * the screen at once. *)
+  window#show ();
+  GMain.Main.main ()
+
+let _ = Printexc.print main ()
+@
