@@ -2,22 +2,22 @@
 <HTML
 ><HEAD
 ><TITLE
->Word Count</TITLE
+>Locations</TITLE
 ><META
 NAME="GENERATOR"
 CONTENT="Modular DocBook HTML Stylesheet Version 1.79"><LINK
 REL="HOME"
-TITLE="Ocamllex Tutorial"
+TITLE="Ocamlyacc Tutorial"
 HREF="index.html"><LINK
 REL="UP"
-TITLE="Examples"
-HREF="c422.html"><LINK
+TITLE="The Concepts of Ocamlyacc"
+HREF="c41.html"><LINK
 REL="PREVIOUS"
-TITLE="Examples"
-HREF="c422.html"><LINK
+TITLE="Semantic Actions"
+HREF="x120.html"><LINK
 REL="NEXT"
-TITLE="Toy Language"
-HREF="x434.html"></HEAD
+TITLE="Ocamlyacc Output: the Parser File"
+HREF="x137.html"></HEAD
 ><BODY
 CLASS="sect1"
 BGCOLOR="#FFFFFF"
@@ -37,7 +37,7 @@ CELLSPACING="0"
 ><TH
 COLSPAN="3"
 ALIGN="center"
->Ocamllex Tutorial</TH
+>Ocamlyacc Tutorial</TH
 ></TR
 ><TR
 ><TD
@@ -45,7 +45,7 @@ WIDTH="10%"
 ALIGN="left"
 VALIGN="bottom"
 ><A
-HREF="c422.html"
+HREF="x120.html"
 ACCESSKEY="P"
 >Prev</A
 ></TD
@@ -53,13 +53,13 @@ ACCESSKEY="P"
 WIDTH="80%"
 ALIGN="center"
 VALIGN="bottom"
->Chapter 12. Examples</TD
+>Chapter 2. The Concepts of Ocamlyacc</TD
 ><TD
 WIDTH="10%"
 ALIGN="right"
 VALIGN="bottom"
 ><A
-HREF="x434.html"
+HREF="x137.html"
 ACCESSKEY="N"
 >Next</A
 ></TD
@@ -73,39 +73,41 @@ CLASS="sect1"
 ><H1
 CLASS="sect1"
 ><A
-NAME="sec-word-count"
->12.2. Word Count</A
+NAME="sec-locations"
+>2.5. Locations</A
 ></H1
 ><P
->&#13;This example shows the number of lines, words and characters of the
-given file if the filename is given,
-or of the standard input if no command arguments are given.
+>&#13;Many applications, like interpreters or compilers, have to produce verbose
+and useful error messages. To achieve this, one must be able to keep track of
+the <SPAN
+CLASS="emphasis"
+><I
+CLASS="emphasis"
+>textual position</I
+></SPAN
+>, or <SPAN
+CLASS="emphasis"
+><I
+CLASS="emphasis"
+>location</I
+></SPAN
+>, of each syntactic construct.
+Ocamlyacc provides a mechanism for handling these locations.
 </P
-><PRE
-CLASS="programlisting"
->&#13;{ }
-
-rule count lines words chars = parse
-  | '\n'		{ count (lines+1) words (chars+1) lexbuf }
-  | [^ ' ' '\t' '\n']+ as word
-  		{ count lines (words+1) (chars+ String.length word) lexbuf }
-  | _		{ count lines words (chars+1) lexbuf }
-  | eof		{ (lines, words, chars) }
-
-{
-  let main () =
-    let cin =
-      if Array.length Sys.argv &#62; 1
-      then open_in Sys.argv.(1)
-      else stdin
-    in
-    let lexbuf = Lexing.from_channel cin in
-    let (lines, words, chars) = count 0 0 0 lexbuf in
-    Printf.printf "%d lines, %d words, %d chars\n" lines words chars
-
-  let _ = Printexc.print main ()
-}
-</PRE
+><P
+>&#13;Each token has a semantic value. In a similar fashion, each token has an
+associated location, but the type of locations is the same for all tokens and
+groupings. Moreover, the output parser is equipped with a data
+structure for storing locations
+(see <A
+HREF="x657.html"
+>Locations</A
+>, for more details).
+</P
+><P
+>&#13;Like semantic values, locations can be reached in actions
+using functions of the Parsing module.
+</P
 ></DIV
 ><DIV
 CLASS="NAVFOOTER"
@@ -123,7 +125,7 @@ WIDTH="33%"
 ALIGN="left"
 VALIGN="top"
 ><A
-HREF="c422.html"
+HREF="x120.html"
 ACCESSKEY="P"
 >Prev</A
 ></TD
@@ -141,7 +143,7 @@ WIDTH="33%"
 ALIGN="right"
 VALIGN="top"
 ><A
-HREF="x434.html"
+HREF="x137.html"
 ACCESSKEY="N"
 >Next</A
 ></TD
@@ -151,13 +153,13 @@ ACCESSKEY="N"
 WIDTH="33%"
 ALIGN="left"
 VALIGN="top"
->Examples</TD
+>Semantic Actions</TD
 ><TD
 WIDTH="34%"
 ALIGN="center"
 VALIGN="top"
 ><A
-HREF="c422.html"
+HREF="c41.html"
 ACCESSKEY="U"
 >Up</A
 ></TD
@@ -165,7 +167,7 @@ ACCESSKEY="U"
 WIDTH="33%"
 ALIGN="right"
 VALIGN="top"
->Toy Language</TD
+>Ocamlyacc Output: the Parser File</TD
 ></TR
 ></TABLE
 ></DIV

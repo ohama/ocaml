@@ -1,0 +1,287 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN""http://www.w3.org/TR/html4/loose.dtd">
+<HTML
+><HEAD
+><TITLE
+>Symbols, Terminal and Nonterminal</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet Version 1.79"><LINK
+REL="HOME"
+TITLE="Ocamlyacc Tutorial"
+HREF="index.html"><LINK
+REL="UP"
+TITLE="Ocamlyacc Grammar Files"
+HREF="c479.html"><LINK
+REL="PREVIOUS"
+TITLE="Ocamlyacc Grammar Files"
+HREF="c479.html"><LINK
+REL="NEXT"
+TITLE="Syntax of Grammar Rules"
+HREF="x556.html"></HEAD
+><BODY
+CLASS="sect1"
+BGCOLOR="#FFFFFF"
+TEXT="#000000"
+LINK="#0000FF"
+VLINK="#840084"
+ALINK="#0000FF"
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+SUMMARY="Header navigation table"
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="3"
+ALIGN="center"
+>Ocamlyacc Tutorial</TH
+></TR
+><TR
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="bottom"
+><A
+HREF="c479.html"
+ACCESSKEY="P"
+>Prev</A
+></TD
+><TD
+WIDTH="80%"
+ALIGN="center"
+VALIGN="bottom"
+>Chapter 4. Ocamlyacc Grammar Files</TD
+><TD
+WIDTH="10%"
+ALIGN="right"
+VALIGN="bottom"
+><A
+HREF="x556.html"
+ACCESSKEY="N"
+>Next</A
+></TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="100%"></DIV
+><DIV
+CLASS="sect1"
+><H1
+CLASS="sect1"
+><A
+NAME="sec-symbols-terminal-nonterminal"
+>4.2. Symbols, Terminal and Nonterminal</A
+></H1
+><P
+>&#13;<SPAN
+CLASS="emphasis"
+><I
+CLASS="emphasis"
+>Symbols</I
+></SPAN
+> in Ocamlyacc grammars represent the grammatical classifications
+of the language.
+</P
+><P
+>&#13;A <SPAN
+CLASS="emphasis"
+><I
+CLASS="emphasis"
+>terminal symbol</I
+></SPAN
+> (also known as a <SPAN
+CLASS="emphasis"
+><I
+CLASS="emphasis"
+>token type</I
+></SPAN
+>) represents a
+class of syntactically equivalent tokens.  You use the symbol in grammar
+rules to mean that a token in that class is allowed.  The symbol is
+represented in the Ocamlyacc parser by a value of variant type,
+and the <SPAN
+CLASS="emphasis"
+><I
+CLASS="emphasis"
+>lexer function</I
+></SPAN
+>
+function returns a token type to indicate what kind of token has been
+read. 
+</P
+><P
+>&#13;A <SPAN
+CLASS="emphasis"
+><I
+CLASS="emphasis"
+>nonterminal symbol</I
+></SPAN
+> stands for a class of syntactically equivalent
+groupings.  The symbol name is used in writing grammar rules. 
+It should start with lower case.
+</P
+><P
+>&#13;Symbol names can contain letters, digits (not at the beginning),
+underscores.
+</P
+><P
+>&#13;The terminal symbols in the grammar is a <SPAN
+CLASS="emphasis"
+><I
+CLASS="emphasis"
+>token type</I
+></SPAN
+>
+which is a value of variable type in Ocaml.
+So it should be start with upper case.
+Each such name must be defined with a Ocamlyacc declaration with
+<TT
+CLASS="literal"
+>%token</TT
+>.
+See <A
+HREF="x701.html#sec-token-type-names"
+>Token Type Names</A
+>.
+</P
+><P
+>&#13;The value returned by the <SPAN
+CLASS="emphasis"
+><I
+CLASS="emphasis"
+>lexer function</I
+></SPAN
+>
+is always one of the terminal symbols.
+Each token type becomes a Ocaml value of variant type in
+the parser file, so <SPAN
+CLASS="emphasis"
+><I
+CLASS="emphasis"
+>lexer function</I
+></SPAN
+> can return one.
+</P
+><P
+>&#13;Because the <SPAN
+CLASS="emphasis"
+><I
+CLASS="emphasis"
+>lexer function</I
+></SPAN
+> is defined in a separate file,
+you need to arrange for the token-type definitions to be available there.
+After invoking "<TT
+CLASS="literal"
+>ocamlyacc</TT
+> <SPAN
+CLASS="emphasis"
+><I
+CLASS="emphasis"
+>filename</I
+></SPAN
+><TT
+CLASS="literal"
+>.mly</TT
+>",
+the file
+<SPAN
+CLASS="emphasis"
+><I
+CLASS="emphasis"
+>filename</I
+></SPAN
+><TT
+CLASS="literal"
+>.mli</TT
+> is generated
+which contains token-type definitions.
+It is used in <SPAN
+CLASS="emphasis"
+><I
+CLASS="emphasis"
+>lexer function</I
+></SPAN
+>.
+</P
+><P
+>&#13;The symbol <TT
+CLASS="literal"
+>error</TT
+> is a terminal symbol reserved for error recovery
+(see <A
+HREF="c1101.html"
+>Error Recovery</A
+>);
+you shouldn't use it for any other purpose.
+</P
+></DIV
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+SUMMARY="Footer navigation table"
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="c479.html"
+ACCESSKEY="P"
+>Prev</A
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="index.html"
+ACCESSKEY="H"
+>Home</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="x556.html"
+ACCESSKEY="N"
+>Next</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>Ocamlyacc Grammar Files</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="c479.html"
+ACCESSKEY="U"
+>Up</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>Syntax of Grammar Rules</TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>

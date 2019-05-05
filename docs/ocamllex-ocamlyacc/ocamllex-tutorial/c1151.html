@@ -2,19 +2,19 @@
 <HTML
 ><HEAD
 ><TITLE
->Introduction</TITLE
+>Invoking Ocamlyacc</TITLE
 ><META
 NAME="GENERATOR"
 CONTENT="Modular DocBook HTML Stylesheet Version 1.79"><LINK
 REL="HOME"
-TITLE="Ocamllex Tutorial"
+TITLE="Ocamlyacc Tutorial"
 HREF="index.html"><LINK
 REL="PREVIOUS"
-TITLE="Ocamllex Tutorial"
-HREF="index.html"><LINK
+TITLE="Debugging Your Parser"
+HREF="c1132.html"><LINK
 REL="NEXT"
-TITLE="Some simple examples"
-HREF="c46.html"></HEAD
+TITLE="License of This Document"
+HREF="c1182.html"></HEAD
 ><BODY
 CLASS="chapter"
 BGCOLOR="#FFFFFF"
@@ -34,7 +34,7 @@ CELLSPACING="0"
 ><TH
 COLSPAN="3"
 ALIGN="center"
->Ocamllex Tutorial</TH
+>Ocamlyacc Tutorial</TH
 ></TR
 ><TR
 ><TD
@@ -42,7 +42,7 @@ WIDTH="10%"
 ALIGN="left"
 VALIGN="bottom"
 ><A
-HREF="index.html"
+HREF="c1132.html"
 ACCESSKEY="P"
 >Prev</A
 ></TD
@@ -56,7 +56,7 @@ WIDTH="10%"
 ALIGN="right"
 VALIGN="bottom"
 ><A
-HREF="c46.html"
+HREF="c1182.html"
 ACCESSKEY="N"
 >Next</A
 ></TD
@@ -69,79 +69,128 @@ WIDTH="100%"></DIV
 CLASS="chapter"
 ><H1
 ><A
-NAME="chap-ocamllex"
+NAME="chap-invoking-ocamlyacc"
 ></A
->Chapter 1. Introduction</H1
+>Chapter 9. Invoking Ocamlyacc</H1
 ><P
->&#13;<TT
-CLASS="literal"
->ocamllex</TT
-> is a tool for generating <SPAN
-CLASS="emphasis"
-><I
-CLASS="emphasis"
->scanners</I
-></SPAN
->:
-programs which recognized lexical
-patterns in text. <TT
-CLASS="literal"
->ocamllex</TT
-> reads the given input files, for a description of
-a scanner to generate. The description is in the form of pairs of regular
-expressions and Ocaml code, called <SPAN
-CLASS="emphasis"
-><I
-CLASS="emphasis"
->rules</I
-></SPAN
->.
-<TT
-CLASS="literal"
->ocamllex</TT
-> generates as output a Ocaml
-source file which defines lexical analyzer functions.
-This file is compiled and linked to produce an executable.
-When the executable is run, it analyzes its input for occurrences
-of the regular expressions. Whenever it finds one, it executes
-the corresponding Ocaml code. 
-</P
-><P
->&#13;If you execute the following command with the input file named
-<SPAN
-CLASS="emphasis"
-><I
-CLASS="emphasis"
->lexer</I
-></SPAN
-><TT
-CLASS="literal"
->.mll</TT
->
+>&#13;The usual way to invoke Bison is as follows:
 </P
 ><PRE
 CLASS="programlisting"
->&#13;        ocamllex <SPAN
+>&#13;	ocamlyacc <SPAN
 CLASS="emphasis"
 ><I
 CLASS="emphasis"
->lexer</I
+>filename</I
 ></SPAN
->.mll
+>.mly
 </PRE
 ><P
->&#13;you will get Caml code for a lexical analyzer in file
-<SPAN
+>&#13;Here <SPAN
 CLASS="emphasis"
 ><I
 CLASS="emphasis"
->lexer</I
+>filename</I
+></SPAN
+><TT
+CLASS="literal"
+>.mly</TT
+> is the grammar file name.
+The parser file's name is made by replacing the <TT
+CLASS="literal"
+>.mly</TT
+>
+with <TT
+CLASS="literal"
+>.ml</TT
+>.  Thus, the "<TT
+CLASS="literal"
+>ocamlyacc foo.mly</TT
+>"
+yields <TT
+CLASS="literal"
+>foo.ml</TT
+>.
+</P
+><DIV
+CLASS="sect1"
+><H1
+CLASS="sect1"
+><A
+NAME="sec-ocamlyacc-options"
+>9.1. Ocamlyacc Options</A
+></H1
+><P
+>&#13;Here is a list of options that can be used with Ocamlyacc:
+</P
+><P
+></P
+><UL
+><LI
+><P
+>-v</P
+><P
+>&#13;  By default, this option generates
+  a file <SPAN
+CLASS="emphasis"
+><I
+CLASS="emphasis"
+>grammar</I
+></SPAN
+><TT
+CLASS="literal"
+>.output</TT
+>.
+  It contains parsing infomation such as
+  a description of the parsing tables and a report
+  on ambiguities in the grammar.
+  </P
+></LI
+><LI
+><P
+>-b<SPAN
+CLASS="emphasis"
+><I
+CLASS="emphasis"
+>fname</I
+></SPAN
+></P
+><P
+>&#13;  Change the name of the output files
+  to <SPAN
+CLASS="emphasis"
+><I
+CLASS="emphasis"
+>fname</I
 ></SPAN
 ><TT
 CLASS="literal"
 >.ml</TT
+>,
+  <SPAN
+CLASS="emphasis"
+><I
+CLASS="emphasis"
+>fname</I
+></SPAN
+><TT
+CLASS="literal"
+>.mli</TT
+> and
+  <SPAN
+CLASS="emphasis"
+><I
+CLASS="emphasis"
+>fname</I
+></SPAN
+><TT
+CLASS="literal"
+>.output</TT
 >.
-</P
+  </P
+></LI
+></UL
+></DIV
 ></DIV
 ><DIV
 CLASS="NAVFOOTER"
@@ -159,7 +208,7 @@ WIDTH="33%"
 ALIGN="left"
 VALIGN="top"
 ><A
-HREF="index.html"
+HREF="c1132.html"
 ACCESSKEY="P"
 >Prev</A
 ></TD
@@ -177,7 +226,7 @@ WIDTH="33%"
 ALIGN="right"
 VALIGN="top"
 ><A
-HREF="c46.html"
+HREF="c1182.html"
 ACCESSKEY="N"
 >Next</A
 ></TD
@@ -187,7 +236,7 @@ ACCESSKEY="N"
 WIDTH="33%"
 ALIGN="left"
 VALIGN="top"
->Ocamllex Tutorial</TD
+>Debugging Your Parser</TD
 ><TD
 WIDTH="34%"
 ALIGN="center"
@@ -197,7 +246,7 @@ VALIGN="top"
 WIDTH="33%"
 ALIGN="right"
 VALIGN="top"
->Some simple examples</TD
+>License of This Document</TD
 ></TR
 ></TABLE
 ></DIV

@@ -1,0 +1,200 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN""http://www.w3.org/TR/html4/loose.dtd">
+<HTML
+><HEAD
+><TITLE
+>Ocamlyacc Output: the Parser File</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet Version 1.79"><LINK
+REL="HOME"
+TITLE="Ocamlyacc Tutorial"
+HREF="index.html"><LINK
+REL="UP"
+TITLE="The Concepts of Ocamlyacc"
+HREF="c41.html"><LINK
+REL="PREVIOUS"
+TITLE="Locations"
+HREF="x129.html"><LINK
+REL="NEXT"
+TITLE="Stages in Using Ocamlyacc"
+HREF="x147.html"></HEAD
+><BODY
+CLASS="sect1"
+BGCOLOR="#FFFFFF"
+TEXT="#000000"
+LINK="#0000FF"
+VLINK="#840084"
+ALINK="#0000FF"
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+SUMMARY="Header navigation table"
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="3"
+ALIGN="center"
+>Ocamlyacc Tutorial</TH
+></TR
+><TR
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="bottom"
+><A
+HREF="x129.html"
+ACCESSKEY="P"
+>Prev</A
+></TD
+><TD
+WIDTH="80%"
+ALIGN="center"
+VALIGN="bottom"
+>Chapter 2. The Concepts of Ocamlyacc</TD
+><TD
+WIDTH="10%"
+ALIGN="right"
+VALIGN="bottom"
+><A
+HREF="x147.html"
+ACCESSKEY="N"
+>Next</A
+></TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="100%"></DIV
+><DIV
+CLASS="sect1"
+><H1
+CLASS="sect1"
+><A
+NAME="sec-ocamlyacc-output"
+>2.6. Ocamlyacc Output: the Parser File</A
+></H1
+><P
+>&#13;When you run Ocamlyacc, you give it a Ocamlyacc grammar file as input.  The output
+is a Ocaml source file that parses the language described by the grammar.
+This file is called a <SPAN
+CLASS="emphasis"
+><I
+CLASS="emphasis"
+>Ocamlyacc parser</I
+></SPAN
+>.  Keep in mind that the Ocamlyacc
+utility and the Ocamlyacc parser are two distinct programs: the Ocamlyacc utility
+is a program whose output is the Ocamlyacc parser that becomes part of your
+program.
+</P
+><P
+>&#13;The job of the Ocamlyacc parser is to group tokens into groupings according to
+the grammar rules---for example, to build identifiers and operators into
+expressions.  As it does this, it runs the actions for the grammar rules it
+uses.
+</P
+><P
+>&#13;The tokens come from a function called the <SPAN
+CLASS="emphasis"
+><I
+CLASS="emphasis"
+>lexical analyzer</I
+></SPAN
+> that you
+must supply in some fashion.  The Ocamlyacc parser
+calls the lexical analyzer each time it wants a new token.  It doesn't know
+what is ``inside'' the tokens (though their semantic values may reflect
+this).  Typically the lexical analyzer makes the tokens by parsing
+characters of text, but Ocamlyacc does not depend on this.
+See <A
+HREF="x839.html"
+>The Lexical Analyzer Function</A
+>.
+</P
+><P
+>&#13;The Ocamlyacc parser file is Ocaml code which defines functions
+which implements that grammar.
+Entry functions of the generated Ocaml code are named after
+the start symbols in grammar file.
+These functions do not make
+a complete Ocaml program: you must supply some additional functions.
+One is the lexical analyzer
+which should be given as an argument of the parser entry function.
+Another is an error-reporting function which the
+parser calls to report an error.
+In addition, a complete Ocaml program must has to call one (or more) of
+the generated entry functions or the parser will never run.
+See <A
+HREF="c819.html"
+>Parser Interface</A
+>.
+</P
+></DIV
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+SUMMARY="Footer navigation table"
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="x129.html"
+ACCESSKEY="P"
+>Prev</A
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="index.html"
+ACCESSKEY="H"
+>Home</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="x147.html"
+ACCESSKEY="N"
+>Next</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>Locations</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="c41.html"
+ACCESSKEY="U"
+>Up</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>Stages in Using Ocamlyacc</TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>

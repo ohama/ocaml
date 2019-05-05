@@ -1,0 +1,370 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN""http://www.w3.org/TR/html4/loose.dtd">
+<HTML
+><HEAD
+><TITLE
+>Ocamlyacc Grammar Files</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet Version 1.79"><LINK
+REL="HOME"
+TITLE="Ocamlyacc Tutorial"
+HREF="index.html"><LINK
+REL="PREVIOUS"
+TITLE="Multi-Function Calculator: mfcalc"
+HREF="x416.html"><LINK
+REL="NEXT"
+TITLE="Symbols, Terminal and Nonterminal"
+HREF="x527.html"></HEAD
+><BODY
+CLASS="chapter"
+BGCOLOR="#FFFFFF"
+TEXT="#000000"
+LINK="#0000FF"
+VLINK="#840084"
+ALINK="#0000FF"
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+SUMMARY="Header navigation table"
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="3"
+ALIGN="center"
+>Ocamlyacc Tutorial</TH
+></TR
+><TR
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="bottom"
+><A
+HREF="x416.html"
+ACCESSKEY="P"
+>Prev</A
+></TD
+><TD
+WIDTH="80%"
+ALIGN="center"
+VALIGN="bottom"
+></TD
+><TD
+WIDTH="10%"
+ALIGN="right"
+VALIGN="bottom"
+><A
+HREF="x527.html"
+ACCESSKEY="N"
+>Next</A
+></TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="100%"></DIV
+><DIV
+CLASS="chapter"
+><H1
+><A
+NAME="chap-grammar-files"
+></A
+>Chapter 4. Ocamlyacc Grammar Files</H1
+><P
+>&#13;Ocamlyacc takes as input a context-free grammar specification and produces a
+Ocaml-language function that recognizes correct instances of the grammar.
+
+The Ocamlyacc grammar input file conventionally has a name ending in <TT
+CLASS="literal"
+>.yml</TT
+>.
+See <A
+HREF="c1151.html"
+>Invoking Ocamlyacc</A
+>.
+</P
+><DIV
+CLASS="sect1"
+><H1
+CLASS="sect1"
+><A
+NAME="sec-outline"
+>4.1. Outline of a Ocamlyacc Grammar</A
+></H1
+><P
+>&#13;A Ocamlyacc grammar file has four main sections, shown here with the
+appropriate delimiters:
+</P
+><PRE
+CLASS="programlisting"
+>&#13;%{
+	<SPAN
+CLASS="emphasis"
+><I
+CLASS="emphasis"
+>Header</I
+></SPAN
+> - Ocaml declarations (Ocaml code)
+%}
+	<SPAN
+CLASS="emphasis"
+><I
+CLASS="emphasis"
+>Ocamlyacc declarations</I
+></SPAN
+>
+%%
+	<SPAN
+CLASS="emphasis"
+><I
+CLASS="emphasis"
+>Grammar rules</I
+></SPAN
+>
+%%
+	<SPAN
+CLASS="emphasis"
+><I
+CLASS="emphasis"
+>Trailer</I
+></SPAN
+> - Additional Ocaml code (Ocaml code)
+</PRE
+><P
+>&#13;By default, comments are enclosed between /* and */ (as in C) except
+in Ocaml code. So use /* and */ in the
+<SPAN
+CLASS="emphasis"
+><I
+CLASS="emphasis"
+>declarations</I
+></SPAN
+> and <SPAN
+CLASS="emphasis"
+><I
+CLASS="emphasis"
+>rules</I
+></SPAN
+> sections,
+(* and *) in <SPAN
+CLASS="emphasis"
+><I
+CLASS="emphasis"
+>header</I
+></SPAN
+>
+and <SPAN
+CLASS="emphasis"
+><I
+CLASS="emphasis"
+>trailer</I
+></SPAN
+> sections.
+</P
+><DIV
+CLASS="sect2"
+><H2
+CLASS="sect2"
+><A
+NAME="sec-header-section"
+>4.1.1. The Header Section</A
+></H2
+><P
+>&#13;The <SPAN
+CLASS="emphasis"
+><I
+CLASS="emphasis"
+>header</I
+></SPAN
+> section contains 
+declarations of functions and variables that are used in the actions in the
+grammar rules.  These are copied to the beginning of the parser file so
+that they precede the definition of the <SPAN
+CLASS="emphasis"
+><I
+CLASS="emphasis"
+>parser function</I
+></SPAN
+>.
+You can open the other module in this area.
+If you don't
+need any Ocaml declarations, you may omit the <TT
+CLASS="literal"
+>%{</TT
+> and
+<TT
+CLASS="literal"
+>%}</TT
+>
+delimiters that bracket this section.
+</P
+></DIV
+><DIV
+CLASS="sect2"
+><H2
+CLASS="sect2"
+><A
+NAME="sec-ocamlyacc-declaration-section"
+>4.1.2. The Ocamlyacc Declarations Section</A
+></H2
+><P
+>&#13;The <SPAN
+CLASS="emphasis"
+><I
+CLASS="emphasis"
+>ocamlyacc declarations</I
+></SPAN
+> section contains declarations that define
+terminal and nonterminal symbols, specify precedence, and so on.
+At least, there must be one <TT
+CLASS="literal"
+>%start</TT
+> and
+the corresponding <TT
+CLASS="literal"
+>%type</TT
+> directives.
+See <A
+HREF="x701.html"
+>Ocamlyacc declarations</A
+>.
+</P
+></DIV
+><DIV
+CLASS="sect2"
+><H2
+CLASS="sect2"
+><A
+NAME="sec-grammar-rules-section"
+>4.1.3. The Grammar Rules Section</A
+></H2
+><P
+>&#13;The <TT
+CLASS="literal"
+>grammar rules</TT
+> section contains one or more Ocamlyacc grammar
+rules, and nothing else.
+See <A
+HREF="x556.html"
+>Syntax of Grammar Rules</A
+>.
+</P
+><P
+>&#13;There must always be at least one grammar rule, and the first
+<TT
+CLASS="literal"
+>%%</TT
+> (which precedes the grammar rules) may never be omitted even
+if it is the first thing in the file.
+</P
+></DIV
+><DIV
+CLASS="sect2"
+><H2
+CLASS="sect2"
+><A
+NAME="sec-trailer-section"
+>4.1.4. The Trailer Section</A
+></H2
+><P
+>&#13;The <SPAN
+CLASS="emphasis"
+><I
+CLASS="emphasis"
+>trailer</I
+></SPAN
+> section is copied verbatim to the end of the
+parser file, just as the <SPAN
+CLASS="emphasis"
+><I
+CLASS="emphasis"
+>header</I
+></SPAN
+> section is copied to the
+beginning.  This is the most convenient place to put anything that you
+want to have in the parser file but which need not come before the
+definition of the <SPAN
+CLASS="emphasis"
+><I
+CLASS="emphasis"
+>parse function</I
+></SPAN
+>.
+See <A
+HREF="c819.html"
+>Parser Interface</A
+>.
+</P
+><P
+>&#13;If the last section is empty, you may omit the <TT
+CLASS="literal"
+>%%</TT
+> that separates it
+from the grammar rules.
+</P
+></DIV
+></DIV
+></DIV
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+SUMMARY="Footer navigation table"
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="x416.html"
+ACCESSKEY="P"
+>Prev</A
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="index.html"
+ACCESSKEY="H"
+>Home</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="x527.html"
+ACCESSKEY="N"
+>Next</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>Multi-Function Calculator: mfcalc</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+>&nbsp;</TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>Symbols, Terminal and Nonterminal</TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>
