@@ -1,209 +1,209 @@
 [
 {
-	"uri": "https://ohama.github.io/ocaml/ocamllex/01.intro/",
+	"uri": "https://ohama.github.io/ocamllex/01.intro/",
 	"title": "1. Introduction",
 	"tags": [],
 	"description": "",
 	"content": " Introduction Ocamlyacc is a general-purpose parser generator that converts a grammar description for an LALR(1) context-free grammar into a Ocaml program to parse that grammar. Once you are proficient with Ocamlyacc, you may use it to develop a wide range of language parsers, from those used in simple desk calculators to complex programming languages.\nOcamlyacc is very close to the well-known yacc (or bison) commands that can be found in most C programming environments. Anyone familiar with Yacc should be able to use Ocamlyacc with little trouble. You need to be fluent in Ocaml programming in order to use Ocamlyacc or to understand this manual.\nWe begin with tutorial chapters that explain the basic concepts of using Ocamlyacc and show three explained examples, each building on the last. If you don\u0026rsquo;t know Ocamlyacc or Yacc, start by reading these chapters. Reference chapters follow which describe specific aspects of Ocamlyacc in detail.\nSome explanation is not suitable for the earlier version than 3.08 of Ocaml (Ocamlyacc), in that case, there will be comments like \u0026ldquo;(Since Ocaml 3.08)\u0026rdquo;.\n"
 },
 {
-	"uri": "https://ohama.github.io/ocaml/ocamllex/11.usagetips/11.1.keywordtable/",
+	"uri": "https://ohama.github.io/ocamllex/11.usagetips/11.1.keywordtable/",
 	"title": "11.1 Keyword table",
 	"tags": [],
 	"description": "",
 	"content": " Introduction Ocamlyacc is a general-purpose parser generator that converts a grammar description for an LALR(1) context-free grammar into a Ocaml program to parse that grammar. Once you are proficient with Ocamlyacc, you may use it to develop a wide range of language parsers, from those used in simple desk calculators to complex programming languages.\nOcamlyacc is very close to the well-known yacc (or bison) commands that can be found in most C programming environments. Anyone familiar with Yacc should be able to use Ocamlyacc with little trouble. You need to be fluent in Ocaml programming in order to use Ocamlyacc or to understand this manual.\nWe begin with tutorial chapters that explain the basic concepts of using Ocamlyacc and show three explained examples, each building on the last. If you don\u0026rsquo;t know Ocamlyacc or Yacc, start by reading these chapters. Reference chapters follow which describe specific aspects of Ocamlyacc in detail.\nSome explanation is not suitable for the earlier version than 3.08 of Ocaml (Ocamlyacc), in that case, there will be comments like \u0026ldquo;(Since Ocaml 3.08)\u0026rdquo;.\n"
 },
 {
-	"uri": "https://ohama.github.io/ocaml/ocamllex/12.examples/12.1.translate/",
+	"uri": "https://ohama.github.io/ocamllex/12.examples/12.1.translate/",
 	"title": "12.1 Translate",
 	"tags": [],
 	"description": "",
 	"content": " Introduction Ocamlyacc is a general-purpose parser generator that converts a grammar description for an LALR(1) context-free grammar into a Ocaml program to parse that grammar. Once you are proficient with Ocamlyacc, you may use it to develop a wide range of language parsers, from those used in simple desk calculators to complex programming languages.\nOcamlyacc is very close to the well-known yacc (or bison) commands that can be found in most C programming environments. Anyone familiar with Yacc should be able to use Ocamlyacc with little trouble. You need to be fluent in Ocaml programming in order to use Ocamlyacc or to understand this manual.\nWe begin with tutorial chapters that explain the basic concepts of using Ocamlyacc and show three explained examples, each building on the last. If you don\u0026rsquo;t know Ocamlyacc or Yacc, start by reading these chapters. Reference chapters follow which describe specific aspects of Ocamlyacc in detail.\nSome explanation is not suitable for the earlier version than 3.08 of Ocaml (Ocamlyacc), in that case, there will be comments like \u0026ldquo;(Since Ocaml 3.08)\u0026rdquo;.\n"
 },
 {
-	"uri": "https://ohama.github.io/ocaml/ocamllex/13.license/13.1.license/",
+	"uri": "https://ohama.github.io/ocamllex/13.license/13.1.license/",
 	"title": "13.1 License in flex",
 	"tags": [],
 	"description": "",
 	"content": " Introduction Ocamlyacc is a general-purpose parser generator that converts a grammar description for an LALR(1) context-free grammar into a Ocaml program to parse that grammar. Once you are proficient with Ocamlyacc, you may use it to develop a wide range of language parsers, from those used in simple desk calculators to complex programming languages.\nOcamlyacc is very close to the well-known yacc (or bison) commands that can be found in most C programming environments. Anyone familiar with Yacc should be able to use Ocamlyacc with little trouble. You need to be fluent in Ocaml programming in order to use Ocamlyacc or to understand this manual.\nWe begin with tutorial chapters that explain the basic concepts of using Ocamlyacc and show three explained examples, each building on the last. If you don\u0026rsquo;t know Ocamlyacc or Yacc, start by reading these chapters. Reference chapters follow which describe specific aspects of Ocamlyacc in detail.\nSome explanation is not suitable for the earlier version than 3.08 of Ocaml (Ocamlyacc), in that case, there will be comments like \u0026ldquo;(Since Ocaml 3.08)\u0026rdquo;.\n"
 },
 {
-	"uri": "https://ohama.github.io/ocaml/ocamllex/06.actions/6.1.position/",
+	"uri": "https://ohama.github.io/ocamllex/06.actions/6.1.position/",
 	"title": "6.1 Position",
 	"tags": [],
 	"description": "",
 	"content": " Introduction Ocamlyacc is a general-purpose parser generator that converts a grammar description for an LALR(1) context-free grammar into a Ocaml program to parse that grammar. Once you are proficient with Ocamlyacc, you may use it to develop a wide range of language parsers, from those used in simple desk calculators to complex programming languages.\nOcamlyacc is very close to the well-known yacc (or bison) commands that can be found in most C programming environments. Anyone familiar with Yacc should be able to use Ocamlyacc with little trouble. You need to be fluent in Ocaml programming in order to use Ocamlyacc or to understand this manual.\nWe begin with tutorial chapters that explain the basic concepts of using Ocamlyacc and show three explained examples, each building on the last. If you don\u0026rsquo;t know Ocamlyacc or Yacc, start by reading these chapters. Reference chapters follow which describe specific aspects of Ocamlyacc in detail.\nSome explanation is not suitable for the earlier version than 3.08 of Ocaml (Ocamlyacc), in that case, there will be comments like \u0026ldquo;(Since Ocaml 3.08)\u0026rdquo;.\n"
 },
 {
-	"uri": "https://ohama.github.io/ocaml/",
+	"uri": "https://ohama.github.io/",
 	"title": "Introduction",
 	"tags": [],
 	"description": "",
 	"content": " Introduction Ocamlyacc is a general-purpose parser generator that converts a grammar description for an LALR(1) context-free grammar into a Ocaml program to parse that grammar. Once you are proficient with Ocamlyacc, you may use it to develop a wide range of language parsers, from those used in simple desk calculators to complex programming languages.\nOcamlyacc is very close to the well-known yacc (or bison) commands that can be found in most C programming environments. Anyone familiar with Yacc should be able to use Ocamlyacc with little trouble. You need to be fluent in Ocaml programming in order to use Ocamlyacc or to understand this manual.\nWe begin with tutorial chapters that explain the basic concepts of using Ocamlyacc and show three explained examples, each building on the last. If you don\u0026rsquo;t know Ocamlyacc or Yacc, start by reading these chapters. Reference chapters follow which describe specific aspects of Ocamlyacc in detail.\nSome explanation is not suitable for the earlier version than 3.08 of Ocaml (Ocamlyacc), in that case, there will be comments like \u0026ldquo;(Since Ocaml 3.08)\u0026rdquo;.\n"
 },
 {
-	"uri": "https://ohama.github.io/ocaml/ocamlyacc/introduction/",
+	"uri": "https://ohama.github.io/ocamlyacc/introduction/",
 	"title": "Introduction",
 	"tags": [],
 	"description": "",
 	"content": " Introduction Ocamlyacc is a general-purpose parser generator that converts a grammar description for an LALR(1) context-free grammar into a Ocaml program to parse that grammar. Once you are proficient with Ocamlyacc, you may use it to develop a wide range of language parsers, from those used in simple desk calculators to complex programming languages.\nOcamlyacc is very close to the well-known yacc (or bison) commands that can be found in most C programming environments. Anyone familiar with Yacc should be able to use Ocamlyacc with little trouble. You need to be fluent in Ocaml programming in order to use Ocamlyacc or to understand this manual.\nWe begin with tutorial chapters that explain the basic concepts of using Ocamlyacc and show three explained examples, each building on the last. If you don\u0026rsquo;t know Ocamlyacc or Yacc, start by reading these chapters. Reference chapters follow which describe specific aspects of Ocamlyacc in detail.\nSome explanation is not suitable for the earlier version than 3.08 of Ocaml (Ocamlyacc), in that case, there will be comments like \u0026ldquo;(Since Ocaml 3.08)\u0026rdquo;.\n"
 },
 {
-	"uri": "https://ohama.github.io/ocaml/ocamllex/",
+	"uri": "https://ohama.github.io/ocamllex/",
 	"title": "Ocamllex",
 	"tags": [],
 	"description": "",
 	"content": " Introduction Ocamlyacc is a general-purpose parser generator that converts a grammar description for an LALR(1) context-free grammar into a Ocaml program to parse that grammar. Once you are proficient with Ocamlyacc, you may use it to develop a wide range of language parsers, from those used in simple desk calculators to complex programming languages.\nOcamlyacc is very close to the well-known yacc (or bison) commands that can be found in most C programming environments. Anyone familiar with Yacc should be able to use Ocamlyacc with little trouble. You need to be fluent in Ocaml programming in order to use Ocamlyacc or to understand this manual.\nWe begin with tutorial chapters that explain the basic concepts of using Ocamlyacc and show three explained examples, each building on the last. If you don\u0026rsquo;t know Ocamlyacc or Yacc, start by reading these chapters. Reference chapters follow which describe specific aspects of Ocamlyacc in detail.\nSome explanation is not suitable for the earlier version than 3.08 of Ocaml (Ocamlyacc), in that case, there will be comments like \u0026ldquo;(Since Ocaml 3.08)\u0026rdquo;.\n"
 },
 {
-	"uri": "https://ohama.github.io/ocaml/ocamllex/11.usagetips/11.2.nestedcomments/",
+	"uri": "https://ohama.github.io/ocamllex/11.usagetips/11.2.nestedcomments/",
 	"title": "11.2 Nested comments",
 	"tags": [],
 	"description": "",
 	"content": " Introduction Ocamlyacc is a general-purpose parser generator that converts a grammar description for an LALR(1) context-free grammar into a Ocaml program to parse that grammar. Once you are proficient with Ocamlyacc, you may use it to develop a wide range of language parsers, from those used in simple desk calculators to complex programming languages.\nOcamlyacc is very close to the well-known yacc (or bison) commands that can be found in most C programming environments. Anyone familiar with Yacc should be able to use Ocamlyacc with little trouble. You need to be fluent in Ocaml programming in order to use Ocamlyacc or to understand this manual.\nWe begin with tutorial chapters that explain the basic concepts of using Ocamlyacc and show three explained examples, each building on the last. If you don\u0026rsquo;t know Ocamlyacc or Yacc, start by reading these chapters. Reference chapters follow which describe specific aspects of Ocamlyacc in detail.\nSome explanation is not suitable for the earlier version than 3.08 of Ocaml (Ocamlyacc), in that case, there will be comments like \u0026ldquo;(Since Ocaml 3.08)\u0026rdquo;.\n"
 },
 {
-	"uri": "https://ohama.github.io/ocaml/ocamllex/12.examples/12.2.wordcount/",
+	"uri": "https://ohama.github.io/ocamllex/12.examples/12.2.wordcount/",
 	"title": "12.2 Word count",
 	"tags": [],
 	"description": "",
 	"content": " Introduction Ocamlyacc is a general-purpose parser generator that converts a grammar description for an LALR(1) context-free grammar into a Ocaml program to parse that grammar. Once you are proficient with Ocamlyacc, you may use it to develop a wide range of language parsers, from those used in simple desk calculators to complex programming languages.\nOcamlyacc is very close to the well-known yacc (or bison) commands that can be found in most C programming environments. Anyone familiar with Yacc should be able to use Ocamlyacc with little trouble. You need to be fluent in Ocaml programming in order to use Ocamlyacc or to understand this manual.\nWe begin with tutorial chapters that explain the basic concepts of using Ocamlyacc and show three explained examples, each building on the last. If you don\u0026rsquo;t know Ocamlyacc or Yacc, start by reading these chapters. Reference chapters follow which describe specific aspects of Ocamlyacc in detail.\nSome explanation is not suitable for the earlier version than 3.08 of Ocaml (Ocamlyacc), in that case, there will be comments like \u0026ldquo;(Since Ocaml 3.08)\u0026rdquo;.\n"
 },
 {
-	"uri": "https://ohama.github.io/ocaml/ocamllex/13.license/13.2.ocamllexcopyright/",
+	"uri": "https://ohama.github.io/ocamllex/13.license/13.2.ocamllexcopyright/",
 	"title": "13.2 Copyright and permission",
 	"tags": [],
 	"description": "",
 	"content": " Introduction Ocamlyacc is a general-purpose parser generator that converts a grammar description for an LALR(1) context-free grammar into a Ocaml program to parse that grammar. Once you are proficient with Ocamlyacc, you may use it to develop a wide range of language parsers, from those used in simple desk calculators to complex programming languages.\nOcamlyacc is very close to the well-known yacc (or bison) commands that can be found in most C programming environments. Anyone familiar with Yacc should be able to use Ocamlyacc with little trouble. You need to be fluent in Ocaml programming in order to use Ocamlyacc or to understand this manual.\nWe begin with tutorial chapters that explain the basic concepts of using Ocamlyacc and show three explained examples, each building on the last. If you don\u0026rsquo;t know Ocamlyacc or Yacc, start by reading these chapters. Reference chapters follow which describe specific aspects of Ocamlyacc in detail.\nSome explanation is not suitable for the earlier version than 3.08 of Ocaml (Ocamlyacc), in that case, there will be comments like \u0026ldquo;(Since Ocaml 3.08)\u0026rdquo;.\n"
 },
 {
-	"uri": "https://ohama.github.io/ocaml/ocamllex/02.simpleexample/",
+	"uri": "https://ohama.github.io/ocamllex/02.simpleexample/",
 	"title": "2. Some simple examples",
 	"tags": [],
 	"description": "",
 	"content": " Introduction Ocamlyacc is a general-purpose parser generator that converts a grammar description for an LALR(1) context-free grammar into a Ocaml program to parse that grammar. Once you are proficient with Ocamlyacc, you may use it to develop a wide range of language parsers, from those used in simple desk calculators to complex programming languages.\nOcamlyacc is very close to the well-known yacc (or bison) commands that can be found in most C programming environments. Anyone familiar with Yacc should be able to use Ocamlyacc with little trouble. You need to be fluent in Ocaml programming in order to use Ocamlyacc or to understand this manual.\nWe begin with tutorial chapters that explain the basic concepts of using Ocamlyacc and show three explained examples, each building on the last. If you don\u0026rsquo;t know Ocamlyacc or Yacc, start by reading these chapters. Reference chapters follow which describe specific aspects of Ocamlyacc in detail.\nSome explanation is not suitable for the earlier version than 3.08 of Ocaml (Ocamlyacc), in that case, there will be comments like \u0026ldquo;(Since Ocaml 3.08)\u0026rdquo;.\n"
 },
 {
-	"uri": "https://ohama.github.io/ocaml/ocamlyacc/concepts/",
+	"uri": "https://ohama.github.io/ocamlyacc/concepts/",
 	"title": "Concepts of ocamlyacc",
 	"tags": [],
 	"description": "",
 	"content": " The Concepts of Ocamlyacc This chapter introduces many of the basic concepts without which the details of Ocamlyacc will not make sense. If you do not already know how to use Ocamlyacc, we suggest you start by reading this chapter carefully.\n"
 },
 {
-	"uri": "https://ohama.github.io/ocaml/ocamlyacc/",
+	"uri": "https://ohama.github.io/ocamlyacc/",
 	"title": "Ocamlyacc",
 	"tags": [],
 	"description": "",
 	"content": " Introduction Ocamlyacc is a general-purpose parser generator that converts a grammar description for an LALR(1) context-free grammar into a Ocaml program to parse that grammar. Once you are proficient with Ocamlyacc, you may use it to develop a wide range of language parsers, from those used in simple desk calculators to complex programming languages.\nOcamlyacc is very close to the well-known yacc (or bison) commands that can be found in most C programming environments. Anyone familiar with Yacc should be able to use Ocamlyacc with little trouble. You need to be fluent in Ocaml programming in order to use Ocamlyacc or to understand this manual.\nWe begin with tutorial chapters that explain the basic concepts of using Ocamlyacc and show three explained examples, each building on the last. If you don\u0026rsquo;t know Ocamlyacc or Yacc, start by reading these chapters. Reference chapters follow which describe specific aspects of Ocamlyacc in detail.\nSome explanation is not suitable for the earlier version than 3.08 of Ocaml (Ocamlyacc), in that case, there will be comments like \u0026ldquo;(Since Ocaml 3.08)\u0026rdquo;.\n"
 },
 {
-	"uri": "https://ohama.github.io/ocaml/ocamllex/12.examples/12.3.toylanguage/",
+	"uri": "https://ohama.github.io/ocamllex/12.examples/12.3.toylanguage/",
 	"title": "12.3 Toy language",
 	"tags": [],
 	"description": "",
 	"content": " Introduction Ocamlyacc is a general-purpose parser generator that converts a grammar description for an LALR(1) context-free grammar into a Ocaml program to parse that grammar. Once you are proficient with Ocamlyacc, you may use it to develop a wide range of language parsers, from those used in simple desk calculators to complex programming languages.\nOcamlyacc is very close to the well-known yacc (or bison) commands that can be found in most C programming environments. Anyone familiar with Yacc should be able to use Ocamlyacc with little trouble. You need to be fluent in Ocaml programming in order to use Ocamlyacc or to understand this manual.\nWe begin with tutorial chapters that explain the basic concepts of using Ocamlyacc and show three explained examples, each building on the last. If you don\u0026rsquo;t know Ocamlyacc or Yacc, start by reading these chapters. Reference chapters follow which describe specific aspects of Ocamlyacc in detail.\nSome explanation is not suitable for the earlier version than 3.08 of Ocaml (Ocamlyacc), in that case, there will be comments like \u0026ldquo;(Since Ocaml 3.08)\u0026rdquo;.\n"
 },
 {
-	"uri": "https://ohama.github.io/ocaml/ocamllex/03.formatofinputfile/",
+	"uri": "https://ohama.github.io/ocamllex/03.formatofinputfile/",
 	"title": "3. Format of the input file",
 	"tags": [],
 	"description": "",
 	"content": " Introduction Ocamlyacc is a general-purpose parser generator that converts a grammar description for an LALR(1) context-free grammar into a Ocaml program to parse that grammar. Once you are proficient with Ocamlyacc, you may use it to develop a wide range of language parsers, from those used in simple desk calculators to complex programming languages.\nOcamlyacc is very close to the well-known yacc (or bison) commands that can be found in most C programming environments. Anyone familiar with Yacc should be able to use Ocamlyacc with little trouble. You need to be fluent in Ocaml programming in order to use Ocamlyacc or to understand this manual.\nWe begin with tutorial chapters that explain the basic concepts of using Ocamlyacc and show three explained examples, each building on the last. If you don\u0026rsquo;t know Ocamlyacc or Yacc, start by reading these chapters. Reference chapters follow which describe specific aspects of Ocamlyacc in detail.\nSome explanation is not suitable for the earlier version than 3.08 of Ocaml (Ocamlyacc), in that case, there will be comments like \u0026ldquo;(Since Ocaml 3.08)\u0026rdquo;.\n"
 },
 {
-	"uri": "https://ohama.github.io/ocaml/ocamllex/04.patterns/",
+	"uri": "https://ohama.github.io/ocamllex/04.patterns/",
 	"title": "4. Patterns",
 	"tags": [],
 	"description": "",
 	"content": " Introduction Ocamlyacc is a general-purpose parser generator that converts a grammar description for an LALR(1) context-free grammar into a Ocaml program to parse that grammar. Once you are proficient with Ocamlyacc, you may use it to develop a wide range of language parsers, from those used in simple desk calculators to complex programming languages.\nOcamlyacc is very close to the well-known yacc (or bison) commands that can be found in most C programming environments. Anyone familiar with Yacc should be able to use Ocamlyacc with little trouble. You need to be fluent in Ocaml programming in order to use Ocamlyacc or to understand this manual.\nWe begin with tutorial chapters that explain the basic concepts of using Ocamlyacc and show three explained examples, each building on the last. If you don\u0026rsquo;t know Ocamlyacc or Yacc, start by reading these chapters. Reference chapters follow which describe specific aspects of Ocamlyacc in detail.\nSome explanation is not suitable for the earlier version than 3.08 of Ocaml (Ocamlyacc), in that case, there will be comments like \u0026ldquo;(Since Ocaml 3.08)\u0026rdquo;.\n"
 },
 {
-	"uri": "https://ohama.github.io/ocaml/ocamllex/05.howmatched/",
+	"uri": "https://ohama.github.io/ocamllex/05.howmatched/",
 	"title": "5. How the input is matched",
 	"tags": [],
 	"description": "",
 	"content": " Introduction Ocamlyacc is a general-purpose parser generator that converts a grammar description for an LALR(1) context-free grammar into a Ocaml program to parse that grammar. Once you are proficient with Ocamlyacc, you may use it to develop a wide range of language parsers, from those used in simple desk calculators to complex programming languages.\nOcamlyacc is very close to the well-known yacc (or bison) commands that can be found in most C programming environments. Anyone familiar with Yacc should be able to use Ocamlyacc with little trouble. You need to be fluent in Ocaml programming in order to use Ocamlyacc or to understand this manual.\nWe begin with tutorial chapters that explain the basic concepts of using Ocamlyacc and show three explained examples, each building on the last. If you don\u0026rsquo;t know Ocamlyacc or Yacc, start by reading these chapters. Reference chapters follow which describe specific aspects of Ocamlyacc in detail.\nSome explanation is not suitable for the earlier version than 3.08 of Ocaml (Ocamlyacc), in that case, there will be comments like \u0026ldquo;(Since Ocaml 3.08)\u0026rdquo;.\n"
 },
 {
-	"uri": "https://ohama.github.io/ocaml/ocamllex/06.actions/",
+	"uri": "https://ohama.github.io/ocamllex/06.actions/",
 	"title": "6. Actions",
 	"tags": [],
 	"description": "",
 	"content": " Introduction Ocamlyacc is a general-purpose parser generator that converts a grammar description for an LALR(1) context-free grammar into a Ocaml program to parse that grammar. Once you are proficient with Ocamlyacc, you may use it to develop a wide range of language parsers, from those used in simple desk calculators to complex programming languages.\nOcamlyacc is very close to the well-known yacc (or bison) commands that can be found in most C programming environments. Anyone familiar with Yacc should be able to use Ocamlyacc with little trouble. You need to be fluent in Ocaml programming in order to use Ocamlyacc or to understand this manual.\nWe begin with tutorial chapters that explain the basic concepts of using Ocamlyacc and show three explained examples, each building on the last. If you don\u0026rsquo;t know Ocamlyacc or Yacc, start by reading these chapters. Reference chapters follow which describe specific aspects of Ocamlyacc in detail.\nSome explanation is not suitable for the earlier version than 3.08 of Ocaml (Ocamlyacc), in that case, there will be comments like \u0026ldquo;(Since Ocaml 3.08)\u0026rdquo;.\n"
 },
 {
-	"uri": "https://ohama.github.io/ocaml/ocamllex/07.generatedscanner/",
+	"uri": "https://ohama.github.io/ocamllex/07.generatedscanner/",
 	"title": "7. The generted scanner",
 	"tags": [],
 	"description": "",
 	"content": " Introduction Ocamlyacc is a general-purpose parser generator that converts a grammar description for an LALR(1) context-free grammar into a Ocaml program to parse that grammar. Once you are proficient with Ocamlyacc, you may use it to develop a wide range of language parsers, from those used in simple desk calculators to complex programming languages.\nOcamlyacc is very close to the well-known yacc (or bison) commands that can be found in most C programming environments. Anyone familiar with Yacc should be able to use Ocamlyacc with little trouble. You need to be fluent in Ocaml programming in order to use Ocamlyacc or to understand this manual.\nWe begin with tutorial chapters that explain the basic concepts of using Ocamlyacc and show three explained examples, each building on the last. If you don\u0026rsquo;t know Ocamlyacc or Yacc, start by reading these chapters. Reference chapters follow which describe specific aspects of Ocamlyacc in detail.\nSome explanation is not suitable for the earlier version than 3.08 of Ocaml (Ocamlyacc), in that case, there will be comments like \u0026ldquo;(Since Ocaml 3.08)\u0026rdquo;.\n"
 },
 {
-	"uri": "https://ohama.github.io/ocaml/ocamllex/08.startcondition/",
+	"uri": "https://ohama.github.io/ocamllex/08.startcondition/",
 	"title": "8. Start conditions",
 	"tags": [],
 	"description": "",
 	"content": " Introduction Ocamlyacc is a general-purpose parser generator that converts a grammar description for an LALR(1) context-free grammar into a Ocaml program to parse that grammar. Once you are proficient with Ocamlyacc, you may use it to develop a wide range of language parsers, from those used in simple desk calculators to complex programming languages.\nOcamlyacc is very close to the well-known yacc (or bison) commands that can be found in most C programming environments. Anyone familiar with Yacc should be able to use Ocamlyacc with little trouble. You need to be fluent in Ocaml programming in order to use Ocamlyacc or to understand this manual.\nWe begin with tutorial chapters that explain the basic concepts of using Ocamlyacc and show three explained examples, each building on the last. If you don\u0026rsquo;t know Ocamlyacc or Yacc, start by reading these chapters. Reference chapters follow which describe specific aspects of Ocamlyacc in detail.\nSome explanation is not suitable for the earlier version than 3.08 of Ocaml (Ocamlyacc), in that case, there will be comments like \u0026ldquo;(Since Ocaml 3.08)\u0026rdquo;.\n"
 },
 {
-	"uri": "https://ohama.github.io/ocaml/ocamllex/09.interfacewithocamlyacc/",
+	"uri": "https://ohama.github.io/ocamllex/09.interfacewithocamlyacc/",
 	"title": "9. Interfacing with ocamlyacc",
 	"tags": [],
 	"description": "",
 	"content": " Introduction Ocamlyacc is a general-purpose parser generator that converts a grammar description for an LALR(1) context-free grammar into a Ocaml program to parse that grammar. Once you are proficient with Ocamlyacc, you may use it to develop a wide range of language parsers, from those used in simple desk calculators to complex programming languages.\nOcamlyacc is very close to the well-known yacc (or bison) commands that can be found in most C programming environments. Anyone familiar with Yacc should be able to use Ocamlyacc with little trouble. You need to be fluent in Ocaml programming in order to use Ocamlyacc or to understand this manual.\nWe begin with tutorial chapters that explain the basic concepts of using Ocamlyacc and show three explained examples, each building on the last. If you don\u0026rsquo;t know Ocamlyacc or Yacc, start by reading these chapters. Reference chapters follow which describe specific aspects of Ocamlyacc in detail.\nSome explanation is not suitable for the earlier version than 3.08 of Ocaml (Ocamlyacc), in that case, there will be comments like \u0026ldquo;(Since Ocaml 3.08)\u0026rdquo;.\n"
 },
 {
-	"uri": "https://ohama.github.io/ocaml/ocamllex/10.options/",
+	"uri": "https://ohama.github.io/ocamllex/10.options/",
 	"title": "10. Options",
 	"tags": [],
 	"description": "",
 	"content": " Introduction Ocamlyacc is a general-purpose parser generator that converts a grammar description for an LALR(1) context-free grammar into a Ocaml program to parse that grammar. Once you are proficient with Ocamlyacc, you may use it to develop a wide range of language parsers, from those used in simple desk calculators to complex programming languages.\nOcamlyacc is very close to the well-known yacc (or bison) commands that can be found in most C programming environments. Anyone familiar with Yacc should be able to use Ocamlyacc with little trouble. You need to be fluent in Ocaml programming in order to use Ocamlyacc or to understand this manual.\nWe begin with tutorial chapters that explain the basic concepts of using Ocamlyacc and show three explained examples, each building on the last. If you don\u0026rsquo;t know Ocamlyacc or Yacc, start by reading these chapters. Reference chapters follow which describe specific aspects of Ocamlyacc in detail.\nSome explanation is not suitable for the earlier version than 3.08 of Ocaml (Ocamlyacc), in that case, there will be comments like \u0026ldquo;(Since Ocaml 3.08)\u0026rdquo;.\n"
 },
 {
-	"uri": "https://ohama.github.io/ocaml/ocamllex/11.usagetips/",
+	"uri": "https://ohama.github.io/ocamllex/11.usagetips/",
 	"title": "11. Usage tips",
 	"tags": [],
 	"description": "",
 	"content": " Introduction Ocamlyacc is a general-purpose parser generator that converts a grammar description for an LALR(1) context-free grammar into a Ocaml program to parse that grammar. Once you are proficient with Ocamlyacc, you may use it to develop a wide range of language parsers, from those used in simple desk calculators to complex programming languages.\nOcamlyacc is very close to the well-known yacc (or bison) commands that can be found in most C programming environments. Anyone familiar with Yacc should be able to use Ocamlyacc with little trouble. You need to be fluent in Ocaml programming in order to use Ocamlyacc or to understand this manual.\nWe begin with tutorial chapters that explain the basic concepts of using Ocamlyacc and show three explained examples, each building on the last. If you don\u0026rsquo;t know Ocamlyacc or Yacc, start by reading these chapters. Reference chapters follow which describe specific aspects of Ocamlyacc in detail.\nSome explanation is not suitable for the earlier version than 3.08 of Ocaml (Ocamlyacc), in that case, there will be comments like \u0026ldquo;(Since Ocaml 3.08)\u0026rdquo;.\n"
 },
 {
-	"uri": "https://ohama.github.io/ocaml/ocamllex/12.examples/",
+	"uri": "https://ohama.github.io/ocamllex/12.examples/",
 	"title": "12. Examples",
 	"tags": [],
 	"description": "",
 	"content": " Introduction Ocamlyacc is a general-purpose parser generator that converts a grammar description for an LALR(1) context-free grammar into a Ocaml program to parse that grammar. Once you are proficient with Ocamlyacc, you may use it to develop a wide range of language parsers, from those used in simple desk calculators to complex programming languages.\nOcamlyacc is very close to the well-known yacc (or bison) commands that can be found in most C programming environments. Anyone familiar with Yacc should be able to use Ocamlyacc with little trouble. You need to be fluent in Ocaml programming in order to use Ocamlyacc or to understand this manual.\nWe begin with tutorial chapters that explain the basic concepts of using Ocamlyacc and show three explained examples, each building on the last. If you don\u0026rsquo;t know Ocamlyacc or Yacc, start by reading these chapters. Reference chapters follow which describe specific aspects of Ocamlyacc in detail.\nSome explanation is not suitable for the earlier version than 3.08 of Ocaml (Ocamlyacc), in that case, there will be comments like \u0026ldquo;(Since Ocaml 3.08)\u0026rdquo;.\n"
 },
 {
-	"uri": "https://ohama.github.io/ocaml/ocamllex/13.license/",
+	"uri": "https://ohama.github.io/ocamllex/13.license/",
 	"title": "13. License",
 	"tags": [],
 	"description": "",
 	"content": " Introduction Ocamlyacc is a general-purpose parser generator that converts a grammar description for an LALR(1) context-free grammar into a Ocaml program to parse that grammar. Once you are proficient with Ocamlyacc, you may use it to develop a wide range of language parsers, from those used in simple desk calculators to complex programming languages.\nOcamlyacc is very close to the well-known yacc (or bison) commands that can be found in most C programming environments. Anyone familiar with Yacc should be able to use Ocamlyacc with little trouble. You need to be fluent in Ocaml programming in order to use Ocamlyacc or to understand this manual.\nWe begin with tutorial chapters that explain the basic concepts of using Ocamlyacc and show three explained examples, each building on the last. If you don\u0026rsquo;t know Ocamlyacc or Yacc, start by reading these chapters. Reference chapters follow which describe specific aspects of Ocamlyacc in detail.\nSome explanation is not suitable for the earlier version than 3.08 of Ocaml (Ocamlyacc), in that case, there will be comments like \u0026ldquo;(Since Ocaml 3.08)\u0026rdquo;.\n"
 },
 {
-	"uri": "https://ohama.github.io/ocaml/readme/",
+	"uri": "https://ohama.github.io/readme/",
 	"title": "",
 	"tags": [],
 	"description": "",
 	"content": ""
 },
 {
-	"uri": "https://ohama.github.io/ocaml/categories/",
+	"uri": "https://ohama.github.io/categories/",
 	"title": "Categories",
 	"tags": [],
 	"description": "",
 	"content": ""
 },
 {
-	"uri": "https://ohama.github.io/ocaml/ocamlyacc/concepts/languages/",
+	"uri": "https://ohama.github.io/ocamlyacc/concepts/languages/",
 	"title": "Languages",
 	"tags": [],
 	"description": "",
 	"content": " Languages and Context-Free Grammars In order for Ocamlyacc to parse a language, it must be described by a context-free grammar. This means that you specify one or more syntactic groupings and give rules for constructing them from their parts. For example, in the C language, one kind of grouping is called an expression'. One rule for making an expression might be,An expression can be made of a minus sign and another expression''. Another would be, `An expression can be an integer\u0026rdquo;. As you can see, rules are often recursive, but there must be at least one rule which leads out of the recursion.\nThe most common formal system for presenting such rules for humans to read is Backus-Naur Form or ``BNF\u0026rdquo;, which was developed in order to specify the language Algol 60. Any grammar expressed in BNF is a context-free grammar. The input to Ocamlyacc is essentially machine-readable BNF.\nNot all context-free languages can be handled by Ocamlyacc, only those that are LALR(1). In brief, this means that it must be possible to tell how to parse any portion of an input string with just a single token of look-ahead. Strictly speaking, that is a description of an LR(1) grammar, and LALR(1) involves additional restrictions that are hard to explain simply; but it is rare in actual practice to find an LR(1) grammar that fails to be LALR(1). See Mysterious Reduce/Reduce Conflicts, for more information on this.\nIn the formal grammatical rules for a language, each kind of syntactic unit or grouping is named by a symbol. Those which are built by grouping smaller constructs according to grammatical rules are called nonterminal symbols; those which can\u0026rsquo;t be subdivided are called terminal symbols or token types. We call a piece of input corresponding to a single terminal symbol a \u0026ldquo;token\u0026rdquo;, and a piece corresponding to a single nonterminal symbol a grouping.\nWe can use the C language as an example of what symbols, terminal and nonterminal, mean. The tokens of C are identifiers, constants (numeric and string), and the various keywords, arithmetic operators and punctuation marks. So the terminal symbols of a grammar for C include identifier', number\u0026rsquo;, string', plus one symbol for each keyword, operator or punctuation mark:if\u0026rsquo;, return',const\u0026rsquo;, static',int\u0026rsquo;, char', plus-sign\u0026rsquo;, open-brace',close-brace\u0026rsquo;, `comma\u0026rsquo; and many more. (These tokens can be subdivided into characters, but that is a matter of lexicography, not grammar.)\nHere is a simple C function subdivided into tokens:\nint /* keyword `int\u0026#39; */ square (int x) /* identifier, open-paren, identifier, identifier, close-paren */ { /* open-brace */ return x * x; /* keyword `return\u0026#39;, identifier, asterisk, identifier, semicolon */ } /* close-brace */ The syntactic groupings of C include the expression, the statement, the declaration, and the function definition. These are represented in the grammar of C by nonterminal symbols expression',statement\u0026rsquo;, declaration' andfunction definition\u0026rsquo;. The full grammar uses dozens of additional language constructs, each with its own nonterminal symbol, in order to express the meanings of these four. The example above is a function definition; it contains one declaration, and one statement. In the statement, each \u0026ldquo;x\u0026rdquo; is an expression and so is \u0026ldquo;x * x\u0026rdquo;.\nEach nonterminal symbol must have grammatical rules showing how it is made out of simpler constructs. For example, one kind of C statement is the \u0026ldquo;return\u0026rdquo; statement; this would be described with a grammar rule which reads informally as follows:\nA `statement' can be made of a `return' keyword, an `expression' and a `semicolon'.  There would be many other rules for `statement\u0026rsquo;, one for each kind of statement in C.\nOne nonterminal symbol must be distinguished as the special one which defines a complete utterance in the language. It is called the start symbol. In a compiler, this means a complete input program. In the C language, the nonterminal symbol `sequence of definitions and declarations\u0026rsquo; plays this role.\nFor example, \u0026ldquo;1 + 2\u0026rdquo; is a valid C expression\u0026mdash;a valid part of a C program\u0026mdash;but it is not valid as an entire C program. In the context-free grammar of C, this follows from the fact that `expression\u0026rsquo; is not the start symbol.\nThe Ocamlyacc parser reads a sequence of tokens as its input, and groups the tokens using the grammar rules. If the input is valid, the end result is that the entire token sequence reduces to a single grouping whose symbol is the grammar\u0026rsquo;s start symbol. If we use a grammar for C, the entire input must be a `sequence of definitions and declarations\u0026rsquo;. If not, the parser reports a syntax error.\n"
 },
 {
-	"uri": "https://ohama.github.io/ocaml/tags/",
+	"uri": "https://ohama.github.io/tags/",
 	"title": "Tags",
 	"tags": [],
 	"description": "",
