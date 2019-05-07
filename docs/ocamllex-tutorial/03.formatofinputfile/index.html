@@ -9,7 +9,7 @@
 
     <link rel="icon" href="/ocaml/images/favicon.png" type="image/png">
 
-    <title> :: Documentation for Hugo Learn Theme</title>
+    <title>Format of the input file :: Documentation for Hugo Learn Theme</title>
 
     
     <link href="/ocaml/css/nucleus.css?1557269227" rel="stylesheet">
@@ -39,7 +39,7 @@
     </style>
     
   </head>
-  <body class="" data-url="/ocaml/readme/">
+  <body class="" data-url="/ocaml/ocamllex-tutorial/03.formatofinputfile/">
     <nav id="sidebar" class="">
 
 
@@ -118,7 +118,7 @@
   
     
     <li data-nav-id="/ocaml/ocamllex-tutorial/" title="Ocamllex Tutorial" class="dd-item 
-        
+        parent
         
         
         ">
@@ -182,7 +182,7 @@
  
   
     
-      <li data-nav-id="/ocaml/ocamllex-tutorial/03.formatofinputfile/" title="Format of the input file" class="dd-item ">
+      <li data-nav-id="/ocaml/ocamllex-tutorial/03.formatofinputfile/" title="Format of the input file" class="dd-item active">
         <a href="/ocaml/ocamllex-tutorial/03.formatofinputfile/">
         3. Format of the input file
         
@@ -789,7 +789,13 @@
             
           
           
-            <a href='/ocaml/'>Introduction</a> > 
+            
+            
+          
+          
+            <a href='/ocaml/'>Introduction</a> > <a href='/ocaml/ocamllex-tutorial/'>Ocamllex Tutorial</a> > Format of the input file
+          
+         
           
          
           
@@ -816,7 +822,7 @@
           
             <h1>
               
-              
+              Format of the input file
             </h1>
           
 
@@ -824,6 +830,97 @@
 
 
 
+<p>The <em>ocamllex</em> input file consists of four sections;
+<em>header</em>, <em>definitions</em>,
+<em>rules</em>
+and <em>trailer</em> section:</p>
+
+<pre><code>(* header section *)
+{ &lt;header&gt; }
+
+(* definitions section *)
+let &lt;ident&gt; = &lt;regexp&gt;
+let ...	
+
+(* rules section *)
+rule &lt;entrypoint_1&gt; [arg1... argn] = parse
+  | &lt;pattern&gt; { &lt;action&gt; }
+  | ...
+  | &lt;pattern&gt; { &lt;action&gt; }
+and &lt;entrypoint_2&gt; [arg1... argn] = parse
+   ...
+and ...
+
+(* trailer section *)
+{ &lt;trailer&gt; }
+</code></pre>
+
+<p>Comments are delimited by (* and *), as in Caml.</p>
+
+<p>The <em>header</em> and <em>rules</em> sections
+are necessary
+while <em>definitions</em> and <em>trailer</em>
+sections are optional.</p>
+
+<p>The <em>header</em> and <em>trailer</em> sections are
+enclosed in curly braces and they contain arbitrary Caml code.
+At the beginning of the output file, the header text is copied as is
+while the trailer text is copied at the end of the output file.
+For example, you can code open directives and some auxiliary funtions
+in the header section.</p>
+
+<p>The <em>definitions</em> section contains declarations of
+simple <em>ident</em>
+definitions to simplify the scanner specification.
+Ident definitions have the form:</p>
+
+<pre><code>let &lt;ident&gt; = &lt;regexp&gt;
+let ...	
+</code></pre>
+
+<p>The &ldquo;ident&rdquo; must be valid identifiers for Caml values
+(starting with a lowercase letter).
+For example,</p>
+
+<pre><code>let _digit_ = ['0'-'9']
+let _id_ = ['a'-'z']['a'-'z' '0'-'9']*
+</code></pre>
+
+<p>defines &ldquo;digit&rdquo; to be a regular expression which matches a single
+digit, and &ldquo;id&rdquo; to be a regular expression which matches a letter
+followed by zero-or-more letters-or-digits.  A subsequent reference to</p>
+
+<pre><code>digit+ &quot;.&quot; digit*
+</code></pre>
+
+<p>is identical to</p>
+
+<pre><code>['0'-'9']+ &quot;.&quot; ['0'-'9']*
+</code></pre>
+
+<p>and matches one-or-more digits followed by a &lsquo;.&rsquo; followed by
+zero-or-more digits.</p>
+
+<p>The <em>rules</em> section of the <em>ocamllex</em> input contains a series of entrypoints of the form:</p>
+
+<pre><code>rule entrypoint [arg1... argn] = parse
+  | &lt;pattern&gt; { &lt;action&gt; }
+  | ...
+  | &lt;pattern&gt; { &lt;action&gt; }
+and ...
+</code></pre>
+
+<p>The first &ldquo;|&rdquo; (bar) after <em>parse</em> is
+optional.</p>
+
+<p>Each entrypoint consists of a series of pattern-action:</p>
+
+<pre><code>  | &lt;pattern&gt; { &lt;action&gt; }
+</code></pre>
+
+<p>where the action must be enclosed in curly braces.</p>
+
+<p>See below for a further description of patterns and actions.</p>
 
 
 <footer class=" footline" >
@@ -880,8 +977,6 @@
             
                 
                     
-                        
-                        
                     
                 
                 
@@ -897,6 +992,9 @@
             
             
                 
+                    
+                        
+                        
                     
                 
                 
@@ -930,6 +1028,7 @@
             
                 
                     
+                    
                 
                 
 
@@ -945,6 +1044,9 @@
             
             
                 
+                    
+                        
+                        
                     
                 
                 

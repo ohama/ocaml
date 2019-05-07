@@ -9,7 +9,7 @@
 
     <link rel="icon" href="/ocaml/images/favicon.png" type="image/png">
 
-    <title> :: Documentation for Hugo Learn Theme</title>
+    <title>Patterns :: Documentation for Hugo Learn Theme</title>
 
     
     <link href="/ocaml/css/nucleus.css?1557269227" rel="stylesheet">
@@ -39,7 +39,7 @@
     </style>
     
   </head>
-  <body class="" data-url="/ocaml/readme/">
+  <body class="" data-url="/ocaml/ocamllex-tutorial/04.patterns/">
     <nav id="sidebar" class="">
 
 
@@ -118,7 +118,7 @@
   
     
     <li data-nav-id="/ocaml/ocamllex-tutorial/" title="Ocamllex Tutorial" class="dd-item 
-        
+        parent
         
         
         ">
@@ -201,7 +201,7 @@
  
   
     
-      <li data-nav-id="/ocaml/ocamllex-tutorial/04.patterns/" title="Patterns" class="dd-item ">
+      <li data-nav-id="/ocaml/ocamllex-tutorial/04.patterns/" title="Patterns" class="dd-item active">
         <a href="/ocaml/ocamllex-tutorial/04.patterns/">
         4. Patterns
         
@@ -789,7 +789,13 @@
             
           
           
-            <a href='/ocaml/'>Introduction</a> > 
+            
+            
+          
+          
+            <a href='/ocaml/'>Introduction</a> > <a href='/ocaml/ocamllex-tutorial/'>Ocamllex Tutorial</a> > Patterns
+          
+         
           
          
           
@@ -816,7 +822,7 @@
           
             <h1>
               
-              
+              Patterns
             </h1>
           
 
@@ -824,6 +830,63 @@
 
 
 
+<p>The patterns in the input are written using regular expressions
+in the style of lex, with a more Caml-like syntax. These are:</p>
+
+<ul>
+<li><strong>&lsquo;c&rsquo;</strong>: match the character &lsquo;c&rsquo;. The character constant is the same syntax as Objective Caml character.</li>
+<li><strong>&gt;_</strong>: (underscore) match any character.</li>
+<li><strong>eof</strong>: match an end-of-file .</li>
+<li><strong>&ldquo;foo&rdquo;</strong>: the literal string &ldquo;foo&rdquo;. The syntax is the same syntax as Objective Caml string constants.</li>
+<li><strong>[&lsquo;x&rsquo; &lsquo;y&rsquo; &lsquo;z&rsquo;]</strong>: character set; in this case, the pattern matches either an &lsquo;x&rsquo;, a &lsquo;y&rsquo;, or a &lsquo;z&rsquo; .</li>
+<li><strong>[&lsquo;a&rsquo; &lsquo;b&rsquo; &lsquo;j&rsquo;-&lsquo;o&rsquo; &lsquo;Z&rsquo;]</strong>: character set with a range in it; ranges of characters &lsquo;c1&rsquo; - &lsquo;c2&rsquo; (all characters between c1 and c2, inclusive);
+in this case, the pattern matches an &lsquo;a&rsquo;, a &lsquo;b&rsquo;, any letter from &lsquo;j&rsquo; through &lsquo;o&rsquo;, or a &lsquo;Z&rsquo;.</li>
+<li><strong>[^ &lsquo;A&rsquo;-&lsquo;Z&rsquo;]</strong>:
+a &ldquo;negated character set&rdquo;, i.e., any character but those in the class. In this case, any character EXCEPT an uppercase letter.</li>
+<li><strong>[^ &lsquo;A&rsquo;-&lsquo;Z&rsquo; &lsquo;\n&rsquo;]</strong>:any character EXCEPT an uppercase letter or a newline</li>
+<li><strong>r*</strong>: zero or more r&rsquo;s, where r is any regular expression</li>
+<li><strong>r+</strong>: one or more r&rsquo;s, where r is any regular expression</li>
+<li><strong>r?</strong>: zero or one r&rsquo;s, where r is any regular expression (that is, &ldquo;an optional r&rdquo;)</li>
+<li><strong>ident</strong>: the expansion of the &ldquo;ident&rdquo;
+defined by an earlier <code>let ident =  regexp</code> definition.</li>
+<li><strong>(r)</strong>: match an r; parentheses are used to override precedence (see below)</li>
+<li><strong>rs</strong>: the regular expression r followed by the regular expression s; called &ldquo;concatenation&rdquo;</li>
+<li><strong>r|s</strong>: either an r or an s</li>
+<li><strong>r#s</strong>: match the difference of the two specified character sets.</li>
+<li><strong>r as ident</strong>: bind the string matched by <em>r</em> to identifier <em>ident</em></li>
+</ul>
+
+<p>The regular expressions listed above are grouped according to precedence, from highest precedence at the top to lowest at the bottom;
+&lsquo;*&rsquo; and &lsquo;+&rsquo; have highest precedence, followed by &lsquo;?&rsquo;, &lsquo;concatenation&rsquo;, &lsquo;|&rsquo;, and then <em>&lsquo;as&rsquo;</em>.
+For example,</p>
+
+<pre><code>&quot;foo&quot; | &quot;bar&quot;*
+</code></pre>
+
+<p>is the same as</p>
+
+<pre><code>(&quot;foo&quot;)|(&quot;bar&quot;*)
+</code></pre>
+
+<p>since the &lsquo;*&rsquo; operator has higher precedence than
+than alternation (&lsquo;|&rsquo;).  This pattern therefore
+matches <em>either</em> the string &ldquo;foo&rdquo; <em>or</em>
+zero-or-more of the string &ldquo;bar&rdquo;.</p>
+
+<p>To match zero-or-more &ldquo;foo&rdquo;&rsquo;s-or-&ldquo;bar&rdquo;&rsquo;s:</p>
+
+<pre><code>(&quot;foo&quot;|&quot;bar&quot;)*
+</code></pre>
+
+<p>A negated character set such as the example &ldquo;[^ &lsquo;A&rsquo;-&lsquo;Z&rsquo;]&rdquo; above
+<em>will match a newline</em>
+unless &ldquo;\n&rdquo; (or an equivalent escape sequence) is
+one of the characters explicitly present in the negated character
+set (e.g., &ldquo;[^ &lsquo;A&rsquo;-&lsquo;Z&rsquo; &lsquo;\n&rsquo;]&ldquo;).  This is unlike how many other regular
+expression tools treat negated character set, but
+unfortunately the inconsistency is historically entrenched.
+Matching newlines means that a pattern like [^&ldquo;]* can match the
+entire input unless there&rsquo;s another quote in the input.</p>
 
 
 <footer class=" footline" >
@@ -880,8 +943,6 @@
             
                 
                     
-                        
-                        
                     
                 
                 
@@ -897,6 +958,9 @@
             
             
                 
+                    
+                        
+                        
                     
                 
                 
@@ -946,6 +1010,7 @@
             
                 
                     
+                    
                 
                 
 
@@ -961,6 +1026,9 @@
             
             
                 
+                    
+                        
+                        
                     
                 
                 

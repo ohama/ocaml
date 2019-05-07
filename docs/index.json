@@ -1,20 +1,20 @@
 [
 {
-	"uri": "https://ohama.github.io/ocaml/ocamllex/11.usagetips/11.1.keywordtable/",
+	"uri": "https://ohama.github.io/ocaml/ocamllex-tutorial/11.usagetips/11.1.keywordtable/",
 	"title": "11.1 Keyword table",
 	"tags": [],
 	"description": "",
 	"content": " Introduction Ocamlyacc is a general-purpose parser generator that converts a grammar description for an LALR(1) context-free grammar into a Ocaml program to parse that grammar. Once you are proficient with Ocamlyacc, you may use it to develop a wide range of language parsers, from those used in simple desk calculators to complex programming languages.\nOcamlyacc is very close to the well-known yacc (or bison) commands that can be found in most C programming environments. Anyone familiar with Yacc should be able to use Ocamlyacc with little trouble. You need to be fluent in Ocaml programming in order to use Ocamlyacc or to understand this manual.\nWe begin with tutorial chapters that explain the basic concepts of using Ocamlyacc and show three explained examples, each building on the last. If you don\u0026rsquo;t know Ocamlyacc or Yacc, start by reading these chapters. Reference chapters follow which describe specific aspects of Ocamlyacc in detail.\nSome explanation is not suitable for the earlier version than 3.08 of Ocaml (Ocamlyacc), in that case, there will be comments like \u0026ldquo;(Since Ocaml 3.08)\u0026rdquo;.\n"
 },
 {
-	"uri": "https://ohama.github.io/ocaml/ocamllex/12.examples/12.1.translate/",
+	"uri": "https://ohama.github.io/ocaml/ocamllex-tutorial/12.examples/12.1.translate/",
 	"title": "12.1 Translate",
 	"tags": [],
 	"description": "",
 	"content": " Introduction Ocamlyacc is a general-purpose parser generator that converts a grammar description for an LALR(1) context-free grammar into a Ocaml program to parse that grammar. Once you are proficient with Ocamlyacc, you may use it to develop a wide range of language parsers, from those used in simple desk calculators to complex programming languages.\nOcamlyacc is very close to the well-known yacc (or bison) commands that can be found in most C programming environments. Anyone familiar with Yacc should be able to use Ocamlyacc with little trouble. You need to be fluent in Ocaml programming in order to use Ocamlyacc or to understand this manual.\nWe begin with tutorial chapters that explain the basic concepts of using Ocamlyacc and show three explained examples, each building on the last. If you don\u0026rsquo;t know Ocamlyacc or Yacc, start by reading these chapters. Reference chapters follow which describe specific aspects of Ocamlyacc in detail.\nSome explanation is not suitable for the earlier version than 3.08 of Ocaml (Ocamlyacc), in that case, there will be comments like \u0026ldquo;(Since Ocaml 3.08)\u0026rdquo;.\n"
 },
 {
-	"uri": "https://ohama.github.io/ocaml/ocamllex/13.license/13.1.license/",
+	"uri": "https://ohama.github.io/ocaml/ocamllex-tutorial/13.license/13.1.license/",
 	"title": "13.1 License in flex",
 	"tags": [],
 	"description": "",
@@ -28,154 +28,154 @@
 	"content": " Introduction Ocamlyacc is a general-purpose parser generator that converts a grammar description for an LALR(1) context-free grammar into a Ocaml program to parse that grammar. Once you are proficient with Ocamlyacc, you may use it to develop a wide range of language parsers, from those used in simple desk calculators to complex programming languages.\nOcamlyacc is very close to the well-known yacc (or bison) commands that can be found in most C programming environments. Anyone familiar with Yacc should be able to use Ocamlyacc with little trouble. You need to be fluent in Ocaml programming in order to use Ocamlyacc or to understand this manual.\nWe begin with tutorial chapters that explain the basic concepts of using Ocamlyacc and show three explained examples, each building on the last. If you don\u0026rsquo;t know Ocamlyacc or Yacc, start by reading these chapters. Reference chapters follow which describe specific aspects of Ocamlyacc in detail.\nSome explanation is not suitable for the earlier version than 3.08 of Ocaml (Ocamlyacc), in that case, there will be comments like \u0026ldquo;(Since Ocaml 3.08)\u0026rdquo;.\n"
 },
 {
-	"uri": "https://ohama.github.io/ocaml/ocamllex/01.intro/",
+	"uri": "https://ohama.github.io/ocaml/ocamllex-tutorial/01.intro/",
 	"title": "Introduction",
 	"tags": [],
 	"description": "",
 	"content": "ocamllex is a tool for generating scanners: programs which recognized lexical patterns in text. ocamllex reads the given input files, for a description of a scanner to generate. The description is in the form of pairs of regular expressions and Ocaml code, called rules. ocamllex generates as output a Ocaml source file which defines lexical analyzer functions. This file is compiled and linked to produce an executable. When the executable is run, it analyzes its input for occurrences of the regular expressions. Whenever it finds one, it executes the corresponding Ocaml code.\nIf you execute the following command with the input file named lexer.mll\nocamllex lexer.mll you will get Caml code for a lexical analyzer in file lexer.ml\n"
 },
 {
-	"uri": "https://ohama.github.io/ocaml/ocamlyacc/introduction/",
+	"uri": "https://ohama.github.io/ocaml/ocamlyacc-tutorial/introduction/",
 	"title": "Introduction",
 	"tags": [],
 	"description": "",
 	"content": " Introduction Ocamlyacc is a general-purpose parser generator that converts a grammar description for an LALR(1) context-free grammar into a Ocaml program to parse that grammar. Once you are proficient with Ocamlyacc, you may use it to develop a wide range of language parsers, from those used in simple desk calculators to complex programming languages.\nOcamlyacc is very close to the well-known yacc (or bison) commands that can be found in most C programming environments. Anyone familiar with Yacc should be able to use Ocamlyacc with little trouble. You need to be fluent in Ocaml programming in order to use Ocamlyacc or to understand this manual.\nWe begin with tutorial chapters that explain the basic concepts of using Ocamlyacc and show three explained examples, each building on the last. If you don\u0026rsquo;t know Ocamlyacc or Yacc, start by reading these chapters. Reference chapters follow which describe specific aspects of Ocamlyacc in detail.\nSome explanation is not suitable for the earlier version than 3.08 of Ocaml (Ocamlyacc), in that case, there will be comments like \u0026ldquo;(Since Ocaml 3.08)\u0026rdquo;.\n"
 },
 {
-	"uri": "https://ohama.github.io/ocaml/ocamllex/",
-	"title": "Ocamllex",
+	"uri": "https://ohama.github.io/ocaml/ocamllex-tutorial/",
+	"title": "Ocamllex Tutorial",
 	"tags": [],
 	"description": "",
-	"content": " Introduction Ocamlyacc is a general-purpose parser generator that converts a grammar description for an LALR(1) context-free grammar into a Ocaml program to parse that grammar. Once you are proficient with Ocamlyacc, you may use it to develop a wide range of language parsers, from those used in simple desk calculators to complex programming languages.\nOcamlyacc is very close to the well-known yacc (or bison) commands that can be found in most C programming environments. Anyone familiar with Yacc should be able to use Ocamlyacc with little trouble. You need to be fluent in Ocaml programming in order to use Ocamlyacc or to understand this manual.\nWe begin with tutorial chapters that explain the basic concepts of using Ocamlyacc and show three explained examples, each building on the last. If you don\u0026rsquo;t know Ocamlyacc or Yacc, start by reading these chapters. Reference chapters follow which describe specific aspects of Ocamlyacc in detail.\nSome explanation is not suitable for the earlier version than 3.08 of Ocaml (Ocamlyacc), in that case, there will be comments like \u0026ldquo;(Since Ocaml 3.08)\u0026rdquo;.\n"
+	"content": "This is a tutorial on how to use ocamllex which is distributed with Ocaml language.\nLots of part of this document are borrowed from the flex manual.\nAll license term in this document is NOT related with ocamlyacc; it is ONLY for this document.\nPlease mail all comments and suggestions to ohama100@gmail.com.\nThe companion tutorial for ocamlyacc is available at ocamlyacc tutorial.\nYou can find the ocamllex tutorial pdf file for printing.\nThe source of the examples used in this document can be found ocamllex examples.\n"
 },
 {
-	"uri": "https://ohama.github.io/ocaml/ocamllex/06.actions/6.1.position/",
+	"uri": "https://ohama.github.io/ocaml/ocamllex-tutorial/06.actions/6.1.position/",
 	"title": "Position",
 	"tags": [],
 	"description": "",
 	"content": "Since Ocaml 3.08  The position information on scanning the input text is recorded in the lexbuf which has a field lex_curr_p of the type position:\n type position = { pos_fname : string;\t(* file name *) pos_lnum : int;\t(* line number *) pos_bol : int;\t(* the offset of the beginning of the line *) pos_cnum : int;\t(* the offset of the position *) }  The value of pos_bol field is the number of characters between the beginning of the file and the beginning of the line while the value of pos_cnum field is the number of characters between the beginning of the file and the position.\nThe lexing engine manages only the pos_cnum field of lexbuf.lex_curr_p with the number of characters read from the start of lexbuf. So you are reponsible for the other fields to be accurate. Typically, whenever the lexer meets a newline character, the action contains a call to the following function:\n let incr_linenum lexbuf = let pos = lexbuf.Lexing.lex_curr_p in lexbuf.Lexing.lex_curr_p \u0026amp;lt;- { pos with Lexing.pos_lnum = pos.Lexing.pos_lnum + 1; Lexing.pos_bol = pos.Lexing.pos_cnum; } ;;  "
 },
 {
-	"uri": "https://ohama.github.io/ocaml/ocamllex/11.usagetips/11.2.nestedcomments/",
+	"uri": "https://ohama.github.io/ocaml/ocamllex-tutorial/11.usagetips/11.2.nestedcomments/",
 	"title": "11.2 Nested comments",
 	"tags": [],
 	"description": "",
 	"content": " Introduction Ocamlyacc is a general-purpose parser generator that converts a grammar description for an LALR(1) context-free grammar into a Ocaml program to parse that grammar. Once you are proficient with Ocamlyacc, you may use it to develop a wide range of language parsers, from those used in simple desk calculators to complex programming languages.\nOcamlyacc is very close to the well-known yacc (or bison) commands that can be found in most C programming environments. Anyone familiar with Yacc should be able to use Ocamlyacc with little trouble. You need to be fluent in Ocaml programming in order to use Ocamlyacc or to understand this manual.\nWe begin with tutorial chapters that explain the basic concepts of using Ocamlyacc and show three explained examples, each building on the last. If you don\u0026rsquo;t know Ocamlyacc or Yacc, start by reading these chapters. Reference chapters follow which describe specific aspects of Ocamlyacc in detail.\nSome explanation is not suitable for the earlier version than 3.08 of Ocaml (Ocamlyacc), in that case, there will be comments like \u0026ldquo;(Since Ocaml 3.08)\u0026rdquo;.\n"
 },
 {
-	"uri": "https://ohama.github.io/ocaml/ocamllex/12.examples/12.2.wordcount/",
+	"uri": "https://ohama.github.io/ocaml/ocamllex-tutorial/12.examples/12.2.wordcount/",
 	"title": "12.2 Word count",
 	"tags": [],
 	"description": "",
 	"content": " Introduction Ocamlyacc is a general-purpose parser generator that converts a grammar description for an LALR(1) context-free grammar into a Ocaml program to parse that grammar. Once you are proficient with Ocamlyacc, you may use it to develop a wide range of language parsers, from those used in simple desk calculators to complex programming languages.\nOcamlyacc is very close to the well-known yacc (or bison) commands that can be found in most C programming environments. Anyone familiar with Yacc should be able to use Ocamlyacc with little trouble. You need to be fluent in Ocaml programming in order to use Ocamlyacc or to understand this manual.\nWe begin with tutorial chapters that explain the basic concepts of using Ocamlyacc and show three explained examples, each building on the last. If you don\u0026rsquo;t know Ocamlyacc or Yacc, start by reading these chapters. Reference chapters follow which describe specific aspects of Ocamlyacc in detail.\nSome explanation is not suitable for the earlier version than 3.08 of Ocaml (Ocamlyacc), in that case, there will be comments like \u0026ldquo;(Since Ocaml 3.08)\u0026rdquo;.\n"
 },
 {
-	"uri": "https://ohama.github.io/ocaml/ocamllex/13.license/13.2.ocamllexcopyright/",
+	"uri": "https://ohama.github.io/ocaml/ocamllex-tutorial/13.license/13.2.ocamllexcopyright/",
 	"title": "13.2 Copyright and permission",
 	"tags": [],
 	"description": "",
 	"content": " Introduction Ocamlyacc is a general-purpose parser generator that converts a grammar description for an LALR(1) context-free grammar into a Ocaml program to parse that grammar. Once you are proficient with Ocamlyacc, you may use it to develop a wide range of language parsers, from those used in simple desk calculators to complex programming languages.\nOcamlyacc is very close to the well-known yacc (or bison) commands that can be found in most C programming environments. Anyone familiar with Yacc should be able to use Ocamlyacc with little trouble. You need to be fluent in Ocaml programming in order to use Ocamlyacc or to understand this manual.\nWe begin with tutorial chapters that explain the basic concepts of using Ocamlyacc and show three explained examples, each building on the last. If you don\u0026rsquo;t know Ocamlyacc or Yacc, start by reading these chapters. Reference chapters follow which describe specific aspects of Ocamlyacc in detail.\nSome explanation is not suitable for the earlier version than 3.08 of Ocaml (Ocamlyacc), in that case, there will be comments like \u0026ldquo;(Since Ocaml 3.08)\u0026rdquo;.\n"
 },
 {
-	"uri": "https://ohama.github.io/ocaml/ocamlyacc/concepts/",
+	"uri": "https://ohama.github.io/ocaml/ocamlyacc-tutorial/concepts/",
 	"title": "Concepts of ocamlyacc",
 	"tags": [],
 	"description": "",
 	"content": " The Concepts of Ocamlyacc This chapter introduces many of the basic concepts without which the details of Ocamlyacc will not make sense. If you do not already know how to use Ocamlyacc, we suggest you start by reading this chapter carefully.\n"
 },
 {
-	"uri": "https://ohama.github.io/ocaml/ocamlyacc/",
-	"title": "Ocamlyacc",
+	"uri": "https://ohama.github.io/ocaml/ocamlyacc-tutorial/",
+	"title": "Ocamlyacc Tutorial",
 	"tags": [],
 	"description": "",
-	"content": " Introduction Ocamlyacc is a general-purpose parser generator that converts a grammar description for an LALR(1) context-free grammar into a Ocaml program to parse that grammar. Once you are proficient with Ocamlyacc, you may use it to develop a wide range of language parsers, from those used in simple desk calculators to complex programming languages.\nOcamlyacc is very close to the well-known yacc (or bison) commands that can be found in most C programming environments. Anyone familiar with Yacc should be able to use Ocamlyacc with little trouble. You need to be fluent in Ocaml programming in order to use Ocamlyacc or to understand this manual.\nWe begin with tutorial chapters that explain the basic concepts of using Ocamlyacc and show three explained examples, each building on the last. If you don\u0026rsquo;t know Ocamlyacc or Yacc, start by reading these chapters. Reference chapters follow which describe specific aspects of Ocamlyacc in detail.\nSome explanation is not suitable for the earlier version than 3.08 of Ocaml (Ocamlyacc), in that case, there will be comments like \u0026ldquo;(Since Ocaml 3.08)\u0026rdquo;.\n"
+	"content": "This is a tutorial on how to use ocamlyacc which is distributed with Ocaml language.\nLots of part of this document are borrowed from the bison manual.\nAll license term in this document is NOT related with ocamlyacc; it is ONLY for this document.\nPlease mail all comments and suggestions to ohama100@gmail.com.\nThe companion tutorial for ocamllex is available at ocamllex tutorial.\nYou can find the ocamlyacc tutorial pdf file for printing.\nThe source of the examples used in this document can be found ocamlyacc examples directory.\n"
 },
 {
-	"uri": "https://ohama.github.io/ocaml/ocamllex/02.simpleexample/",
+	"uri": "https://ohama.github.io/ocaml/ocamllex-tutorial/02.simpleexample/",
 	"title": "Some simple examples",
 	"tags": [],
 	"description": "",
 	"content": "First some simple examples to get the flavor of how one uses ocamllex. The following ocamllex input specifies a scanner which whenever it encounters the string \u0026ldquo;current_directory\u0026rdquo; will replace it with the current directory:\n{ } rule translate = parse | \u0026quot;current_directory\u0026quot;\t{ print_string (Sys.getcwd ()); translate lexbuf } | _ as c\t{ print_char c; translate lexbuf } | eof\t{ exit 0 }  In the first rule, \u0026ldquo;current_directory\u0026rdquo; is the pattern and the expression between braces is the action. By this rule, when the scanner matches the string \u0026ldquo;current_directory\u0026rdquo;, it executes the corresponding action which prints the current directory name and call the scanner again. Recursive calling itself is necessary to do the other job.\nAny text not matched by a ocamllex scanner generates exception Failure \u0026ldquo;lexing: empty token\u0026rdquo;, so you have to supply the last two rules. The second rule copies any character to its output which is not matched by the first rule, and it calls itself again. By the third rule, the program exits when it meets end of file. So the net effect of this scanner is to copy its input file to its output with each occurrence of \u0026ldquo;current_directory\u0026rdquo; expanded. The \u0026ldquo;{ }\u0026rdquo; in the first line delimits the header section from the rest.\nHere\u0026rsquo;s another simple example:\n{ let num_lines = ref 0 let num_chars = ref 0 } rule count = parse | '\\n' { incr num_lines; incr num_chars; count lexbuf } | _ { incr num_chars; count lexbuf } | eof { () } { let main () = let lexbuf = Lexing.from_channel stdin in count lexbuf; Printf.printf \u0026quot;# of lines = %d, # of chars = %d\\n\u0026quot; !num_lines !num_chars let _ = Printexc.print main () }  This scanner counts the number of characters and the number of lines in its input (it produces no output other than the final report on the counts). The first header section declares two globals, \u0026ldquo;num_lines\u0026rdquo; and \u0026ldquo;num_chars\u0026rdquo;, which are accessible both inside scanner function count and in the trailer section which is the last part enclosed by braces. There are three rules, one which matches a newline (\u0026rdquo;\\n\u0026rdquo;) and increments both the line count and the character count, and one which matches any character other than a newline (indicated by the \u0026ldquo;_\u0026rdquo; regular expression). At the end of file, the scanner function count returns unit.\nA somewhat more complicated example:\n(* scanner for a toy language *) { open Printf } let digit = ['0'-'9'] let id = ['a'-'z'] ['a'-'z' '0'-'9']* rule toy_lang = parse | digit+ as inum { printf \u0026quot;integer: %s (%d)\\n\u0026quot; inum (int_of_string inum); toy_lang lexbuf } | digit+ '.' digit* as fnum { printf \u0026quot;float: %s (%f)\\n\u0026quot; fnum (float_of_string fnum); toy_lang lexbuf } | \u0026quot;if\u0026quot; | \u0026quot;then\u0026quot; | \u0026quot;begin\u0026quot; | \u0026quot;end\u0026quot; | \u0026quot;let\u0026quot; | \u0026quot;in\u0026quot; | \u0026quot;function\u0026quot; as word { printf \u0026quot;keyword: %s\\n\u0026quot; word; toy_lang lexbuf } | id as text { printf \u0026quot;identifier: %s\\n\u0026quot; text; toy_lang lexbuf } | '+' | '-' | '*' | '/' as op { printf \u0026quot;operator: %c\\n\u0026quot; op; toy_lang lexbuf } | '{' [^ '\\n']* '}'\t{ toy_lang lexbuf }\t(* eat up one-line comments *) | [' ' '\\t' '\\n']\t{ toy_lang lexbuf }\t(* eat up whitespace *) | _ as c { printf \u0026quot;Unrecognized character: %c\\n\u0026quot; c; toy_lang lexbuf } | eof\t{ } { let main () = let cin = if Array.length Sys.argv \u0026gt; 1 then open_in Sys.argv.(1) else stdin in let lexbuf = Lexing.from_channel cin in toy_lang lexbuf let _ = Printexc.print main () }  This is the beginnings of a simple scanner for a language. It identifies different types of tokens and reports on what it has seen.\nThe details of this example will be explained in the following sections.\n"
 },
 {
-	"uri": "https://ohama.github.io/ocaml/ocamllex/12.examples/12.3.toylanguage/",
+	"uri": "https://ohama.github.io/ocaml/ocamllex-tutorial/12.examples/12.3.toylanguage/",
 	"title": "12.3 Toy language",
 	"tags": [],
 	"description": "",
 	"content": " Introduction Ocamlyacc is a general-purpose parser generator that converts a grammar description for an LALR(1) context-free grammar into a Ocaml program to parse that grammar. Once you are proficient with Ocamlyacc, you may use it to develop a wide range of language parsers, from those used in simple desk calculators to complex programming languages.\nOcamlyacc is very close to the well-known yacc (or bison) commands that can be found in most C programming environments. Anyone familiar with Yacc should be able to use Ocamlyacc with little trouble. You need to be fluent in Ocaml programming in order to use Ocamlyacc or to understand this manual.\nWe begin with tutorial chapters that explain the basic concepts of using Ocamlyacc and show three explained examples, each building on the last. If you don\u0026rsquo;t know Ocamlyacc or Yacc, start by reading these chapters. Reference chapters follow which describe specific aspects of Ocamlyacc in detail.\nSome explanation is not suitable for the earlier version than 3.08 of Ocaml (Ocamlyacc), in that case, there will be comments like \u0026ldquo;(Since Ocaml 3.08)\u0026rdquo;.\n"
 },
 {
-	"uri": "https://ohama.github.io/ocaml/ocamllex/03.formatofinputfile/",
+	"uri": "https://ohama.github.io/ocaml/ocamllex-tutorial/03.formatofinputfile/",
 	"title": "Format of the input file",
 	"tags": [],
 	"description": "",
 	"content": "The ocamllex input file consists of four sections; header, definitions, rules and trailer section:\n(* header section *) { \u0026lt;header\u0026gt; } (* definitions section *) let \u0026lt;ident\u0026gt; = \u0026lt;regexp\u0026gt; let ...\t(* rules section *) rule \u0026lt;entrypoint_1\u0026gt; [arg1... argn] = parse | \u0026lt;pattern\u0026gt; { \u0026lt;action\u0026gt; } | ... | \u0026lt;pattern\u0026gt; { \u0026lt;action\u0026gt; } and \u0026lt;entrypoint_2\u0026gt; [arg1... argn] = parse ... and ... (* trailer section *) { \u0026lt;trailer\u0026gt; }  Comments are delimited by (* and *), as in Caml.\nThe header and rules sections are necessary while definitions and trailer sections are optional.\nThe header and trailer sections are enclosed in curly braces and they contain arbitrary Caml code. At the beginning of the output file, the header text is copied as is while the trailer text is copied at the end of the output file. For example, you can code open directives and some auxiliary funtions in the header section.\nThe definitions section contains declarations of simple ident definitions to simplify the scanner specification. Ident definitions have the form:\nlet \u0026lt;ident\u0026gt; = \u0026lt;regexp\u0026gt; let ...\t The \u0026ldquo;ident\u0026rdquo; must be valid identifiers for Caml values (starting with a lowercase letter). For example,\nlet _digit_ = ['0'-'9'] let _id_ = ['a'-'z']['a'-'z' '0'-'9']*  defines \u0026ldquo;digit\u0026rdquo; to be a regular expression which matches a single digit, and \u0026ldquo;id\u0026rdquo; to be a regular expression which matches a letter followed by zero-or-more letters-or-digits. A subsequent reference to\ndigit+ \u0026quot;.\u0026quot; digit*  is identical to\n['0'-'9']+ \u0026quot;.\u0026quot; ['0'-'9']*  and matches one-or-more digits followed by a \u0026lsquo;.\u0026rsquo; followed by zero-or-more digits.\nThe rules section of the ocamllex input contains a series of entrypoints of the form:\nrule entrypoint [arg1... argn] = parse | \u0026lt;pattern\u0026gt; { \u0026lt;action\u0026gt; } | ... | \u0026lt;pattern\u0026gt; { \u0026lt;action\u0026gt; } and ...  The first \u0026ldquo;|\u0026rdquo; (bar) after parse is optional.\nEach entrypoint consists of a series of pattern-action:\n | \u0026lt;pattern\u0026gt; { \u0026lt;action\u0026gt; }  where the action must be enclosed in curly braces.\nSee below for a further description of patterns and actions.\n"
 },
 {
-	"uri": "https://ohama.github.io/ocaml/ocamllex/04.patterns/",
+	"uri": "https://ohama.github.io/ocaml/ocamllex-tutorial/04.patterns/",
 	"title": "Patterns",
 	"tags": [],
 	"description": "",
 	"content": "The patterns in the input are written using regular expressions in the style of lex, with a more Caml-like syntax. These are:\n \u0026lsquo;c\u0026rsquo;: match the character \u0026lsquo;c\u0026rsquo;. The character constant is the same syntax as Objective Caml character. \u0026gt;_: (underscore) match any character. eof: match an end-of-file . \u0026ldquo;foo\u0026rdquo;: the literal string \u0026ldquo;foo\u0026rdquo;. The syntax is the same syntax as Objective Caml string constants. [\u0026lsquo;x\u0026rsquo; \u0026lsquo;y\u0026rsquo; \u0026lsquo;z\u0026rsquo;]: character set; in this case, the pattern matches either an \u0026lsquo;x\u0026rsquo;, a \u0026lsquo;y\u0026rsquo;, or a \u0026lsquo;z\u0026rsquo; . [\u0026lsquo;a\u0026rsquo; \u0026lsquo;b\u0026rsquo; \u0026lsquo;j\u0026rsquo;-\u0026lsquo;o\u0026rsquo; \u0026lsquo;Z\u0026rsquo;]: character set with a range in it; ranges of characters \u0026lsquo;c1\u0026rsquo; - \u0026lsquo;c2\u0026rsquo; (all characters between c1 and c2, inclusive); in this case, the pattern matches an \u0026lsquo;a\u0026rsquo;, a \u0026lsquo;b\u0026rsquo;, any letter from \u0026lsquo;j\u0026rsquo; through \u0026lsquo;o\u0026rsquo;, or a \u0026lsquo;Z\u0026rsquo;. [^ \u0026lsquo;A\u0026rsquo;-\u0026lsquo;Z\u0026rsquo;]: a \u0026ldquo;negated character set\u0026rdquo;, i.e., any character but those in the class. In this case, any character EXCEPT an uppercase letter. [^ \u0026lsquo;A\u0026rsquo;-\u0026lsquo;Z\u0026rsquo; \u0026lsquo;\\n\u0026rsquo;]:any character EXCEPT an uppercase letter or a newline r*: zero or more r\u0026rsquo;s, where r is any regular expression r+: one or more r\u0026rsquo;s, where r is any regular expression r?: zero or one r\u0026rsquo;s, where r is any regular expression (that is, \u0026ldquo;an optional r\u0026rdquo;) ident: the expansion of the \u0026ldquo;ident\u0026rdquo; defined by an earlier let ident = regexp definition. (r): match an r; parentheses are used to override precedence (see below) rs: the regular expression r followed by the regular expression s; called \u0026ldquo;concatenation\u0026rdquo; r|s: either an r or an s r#s: match the difference of the two specified character sets. r as ident: bind the string matched by r to identifier ident  The regular expressions listed above are grouped according to precedence, from highest precedence at the top to lowest at the bottom; \u0026lsquo;*\u0026rsquo; and \u0026lsquo;+\u0026rsquo; have highest precedence, followed by \u0026lsquo;?\u0026rsquo;, \u0026lsquo;concatenation\u0026rsquo;, \u0026lsquo;|\u0026rsquo;, and then \u0026lsquo;as\u0026rsquo;. For example,\n\u0026quot;foo\u0026quot; | \u0026quot;bar\u0026quot;*  is the same as\n(\u0026quot;foo\u0026quot;)|(\u0026quot;bar\u0026quot;*)  since the \u0026lsquo;*\u0026rsquo; operator has higher precedence than than alternation (\u0026lsquo;|\u0026rsquo;). This pattern therefore matches either the string \u0026ldquo;foo\u0026rdquo; or zero-or-more of the string \u0026ldquo;bar\u0026rdquo;.\nTo match zero-or-more \u0026ldquo;foo\u0026rdquo;\u0026rsquo;s-or-\u0026ldquo;bar\u0026rdquo;\u0026rsquo;s:\n(\u0026quot;foo\u0026quot;|\u0026quot;bar\u0026quot;)*  A negated character set such as the example \u0026ldquo;[^ \u0026lsquo;A\u0026rsquo;-\u0026lsquo;Z\u0026rsquo;]\u0026rdquo; above will match a newline unless \u0026ldquo;\\n\u0026rdquo; (or an equivalent escape sequence) is one of the characters explicitly present in the negated character set (e.g., \u0026ldquo;[^ \u0026lsquo;A\u0026rsquo;-\u0026lsquo;Z\u0026rsquo; \u0026lsquo;\\n\u0026rsquo;]\u0026ldquo;). This is unlike how many other regular expression tools treat negated character set, but unfortunately the inconsistency is historically entrenched. Matching newlines means that a pattern like [^\u0026ldquo;]* can match the entire input unless there\u0026rsquo;s another quote in the input.\n"
 },
 {
-	"uri": "https://ohama.github.io/ocaml/ocamllex/05.howmatched/",
+	"uri": "https://ohama.github.io/ocaml/ocamllex-tutorial/05.howmatched/",
 	"title": "How the input is matched",
 	"tags": [],
 	"description": "",
 	"content": "When the generated scanner is run, it analyzes its input looking for strings which match any of its patterns. If it finds more than one match, it takes the one matching the most text (the \u0026ldquo;longest match\u0026rdquo; principle). If it finds two or more matches of the same length, the rule listed first in the ocamllex input file is chosen (the \u0026ldquo;first match\u0026rdquo; principle).\nOnce the match is determined, the text corresponding to the match (called the token) is made available in the form of a string. The action corresponding to the matched pattern is then executed (a more detailed description of actions follows), and then the remaining input is scanned for another match.\nIf no match is found, the scanner raises the Failure \u0026ldquo;lexing: empty token\u0026rdquo; exception.\nNow, let\u0026rsquo;s see the examples which shows how the patterns are applied.\nrule token = parse | \u0026quot;ding\u0026quot;\t{ print_endline \u0026quot;Ding\u0026quot; }\t(* \u0026quot;ding\u0026quot; pattern *) | ['a'-'z']+ as word\t(* \u0026quot;word\u0026quot; pattern *) { print_endline (\u0026quot;Word: \u0026quot; ^ word) } ...  When \u0026ldquo;ding\u0026rdquo; is given as an input, the ding and word pattern can be matched. ding pattern is selected because it comes before word pattern. So if you code like this:\nrule token = parse | ['a'-'z']+ as word\t(* \u0026quot;word\u0026quot; pattern *) { print_endline (\u0026quot;Word: \u0026quot; ^ word) } | \u0026quot;ding\u0026quot;\t{ print_endline \u0026quot;Ding\u0026quot; }\t(* \u0026quot;ding\u0026quot; pattern *) | ...  ding pattern will be useless.\nIn the following example, there are three patterns: ding, dong and dingdong.\nrule token = parse | \u0026quot;ding\u0026quot;\t{ print_endline \u0026quot;Ding\u0026quot; }\t(* \u0026quot;ding\u0026quot; pattern *) | \u0026quot;dong\u0026quot;\t{ print_endline \u0026quot;Dong\u0026quot; }\t(* \u0026quot;dong\u0026quot; pattern *) | \u0026quot;dingdong\u0026quot;\t{ print_endline \u0026quot;Ding-Dong\u0026quot; }\t(* \u0026quot;dingdong\u0026quot; pattern *) ...  When \u0026ldquo;dingdong\u0026rdquo; is given as an input, there are two choices: ding + dong pattern or dingdong pattern. But by the \u0026ldquo;longest match\u0026rdquo; principle, dingdong pattern will be selected.\nThough the \u0026ldquo;shortest match\u0026rdquo; principle is not used so frequently, ocamllex supports it. If you want to select the shortest prefix of the input, use shortest keyword instead of the parse keyword. The \u0026ldquo;first match\u0026rdquo; principle holds still with the \u0026ldquo;shortest match\u0026rdquo; principle.\n"
 },
 {
-	"uri": "https://ohama.github.io/ocaml/ocamllex/06.actions/",
+	"uri": "https://ohama.github.io/ocaml/ocamllex-tutorial/06.actions/",
 	"title": "Actions",
 	"tags": [],
 	"description": "",
 	"content": "Each pattern in a rule has a corresponding action, which can be any arbitrary Ocaml expression. For example, here is the specification for a program which deletes all occurrences of \u0026ldquo;zap me\u0026rdquo; from its input:\n{} rule token = parse | \u0026quot;zap me\u0026quot;\t{ token lexbuf }\t(* ignore this token: no processing and continue *) | _ as c\t{ print_char c; token lexbuf }   Here is a program which compresses multiple blanks and tabs down to a single blank, and throws away whitespace found at the end of a line: \n{} rule token = parse | [' ' '\\t']+\t{ print_char ' '; token lexbuf } | [' ' '\\t']+ '\\n'\t{ token lexbuf } (* ignore this token *)  Actions can include arbitrary Ocaml code which returns a value. Each time the lexical analyzer function is called it continues processing tokens from where it last left off until it either reaches the end of the file.\nActions are evaluated after the lexbuf is bound to the current lexer buffer and the identifer following the keyword as to the matched string. The usage of lexbuf is provided by the Lexing standard library module;\n Lexing.lexeme lexbuf: Return the matched string. Lexing.lexeme_char lexbuf n: Return the _n_th character in the matched string. The index number of the first character starts from 0.\n Lexing.lexeme_start lexbuf\n Lexing.lexeme_end lexbuf: Return the absolute position in the input text of the beginning/end of the matched string. The position of the first character is 0.\n Lexing.lexeme_start_p lexbuf\n Lexing.lexeme_end_p lexbuf: (Since Ocaml 3.08) Return the position of type _position (See Position).\n entrypoint [exp1\u0026hellip; expn] lexbuf: Call the other lexer on the given entry point. Notice that lexbuf is the last argument.\n  "
 },
 {
-	"uri": "https://ohama.github.io/ocaml/ocamllex/07.generatedscanner/",
+	"uri": "https://ohama.github.io/ocaml/ocamllex-tutorial/07.generatedscanner/",
 	"title": "The generted scanner",
 	"tags": [],
 	"description": "",
 	"content": "The output of ocamllex is the file lex.ml when it is invoked as ocamllex lex.mll. The generated file contains the scanning functions, a number of tables used by it for matching tokens, and a number of auxiliary routines. The scanning functions are declared as followings:\nlet \u0026lt;entrypoint\u0026gt; [arg1... argn] lexbuf = ... and ...  where the fuction entrypoint has n + 1 arguments. n arguments come from the definition of the rules secton. And the resulting scanning function has one more argument named lexbuf of Lexing.lexbuf type as the last one.\nWhenever entrypoint is called, it scans tokens from the lexbuf argument. When it finds a match in patterns, it executes the corresponding action and returns. If you want to continue the lexical analyze after evaluating of the action, you must call the scanning function recursively.\n"
 },
 {
-	"uri": "https://ohama.github.io/ocaml/ocamllex/08.startcondition/",
+	"uri": "https://ohama.github.io/ocaml/ocamllex-tutorial/08.startcondition/",
 	"title": "8. Start conditions",
 	"tags": [],
 	"description": "",
 	"content": " Introduction Ocamlyacc is a general-purpose parser generator that converts a grammar description for an LALR(1) context-free grammar into a Ocaml program to parse that grammar. Once you are proficient with Ocamlyacc, you may use it to develop a wide range of language parsers, from those used in simple desk calculators to complex programming languages.\nOcamlyacc is very close to the well-known yacc (or bison) commands that can be found in most C programming environments. Anyone familiar with Yacc should be able to use Ocamlyacc with little trouble. You need to be fluent in Ocaml programming in order to use Ocamlyacc or to understand this manual.\nWe begin with tutorial chapters that explain the basic concepts of using Ocamlyacc and show three explained examples, each building on the last. If you don\u0026rsquo;t know Ocamlyacc or Yacc, start by reading these chapters. Reference chapters follow which describe specific aspects of Ocamlyacc in detail.\nSome explanation is not suitable for the earlier version than 3.08 of Ocaml (Ocamlyacc), in that case, there will be comments like \u0026ldquo;(Since Ocaml 3.08)\u0026rdquo;.\n"
 },
 {
-	"uri": "https://ohama.github.io/ocaml/ocamllex/09.interfacewithocamlyacc/",
+	"uri": "https://ohama.github.io/ocaml/ocamllex-tutorial/09.interfacewithocamlyacc/",
 	"title": "9. Interfacing with ocamlyacc",
 	"tags": [],
 	"description": "",
 	"content": " Introduction Ocamlyacc is a general-purpose parser generator that converts a grammar description for an LALR(1) context-free grammar into a Ocaml program to parse that grammar. Once you are proficient with Ocamlyacc, you may use it to develop a wide range of language parsers, from those used in simple desk calculators to complex programming languages.\nOcamlyacc is very close to the well-known yacc (or bison) commands that can be found in most C programming environments. Anyone familiar with Yacc should be able to use Ocamlyacc with little trouble. You need to be fluent in Ocaml programming in order to use Ocamlyacc or to understand this manual.\nWe begin with tutorial chapters that explain the basic concepts of using Ocamlyacc and show three explained examples, each building on the last. If you don\u0026rsquo;t know Ocamlyacc or Yacc, start by reading these chapters. Reference chapters follow which describe specific aspects of Ocamlyacc in detail.\nSome explanation is not suitable for the earlier version than 3.08 of Ocaml (Ocamlyacc), in that case, there will be comments like \u0026ldquo;(Since Ocaml 3.08)\u0026rdquo;.\n"
 },
 {
-	"uri": "https://ohama.github.io/ocaml/ocamllex/10.options/",
+	"uri": "https://ohama.github.io/ocaml/ocamllex-tutorial/10.options/",
 	"title": "10. Options",
 	"tags": [],
 	"description": "",
 	"content": " Introduction Ocamlyacc is a general-purpose parser generator that converts a grammar description for an LALR(1) context-free grammar into a Ocaml program to parse that grammar. Once you are proficient with Ocamlyacc, you may use it to develop a wide range of language parsers, from those used in simple desk calculators to complex programming languages.\nOcamlyacc is very close to the well-known yacc (or bison) commands that can be found in most C programming environments. Anyone familiar with Yacc should be able to use Ocamlyacc with little trouble. You need to be fluent in Ocaml programming in order to use Ocamlyacc or to understand this manual.\nWe begin with tutorial chapters that explain the basic concepts of using Ocamlyacc and show three explained examples, each building on the last. If you don\u0026rsquo;t know Ocamlyacc or Yacc, start by reading these chapters. Reference chapters follow which describe specific aspects of Ocamlyacc in detail.\nSome explanation is not suitable for the earlier version than 3.08 of Ocaml (Ocamlyacc), in that case, there will be comments like \u0026ldquo;(Since Ocaml 3.08)\u0026rdquo;.\n"
 },
 {
-	"uri": "https://ohama.github.io/ocaml/ocamllex/11.usagetips/",
+	"uri": "https://ohama.github.io/ocaml/ocamllex-tutorial/11.usagetips/",
 	"title": "11. Usage tips",
 	"tags": [],
 	"description": "",
 	"content": " Introduction Ocamlyacc is a general-purpose parser generator that converts a grammar description for an LALR(1) context-free grammar into a Ocaml program to parse that grammar. Once you are proficient with Ocamlyacc, you may use it to develop a wide range of language parsers, from those used in simple desk calculators to complex programming languages.\nOcamlyacc is very close to the well-known yacc (or bison) commands that can be found in most C programming environments. Anyone familiar with Yacc should be able to use Ocamlyacc with little trouble. You need to be fluent in Ocaml programming in order to use Ocamlyacc or to understand this manual.\nWe begin with tutorial chapters that explain the basic concepts of using Ocamlyacc and show three explained examples, each building on the last. If you don\u0026rsquo;t know Ocamlyacc or Yacc, start by reading these chapters. Reference chapters follow which describe specific aspects of Ocamlyacc in detail.\nSome explanation is not suitable for the earlier version than 3.08 of Ocaml (Ocamlyacc), in that case, there will be comments like \u0026ldquo;(Since Ocaml 3.08)\u0026rdquo;.\n"
 },
 {
-	"uri": "https://ohama.github.io/ocaml/ocamllex/12.examples/",
+	"uri": "https://ohama.github.io/ocaml/ocamllex-tutorial/12.examples/",
 	"title": "12. Examples",
 	"tags": [],
 	"description": "",
 	"content": " Introduction Ocamlyacc is a general-purpose parser generator that converts a grammar description for an LALR(1) context-free grammar into a Ocaml program to parse that grammar. Once you are proficient with Ocamlyacc, you may use it to develop a wide range of language parsers, from those used in simple desk calculators to complex programming languages.\nOcamlyacc is very close to the well-known yacc (or bison) commands that can be found in most C programming environments. Anyone familiar with Yacc should be able to use Ocamlyacc with little trouble. You need to be fluent in Ocaml programming in order to use Ocamlyacc or to understand this manual.\nWe begin with tutorial chapters that explain the basic concepts of using Ocamlyacc and show three explained examples, each building on the last. If you don\u0026rsquo;t know Ocamlyacc or Yacc, start by reading these chapters. Reference chapters follow which describe specific aspects of Ocamlyacc in detail.\nSome explanation is not suitable for the earlier version than 3.08 of Ocaml (Ocamlyacc), in that case, there will be comments like \u0026ldquo;(Since Ocaml 3.08)\u0026rdquo;.\n"
 },
 {
-	"uri": "https://ohama.github.io/ocaml/ocamllex/13.license/",
+	"uri": "https://ohama.github.io/ocaml/ocamllex-tutorial/13.license/",
 	"title": "13. License",
 	"tags": [],
 	"description": "",
@@ -196,7 +196,7 @@
 	"content": ""
 },
 {
-	"uri": "https://ohama.github.io/ocaml/ocamlyacc/concepts/languages/",
+	"uri": "https://ohama.github.io/ocaml/ocamlyacc-tutorial/concepts/languages/",
 	"title": "Languages",
 	"tags": [],
 	"description": "",

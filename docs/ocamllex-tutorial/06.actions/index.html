@@ -9,7 +9,7 @@
 
     <link rel="icon" href="/ocaml/images/favicon.png" type="image/png">
 
-    <title> :: Documentation for Hugo Learn Theme</title>
+    <title>Actions :: Documentation for Hugo Learn Theme</title>
 
     
     <link href="/ocaml/css/nucleus.css?1557269227" rel="stylesheet">
@@ -39,7 +39,7 @@
     </style>
     
   </head>
-  <body class="" data-url="/ocaml/readme/">
+  <body class="" data-url="/ocaml/ocamllex-tutorial/06.actions/">
     <nav id="sidebar" class="">
 
 
@@ -118,7 +118,7 @@
   
     
     <li data-nav-id="/ocaml/ocamllex-tutorial/" title="Ocamllex Tutorial" class="dd-item 
-        
+        parent
         
         
         ">
@@ -240,8 +240,8 @@
   
     
     <li data-nav-id="/ocaml/ocamllex-tutorial/06.actions/" title="Actions" class="dd-item 
-        
-        
+        parent
+        active
         
         ">
       <a href="/ocaml/ocamllex-tutorial/06.actions/">
@@ -777,8 +777,6 @@
                         </a>
                     </span>
                   
-                  <span id="toc-menu"><i class="fas fa-list-alt"></i></span>
-                  
                   <span class="links">
                  
                  
@@ -789,7 +787,13 @@
             
           
           
-            <a href='/ocaml/'>Introduction</a> > 
+            
+            
+          
+          
+            <a href='/ocaml/'>Introduction</a> > <a href='/ocaml/ocamllex-tutorial/'>Ocamllex Tutorial</a> > Actions
+          
+         
           
          
           
@@ -798,13 +802,6 @@
                   </span>
                 </div>
                 
-                    <div class="progress">
-    <div class="wrapper">
-
-    </div>
-</div>
-
-                
               </div>
             </div>
             
@@ -812,15 +809,63 @@
         
         </div>
         
+          <div id="chapter">
+        
         <div id="body-inner">
-          
-            <h1>
-              
-              
-            </h1>
           
 
         
+
+
+
+
+	<p>Each pattern in a rule has a corresponding action, which can be any
+arbitrary Ocaml expression.
+For example, here is the specification for a program
+which deletes all occurrences of &ldquo;zap me&rdquo; from its input:</p>
+
+<pre><code>{}
+rule token = parse
+  | &quot;zap me&quot;	{ token lexbuf }	(* ignore this token: no processing and continue *)
+  | _ as c	{ print_char c; token lexbuf }
+</code></pre>
+
+<p><para>
+   Here is a program which compresses multiple blanks and tabs down to
+a single blank, and throws away whitespace found at the end of a line:
+</para></p>
+
+<pre><code>{}
+rule token = parse
+  | [' ' '\t']+		{ print_char ' '; token lexbuf }
+  | [' ' '\t']+ '\n'	{ token lexbuf }      (* ignore this token *)
+</code></pre>
+
+<p>Actions can include arbitrary Ocaml code which returns a value.
+Each time the lexical analyzer function is called
+it continues processing tokens from where it last
+left off until it either reaches the end of the file.</p>
+
+<p>Actions are evaluated
+after the <literal>lexbuf</literal> is bound to the current lexer buffer and
+the identifer following the keyword <em>as</em> to the matched string.
+The usage of <em>lexbuf</em> is provided by the Lexing standard library module;</p>
+
+<ul>
+<li><strong>Lexing.lexeme lexbuf</strong>: Return the matched string.</li>
+
+<li><p><strong>Lexing.lexeme_char lexbuf n</strong>: Return the _n_th character in the matched string.  The index number of the first character starts from 0.</p></li>
+
+<li><p><strong>Lexing.lexeme_start lexbuf</strong></p></li>
+
+<li><p><strong>Lexing.lexeme_end lexbuf</strong>: Return the absolute position in the input text of the beginning/end of the matched string. The position of the first character is 0.</p></li>
+
+<li><p><strong>Lexing.lexeme_start_p lexbuf</strong></p></li>
+
+<li><p><strong>Lexing.lexeme_end_p lexbuf</strong>: (Since Ocaml 3.08) Return the position of type _position (See <link linkend="sec-position">Position</link>).</p></li>
+
+<li><p><strong>entrypoint [exp1&hellip; expn] lexbuf</strong>: Call the other lexer on the given entry point.  Notice that <em>lexbuf</em> is the last argument.</p></li>
+</ul>
 
 
 
@@ -830,7 +875,8 @@
 	
 </footer>
 
-
+        
+            </div> 
         
         </div> 
         
@@ -880,8 +926,6 @@
             
                 
                     
-                        
-                        
                     
                 
                 
@@ -897,6 +941,9 @@
             
             
                 
+                    
+                        
+                        
                     
                 
                 
@@ -978,6 +1025,7 @@
             
                 
                     
+                    
                 
                 
 
@@ -990,6 +1038,9 @@
             
             
                 
+                    
+                        
+                        
                     
                 
                 
@@ -1342,4 +1393,3 @@
 </script>
   </body>
 </html>
-

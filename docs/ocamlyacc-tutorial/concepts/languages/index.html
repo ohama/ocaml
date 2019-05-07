@@ -9,7 +9,7 @@
 
     <link rel="icon" href="/ocaml/images/favicon.png" type="image/png">
 
-    <title> :: Documentation for Hugo Learn Theme</title>
+    <title>Languages :: Documentation for Hugo Learn Theme</title>
 
     
     <link href="/ocaml/css/nucleus.css?1557269227" rel="stylesheet">
@@ -39,7 +39,7 @@
     </style>
     
   </head>
-  <body class="" data-url="/ocaml/readme/">
+  <body class="" data-url="/ocaml/ocamlyacc-tutorial/concepts/languages/">
     <nav id="sidebar" class="">
 
 
@@ -611,7 +611,7 @@
   
     
     <li data-nav-id="/ocaml/ocamlyacc-tutorial/" title="Ocamlyacc Tutorial" class="dd-item 
-        
+        parent
         
         
         ">
@@ -662,7 +662,7 @@
   
     
     <li data-nav-id="/ocaml/ocamlyacc-tutorial/concepts/" title="Concepts of ocamlyacc" class="dd-item 
-        
+        parent
         
         
         ">
@@ -686,7 +686,7 @@
  
   
     
-      <li data-nav-id="/ocaml/ocamlyacc-tutorial/concepts/languages/" title="Languages" class="dd-item ">
+      <li data-nav-id="/ocaml/ocamlyacc-tutorial/concepts/languages/" title="Languages" class="dd-item active">
         <a href="/ocaml/ocamlyacc-tutorial/concepts/languages/">
         Languages
         
@@ -789,7 +789,19 @@
             
           
           
-            <a href='/ocaml/'>Introduction</a> > 
+            
+            
+          
+          
+            
+            
+          
+          
+            <a href='/ocaml/'>Introduction</a> > <a href='/ocaml/ocamlyacc-tutorial/'>Ocamlyacc Tutorial</a> > <a href='/ocaml/ocamlyacc-tutorial/concepts/'>Concepts of ocamlyacc</a> > Languages
+          
+         
+          
+         
           
          
           
@@ -800,7 +812,17 @@
                 
                     <div class="progress">
     <div class="wrapper">
-
+<nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li>
+<ul>
+<li><a href="#languages-and-context-free-grammars">Languages and Context-Free Grammars</a></li>
+</ul></li>
+</ul></li>
+</ul>
+</nav>
     </div>
 </div>
 
@@ -816,7 +838,7 @@
           
             <h1>
               
-              
+              Languages
             </h1>
           
 
@@ -824,6 +846,99 @@
 
 
 
+
+
+<h3 id="languages-and-context-free-grammars">Languages and Context-Free Grammars</h3>
+
+<p>In order for Ocamlyacc to parse a language, it must be described by a
+<em>context-free grammar</em>.  This means that you specify one or more
+<em>syntactic groupings</em> and give rules for constructing them from their
+parts.  For example, in the C language, one kind of grouping is called an
+<code>expression'.  One rule for making an expression might be,</code><code>An expression
+can be made of a minus sign and another expression''.  Another would be,
+</code>`An expression can be an integer&rdquo;.  As you can see, rules are often
+recursive, but there must be at least one rule which leads out of the
+recursion.</p>
+
+<p>The most common formal system for presenting such rules for humans to read
+is <em>Backus-Naur Form</em> or ``BNF&rdquo;, which was developed in order to
+specify the language Algol 60.  Any grammar expressed in BNF is a
+context-free grammar.  The input to Ocamlyacc is essentially machine-readable
+BNF.</p>
+
+<p>Not all context-free languages can be handled by Ocamlyacc, only those
+that are LALR(1).  In brief, this means that it must be possible to
+tell how to parse any portion of an input string with just a single
+token of look-ahead.  Strictly speaking, that is a description of an
+LR(1) grammar, and LALR(1) involves additional restrictions that are
+hard to explain simply; but it is rare in actual practice to find an
+LR(1) grammar that fails to be LALR(1).
+See <link linkend="sec-mysterious-reduce-reduce-conflicts">Mysterious
+Reduce/Reduce Conflicts</link>,
+for more information on this.</p>
+
+<p>In the formal grammatical rules for a language, each kind of syntactic unit
+or grouping is named by a <em>symbol</em>.  Those which are built by grouping
+smaller constructs according to grammatical rules are called
+<em>nonterminal symbols</em>; those which can&rsquo;t be subdivided are called
+<em>terminal symbols</em> or <em>token types</em>.  We call a piece of input
+corresponding to a single terminal symbol a &ldquo;token&rdquo;, and a piece
+corresponding to a single nonterminal symbol a <em>grouping</em>.</p>
+
+<p>We can use the C language as an example of what symbols, terminal and
+nonterminal, mean.  The tokens of C are identifiers, constants (numeric and
+string), and the various keywords, arithmetic operators and punctuation
+marks.  So the terminal symbols of a grammar for C include <code>identifier',
+</code>number&rsquo;, <code>string', plus one symbol for each keyword, operator or
+punctuation mark:</code>if&rsquo;, <code>return',</code>const&rsquo;, <code>static',</code>int&rsquo;, <code>char',
+</code>plus-sign&rsquo;, <code>open-brace',</code>close-brace&rsquo;, `comma&rsquo; and many more.  (These
+tokens can be subdivided into characters, but that is a matter of
+lexicography, not grammar.)</p>
+
+<p>Here is a simple C function subdivided into tokens:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-C" data-lang="C"><span style="color:#8be9fd">int</span>             <span style="color:#6272a4">/* keyword `int&#39; */</span>
+square (<span style="color:#8be9fd">int</span> x)  <span style="color:#6272a4">/* identifier, open-paren, identifier, identifier, close-paren */</span>
+{               <span style="color:#6272a4">/* open-brace */</span>
+  <span style="color:#ff79c6">return</span> x <span style="color:#ff79c6">*</span> x; <span style="color:#6272a4">/* keyword `return&#39;, identifier, asterisk, identifier, semicolon */</span>
+}               <span style="color:#6272a4">/* close-brace */</span></code></pre></div>
+<p>The syntactic groupings of C include the expression, the statement, the
+declaration, and the function definition.  These are represented in the
+grammar of C by nonterminal symbols <code>expression',</code>statement&rsquo;,
+<code>declaration' and</code>function definition&rsquo;.  The full grammar uses dozens of
+additional language constructs, each with its own nonterminal symbol, in
+order to express the meanings of these four.  The example above is a
+function definition; it contains one declaration, and one statement.  In
+the statement, each &ldquo;x&rdquo; is an expression and so is &ldquo;x * x&rdquo;.</p>
+
+<p>Each nonterminal symbol must have grammatical rules showing how it is made
+out of simpler constructs.  For example, one kind of C statement is the
+&ldquo;return&rdquo; statement; this would be described with a grammar rule which
+reads informally as follows:</p>
+
+<pre><code>A `statement' can be made of a `return' keyword, an `expression' and a `semicolon'.
+</code></pre>
+
+<p>There would be many other rules for `statement&rsquo;, one for each kind of
+statement in C.</p>
+
+<p>One nonterminal symbol must be distinguished as the special one which
+defines a complete utterance in the language.  It is called the <em>start
+symbol</em>.
+In a compiler, this means a complete input program.  In the C
+language, the nonterminal symbol `sequence of definitions and declarations&rsquo;
+plays this role.</p>
+
+<p>For example, &ldquo;1 + 2&rdquo; is a valid C expression&mdash;a valid part of a C
+program&mdash;but it is not valid as an <em>entire</em> C program.  In the
+context-free grammar of C, this follows from the fact that `expression&rsquo; is
+not the start symbol.</p>
+
+<p>The Ocamlyacc parser reads a sequence of tokens as its input, and groups the
+tokens using the grammar rules.  If the input is valid, the end result is
+that the entire token sequence reduces to a single grouping whose symbol is
+the grammar&rsquo;s start symbol.  If we use a grammar for C, the entire input
+must be a `sequence of definitions and declarations&rsquo;.  If not, the parser
+reports a syntax error.</p>
 
 
 <footer class=" footline" >
@@ -1237,6 +1352,7 @@
             
                 
                     
+                    
                 
                 
 
@@ -1251,6 +1367,9 @@
             
             
                 
+                    
+                        
+                        
                     
                 
                 
@@ -1268,6 +1387,7 @@
             
                 
                     
+                    
                 
                 
 
@@ -1280,6 +1400,7 @@
             
             
                 
+                    
                     
                 
                 

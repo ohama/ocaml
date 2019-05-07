@@ -9,23 +9,23 @@
 
     <link rel="icon" href="/ocaml/images/favicon.png" type="image/png">
 
-    <title> :: Documentation for Hugo Learn Theme</title>
+    <title>Introduction :: Documentation for Hugo Learn Theme</title>
 
     
-    <link href="/ocaml/css/nucleus.css?1557269227" rel="stylesheet">
-    <link href="/ocaml/css/fontawesome-all.min.css?1557269227" rel="stylesheet">
-    <link href="/ocaml/css/hybrid.css?1557269227" rel="stylesheet">
-    <link href="/ocaml/css/featherlight.min.css?1557269227" rel="stylesheet">
-    <link href="/ocaml/css/perfect-scrollbar.min.css?1557269227" rel="stylesheet">
-    <link href="/ocaml/css/auto-complete.css?1557269227" rel="stylesheet">
-    <link href="/ocaml/css/atom-one-dark-reasonable.css?1557269227" rel="stylesheet">
-    <link href="/ocaml/css/theme.css?1557269227" rel="stylesheet">
-    <link href="/ocaml/css/hugo-theme.css?1557269227" rel="stylesheet">
+    <link href="/ocaml/css/nucleus.css?1557269226" rel="stylesheet">
+    <link href="/ocaml/css/fontawesome-all.min.css?1557269226" rel="stylesheet">
+    <link href="/ocaml/css/hybrid.css?1557269226" rel="stylesheet">
+    <link href="/ocaml/css/featherlight.min.css?1557269226" rel="stylesheet">
+    <link href="/ocaml/css/perfect-scrollbar.min.css?1557269226" rel="stylesheet">
+    <link href="/ocaml/css/auto-complete.css?1557269226" rel="stylesheet">
+    <link href="/ocaml/css/atom-one-dark-reasonable.css?1557269226" rel="stylesheet">
+    <link href="/ocaml/css/theme.css?1557269226" rel="stylesheet">
+    <link href="/ocaml/css/hugo-theme.css?1557269226" rel="stylesheet">
     
-      <link href="/ocaml/css/theme-green.css?1557269227" rel="stylesheet">
+      <link href="/ocaml/css/theme-green.css?1557269226" rel="stylesheet">
     
 
-    <script src="/ocaml/js/jquery-3.3.1.min.js?1557269227"></script>
+    <script src="/ocaml/js/jquery-3.3.1.min.js?1557269226"></script>
 
     <style type="text/css">
       :root #header + #content > #left > #rlblock_left{
@@ -39,7 +39,7 @@
     </style>
     
   </head>
-  <body class="" data-url="/ocaml/readme/">
+  <body class="" data-url="/ocaml/ocamlyacc-tutorial/introduction/">
     <nav id="sidebar" class="">
 
 
@@ -94,14 +94,14 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="/ocaml/js/lunr.min.js?1557269227"></script>
-<script type="text/javascript" src="/ocaml/js/auto-complete.js?1557269227"></script>
+<script type="text/javascript" src="/ocaml/js/lunr.min.js?1557269226"></script>
+<script type="text/javascript" src="/ocaml/js/auto-complete.js?1557269226"></script>
 <script type="text/javascript">
     
         var baseurl = "https:\/\/ohama.github.io\/ocaml";
     
 </script>
-<script type="text/javascript" src="/ocaml/js/search.js?1557269227"></script>
+<script type="text/javascript" src="/ocaml/js/search.js?1557269226"></script>
 
     
   </div>
@@ -611,7 +611,7 @@
   
     
     <li data-nav-id="/ocaml/ocamlyacc-tutorial/" title="Ocamlyacc Tutorial" class="dd-item 
-        
+        parent
         
         
         ">
@@ -638,8 +638,8 @@
   
     
     <li data-nav-id="/ocaml/ocamlyacc-tutorial/introduction/" title="Introduction" class="dd-item 
-        
-        
+        parent
+        active
         
         ">
       <a href="/ocaml/ocamlyacc-tutorial/introduction/">
@@ -789,7 +789,13 @@
             
           
           
-            <a href='/ocaml/'>Introduction</a> > 
+            
+            
+          
+          
+            <a href='/ocaml/'>Introduction</a> > <a href='/ocaml/ocamlyacc-tutorial/'>Ocamlyacc Tutorial</a> > Introduction
+          
+         
           
          
           
@@ -800,7 +806,14 @@
                 
                     <div class="progress">
     <div class="wrapper">
-
+<nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#introduction">Introduction</a></li>
+</ul></li>
+</ul>
+</nav>
     </div>
 </div>
 
@@ -816,7 +829,7 @@
           
             <h1>
               
-              
+              Introduction
             </h1>
           
 
@@ -825,11 +838,37 @@
 
 
 
+	
+
+<h2 id="introduction">Introduction</h2>
+
+<p><em>Ocamlyacc</em> is a general-purpose parser generator that converts a
+grammar description for an LALR(1) context-free grammar into a Ocaml
+program to parse that grammar.  Once you are proficient with Ocamlyacc,
+you may use it to develop a wide range of language parsers, from those
+used in simple desk calculators to complex programming languages.</p>
+
+<p>Ocamlyacc is very close to the well-known yacc (or bison) commands
+that can be found in most C programming environments.
+Anyone familiar with Yacc
+should be able to use Ocamlyacc with little trouble.  You need to be fluent in
+Ocaml programming in order to use Ocamlyacc or to understand this manual.</p>
+
+<p>We begin with tutorial chapters that explain the basic concepts of using
+Ocamlyacc and show three explained examples, each building on the last.  If you
+don&rsquo;t know Ocamlyacc or Yacc, start by reading these chapters.  Reference
+chapters follow which describe specific aspects of Ocamlyacc in detail.</p>
+
+<p>Some explanation is not suitable for the earlier version than 3.08 of Ocaml (Ocamlyacc),
+in that case, there will be comments like &ldquo;<emphasis>(Since Ocaml 3.08)</emphasis>&rdquo;.</p>
+
+
+
+
 
 <footer class=" footline" >
 	
 </footer>
-
 
         
         </div> 
@@ -1237,6 +1276,7 @@
             
                 
                     
+                    
                 
                 
 
@@ -1251,6 +1291,7 @@
             
             
                 
+                    
                     
                 
                 
@@ -1267,6 +1308,9 @@
             
             
                 
+                    
+                        
+                        
                     
                 
                 
@@ -1313,20 +1357,20 @@
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="/ocaml/js/clipboard.min.js?1557269227"></script>
-    <script src="/ocaml/js/perfect-scrollbar.min.js?1557269227"></script>
-    <script src="/ocaml/js/perfect-scrollbar.jquery.min.js?1557269227"></script>
-    <script src="/ocaml/js/jquery.sticky.js?1557269227"></script>
-    <script src="/ocaml/js/featherlight.min.js?1557269227"></script>
-    <script src="/ocaml/js/html5shiv-printshiv.min.js?1557269227"></script>
-    <script src="/ocaml/js/highlight.pack.js?1557269227"></script>
+    <script src="/ocaml/js/clipboard.min.js?1557269226"></script>
+    <script src="/ocaml/js/perfect-scrollbar.min.js?1557269226"></script>
+    <script src="/ocaml/js/perfect-scrollbar.jquery.min.js?1557269226"></script>
+    <script src="/ocaml/js/jquery.sticky.js?1557269226"></script>
+    <script src="/ocaml/js/featherlight.min.js?1557269226"></script>
+    <script src="/ocaml/js/html5shiv-printshiv.min.js?1557269226"></script>
+    <script src="/ocaml/js/highlight.pack.js?1557269226"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="/ocaml/js/modernizr.custom-3.6.0.js?1557269227"></script>
-    <script src="/ocaml/js/learn.js?1557269227"></script>
-    <script src="/ocaml/js/hugo-learn.js?1557269227"></script>
+    <script src="/ocaml/js/modernizr.custom-3.6.0.js?1557269226"></script>
+    <script src="/ocaml/js/learn.js?1557269226"></script>
+    <script src="/ocaml/js/hugo-learn.js?1557269226"></script>
 
-    <link href="/ocaml/mermaid/mermaid.css?1557269227" type="text/css" rel="stylesheet" />
-    <script src="/ocaml/mermaid/mermaid.js?1557269227"></script>
+    <link href="/ocaml/mermaid/mermaid.css?1557269226" type="text/css" rel="stylesheet" />
+    <script src="/ocaml/mermaid/mermaid.js?1557269226"></script>
     <script>
         mermaid.initialize({ startOnLoad: true });
     </script>
@@ -1342,4 +1386,3 @@
 </script>
   </body>
 </html>
-

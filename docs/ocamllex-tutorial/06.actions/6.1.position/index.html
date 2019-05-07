@@ -9,23 +9,23 @@
 
     <link rel="icon" href="/ocaml/images/favicon.png" type="image/png">
 
-    <title> :: Documentation for Hugo Learn Theme</title>
+    <title>Position :: Documentation for Hugo Learn Theme</title>
 
     
-    <link href="/ocaml/css/nucleus.css?1557269227" rel="stylesheet">
-    <link href="/ocaml/css/fontawesome-all.min.css?1557269227" rel="stylesheet">
-    <link href="/ocaml/css/hybrid.css?1557269227" rel="stylesheet">
-    <link href="/ocaml/css/featherlight.min.css?1557269227" rel="stylesheet">
-    <link href="/ocaml/css/perfect-scrollbar.min.css?1557269227" rel="stylesheet">
-    <link href="/ocaml/css/auto-complete.css?1557269227" rel="stylesheet">
-    <link href="/ocaml/css/atom-one-dark-reasonable.css?1557269227" rel="stylesheet">
-    <link href="/ocaml/css/theme.css?1557269227" rel="stylesheet">
-    <link href="/ocaml/css/hugo-theme.css?1557269227" rel="stylesheet">
+    <link href="/ocaml/css/nucleus.css?1557269226" rel="stylesheet">
+    <link href="/ocaml/css/fontawesome-all.min.css?1557269226" rel="stylesheet">
+    <link href="/ocaml/css/hybrid.css?1557269226" rel="stylesheet">
+    <link href="/ocaml/css/featherlight.min.css?1557269226" rel="stylesheet">
+    <link href="/ocaml/css/perfect-scrollbar.min.css?1557269226" rel="stylesheet">
+    <link href="/ocaml/css/auto-complete.css?1557269226" rel="stylesheet">
+    <link href="/ocaml/css/atom-one-dark-reasonable.css?1557269226" rel="stylesheet">
+    <link href="/ocaml/css/theme.css?1557269226" rel="stylesheet">
+    <link href="/ocaml/css/hugo-theme.css?1557269226" rel="stylesheet">
     
-      <link href="/ocaml/css/theme-green.css?1557269227" rel="stylesheet">
+      <link href="/ocaml/css/theme-green.css?1557269226" rel="stylesheet">
     
 
-    <script src="/ocaml/js/jquery-3.3.1.min.js?1557269227"></script>
+    <script src="/ocaml/js/jquery-3.3.1.min.js?1557269226"></script>
 
     <style type="text/css">
       :root #header + #content > #left > #rlblock_left{
@@ -39,7 +39,7 @@
     </style>
     
   </head>
-  <body class="" data-url="/ocaml/readme/">
+  <body class="" data-url="/ocaml/ocamllex-tutorial/06.actions/6.1.position/">
     <nav id="sidebar" class="">
 
 
@@ -94,14 +94,14 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="/ocaml/js/lunr.min.js?1557269227"></script>
-<script type="text/javascript" src="/ocaml/js/auto-complete.js?1557269227"></script>
+<script type="text/javascript" src="/ocaml/js/lunr.min.js?1557269226"></script>
+<script type="text/javascript" src="/ocaml/js/auto-complete.js?1557269226"></script>
 <script type="text/javascript">
     
         var baseurl = "https:\/\/ohama.github.io\/ocaml";
     
 </script>
-<script type="text/javascript" src="/ocaml/js/search.js?1557269227"></script>
+<script type="text/javascript" src="/ocaml/js/search.js?1557269226"></script>
 
     
   </div>
@@ -118,7 +118,7 @@
   
     
     <li data-nav-id="/ocaml/ocamllex-tutorial/" title="Ocamllex Tutorial" class="dd-item 
-        
+        parent
         
         
         ">
@@ -240,7 +240,7 @@
   
     
     <li data-nav-id="/ocaml/ocamllex-tutorial/06.actions/" title="Actions" class="dd-item 
-        
+        parent
         
         
         ">
@@ -264,7 +264,7 @@
  
   
     
-      <li data-nav-id="/ocaml/ocamllex-tutorial/06.actions/6.1.position/" title="Position" class="dd-item ">
+      <li data-nav-id="/ocaml/ocamllex-tutorial/06.actions/6.1.position/" title="Position" class="dd-item active">
         <a href="/ocaml/ocamllex-tutorial/06.actions/6.1.position/">
         6.1 Position
         
@@ -789,7 +789,19 @@
             
           
           
-            <a href='/ocaml/'>Introduction</a> > 
+            
+            
+          
+          
+            
+            
+          
+          
+            <a href='/ocaml/'>Introduction</a> > <a href='/ocaml/ocamllex-tutorial/'>Ocamllex Tutorial</a> > <a href='/ocaml/ocamllex-tutorial/06.actions/'>Actions</a> > Position
+          
+         
+          
+         
           
          
           
@@ -816,7 +828,7 @@
           
             <h1>
               
-              
+              Position
             </h1>
           
 
@@ -824,6 +836,39 @@
 
 
 
+<div class="notices info" >
+Since Ocaml 3.08
+</div>
+
+<p>The position information on scanning the input text is recorded
+in the <em>lexbuf</em>
+which has a field <em>lex_curr_p</em> of the type <em>position</em>:</p>
+
+<pre><code>  type position = {
+     pos_fname : string;		(* file name *)
+     pos_lnum : int;		(* line number *)
+     pos_bol : int;		(* the offset of the beginning of the line *)
+     pos_cnum : int;		(* the offset of the position *)
+  } 
+</code></pre>
+
+<p>The value of <em>pos_bol</em> field is the number of characters between the beginning of the file and the beginning of the line
+while the value of <em>pos_cnum</em> field is the number of characters between the beginning of the file and the position.</p>
+
+<p>The lexing engine manages only the <em>pos_cnum</em> field of
+<em>lexbuf.lex_curr_p</em> with the number of characters read
+from the start of <em>lexbuf</em>. So you are reponsible for the other fields to be accurate.
+Typically, whenever the lexer meets a newline character,
+the action contains a call to the following function:</p>
+
+<pre><code>  let incr_linenum lexbuf =
+    let pos = lexbuf.Lexing.lex_curr_p in
+    lexbuf.Lexing.lex_curr_p &amp;lt;- { pos with
+      Lexing.pos_lnum = pos.Lexing.pos_lnum + 1;
+      Lexing.pos_bol = pos.Lexing.pos_cnum;
+    }
+  ;;
+</code></pre>
 
 
 <footer class=" footline" >
@@ -880,8 +925,6 @@
             
                 
                     
-                        
-                        
                     
                 
                 
@@ -897,6 +940,9 @@
             
             
                 
+                    
+                        
+                        
                     
                 
                 
@@ -978,6 +1024,7 @@
             
                 
                     
+                    
                 
                 
 
@@ -990,6 +1037,7 @@
             
             
                 
+                    
                     
                 
                 
@@ -1009,6 +1057,9 @@
             
             
                 
+                    
+                        
+                        
                     
                 
                 
@@ -1313,20 +1364,20 @@
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="/ocaml/js/clipboard.min.js?1557269227"></script>
-    <script src="/ocaml/js/perfect-scrollbar.min.js?1557269227"></script>
-    <script src="/ocaml/js/perfect-scrollbar.jquery.min.js?1557269227"></script>
-    <script src="/ocaml/js/jquery.sticky.js?1557269227"></script>
-    <script src="/ocaml/js/featherlight.min.js?1557269227"></script>
-    <script src="/ocaml/js/html5shiv-printshiv.min.js?1557269227"></script>
-    <script src="/ocaml/js/highlight.pack.js?1557269227"></script>
+    <script src="/ocaml/js/clipboard.min.js?1557269226"></script>
+    <script src="/ocaml/js/perfect-scrollbar.min.js?1557269226"></script>
+    <script src="/ocaml/js/perfect-scrollbar.jquery.min.js?1557269226"></script>
+    <script src="/ocaml/js/jquery.sticky.js?1557269226"></script>
+    <script src="/ocaml/js/featherlight.min.js?1557269226"></script>
+    <script src="/ocaml/js/html5shiv-printshiv.min.js?1557269226"></script>
+    <script src="/ocaml/js/highlight.pack.js?1557269226"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="/ocaml/js/modernizr.custom-3.6.0.js?1557269227"></script>
-    <script src="/ocaml/js/learn.js?1557269227"></script>
-    <script src="/ocaml/js/hugo-learn.js?1557269227"></script>
+    <script src="/ocaml/js/modernizr.custom-3.6.0.js?1557269226"></script>
+    <script src="/ocaml/js/learn.js?1557269226"></script>
+    <script src="/ocaml/js/hugo-learn.js?1557269226"></script>
 
-    <link href="/ocaml/mermaid/mermaid.css?1557269227" type="text/css" rel="stylesheet" />
-    <script src="/ocaml/mermaid/mermaid.js?1557269227"></script>
+    <link href="/ocaml/mermaid/mermaid.css?1557269226" type="text/css" rel="stylesheet" />
+    <script src="/ocaml/mermaid/mermaid.js?1557269226"></script>
     <script>
         mermaid.initialize({ startOnLoad: true });
     </script>
