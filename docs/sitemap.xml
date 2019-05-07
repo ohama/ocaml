@@ -15,10 +15,6 @@
   </url>
   
   <url>
-    <loc>https://ohama.github.io/ocaml/</loc>
-  </url>
-  
-  <url>
     <loc>https://ohama.github.io/ocaml/ocamllex-tutorial/01.intro/</loc>
   </url>
   
@@ -31,7 +27,11 @@
   </url>
   
   <url>
-    <loc>https://ohama.github.io/ocaml/ocamllex-tutorial/06.actions/6.1.position/</loc>
+    <loc>https://ohama.github.io/ocaml/ocamllex-tutorial/06.actions/position/</loc>
+  </url>
+  
+  <url>
+    <loc>https://ohama.github.io/ocaml/</loc>
   </url>
   
   <url>

@@ -12,20 +12,20 @@
     <title>Patterns :: Documentation for Hugo Learn Theme</title>
 
     
-    <link href="/ocaml/css/nucleus.css?1557269227" rel="stylesheet">
-    <link href="/ocaml/css/fontawesome-all.min.css?1557269227" rel="stylesheet">
-    <link href="/ocaml/css/hybrid.css?1557269227" rel="stylesheet">
-    <link href="/ocaml/css/featherlight.min.css?1557269227" rel="stylesheet">
-    <link href="/ocaml/css/perfect-scrollbar.min.css?1557269227" rel="stylesheet">
-    <link href="/ocaml/css/auto-complete.css?1557269227" rel="stylesheet">
-    <link href="/ocaml/css/atom-one-dark-reasonable.css?1557269227" rel="stylesheet">
-    <link href="/ocaml/css/theme.css?1557269227" rel="stylesheet">
-    <link href="/ocaml/css/hugo-theme.css?1557269227" rel="stylesheet">
+    <link href="/ocaml/css/nucleus.css?1557270931" rel="stylesheet">
+    <link href="/ocaml/css/fontawesome-all.min.css?1557270931" rel="stylesheet">
+    <link href="/ocaml/css/hybrid.css?1557270931" rel="stylesheet">
+    <link href="/ocaml/css/featherlight.min.css?1557270931" rel="stylesheet">
+    <link href="/ocaml/css/perfect-scrollbar.min.css?1557270931" rel="stylesheet">
+    <link href="/ocaml/css/auto-complete.css?1557270931" rel="stylesheet">
+    <link href="/ocaml/css/atom-one-dark-reasonable.css?1557270931" rel="stylesheet">
+    <link href="/ocaml/css/theme.css?1557270931" rel="stylesheet">
+    <link href="/ocaml/css/hugo-theme.css?1557270931" rel="stylesheet">
     
-      <link href="/ocaml/css/theme-green.css?1557269227" rel="stylesheet">
+      <link href="/ocaml/css/theme-green.css?1557270931" rel="stylesheet">
     
 
-    <script src="/ocaml/js/jquery-3.3.1.min.js?1557269227"></script>
+    <script src="/ocaml/js/jquery-3.3.1.min.js?1557270931"></script>
 
     <style type="text/css">
       :root #header + #content > #left > #rlblock_left{
@@ -94,14 +94,14 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="/ocaml/js/lunr.min.js?1557269227"></script>
-<script type="text/javascript" src="/ocaml/js/auto-complete.js?1557269227"></script>
+<script type="text/javascript" src="/ocaml/js/lunr.min.js?1557270931"></script>
+<script type="text/javascript" src="/ocaml/js/auto-complete.js?1557270931"></script>
 <script type="text/javascript">
     
         var baseurl = "https:\/\/ohama.github.io\/ocaml";
     
 </script>
-<script type="text/javascript" src="/ocaml/js/search.js?1557269227"></script>
+<script type="text/javascript" src="/ocaml/js/search.js?1557270931"></script>
 
     
   </div>
@@ -264,8 +264,8 @@
  
   
     
-      <li data-nav-id="/ocaml/ocamllex-tutorial/06.actions/6.1.position/" title="Position" class="dd-item ">
-        <a href="/ocaml/ocamllex-tutorial/06.actions/6.1.position/">
+      <li data-nav-id="/ocaml/ocamllex-tutorial/06.actions/position/" title="Position" class="dd-item ">
+        <a href="/ocaml/ocamllex-tutorial/06.actions/position/">
         6.1 Position
         
         </a>
@@ -793,7 +793,7 @@
             
           
           
-            <a href='/ocaml/'>Introduction</a> > <a href='/ocaml/ocamllex-tutorial/'>Ocamllex Tutorial</a> > Patterns
+            <a href='/ocaml/'>Tutorials</a> > <a href='/ocaml/ocamllex-tutorial/'>Ocamllex Tutorial</a> > Patterns
           
          
           
@@ -834,24 +834,24 @@
 in the style of lex, with a more Caml-like syntax. These are:</p>
 
 <ul>
-<li><strong>&lsquo;c&rsquo;</strong>: match the character &lsquo;c&rsquo;. The character constant is the same syntax as Objective Caml character.</li>
-<li><strong>&gt;_</strong>: (underscore) match any character.</li>
-<li><strong>eof</strong>: match an end-of-file .</li>
-<li><strong>&ldquo;foo&rdquo;</strong>: the literal string &ldquo;foo&rdquo;. The syntax is the same syntax as Objective Caml string constants.</li>
-<li><strong>[&lsquo;x&rsquo; &lsquo;y&rsquo; &lsquo;z&rsquo;]</strong>: character set; in this case, the pattern matches either an &lsquo;x&rsquo;, a &lsquo;y&rsquo;, or a &lsquo;z&rsquo; .</li>
-<li><strong>[&lsquo;a&rsquo; &lsquo;b&rsquo; &lsquo;j&rsquo;-&lsquo;o&rsquo; &lsquo;Z&rsquo;]</strong>: character set with a range in it; ranges of characters &lsquo;c1&rsquo; - &lsquo;c2&rsquo; (all characters between c1 and c2, inclusive);
+<li><strong>&lsquo;c&rsquo;</strong>: match <em>the character</em> &lsquo;c&rsquo;. The character constant is the same syntax as Objective Caml character.</li>
+<li><strong>_</strong>: (underscore) match <em>any character</em>.</li>
+<li><strong>eof</strong>: match an <em>end-of-file</em> .</li>
+<li><strong>&ldquo;foo&rdquo;</strong>: <em>the literal string</em> &ldquo;foo&rdquo;. The syntax is the same syntax as Objective Caml string constants.</li>
+<li><strong>[&lsquo;x&rsquo; &lsquo;y&rsquo; &lsquo;z&rsquo;]</strong>: <em>character set</em>; in this case, the pattern matches either an &lsquo;x&rsquo;, a &lsquo;y&rsquo;, or a &lsquo;z&rsquo; .</li>
+<li><strong>[&lsquo;a&rsquo; &lsquo;b&rsquo; &lsquo;j&rsquo;-&lsquo;o&rsquo; &lsquo;Z&rsquo;]</strong>: <em>character set with a range</em> in it; ranges of characters &lsquo;c1&rsquo; - &lsquo;c2&rsquo; (all characters between c1 and c2, inclusive);
 in this case, the pattern matches an &lsquo;a&rsquo;, a &lsquo;b&rsquo;, any letter from &lsquo;j&rsquo; through &lsquo;o&rsquo;, or a &lsquo;Z&rsquo;.</li>
 <li><strong>[^ &lsquo;A&rsquo;-&lsquo;Z&rsquo;]</strong>:
-a &ldquo;negated character set&rdquo;, i.e., any character but those in the class. In this case, any character EXCEPT an uppercase letter.</li>
-<li><strong>[^ &lsquo;A&rsquo;-&lsquo;Z&rsquo; &lsquo;\n&rsquo;]</strong>:any character EXCEPT an uppercase letter or a newline</li>
-<li><strong>r*</strong>: zero or more r&rsquo;s, where r is any regular expression</li>
-<li><strong>r+</strong>: one or more r&rsquo;s, where r is any regular expression</li>
-<li><strong>r?</strong>: zero or one r&rsquo;s, where r is any regular expression (that is, &ldquo;an optional r&rdquo;)</li>
+<em>a negated character set</em>, i.e., any character but those in the class. In this case, any character EXCEPT an uppercase letter.</li>
+<li><strong>[^ &lsquo;A&rsquo;-&lsquo;Z&rsquo; &lsquo;\n&rsquo;]</strong>: <em>any character EXCEPT</em> an uppercase letter or a newline</li>
+<li><strong>r*</strong>: <em>zero or more r&rsquo;s</em>, where r is any regular expression</li>
+<li><strong>r+</strong>: <em>one or more r&rsquo;s</em>, where r is any regular expression</li>
+<li><strong>r?</strong>: <em>zero or one r&rsquo;s</em>, where r is any regular expression (that is, &ldquo;an optional r&rdquo;)</li>
 <li><strong>ident</strong>: the expansion of the &ldquo;ident&rdquo;
 defined by an earlier <code>let ident =  regexp</code> definition.</li>
 <li><strong>(r)</strong>: match an r; parentheses are used to override precedence (see below)</li>
 <li><strong>rs</strong>: the regular expression r followed by the regular expression s; called &ldquo;concatenation&rdquo;</li>
-<li><strong>r|s</strong>: either an r or an s</li>
+<li><strong>r|s</strong>: <em>either an r or an s</em></li>
 <li><strong>r#s</strong>: match the difference of the two specified character sets.</li>
 <li><strong>r as ident</strong>: bind the string matched by <em>r</em> to identifier <em>ident</em></li>
 </ul>
@@ -1381,20 +1381,20 @@ entire input unless there&rsquo;s another quote in the input.</p>
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="/ocaml/js/clipboard.min.js?1557269227"></script>
-    <script src="/ocaml/js/perfect-scrollbar.min.js?1557269227"></script>
-    <script src="/ocaml/js/perfect-scrollbar.jquery.min.js?1557269227"></script>
-    <script src="/ocaml/js/jquery.sticky.js?1557269227"></script>
-    <script src="/ocaml/js/featherlight.min.js?1557269227"></script>
-    <script src="/ocaml/js/html5shiv-printshiv.min.js?1557269227"></script>
-    <script src="/ocaml/js/highlight.pack.js?1557269227"></script>
+    <script src="/ocaml/js/clipboard.min.js?1557270931"></script>
+    <script src="/ocaml/js/perfect-scrollbar.min.js?1557270931"></script>
+    <script src="/ocaml/js/perfect-scrollbar.jquery.min.js?1557270931"></script>
+    <script src="/ocaml/js/jquery.sticky.js?1557270931"></script>
+    <script src="/ocaml/js/featherlight.min.js?1557270931"></script>
+    <script src="/ocaml/js/html5shiv-printshiv.min.js?1557270931"></script>
+    <script src="/ocaml/js/highlight.pack.js?1557270931"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="/ocaml/js/modernizr.custom-3.6.0.js?1557269227"></script>
-    <script src="/ocaml/js/learn.js?1557269227"></script>
-    <script src="/ocaml/js/hugo-learn.js?1557269227"></script>
+    <script src="/ocaml/js/modernizr.custom-3.6.0.js?1557270931"></script>
+    <script src="/ocaml/js/learn.js?1557270931"></script>
+    <script src="/ocaml/js/hugo-learn.js?1557270931"></script>
 
-    <link href="/ocaml/mermaid/mermaid.css?1557269227" type="text/css" rel="stylesheet" />
-    <script src="/ocaml/mermaid/mermaid.js?1557269227"></script>
+    <link href="/ocaml/mermaid/mermaid.css?1557270931" type="text/css" rel="stylesheet" />
+    <script src="/ocaml/mermaid/mermaid.js?1557270931"></script>
     <script>
         mermaid.initialize({ startOnLoad: true });
     </script>

@@ -46,7 +46,7 @@
       
       <guid>https://ohama.github.io/ocaml/ocamllex-tutorial/04.patterns/</guid>
       <description>The patterns in the input are written using regular expressions in the style of lex, with a more Caml-like syntax. These are:
- &amp;lsquo;c&amp;rsquo;: match the character &amp;lsquo;c&amp;rsquo;. The character constant is the same syntax as Objective Caml character. &amp;gt;_: (underscore) match any character. eof: match an end-of-file . &amp;ldquo;foo&amp;rdquo;: the literal string &amp;ldquo;foo&amp;rdquo;. The syntax is the same syntax as Objective Caml string constants. [&amp;lsquo;x&amp;rsquo; &amp;lsquo;y&amp;rsquo; &amp;lsquo;z&amp;rsquo;]: character set; in this case, the pattern matches either an &amp;lsquo;x&amp;rsquo;, a &amp;lsquo;y&amp;rsquo;, or a &amp;lsquo;z&amp;rsquo; .</description>
+ &amp;lsquo;c&amp;rsquo;: match the character &amp;lsquo;c&amp;rsquo;. The character constant is the same syntax as Objective Caml character. _: (underscore) match any character. eof: match an end-of-file . &amp;ldquo;foo&amp;rdquo;: the literal string &amp;ldquo;foo&amp;rdquo;. The syntax is the same syntax as Objective Caml string constants. [&amp;lsquo;x&amp;rsquo; &amp;lsquo;y&amp;rsquo; &amp;lsquo;z&amp;rsquo;]: character set; in this case, the pattern matches either an &amp;lsquo;x&amp;rsquo;, a &amp;lsquo;y&amp;rsquo;, or a &amp;lsquo;z&amp;rsquo; .</description>
     </item>
     
     <item>
