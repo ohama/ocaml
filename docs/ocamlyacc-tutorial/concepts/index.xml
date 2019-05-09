@@ -11,86 +11,12 @@
     
     
     <item>
-      <title>Languages and context-free grammars</title>
-      <link>https://ohama.github.io/ocaml/ocamlyacc-tutorial/concepts/languagsandcfg/</link>
+      <title>Languages</title>
+      <link>https://ohama.github.io/ocaml/ocamlyacc-tutorial/concepts/languages/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://ohama.github.io/ocaml/ocamlyacc-tutorial/concepts/languagsandcfg/</guid>
-      <description>In order for Ocamlyacc to parse a language, it must be described by a context-free grammar. This means that you specify one or more syntactic groupings and give rules for constructing them from their parts. For example, in the C language, one kind of grouping is called an &amp;lsquo;expression&amp;rsquo;. One rule for making an expression might be, &amp;ldquo;An expression can be made of a minus sign and another expression&amp;rdquo;. Another would be, &amp;ldquo;An expression can be an integer&amp;rdquo;.</description>
-    </item>
-    
-    <item>
-      <title>From Foraml Rules to Ocamlyacc Input</title>
-      <link>https://ohama.github.io/ocaml/ocamlyacc-tutorial/concepts/formalrule/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://ohama.github.io/ocaml/ocamlyacc-tutorial/concepts/formalrule/</guid>
-      <description>A formal grammar is a mathematical construct. To define the language for Ocamlyacc, you must write a file expressing the grammar in Ocamlyacc syntax: a Ocamlyacc grammar file. See Ocamlyacc Grammar Files.
-A nonterminal symbol in the formal grammar is represented in Ocamlyacc input as an identifier, like an identifier in Ocaml. It is like regular Caml symbol, except that it cannot end with &amp;lsquo; (single quote). It should start in lower case, such as expr, stmt or declaration.</description>
-    </item>
-    
-    <item>
-      <title>Semantic values</title>
-      <link>https://ohama.github.io/ocaml/ocamlyacc-tutorial/concepts/semanticvalues/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://ohama.github.io/ocaml/ocamlyacc-tutorial/concepts/semanticvalues/</guid>
-      <description>A formal grammar selects tokens only by their classifications: for example, if a rule mentions the terminal symbol `integer constant&amp;rsquo;, it means that any integer constant is grammatically valid in that position. The precise value of the constant is irrelevant to how to parse the input: if x+4 is grammatical then x+1 or x+3989 is equally grammatical.
-But the precise value is very important for what the input means once it is parsed.</description>
-    </item>
-    
-    <item>
-      <title>Semantic actions</title>
-      <link>https://ohama.github.io/ocaml/ocamlyacc-tutorial/concepts/semanticactions/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://ohama.github.io/ocaml/ocamlyacc-tutorial/concepts/semanticactions/</guid>
-      <description>In order to be useful, a program must do more than parse input; it must also produce some output based on the input. In a Ocamlyacc grammar, a grammar rule can have an action made up of Ocaml statements. Each time the parser recognizes a match for that rule, the action is executed. See Actions,
-Most of the time, the purpose of an action is to compute the semantic value of the whole construct from the semantic values of its parts.</description>
-    </item>
-    
-    <item>
-      <title>Locations</title>
-      <link>https://ohama.github.io/ocaml/ocamlyacc-tutorial/concepts/locations/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://ohama.github.io/ocaml/ocamlyacc-tutorial/concepts/locations/</guid>
-      <description>Many applications, like interpreters or compilers, have to produce verbose and useful error messages. To achieve this, one must be able to keep track of the textual position, or location, of each syntactic construct. Ocamlyacc provides a mechanism for handling these locations.
-Each token has a semantic value. In a similar fashion, each token has an associated location, but the type of locations is the same for all tokens and groupings.</description>
-    </item>
-    
-    <item>
-      <title>Ocamlyacc output</title>
-      <link>https://ohama.github.io/ocaml/ocamlyacc-tutorial/concepts/ocamlyaccoutput/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://ohama.github.io/ocaml/ocamlyacc-tutorial/concepts/ocamlyaccoutput/</guid>
-      <description>When you run Ocamlyacc, you give it a Ocamlyacc grammar file as input. The output is a Ocaml source file that parses the language described by the grammar. This file is called a Ocamlyacc parser. Keep in mind that the Ocamlyacc utility and the Ocamlyacc parser are two distinct programs: the Ocamlyacc utility is a program whose output is the Ocamlyacc parser that becomes part of your program.
-The job of the Ocamlyacc parser is to group tokens into groupings according to the grammar rules&amp;mdash;for example, to build identifiers and operators into expressions.</description>
-    </item>
-    
-    <item>
-      <title>Stages in use ocamlyacc</title>
-      <link>https://ohama.github.io/ocaml/ocamlyacc-tutorial/concepts/stages/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://ohama.github.io/ocaml/ocamlyacc-tutorial/concepts/stages/</guid>
-      <description>The actual language-design process using Ocamlyacc, from grammar specification to a working compiler or interpreter, has these parts:
-Formally specify the grammar in a form recognized by Ocamlyacc (see Ocamlyacc Grammar Files). For each grammatical rule in the language, describe the action that is to be taken when an instance of that rule is recognized. The action is described by a sequence of Ocaml statements.
-Write a lexical analyzer to process input and pass tokens to the parser.</description>
-    </item>
-    
-    <item>
-      <title>Overall layout of grammar</title>
-      <link>https://ohama.github.io/ocaml/ocamlyacc-tutorial/concepts/overalllayout/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://ohama.github.io/ocaml/ocamlyacc-tutorial/concepts/overalllayout/</guid>
-      <description>The input file for the Ocamlyacc utility is a Ocamlyacc grammar file. The general form of a Ocamlyacc grammar file is as follows:
-%{ Header (Ocaml code) %} Ocamlyacc declarations %% Grammar rules %% Trailer (Additional Ocaml code)
-The %%, %{ and %} are punctuation that appears in every Ocamlyacc grammar file to separate the sections.
-The header may define types, variables and functions used in the actions.
-The Ocamlyacc declarations declare the names of the terminal and nonterminal symbols, and may also describe operator precedence and the data types of semantic values of various symbols.</description>
+      <guid>https://ohama.github.io/ocaml/ocamlyacc-tutorial/concepts/languages/</guid>
+      <description>Languages and Context-Free Grammars In order for Ocamlyacc to parse a language, it must be described by a context-free grammar. This means that you specify one or more syntactic groupings and give rules for constructing them from their parts. For example, in the C language, one kind of grouping is called an expression&#39;. One rule for making an expression might be,An expression can be made of a minus sign and another expression&#39;&#39;.</description>
     </item>
     
   </channel>
