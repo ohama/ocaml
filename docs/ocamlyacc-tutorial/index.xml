@@ -1,22 +1,15 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-<<<<<<< HEAD
     <title>Ocamlyacc tutorial on Documentation for Hugo Learn Theme</title>
     <link>https://ohama.github.io/ocaml/ocamlyacc-tutorial/</link>
     <description>Recent content in Ocamlyacc tutorial on Documentation for Hugo Learn Theme</description>
-=======
-    <title>Ocamlyacc Tutorial on Documentation for Hugo Learn Theme</title>
-    <link>https://ohama.github.io/ocaml/ocamlyacc-tutorial/</link>
-    <description>Recent content in Ocamlyacc Tutorial on Documentation for Hugo Learn Theme</description>
->>>>>>> 975407b9d673abab4783fae6252f6f48ffd1aa6c
     <generator>Hugo -- gohugo.io</generator>
     <language>en-US</language>
     
 	<atom:link href="https://ohama.github.io/ocaml/ocamlyacc-tutorial/index.xml" rel="self" type="application/rss+xml" />
     
     
-<<<<<<< HEAD
     <item>
       <title>Introduction</title>
       <link>https://ohama.github.io/ocaml/ocamlyacc-tutorial/introduction/</link>
@@ -50,7 +43,5 @@ The parser prints messages about its actions such as shifting a token, reducing 
 You can find rule numbers and state numbers mentioned in the messages at the file grammar.</description>
     </item>
     
-=======
->>>>>>> 975407b9d673abab4783fae6252f6f48ffd1aa6c
   </channel>
 </rss>

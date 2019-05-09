@@ -3,7 +3,6 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-<<<<<<< HEAD
     <loc>https://ohama.github.io/ocaml/ocamllex-tutorial/intro/</loc>
   </url>
   
@@ -25,33 +24,13 @@
   
   <url>
     <loc>https://ohama.github.io/ocaml/ocamllex-tutorial/examples/translate/</loc>
-=======
-    <loc>https://ohama.github.io/ocaml/ocamllex-tutorial/11.usagetips/11.1.keywordtable/</loc>
   </url>
   
   <url>
-    <loc>https://ohama.github.io/ocaml/ocamllex-tutorial/12.examples/12.1.translate/</loc>
+    <loc>https://ohama.github.io/ocaml/</loc>
   </url>
   
   <url>
-    <loc>https://ohama.github.io/ocaml/ocamllex-tutorial/13.license/13.1.license/</loc>
-  </url>
-  
-  <url>
-    <loc>https://ohama.github.io/ocaml/ocamllex-tutorial/01.intro/</loc>
-  </url>
-  
-  <url>
-    <loc>https://ohama.github.io/ocaml/ocamlyacc-tutorial/introduction/</loc>
->>>>>>> 975407b9d673abab4783fae6252f6f48ffd1aa6c
-  </url>
-  
-  <url>
-    <loc>https://ohama.github.io/ocaml/ocamllex-tutorial/</loc>
-  </url>
-  
-  <url>
-<<<<<<< HEAD
     <loc>https://ohama.github.io/ocaml/ocamllex-tutorial/license/copyright/</loc>
   </url>
   
@@ -129,85 +108,6 @@
   
   <url>
     <loc>https://ohama.github.io/ocaml/ocamlyacc-tutorial/invokingocamlyacc/options/</loc>
-=======
-    <loc>https://ohama.github.io/ocaml/ocamllex-tutorial/06.actions/position/</loc>
-  </url>
-  
-  <url>
-    <loc>https://ohama.github.io/ocaml/</loc>
-  </url>
-  
-  <url>
-    <loc>https://ohama.github.io/ocaml/ocamllex-tutorial/11.usagetips/11.2.nestedcomments/</loc>
-  </url>
-  
-  <url>
-    <loc>https://ohama.github.io/ocaml/ocamllex-tutorial/12.examples/12.2.wordcount/</loc>
-  </url>
-  
-  <url>
-    <loc>https://ohama.github.io/ocaml/ocamllex-tutorial/13.license/13.2.ocamllexcopyright/</loc>
-  </url>
-  
-  <url>
-    <loc>https://ohama.github.io/ocaml/ocamlyacc-tutorial/concepts/</loc>
-  </url>
-  
-  <url>
-    <loc>https://ohama.github.io/ocaml/ocamlyacc-tutorial/</loc>
-  </url>
-  
-  <url>
-    <loc>https://ohama.github.io/ocaml/ocamllex-tutorial/02.simpleexample/</loc>
-  </url>
-  
-  <url>
-    <loc>https://ohama.github.io/ocaml/ocamllex-tutorial/12.examples/12.3.toylanguage/</loc>
-  </url>
-  
-  <url>
-    <loc>https://ohama.github.io/ocaml/ocamllex-tutorial/03.formatofinputfile/</loc>
-  </url>
-  
-  <url>
-    <loc>https://ohama.github.io/ocaml/ocamllex-tutorial/04.patterns/</loc>
-  </url>
-  
-  <url>
-    <loc>https://ohama.github.io/ocaml/ocamllex-tutorial/05.howmatched/</loc>
-  </url>
-  
-  <url>
-    <loc>https://ohama.github.io/ocaml/ocamllex-tutorial/06.actions/</loc>
-  </url>
-  
-  <url>
-    <loc>https://ohama.github.io/ocaml/ocamllex-tutorial/07.generatedscanner/</loc>
-  </url>
-  
-  <url>
-    <loc>https://ohama.github.io/ocaml/ocamllex-tutorial/08.startcondition/</loc>
-  </url>
-  
-  <url>
-    <loc>https://ohama.github.io/ocaml/ocamllex-tutorial/09.interfacewithocamlyacc/</loc>
-  </url>
-  
-  <url>
-    <loc>https://ohama.github.io/ocaml/ocamllex-tutorial/10.options/</loc>
-  </url>
-  
-  <url>
-    <loc>https://ohama.github.io/ocaml/ocamllex-tutorial/11.usagetips/</loc>
-  </url>
-  
-  <url>
-    <loc>https://ohama.github.io/ocaml/ocamllex-tutorial/12.examples/</loc>
-  </url>
-  
-  <url>
-    <loc>https://ohama.github.io/ocaml/ocamllex-tutorial/13.license/</loc>
->>>>>>> 975407b9d673abab4783fae6252f6f48ffd1aa6c
   </url>
   
   <url>
@@ -375,7 +275,6 @@
   </url>
   
   <url>
-<<<<<<< HEAD
     <loc>https://ohama.github.io/ocaml/ocamlyacc-tutorial/invokingocamlyacc/</loc>
   </url>
   
@@ -390,9 +289,6 @@
   <url>
     <loc>https://ohama.github.io/ocaml/categories/</loc>
     <priority>0</priority>
-=======
-    <loc>https://ohama.github.io/ocaml/ocamlyacc-tutorial/concepts/languages/</loc>
->>>>>>> 975407b9d673abab4783fae6252f6f48ffd1aa6c
   </url>
   
   <url>
