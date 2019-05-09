@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>License on Documentation for Hugo Learn Theme</title>
+    <link>https://ohama.github.io/ocaml/ocamlyacc-tutorial/license/</link>
+    <description>Recent content in License on Documentation for Hugo Learn Theme</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-US</language>
+    
+	<atom:link href="https://ohama.github.io/ocaml/ocamlyacc-tutorial/license/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Bison license</title>
+      <link>https://ohama.github.io/ocaml/ocamlyacc-tutorial/license/bisonlicense/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://ohama.github.io/ocaml/ocamlyacc-tutorial/license/bisonlicense/</guid>
+      <description>The bison manual requires &amp;ldquo;GNU General Public License&amp;rdquo; and &amp;ldquo;GNU Free Documentation License&amp;rdquo;.
+License of bison manual Copyright &amp;copy; 1988, 1989, 1990, 1991, 1992, 1993, 1995, 1998, 1999, 2000, 2001 Free Software Foundation, Inc.
+Permission is granted to make and distribute verbatim copies of this manual provided the copyright notice and this permission notice are preserved on all copies.
+Permission is granted to copy and distribute modified versions of this manual under the conditions for verbatim copying, provided also that the sections entitled &amp;ldquo;GNU General Public License&amp;rdquo; and &amp;ldquo;Conditions for Using Bison&amp;rdquo; are included exactly as in the original, and provided that the entire resulting derived work is distributed under the terms of a permission notice identical to this one.</description>
+    </item>
+    
+    <item>
+      <title>Copyright and permission</title>
+      <link>https://ohama.github.io/ocaml/ocamlyacc-tutorial/license/copyright/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://ohama.github.io/ocaml/ocamlyacc-tutorial/license/copyright/</guid>
+      <description>Copyright &amp;copy; 2004-2019 SooHyoung Oh.
+Permission is granted to make and distribute verbatim copies of this manual provided the copyright notice and this permission notice are preserved on all copies.
+Permission is granted to copy and distribute modified versions of this document under the conditions for verbatim copying, provided that this copyright notice is included exactly as in the original, and that the entire resulting derived work is distributed under the terms of a permission notice identical to this one.</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Invoking Ocamlyacc on Documentation for Hugo Learn Theme</title>
+    <link>https://ohama.github.io/ocaml/ocamlyacc-tutorial/invokingocamlyacc/</link>
+    <description>Recent content in Invoking Ocamlyacc on Documentation for Hugo Learn Theme</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-US</language>
+    
+	<atom:link href="https://ohama.github.io/ocaml/ocamlyacc-tutorial/invokingocamlyacc/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Options</title>
+      <link>https://ohama.github.io/ocaml/ocamlyacc-tutorial/invokingocamlyacc/options/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://ohama.github.io/ocaml/ocamlyacc-tutorial/invokingocamlyacc/options/</guid>
+      <description>Here is a list of options that can be used with Ocamlyacc:
+ -v: By default, this option generates a file grammar.output. It contains parsing infomation such as a description of the parsing tables and a report on ambiguities in the grammar.
+ -bfname: Change the name of the output files to fname.ml, fname.mli and fname.output.
+  </description>
+    </item>
+    
+  </channel>
+</rss>

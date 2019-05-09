@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Grammar Files on Documentation for Hugo Learn Theme</title>
+    <link>https://ohama.github.io/ocaml/ocamlyacc-tutorial/grammar/</link>
+    <description>Recent content in Grammar Files on Documentation for Hugo Learn Theme</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-US</language>
+    
+	<atom:link href="https://ohama.github.io/ocaml/ocamlyacc-tutorial/grammar/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Grammar outline</title>
+      <link>https://ohama.github.io/ocaml/ocamlyacc-tutorial/grammar/grammaroutline/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://ohama.github.io/ocaml/ocamlyacc-tutorial/grammar/grammaroutline/</guid>
+      <description>A Ocamlyacc grammar file has four main sections, shown here with the appropriate delimiters:
+%{ Header - Ocaml declarations (Ocaml code) %} Ocamlyacc declarations %% Grammar rules %% Trailer - Additional Ocaml code (Ocaml code)  By default, comments are enclosed between /* and / (as in C) except in Ocaml code. So use / and / in the declarations and rules sections, ( and *) in header and trailer sections.</description>
+    </item>
+    
+    <item>
+      <title>Symbols, Terminal and Nonterminal</title>
+      <link>https://ohama.github.io/ocaml/ocamlyacc-tutorial/grammar/symbols/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://ohama.github.io/ocaml/ocamlyacc-tutorial/grammar/symbols/</guid>
+      <description>Symbols in Ocamlyacc grammars represent the grammatical classifications of the language.
+A terminal symbol (also known as a token type) represents a class of syntactically equivalent tokens. You use the symbol in grammar rules to mean that a token in that class is allowed. The symbol is represented in the Ocamlyacc parser by a value of variant type, and the lexer function function returns a token type to indicate what kind of token has been read.</description>
+    </item>
+    
+    <item>
+      <title>Syntax of grammar rules</title>
+      <link>https://ohama.github.io/ocaml/ocamlyacc-tutorial/grammar/syntaxofrules/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://ohama.github.io/ocaml/ocamlyacc-tutorial/grammar/syntaxofrules/</guid>
+      <description>A Ocamlyacc grammar rule has the following general form:
+result: symbol ... symbol { semantic-action } | ... | symbol ... symbol { semantic-action } ;  where result is the nonterminal symbol that this rule describes, and symbol are various terminal and nonterminal symbols that are put together by this rule (see Symbols).
+For example,
+exp: exp PLUS exp	{} ;  says that two groupings of type exp, with a PLUS token in between, can be combined into a larger grouping of type exp.</description>
+    </item>
+    
+    <item>
+      <title>Recursive Rules</title>
+      <link>https://ohama.github.io/ocaml/ocamlyacc-tutorial/grammar/recursiverules/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://ohama.github.io/ocaml/ocamlyacc-tutorial/grammar/recursiverules/</guid>
+      <description>A rule is called recursive when its result nonterminal appears also on its right hand side. Nearly all Ocamlyacc grammars need to use recursion, because that is the only way to define a sequence of any number of a particular thing. Consider this recursive definition of a comma-separated sequence of one or more expressions:
+expseq1: exp	{} | expseq1 COMMA exp	{} ;  Since the recursive use of expseq1 is the leftmost symbol in the right hand side, we call this left recursion.</description>
+    </item>
+    
+    <item>
+      <title>Defineing Language Semantics</title>
+      <link>https://ohama.github.io/ocaml/ocamlyacc-tutorial/grammar/definesemantics/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://ohama.github.io/ocaml/ocamlyacc-tutorial/grammar/definesemantics/</guid>
+      <description>The grammar rules for a language determine only the syntax. The semantics are determined by the semantic values associated with various tokens and groupings, and by the actions taken when various groupings are recognized.
+For example, the calculator calculates properly because the value associated with each expression is the proper number; it adds properly because the action for the grouping x + y is to add the numbers associated with x and y.</description>
+    </item>
+    
+    <item>
+      <title>Tracking Locations</title>
+      <link>https://ohama.github.io/ocaml/ocamlyacc-tutorial/grammar/trackinglocations/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://ohama.github.io/ocaml/ocamlyacc-tutorial/grammar/trackinglocations/</guid>
+      <description>Though grammar rules and semantic actions are enough to write a fully functional parser, it can be useful to process some additionnal informations, especially symbol locations.
+The way locations are handled is defined by providing a data type, and actions to take when rules are matched.
+Data Type of Locations The data type for locations has the following type:
+type position = { pos_fname : string;	(* file name *) pos_lnum : int;	(* line number *) pos_bol : int;	(* the offset of the beginning of the line *) pos_cnum : int;	(* the offset of the position *) }  The value of pos_bol field is the number of characters between the beginning of the file and the beginning of the line while the value of pos_cnum field is the number of characters between the beginning of the file and the position.</description>
+    </item>
+    
+    <item>
+      <title>Nonterminal Symbols</title>
+      <link>https://ohama.github.io/ocaml/ocamlyacc-tutorial/grammar/nonterminal/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://ohama.github.io/ocaml/ocamlyacc-tutorial/grammar/nonterminal/</guid>
+      <description>The Ocamlyacc declarations section of a Ocamlyacc grammar defines the symbols used in formulating the grammar and the data types of semantic values. See Symbols.
+All token type must be declared. Nonterminal symbols must be declared if you need to specify which data type to use for the semantic value (see Data Types of Semantic Values).
+The first rule in the file also specifies the start symbol, by default. If you want some other symbol to be the start symbol, you must declare it explicitly (see Languages and Context-Free Grammars).</description>
+    </item>
+    
+    <item>
+      <title>Ocamlyacc Declarations</title>
+      <link>https://ohama.github.io/ocaml/ocamlyacc-tutorial/grammar/declarations/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://ohama.github.io/ocaml/ocamlyacc-tutorial/grammar/declarations/</guid>
+      <description>The Ocamlyacc declarations section of a Ocamlyacc grammar defines the symbols used in formulating the grammar and the data types of semantic values. See Symbols.
+All token type must be declared. Nonterminal symbols must be declared if you need to specify which data type to use for the semantic value (see Data Types of Semantic Values).
+The first rule in the file also specifies the start symbol, by default. If you want some other symbol to be the start symbol, you must declare it explicitly (see Languages and Context-Free Grammars).</description>
+    </item>
+    
+  </channel>
+</rss>
