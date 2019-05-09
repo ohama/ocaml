@@ -193,7 +193,7 @@
 	"title": "ocamllex tutorial",
 	"tags": [],
 	"description": "This is a tutorial on how to use ocamllex.",
-	"content": " This is a tutorial on how to use ocamllex which is distributed with Ocaml language.\nAbout this document Lots of part of this document are borrowed from the flex manual.\nAll license term in this document is NOT related with ocamlyacc; it is ONLY for this document.\nPlease mail all comments and suggestions to me.\nThe companion tutorial for ocamlyacc is available at ocamlyacc tutorial.\nYou can find the ocamllex tutorial pdf file for printing.\nThe source of the examples used in this document can be found ocamllex examples.\n  Related files   ocamllex-tutorial.pdf  (133 ko)    "
+	"content": " This is a tutorial on how to use ocamllex which is distributed with Ocaml language.\nAbout this document Lots of part of this document are borrowed from the flex manual.\nAll license term in this document is NOT related with ocamlyacc; it is ONLY for this document.\nPlease mail all comments and suggestions to me.\nThe companion tutorial for ocamlyacc is available at ocamlyacc tutorial.\nYou can find the ocamllex tutorial pdf file for printing. You can find the ocamllex tutorial pdf file for printing.\nThe source of the examples used in this document can be found ocamllex examples.\n  Related files   ocamllex-tutorial.pdf  (133 ko)    "
 },
 {
 	"uri": "https://ohama.github.io/ocaml/ocamllex-tutorial/usagetips/",
