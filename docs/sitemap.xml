@@ -15,10 +15,6 @@
   </url>
   
   <url>
-    <loc>https://ohama.github.io/ocaml/ocamllex-tutorial/</loc>
-  </url>
-  
-  <url>
     <loc>https://ohama.github.io/ocaml/ocamllex-tutorial/actions/position/</loc>
   </url>
   
@@ -36,10 +32,6 @@
   
   <url>
     <loc>https://ohama.github.io/ocaml/ocamllex-tutorial/usagetips/nestedcomments/</loc>
-  </url>
-  
-  <url>
-    <loc>https://ohama.github.io/ocaml/ocamlyacc-tutorial/</loc>
   </url>
   
   <url>
@@ -119,6 +111,10 @@
   </url>
   
   <url>
+    <loc>https://ohama.github.io/ocaml/ocamllex-tutorial/</loc>
+  </url>
+  
+  <url>
     <loc>https://ohama.github.io/ocaml/ocamllex-tutorial/usagetips/</loc>
   </url>
   
@@ -160,6 +156,10 @@
   
   <url>
     <loc>https://ohama.github.io/ocaml/ocamlyacc-tutorial/grammar/symbols/</loc>
+  </url>
+  
+  <url>
+    <loc>https://ohama.github.io/ocaml/ocamlyacc-tutorial/</loc>
   </url>
   
   <url>
