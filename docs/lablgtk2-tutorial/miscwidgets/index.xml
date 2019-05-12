@@ -126,5 +126,26 @@ Creating a GtkCalendar widget is a simple as: (see GMisc.calendar)
 val GMisc.calendar : ?options:Gtk.Tags.calendar_display_options list -&amp;gt; ?packing:(GObj.widget -&amp;gt; unit) -&amp;gt; ?show:bool -&amp;gt; unit -&amp;gt; calendar There might be times where you need to change a lot of information within this widget and the following functions allow you to make multiple change to a Calendar widget without the user seeing multiple on-screen updates.</description>
     </item>
     
+    <item>
+      <title>Color selection</title>
+      <link>https://ohama.github.io/ocaml/lablgtk2-tutorial/miscwidgets/colorselection/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://ohama.github.io/ocaml/lablgtk2-tutorial/miscwidgets/colorselection/</guid>
+      <description>The color selection widget is, not surprisingly, a widget for interactive selection of colors. This composite widget lets the user select a color by manipulating RGB (Red, Green, Blue) and HSV (Hue, Saturation, Value) triples. This is done either by adjusting single values with sliders or entries, or by picking the desired color from a hue-saturation wheel/value bar. Optionally, the opacity of the color can also be set.
+Lets have a look at what the color selection widget has to offer us.</description>
+    </item>
+    
+    <item>
+      <title>File selection</title>
+      <link>https://ohama.github.io/ocaml/lablgtk2-tutorial/miscwidgets/fileselection/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://ohama.github.io/ocaml/lablgtk2-tutorial/miscwidgets/fileselection/</guid>
+      <description>The file selection widget is a quick and simple way to display a File dialog box. It comes complete with Ok, Cancel, and Help buttons, a great way to cut down on programming time.
+To create a new file selection box use GWindow.file_selection:
+val GWindow.file_selection : ?title:string -&amp;gt; ?show_fileops:bool -&amp;gt; ?filename:string -&amp;gt; ?select_multiple:bool -&amp;gt; ?parent:#window_skel -&amp;gt; ?destroy_with_parent:bool -&amp;gt; ?allow_grow:bool -&amp;gt; ?allow_shrink:bool -&amp;gt; ?icon:GdkPixbuf.pixbuf -&amp;gt; ?modal:bool -&amp;gt; ?resizable:bool -&amp;gt; ?screen:Gdk.screen -&amp;gt; ?</description>
+    </item>
+    
   </channel>
 </rss>

@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Container widgets on Documentation for Hugo Learn Theme</title>
+    <link>https://ohama.github.io/ocaml/lablgtk2-tutorial/containerwidgets/</link>
+    <description>Recent content in Container widgets on Documentation for Hugo Learn Theme</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-US</language>
+    
+	<atom:link href="https://ohama.github.io/ocaml/lablgtk2-tutorial/containerwidgets/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>EventBox</title>
+      <link>https://ohama.github.io/ocaml/lablgtk2-tutorial/containerwidgets/eventbox/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://ohama.github.io/ocaml/lablgtk2-tutorial/containerwidgets/eventbox/</guid>
+      <description>Some GTK widgets don&amp;rsquo;t have associated X windows, so they just draw on their parents. Because of this, they cannot receive events and if they are incorrectly sized, they don&amp;rsquo;t clip so you can get messy overwriting, etc. If you require more from these widgets, the EventBox is for you.
+At first glance, the EventBox widget might appear to be totally useless. It draws nothing on the screen and responds to no events.</description>
+    </item>
+    
+    <item>
+      <title>Alignment widget</title>
+      <link>https://ohama.github.io/ocaml/lablgtk2-tutorial/containerwidgets/alignmentwidget/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://ohama.github.io/ocaml/lablgtk2-tutorial/containerwidgets/alignmentwidget/</guid>
+      <description>The alignment widget allows you to place a widget within its window at a position and size relative to the size of the Alignment widget itself. For example, it can be very useful for centering a widget within the window.
+GBin.alignment is the function associated with the Alignment widget:
+val GBin.alignment : ?xalign:Gtk.clampf -&amp;gt; ?yalign:Gtk.clampf -&amp;gt; ?xscale:Gtk.clampf -&amp;gt; ?yscale:Gtk.clampf -&amp;gt; ?border_width:int -&amp;gt; ?width:int -&amp;gt; ?height:int -&amp;gt; ?packing:(GObj.widget -&amp;gt; unit) -&amp;gt; ?</description>
+    </item>
+    
+    <item>
+      <title>Fixed container</title>
+      <link>https://ohama.github.io/ocaml/lablgtk2-tutorial/containerwidgets/fixedcontainer/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://ohama.github.io/ocaml/lablgtk2-tutorial/containerwidgets/fixedcontainer/</guid>
+      <description>The Fixed container allows you to place widgets at a fixed position within it&amp;rsquo;s window, relative to it&amp;rsquo;s upper left hand corner. The position of the widgets can be changed dynamically.
+GPack.fixed is the function associated with the fixed widget:
+val GPack.fixed : ?has_window:bool -&amp;gt; ?border_width:int -&amp;gt; ?width:int -&amp;gt; ?height:int -&amp;gt; ?packing:(GObj.widget -&amp;gt; unit) -&amp;gt; ?show:bool -&amp;gt; unit -&amp;gt; fixed method put : GObj.widget -&amp;gt; x:int -&amp;gt; y:int -&amp;gt; unit method move : GObj.</description>
+    </item>
+    
+    <item>
+      <title>Layout container</title>
+      <link>https://ohama.github.io/ocaml/lablgtk2-tutorial/containerwidgets/layoutcontainer/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://ohama.github.io/ocaml/lablgtk2-tutorial/containerwidgets/layoutcontainer/</guid>
+      <description>The Layout container is similar to the Fixed container except that it implements an infinite (where infinity is less than 2^32) scrolling area. The X window system has a limitation where windows can be at most 32767 pixels wide or tall. The Layout container gets around this limitation by doing some exotic stuff using window and bit gravities, so that you can have smooth scrolling even when you have many child widgets in your scrolling area.</description>
+    </item>
+    
+    <item>
+      <title>Frames</title>
+      <link>https://ohama.github.io/ocaml/lablgtk2-tutorial/containerwidgets/frames/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://ohama.github.io/ocaml/lablgtk2-tutorial/containerwidgets/frames/</guid>
+      <description>Frames can be used to enclose one or a group of widgets with a box which can optionally be labelled. The position of the label and the style of the box can be altered to suit.
+A Frame can be created with the function GBin.frame :
+val frame : ?label:string -&amp;gt; ?label_xalign:Gtk.clampf -&amp;gt; ?label_yalign:Gtk.clampf -&amp;gt; ?shadow_type:Gtk.Tags.shadow_type -&amp;gt; ?border_width:int -&amp;gt; ?width:int -&amp;gt; ?height:int -&amp;gt; ?packing:(GObj.widget -&amp;gt; unit) -&amp;gt; ?show:bool -&amp;gt; unit -&amp;gt; frame The label is by default placed in the upper left hand corner of the frame.</description>
+    </item>
+    
+    <item>
+      <title>Aspect frames</title>
+      <link>https://ohama.github.io/ocaml/lablgtk2-tutorial/containerwidgets/aspectframes/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://ohama.github.io/ocaml/lablgtk2-tutorial/containerwidgets/aspectframes/</guid>
+      <description>The aspect frame widget is like a frame widget, except that it also enforces the aspect ratio (that is, the ratio of the width to the height) of the child widget to have a certain value, adding extra space if necessary. This is useful, for instance, if you want to preview a larger image. The size of the preview should vary when the user resizes the window, but the aspect ratio needs to always match the original image.</description>
+    </item>
+    
+    <item>
+      <title>Paned window widget</title>
+      <link>https://ohama.github.io/ocaml/lablgtk2-tutorial/containerwidgets/panedwindow/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://ohama.github.io/ocaml/lablgtk2-tutorial/containerwidgets/panedwindow/</guid>
+      <description>The paned window widgets are useful when you want to divide an area into two parts, with the relative size of the two parts controlled by the user. A groove is drawn between the two portions with a handle that the user can drag to change the ratio. The division can either be horizontal (`HORIZONTAL) or vertical (`VERTICAL).
+To create a new paned window, call GPack.paned with orientation(`HORIZONTAL or `VERTICAL):</description>
+    </item>
+    
+    <item>
+      <title>View ports</title>
+      <link>https://ohama.github.io/ocaml/lablgtk2-tutorial/containerwidgets/viewports/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://ohama.github.io/ocaml/lablgtk2-tutorial/containerwidgets/viewports/</guid>
+      <description>It is unlikely that you will ever need to use the Viewport widget directly. You are much more likely to use the Scrolled Window widget which itself uses the Viewport.
+A viewport widget allows you to place a larger widget within it such that you can view a part of it at a time. It uses Adjustments to define the area that is currently in view.
+A Viewport is created with the function GBin.</description>
+    </item>
+    
+    <item>
+      <title>Scrolled windows</title>
+      <link>https://ohama.github.io/ocaml/lablgtk2-tutorial/containerwidgets/scrolledwindows/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://ohama.github.io/ocaml/lablgtk2-tutorial/containerwidgets/scrolledwindows/</guid>
+      <description>Scrolled windows are used to create a scrollable area with another widget inside it. You may insert any type of widget into a scrolled window, and it will be accessible regardless of the size by using the scrollbars.
+The function GBin.scrolled_window is used to create a new scrolled window.
+val GBin.scrolled_window : ?hadjustment:GData.adjustment -&amp;gt; ?vadjustment:GData.adjustment -&amp;gt; ?hpolicy:Gtk.Tags.policy_type -&amp;gt; ?vpolicy:Gtk.Tags.policy_type -&amp;gt; ?placement:Gtk.Tags.corner_type -&amp;gt; ?shadow_type:Gtk.Tags.shadow_type -&amp;gt; ?border_width:int -&amp;gt; ?width:int -&amp;gt; ?height:int -&amp;gt; ?</description>
+    </item>
+    
+    <item>
+      <title>Button boxes</title>
+      <link>https://ohama.github.io/ocaml/lablgtk2-tutorial/containerwidgets/buttonboxes/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://ohama.github.io/ocaml/lablgtk2-tutorial/containerwidgets/buttonboxes/</guid>
+      <description>Button Boxes are a convenient way to quickly layout a group of buttons. They come in both horizontal and vertical flavours. You create a new Button Box with the following function GPack.button_box , which create a horizontal or vertical box according to the given argument ;`HORIZONTAL or `VERTICAL:
+val GPack.button_box : Gtk.Tags.orientation -&amp;gt; ?spacing:int -&amp;gt; ?child_width:int -&amp;gt; ?child_height:int -&amp;gt; ?child_ipadx:int -&amp;gt; ?child_ipady:int -&amp;gt; ?layout:GtkPack.BBox.bbox_style -&amp;gt; ?border_width:int -&amp;gt; ?width:int -&amp;gt; ?height:int -&amp;gt; ?</description>
+    </item>
+    
+    <item>
+      <title>Toolbar</title>
+      <link>https://ohama.github.io/ocaml/lablgtk2-tutorial/containerwidgets/toolbar/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://ohama.github.io/ocaml/lablgtk2-tutorial/containerwidgets/toolbar/</guid>
+      <description>Toolbars are usually used to group some number of widgets in order to simplify customization of their look and layout. Typically a toolbar consists of buttons with icons, labels and tooltips, but any other widget can also be put inside a toolbar. Finally, items can be arranged horizontally or vertically and buttons can be displayed with icons, labels, or both.
+Creating a toolbar is (as one may already suspect) done with the function GButton.</description>
+    </item>
+    
+    <item>
+      <title>Notebooks</title>
+      <link>https://ohama.github.io/ocaml/lablgtk2-tutorial/containerwidgets/notebooks/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://ohama.github.io/ocaml/lablgtk2-tutorial/containerwidgets/notebooks/</guid>
+      <description>The NoteBook Widget is a collection of &amp;ldquo;pages&amp;rdquo; that overlap each other, each page contains different information with only one page visible at a time. This widget has become more common lately in GUI programming, and it is a good way to show blocks of similar information that warrant separation in their display.
+The first function call you will need to know, as you can probably guess by now, is used to create a new notebook widget: see GPack.</description>
+    </item>
+    
+  </channel>
+</rss>

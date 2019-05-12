@@ -20,5 +20,15 @@
 It&amp;rsquo;s called the GIMP toolkit because it was originally written for developing the GNU Image Manipulation Program (GIMP), but GTK has now been used in a large number of software projects, including the GNU Network Object Model Environment (GNOME) project.</description>
     </item>
     
+    <item>
+      <title>Undocumented widgets</title>
+      <link>https://ohama.github.io/ocaml/lablgtk2-tutorial/undocumentedwidgets/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://ohama.github.io/ocaml/lablgtk2-tutorial/undocumentedwidgets/</guid>
+      <description>These all require authors! :) Please consider contributing to our tutorial.
+If you must use one of these widgets that are undocumented, I strongly suggest you take a look at their respective header files in the GTK distribution. GTK&amp;rsquo;s function names are very descriptive. Once you have an understanding of how things work, it&amp;rsquo;s not difficult to figure out how to use a widget simply by looking at its function declarations.</description>
+    </item>
+    
   </channel>
 </rss>

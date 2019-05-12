@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Menu widgets on Documentation for Hugo Learn Theme</title>
+    <link>https://ohama.github.io/ocaml/lablgtk2-tutorial/menuwidgets/</link>
+    <description>Recent content in Menu widgets on Documentation for Hugo Learn Theme</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-US</language>
+    
+	<atom:link href="https://ohama.github.io/ocaml/lablgtk2-tutorial/menuwidgets/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Manual menu createion</title>
+      <link>https://ohama.github.io/ocaml/lablgtk2-tutorial/menuwidgets/manualmenucreation/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://ohama.github.io/ocaml/lablgtk2-tutorial/menuwidgets/manualmenucreation/</guid>
+      <description>In the true tradition of teaching, we&amp;rsquo;ll show you the hard way first. :)
+There are three widgets that go into making a menubar and submenus:
+ a menu item, which is what the user wants to select, e.g., &amp;ldquo;Save&amp;rdquo;
+ a menu, which acts as a container for the menu items, and
+ a menubar, which is a container for each of the individual menus.
+  This is slightly complicated by the fact that menu item widgets are used for two different things.</description>
+    </item>
+    
+    <item>
+      <title>Manual menu example</title>
+      <link>https://ohama.github.io/ocaml/lablgtk2-tutorial/menuwidgets/manualmenuexample/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://ohama.github.io/ocaml/lablgtk2-tutorial/menuwidgets/manualmenuexample/</guid>
+      <description>That should about do it. Let&amp;rsquo;s take a look at an example to help clarify.
+let uprint msg () = print_endline msg; flush stdout let create_file_menu ~packing () = let file_menu = GMenu.menu ~packing () in let f (label, callback) = let item = GMenu.menu_item ~label ~packing:file_menu#append () in ignore (item#connect#activate ~callback) in List.iter f [(&amp;#34;Open&amp;#34;, uprint &amp;#34;Open&amp;#34;); (&amp;#34;Save&amp;#34;, uprint &amp;#34;Save&amp;#34;); (&amp;#34;Quit&amp;#34;, GMain.Main.quit)]; file_menu let button_pressed menu ev = let button = GdkEvent.</description>
+    </item>
+    
+    <item>
+      <title>Automatic menu generation</title>
+      <link>https://ohama.github.io/ocaml/lablgtk2-tutorial/menuwidgets/automaticmenu/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://ohama.github.io/ocaml/lablgtk2-tutorial/menuwidgets/automaticmenu/</guid>
+      <description>You can generate menu automatically using GToolbox.build_menu.
+val GToolbox.build_menu : GMenu.menu -&amp;gt; entries:menu_entry list -&amp;gt; unit The first argument of this function is the GMenu.menu with which various menu entries will be associated. And the function takes a value of GToolbox.menu_entry type as the second argument:
+type menu_entry = [ `I of string * (unit -&amp;gt; unit) | `C of string * bool * (bool -&amp;gt; unit) | `R of (string * bool * (bool -&amp;gt; unit)) list | `M of string * menu_entry list | `S ]  `I: means GMenu.</description>
+    </item>
+    
+  </channel>
+</rss>

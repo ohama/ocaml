@@ -87,6 +87,10 @@
   </url>
   
   <url>
+    <loc>https://ohama.github.io/ocaml/lablgtk2-tutorial/containerwidgets/eventbox/</loc>
+  </url>
+  
+  <url>
     <loc>https://ohama.github.io/ocaml/ocamlyacc-tutorial/grammar/grammaroutline/</loc>
   </url>
   
@@ -108,6 +112,10 @@
   
   <url>
     <loc>https://ohama.github.io/ocaml/ocamlyacc-tutorial/parseralgorithm/lookaheadtokens/</loc>
+  </url>
+  
+  <url>
+    <loc>https://ohama.github.io/ocaml/lablgtk2-tutorial/menuwidgets/manualmenucreation/</loc>
   </url>
   
   <url>
@@ -163,6 +171,10 @@
   </url>
   
   <url>
+    <loc>https://ohama.github.io/ocaml/lablgtk2-tutorial/containerwidgets/alignmentwidget/</loc>
+  </url>
+  
+  <url>
     <loc>https://ohama.github.io/ocaml/lablgtk2-tutorial/miscwidgets/arrows/</loc>
   </url>
   
@@ -196,6 +208,10 @@
   
   <url>
     <loc>https://ohama.github.io/ocaml/ocamlyacc-tutorial/parserinterface/lexicalfunctions/</loc>
+  </url>
+  
+  <url>
+    <loc>https://ohama.github.io/ocaml/lablgtk2-tutorial/menuwidgets/manualmenuexample/</loc>
   </url>
   
   <url>
@@ -243,6 +259,10 @@
   </url>
   
   <url>
+    <loc>https://ohama.github.io/ocaml/lablgtk2-tutorial/menuwidgets/automaticmenu/</loc>
+  </url>
+  
+  <url>
     <loc>https://ohama.github.io/ocaml/lablgtk2-tutorial/buttonwidget/checkbuttons/</loc>
   </url>
   
@@ -256,6 +276,10 @@
   
   <url>
     <loc>https://ohama.github.io/ocaml/ocamlyacc-tutorial/examples/</loc>
+  </url>
+  
+  <url>
+    <loc>https://ohama.github.io/ocaml/lablgtk2-tutorial/containerwidgets/fixedcontainer/</loc>
   </url>
   
   <url>
@@ -311,6 +335,10 @@
   </url>
   
   <url>
+    <loc>https://ohama.github.io/ocaml/lablgtk2-tutorial/containerwidgets/layoutcontainer/</loc>
+  </url>
+  
+  <url>
     <loc>https://ohama.github.io/ocaml/ocamlyacc-tutorial/examples/locationtrackingcalculator/</loc>
   </url>
   
@@ -359,6 +387,10 @@
   </url>
   
   <url>
+    <loc>https://ohama.github.io/ocaml/lablgtk2-tutorial/containerwidgets/frames/</loc>
+  </url>
+  
+  <url>
     <loc>https://ohama.github.io/ocaml/ocamlyacc-tutorial/concepts/locations/</loc>
   </url>
   
@@ -384,6 +416,10 @@
   
   <url>
     <loc>https://ohama.github.io/ocaml/lablgtk2-tutorial/widgetoverview/</loc>
+  </url>
+  
+  <url>
+    <loc>https://ohama.github.io/ocaml/lablgtk2-tutorial/containerwidgets/aspectframes/</loc>
   </url>
   
   <url>
@@ -431,6 +467,10 @@
   </url>
   
   <url>
+    <loc>https://ohama.github.io/ocaml/lablgtk2-tutorial/containerwidgets/panedwindow/</loc>
+  </url>
+  
+  <url>
     <loc>https://ohama.github.io/ocaml/ocamlyacc-tutorial/concepts/stages/</loc>
   </url>
   
@@ -455,6 +495,10 @@
   </url>
   
   <url>
+    <loc>https://ohama.github.io/ocaml/lablgtk2-tutorial/containerwidgets/viewports/</loc>
+  </url>
+  
+  <url>
     <loc>https://ohama.github.io/ocaml/ocamlyacc-tutorial/invokingocamlyacc/</loc>
   </url>
   
@@ -463,7 +507,15 @@
   </url>
   
   <url>
+    <loc>https://ohama.github.io/ocaml/lablgtk2-tutorial/containerwidgets/scrolledwindows/</loc>
+  </url>
+  
+  <url>
     <loc>https://ohama.github.io/ocaml/lablgtk2-tutorial/miscwidgets/spinbutton/</loc>
+  </url>
+  
+  <url>
+    <loc>https://ohama.github.io/ocaml/lablgtk2-tutorial/containerwidgets/buttonboxes/</loc>
   </url>
   
   <url>
@@ -480,6 +532,34 @@
   
   <url>
     <loc>https://ohama.github.io/ocaml/lablgtk2-tutorial/miscwidgets/calendar/</loc>
+  </url>
+  
+  <url>
+    <loc>https://ohama.github.io/ocaml/lablgtk2-tutorial/containerwidgets/</loc>
+  </url>
+  
+  <url>
+    <loc>https://ohama.github.io/ocaml/lablgtk2-tutorial/containerwidgets/toolbar/</loc>
+  </url>
+  
+  <url>
+    <loc>https://ohama.github.io/ocaml/lablgtk2-tutorial/miscwidgets/colorselection/</loc>
+  </url>
+  
+  <url>
+    <loc>https://ohama.github.io/ocaml/lablgtk2-tutorial/menuwidgets/</loc>
+  </url>
+  
+  <url>
+    <loc>https://ohama.github.io/ocaml/lablgtk2-tutorial/containerwidgets/notebooks/</loc>
+  </url>
+  
+  <url>
+    <loc>https://ohama.github.io/ocaml/lablgtk2-tutorial/miscwidgets/fileselection/</loc>
+  </url>
+  
+  <url>
+    <loc>https://ohama.github.io/ocaml/lablgtk2-tutorial/undocumentedwidgets/</loc>
   </url>
   
   <url>
