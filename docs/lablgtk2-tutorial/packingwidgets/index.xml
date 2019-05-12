@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Packing widgets on Documentation for Hugo Learn Theme</title>
+    <link>https://ohama.github.io/ocaml/lablgtk2-tutorial/packingwidgets/</link>
+    <description>Recent content in Packing widgets on Documentation for Hugo Learn Theme</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-US</language>
+    
+	<atom:link href="https://ohama.github.io/ocaml/lablgtk2-tutorial/packingwidgets/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Theory of packing boxes</title>
+      <link>https://ohama.github.io/ocaml/lablgtk2-tutorial/packingwidgets/theoryofpackingboxes/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://ohama.github.io/ocaml/lablgtk2-tutorial/packingwidgets/theoryofpackingboxes/</guid>
+      <description>Most packing is done by creating boxes. These are invisible widget containers that we can pack our widgets into which come in two forms, a horizontal box, and a vertical box. When packing widgets into a horizontal box, the objects are inserted horizontally from left to right or right to left depending on the call used. In a vertical box, widgets are packed from top to bottom or vice versa. You may use any combination of boxes inside or beside other boxes to create the desired effect.</description>
+    </item>
+    
+    <item>
+      <title>Details of boxes</title>
+      <link>https://ohama.github.io/ocaml/lablgtk2-tutorial/packingwidgets/detailsofboxes/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://ohama.github.io/ocaml/lablgtk2-tutorial/packingwidgets/detailsofboxes/</guid>
+      <description>Because of this flexibility, packing boxes in GTK can be confusing at first. There are a lot of options, and it&amp;rsquo;s not immediately obvious how they all fit together. In the end, however, there are basically five different styles.
+Each line contains one horizontal box (hbox) with several buttons. The call to #pack method is shorthand for the call to pack each of the buttons into the hbox. Each of the buttons is packed into the hbox the same way.</description>
+    </item>
+    
+    <item>
+      <title>Packing demonstration program</title>
+      <link>https://ohama.github.io/ocaml/lablgtk2-tutorial/packingwidgets/packingdemoprogram/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://ohama.github.io/ocaml/lablgtk2-tutorial/packingwidgets/packingdemoprogram/</guid>
+      <description>(* file: packbox.ml *) (* Make a new hbox filled with button-labels. Arguments of the * variables we&#39;re interested are passed in to this fuction. * We do not show the box, butdo show everything inside. *) let make_box ~homogeneous ~spacing ~expand ~fill ~padding ?packing () = (* Create a new hbox with the appropriate homogeneous * and spacing settings *) let box = GPack.box `HORIZONTAL ~homogeneous ~spacing ?packing () in (* Create a series of buttons with the appropriate settings *) let button = GButton.</description>
+    </item>
+    
+    <item>
+      <title>Packing using tables</title>
+      <link>https://ohama.github.io/ocaml/lablgtk2-tutorial/packingwidgets/packingusingtables/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://ohama.github.io/ocaml/lablgtk2-tutorial/packingwidgets/packingusingtables/</guid>
+      <description>Let&amp;rsquo;s take a look at another way of packing - Tables. These can be extremely useful in certain situations.
+Using tables, we create a grid that we can place widgets in. The widgets may take up as many spaces as we specify.
+The first thing to look at, of course, is the GPack.table function:
+val GPack.table : ?columns:int -&amp;gt; ?rows:int -&amp;gt; ?homogeneous:bool -&amp;gt; ?row_spacings:int -&amp;gt; ?col_spacings:int -&amp;gt; ?border_width:int -&amp;gt; ?width:int -&amp;gt; ?</description>
+    </item>
+    
+    <item>
+      <title>Table packing example</title>
+      <link>https://ohama.github.io/ocaml/lablgtk2-tutorial/packingwidgets/tablepackingexample/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://ohama.github.io/ocaml/lablgtk2-tutorial/packingwidgets/tablepackingexample/</guid>
+      <description>Here we make a window with three buttons in a 2x2 table. The first two buttons will be placed in the upper row. A third, quit button, is placed in the lower row, spanning both columns. Which means it should look something like this:
+Here&amp;rsquo;s the source code:
+(* file: table.ml *) (* Our callback. *) let hello msg () = Printf.printf &amp;quot;Hello again - %s was pressed\n&amp;quot; msg; flush stdout let main () = (* Create a new window; set title and border width *) let window = GWindow.</description>
+    </item>
+    
+  </channel>
+</rss>

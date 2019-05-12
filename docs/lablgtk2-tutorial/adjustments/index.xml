@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Adjustments on Documentation for Hugo Learn Theme</title>
+    <link>https://ohama.github.io/ocaml/lablgtk2-tutorial/adjustments/</link>
+    <description>Recent content in Adjustments on Documentation for Hugo Learn Theme</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-US</language>
+    
+	<atom:link href="https://ohama.github.io/ocaml/lablgtk2-tutorial/adjustments/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Creating an adjustment</title>
+      <link>https://ohama.github.io/ocaml/lablgtk2-tutorial/adjustments/creatingadjustment/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://ohama.github.io/ocaml/lablgtk2-tutorial/adjustments/creatingadjustment/</guid>
+      <description>Many of the widgets which use adjustment objects do so automatically, but some cases will be shown in later examples where you may need to create one yourself. You create an adjustment using GData.adjustment:
+val GData.adjustment : ?value:float -&amp;gt; ?lower:float -&amp;gt; ?upper:float -&amp;gt; ?step_incr:float -&amp;gt; ?page_incr:float -&amp;gt; ?page_size:float -&amp;gt; unit -&amp;gt; adjustment lower : default value is 0. upper : default value is 100. step_incr : default value is 1. page_incr : default value is 10.</description>
+    </item>
+    
+    <item>
+      <title>Using adjustments</title>
+      <link>https://ohama.github.io/ocaml/lablgtk2-tutorial/adjustments/usingadjustment/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://ohama.github.io/ocaml/lablgtk2-tutorial/adjustments/usingadjustment/</guid>
+      <description>The adjustable widgets can be roughly divided into those which use and require specific units for these values and those which treat them as arbitrary numbers. The group which treats the values as arbitrary numbers includes the range widgets (scrollbars and scales, the progress bar widget, and the spin button widget). These widgets are all the widgets which are typically &amp;ldquo;adjusted&amp;rdquo; directly by the user with the mouse or keyboard. They will treat the lower and upper values of an adjustment as a range within which the user can manipulate the adjustment&amp;rsquo;s value.</description>
+    </item>
+    
+    <item>
+      <title>Adjustment internals</title>
+      <link>https://ohama.github.io/ocaml/lablgtk2-tutorial/adjustments/adjustmentinternals/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://ohama.github.io/ocaml/lablgtk2-tutorial/adjustments/adjustmentinternals/</guid>
+      <description>Ok, you say, that&amp;rsquo;s nice, but what if I want to create my own handlers to respond when the user adjusts a range widget or a spin button, and how do I get at the value of the adjustment in these handlers?
+You can use the following accessor to inspect the value of an adjustment:
+method value : float  Since, when you set the value of an Adjustment, you generally want the change to be reflected by every widget that uses this adjustment, GTK provides this convenience function to do this:</description>
+    </item>
+    
+  </channel>
+</rss>

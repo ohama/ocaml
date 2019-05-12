@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Miscellaneous widgets on Documentation for Hugo Learn Theme</title>
+    <link>https://ohama.github.io/ocaml/lablgtk2-tutorial/miscwidgets/</link>
+    <description>Recent content in Miscellaneous widgets on Documentation for Hugo Learn Theme</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-US</language>
+    
+	<atom:link href="https://ohama.github.io/ocaml/lablgtk2-tutorial/miscwidgets/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Labels</title>
+      <link>https://ohama.github.io/ocaml/lablgtk2-tutorial/miscwidgets/labels/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://ohama.github.io/ocaml/lablgtk2-tutorial/miscwidgets/labels/</guid>
+      <description>Labels are used a lot in GTK, and are relatively simple. Labels emit no signals as they do not have an associated X window. If you need to catch signals, or do clipping, place it inside a EventBox widget or a Button widget.
+To create a new label, use GMisc.label:
+val GMisc.label : ?text:string -&amp;gt; ?markup:string -&amp;gt; ?use_underline:bool -&amp;gt; ?mnemonic_widget:#GObj.widget -&amp;gt; ?justify:Gtk.Tags.justification -&amp;gt; ?line_wrap:bool -&amp;gt; ?pattern:string -&amp;gt; ?selectable:bool -&amp;gt; ?xalign:float -&amp;gt; ?</description>
+    </item>
+    
+    <item>
+      <title>Arrows</title>
+      <link>https://ohama.github.io/ocaml/lablgtk2-tutorial/miscwidgets/arrows/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://ohama.github.io/ocaml/lablgtk2-tutorial/miscwidgets/arrows/</guid>
+      <description>The Arrow widget draws an arrowhead, facing in a number of possible directions and having a number of possible styles. It can be very useful when placed on a button in many applications. Like the Label widget, it emits no signals.
+GMisc.arrrow is the function for creating an Arrow widget:
+val GMisc.arrow : ?kind:Gtk.Tags.arrow_type -&amp;gt; ?shadow:Gtk.Tags.shadow_type -&amp;gt; ?xalign:float -&amp;gt; ?yalign:float -&amp;gt; ?xpad:int -&amp;gt; ?ypad:int -&amp;gt; ?width:int -&amp;gt; ?height:int -&amp;gt; ?packing:(GObj.widget -&amp;gt; unit) -&amp;gt; ?</description>
+    </item>
+    
+    <item>
+      <title>Tooltips object</title>
+      <link>https://ohama.github.io/ocaml/lablgtk2-tutorial/miscwidgets/tooltips/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://ohama.github.io/ocaml/lablgtk2-tutorial/miscwidgets/tooltips/</guid>
+      <description>These are the little text strings that pop up when you leave your pointer over a button or other widget for a few seconds. They are easy to use, so I will just explain them without giving an example. If you want to see some code, take a look at the testgtk.ml program distributed with LablGTK.
+Widgets that do not receive events (widgets that do not have their own window) will not work with tooltips.</description>
+    </item>
+    
+    <item>
+      <title>Progress bars</title>
+      <link>https://ohama.github.io/ocaml/lablgtk2-tutorial/miscwidgets/progressbar/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://ohama.github.io/ocaml/lablgtk2-tutorial/miscwidgets/progressbar/</guid>
+      <description>Progress bars are used to show the status of an operation. They are pretty easy to use, as you will see with the code below. But first lets start out with the calls to create a new progress bar using GRange.progress_bar.
+val GRange.progress_bar: ?orientation:Gtk.Tags.progress_bar_orientation -&amp;gt; ?pulse_step:float -&amp;gt; ?packing:(GObj.widget -&amp;gt; unit) -&amp;gt; ?show:bool -&amp;gt; unit -&amp;gt; progress_bar orientation : default value is `LEFT_TO_RIGHT pulse_step : default value is 0.1 Now that the progress bar has been created we can use it.</description>
+    </item>
+    
+    <item>
+      <title>Dialog widgets</title>
+      <link>https://ohama.github.io/ocaml/lablgtk2-tutorial/miscwidgets/dialogs/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://ohama.github.io/ocaml/lablgtk2-tutorial/miscwidgets/dialogs/</guid>
+      <description>The Dialog widget is very simple, and is actually just a window with a few things pre-packed into it for you.
+It simply creates a window, and then packs a vbox into the top, which contains a separator and then an hbox called the &amp;ldquo;action_area&amp;rdquo;. After creating a dialog, you can reference the vbox and the action_area using the following methods:
+method vbox : GPack.box method action_area : GPack.button_box  The Dialog widget can be used for pop-up messages to the user, and other similar tasks.</description>
+    </item>
+    
+    <item>
+      <title>Rulers</title>
+      <link>https://ohama.github.io/ocaml/lablgtk2-tutorial/miscwidgets/rulers/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://ohama.github.io/ocaml/lablgtk2-tutorial/miscwidgets/rulers/</guid>
+      <description>Ruler widgets are used to indicate the location of the mouse pointer in a given window. A window can have a vertical ruler spanning across the width and a horizontal ruler spanning down the height. A small triangular indicator on the ruler shows the exact location of the pointer relative to the ruler.
+A ruler must first be created. Horizontal and vertical rulers are created using GRange.ruler
+val GRange.ruler: Gtk.Tags.orientation -&amp;gt; ?</description>
+    </item>
+    
+    <item>
+      <title>Statusbars</title>
+      <link>https://ohama.github.io/ocaml/lablgtk2-tutorial/miscwidgets/statusbars/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://ohama.github.io/ocaml/lablgtk2-tutorial/miscwidgets/statusbars/</guid>
+      <description>Statusbars are simple widgets used to display a text message. They keep a stack of the messages pushed onto them, so that popping the current message will re-display the previous text message.
+In order to allow different parts of an application to use the same statusbar to display messages, the statusbar widget issues Context Identifiers which are used to identify different &amp;ldquo;users&amp;rdquo;. The message on top of the stack is the one displayed, no matter what context it is in.</description>
+    </item>
+    
+    <item>
+      <title>Text entry</title>
+      <link>https://ohama.github.io/ocaml/lablgtk2-tutorial/miscwidgets/textentry/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://ohama.github.io/ocaml/lablgtk2-tutorial/miscwidgets/textentry/</guid>
+      <description>The Entry widget allows text to be typed and displayed in a single line text box. The text may be set with function calls that allow new text to replace, prepend or append the current contents of the Entry widget.
+Create a new Entry widget with the function GEdit.entry.
+val GEdit.entry : ?text:string -&amp;gt; ?visibility:bool -&amp;gt; ?max_length:int -&amp;gt; ?activates_default:bool -&amp;gt; ?editable:bool -&amp;gt; ?has_frame:bool -&amp;gt; ?width_chars:int -&amp;gt; ?width:int -&amp;gt; ?height:int -&amp;gt; ?</description>
+    </item>
+    
+    <item>
+      <title>Spin button</title>
+      <link>https://ohama.github.io/ocaml/lablgtk2-tutorial/miscwidgets/spinbutton/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://ohama.github.io/ocaml/lablgtk2-tutorial/miscwidgets/spinbutton/</guid>
+      <description>The Spin Button widget is generally used to allow the user to select a value from a range of numeric values. It consists of a text entry box with up and down arrow buttons attached to the side. Selecting one of the buttons causes the value to &amp;ldquo;spin&amp;rdquo; up and down the range of possible values. The entry box may also be edited directly to enter a specific value.
+The Spin Button allows the value to have zero or a number of decimal places and to be incremented/decremented in configurable steps.</description>
+    </item>
+    
+    <item>
+      <title>Combo box</title>
+      <link>https://ohama.github.io/ocaml/lablgtk2-tutorial/miscwidgets/combobox/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://ohama.github.io/ocaml/lablgtk2-tutorial/miscwidgets/combobox/</guid>
+      <description>The combo box is another fairly simple widget that is really just a collection of other widgets. From the user&amp;rsquo;s point of view, the widget consists of a text entry box and a pull down menu from which the user can select one of a set of predefined entries. Alternatively, the user can type a different option directly into the text box.
+The following extract child widgets from a Combo Box:</description>
+    </item>
+    
+    <item>
+      <title>Calendar</title>
+      <link>https://ohama.github.io/ocaml/lablgtk2-tutorial/miscwidgets/calendar/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://ohama.github.io/ocaml/lablgtk2-tutorial/miscwidgets/calendar/</guid>
+      <description>The Calendar widget is an effective way to display and retrieve monthly date related information. It is a very simple widget to create and work with.
+Creating a GtkCalendar widget is a simple as: (see GMisc.calendar)
+val GMisc.calendar : ?options:Gtk.Tags.calendar_display_options list -&amp;gt; ?packing:(GObj.widget -&amp;gt; unit) -&amp;gt; ?show:bool -&amp;gt; unit -&amp;gt; calendar There might be times where you need to change a lot of information within this widget and the following functions allow you to make multiple change to a Calendar widget without the user seeing multiple on-screen updates.</description>
+    </item>
+    
+  </channel>
+</rss>

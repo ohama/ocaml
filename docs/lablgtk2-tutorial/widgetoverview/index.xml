@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Widget overview on Documentation for Hugo Learn Theme</title>
+    <link>https://ohama.github.io/ocaml/lablgtk2-tutorial/widgetoverview/</link>
+    <description>Recent content in Widget overview on Documentation for Hugo Learn Theme</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-US</language>
+    
+	<atom:link href="https://ohama.github.io/ocaml/lablgtk2-tutorial/widgetoverview/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Type conversion</title>
+      <link>https://ohama.github.io/ocaml/lablgtk2-tutorial/widgetoverview/typeconversion/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://ohama.github.io/ocaml/lablgtk2-tutorial/widgetoverview/typeconversion/</guid>
+      <description>You&amp;rsquo;ll notice as you go on that you need a type conversion. What you will see are:
+method as_widget : Gtk.widget Gtk.obj method coerce : widget  These are all used to cast arguments in functions. You&amp;rsquo;ll see them in the examples, and can usually tell when to use them simply by looking at the function&amp;rsquo;s declaration.
+For example:
+box#pack button#corece;  This casts the button into a widget.</description>
+    </item>
+    
+    <item>
+      <title>Widget hierarchy</title>
+      <link>https://ohama.github.io/ocaml/lablgtk2-tutorial/widgetoverview/widgethierarchy/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://ohama.github.io/ocaml/lablgtk2-tutorial/widgetoverview/widgethierarchy/</guid>
+      <description>This section shows the hierarchy of widgets in C version. I&amp;rsquo;m not sure this is correct or not in ocaml version. And the names of widgets used in this section are C version, not ocaml version.
+ For your reference, here is the class hierarchy tree used to implement widgets. (Deprecated widgets and auxiliary classes have been omitted.)
+GObject | GtkObject +GtkWidget | +GtkMisc | | +GtkLabel | | | `GtkAccelLabel | | +GtkArrow | | `GtkImage | +GtkContainer | | +GtkBin | | | +GtkAlignment | | | +GtkFrame | | | | `GtkAspectFrame | | | +GtkButton | | | | +GtkToggleButton | | | | | `GtkCheckButton | | | | | `GtkRadioButton | | | | `GtkOptionMenu | | | +GtkItem | | | | +GtkMenuItem | | | | +GtkCheckMenuItem | | | | | `GtkRadioMenuItem | | | | +GtkImageMenuItem | | | | +GtkSeparatorMenuItem | | | | `GtkTearoffMenuItem | | | +GtkWindow | | | | +GtkDialog | | | | | +GtkColorSelectionDialog | | | | | +GtkFileSelection | | | | | +GtkFontSelectionDialog | | | | | +GtkInputDialog | | | | | `GtkMessageDialog | | | | `GtkPlug | | | +GtkEventBox | | | +GtkHandleBox | | | +GtkScrolledWindow | | | `GtkViewport | | +GtkBox | | | +GtkButtonBox | | | | +GtkHButtonBox | | | | `GtkVButtonBox | | | +GtkVBox | | | | +GtkColorSelection | | | | +GtkFontSelection | | | | `GtkGammaCurve | | | `GtkHBox | | | +GtkCombo | | | `GtkStatusbar | | +GtkFixed | | +GtkPaned | | | +GtkHPaned | | | `GtkVPaned | | +GtkLayout | | +GtkMenuShell | | | +GtkMenuBar | | | `GtkMenu | | +GtkNotebook | | +GtkSocket | | +GtkTable | | +GtkTextView | | +GtkToolbar | | `GtkTreeView | +GtkCalendar | +GtkDrawingArea | | `GtkCurve | +GtkEditable | | +GtkEntry | | `GtkSpinButton | +GtkRuler | | +GtkHRuler | | `GtkVRuler | +GtkRange | | +GtkScale | | | +GtkHScale | | | `GtkVScale | | `GtkScrollbar | | +GtkHScrollbar | | `GtkVScrollbar | +GtkSeparator | | +GtkHSeparator | | `GtkVSeparator | +GtkInvisible | +GtkPreview | `GtkProgressBar +GtkAdjustment +GtkCellRenderer | +GtkCellRendererPixbuf | +GtkCellRendererText | +GtkCellRendererToggle +GtkItemFactory +GtkTooltips `GtkTreeViewColumn  </description>
+    </item>
+    
+    <item>
+      <title>Widget without windows</title>
+      <link>https://ohama.github.io/ocaml/lablgtk2-tutorial/widgetoverview/widgetswithoutwindows/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://ohama.github.io/ocaml/lablgtk2-tutorial/widgetoverview/widgetswithoutwindows/</guid>
+      <description>The names of widgets used in this section are C version, not ocaml version.
+ The following widgets do not have an associated window. If you want to capture events, you&amp;rsquo;ll have to use the EventBox. See the section on the EventBox widget.
+GtkAlignment GtkArrow GtkBin GtkBox GtkButton GtkCheckButton GtkFixed GtkImage GtkLabel GtkMenuItem GtkNotebook GtkPaned GtkRadioButton GtkRange GtkScrolledWindow GtkSeparator GtkTable GtkToolbar GtkAspectFrame GtkFrame GtkVBox GtkHBox GtkVSeparator GtkHSeparator  We&amp;rsquo;ll further our exploration of GTK by examining each widget in turn, creating a few simple functions to display them.</description>
+    </item>
+    
+    <item>
+      <title>Structure of widgets</title>
+      <link>https://ohama.github.io/ocaml/lablgtk2-tutorial/widgetoverview/structureofwidgets/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://ohama.github.io/ocaml/lablgtk2-tutorial/widgetoverview/structureofwidgets/</guid>
+      <description>The following modules provide classes to wrap the raw Gtk+ function calls. Here are the widget classes contained in each module:
+ GPango: Pango font handling Gdk: pixmaps, etc&amp;hellip; GObj: gtkobj, widget, style GData: data, adjustment, tooltips GContainer: container, item_container GWindow: window, dialog, color_selection_dialog, file_selection, plug GPack: box, button_box, table, fixed, layout, packer, paned, notebook GBin: scrolled_window, event_box, handle_box, frame, aspect_frame, viewport, socket GButton: button, toggle_button, check_button, radio_button, toolbar GMenu: menu_item, tearoff_item, check_menu_item, radio_menu_item, menu_shell, menu, option_menu, menu_bar, factory GMisc: separator, statusbar, calendar, drawing_area, misc, arrow, image, pixmap, label, tips_query, color_selection, font_selection GTree: tree_item, tree, view (also tree/list_store, model) GList: list_item, liste, clist GEdit: editable, entry, spin_button, combo GRange: progress, progress_bar, range, scale, scrollbar GText: view (also buffer, iter, mark, tag, tagtable)  Practically, each widget class is composed of:</description>
+    </item>
+    
+  </channel>
+</rss>

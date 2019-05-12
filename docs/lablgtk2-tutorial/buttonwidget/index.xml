@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Button widget on Documentation for Hugo Learn Theme</title>
+    <link>https://ohama.github.io/ocaml/lablgtk2-tutorial/buttonwidget/</link>
+    <description>Recent content in Button widget on Documentation for Hugo Learn Theme</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-US</language>
+    
+	<atom:link href="https://ohama.github.io/ocaml/lablgtk2-tutorial/buttonwidget/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Normal buttons</title>
+      <link>https://ohama.github.io/ocaml/lablgtk2-tutorial/buttonwidget/normalbuttons/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://ohama.github.io/ocaml/lablgtk2-tutorial/buttonwidget/normalbuttons/</guid>
+      <description>We&amp;rsquo;ve almost seen all there is to see of the button widget. It&amp;rsquo;s pretty simple. There is however more than one way to create a button. You can use the GButton.button function with ~label or ~mnemonic option to create a button with a label, use ~stock option to create a button containing the image and text from a stock item or use it without these options to create a blank button.</description>
+    </item>
+    
+    <item>
+      <title>Toggle buttons</title>
+      <link>https://ohama.github.io/ocaml/lablgtk2-tutorial/buttonwidget/togglebuttons/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://ohama.github.io/ocaml/lablgtk2-tutorial/buttonwidget/togglebuttons/</guid>
+      <description>Toggle buttons are derived from normal buttons and are very similar, except they will always be in one of two states, alternated by a click. They may be depressed, and when you click again, they will pop back up. Click again, and they will pop back down.
+Toggle buttons are the basis for check buttons and radio buttons, as such, many of the calls used for toggle buttons are inherited by radio and check buttons.</description>
+    </item>
+    
+    <item>
+      <title>Check buttons</title>
+      <link>https://ohama.github.io/ocaml/lablgtk2-tutorial/buttonwidget/checkbuttons/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://ohama.github.io/ocaml/lablgtk2-tutorial/buttonwidget/checkbuttons/</guid>
+      <description>Check buttons inherit many properties and functions from the the toggle buttons above, but look a little different. Rather than being buttons with text inside them, they are small squares with the text to the right of them. These are often used for toggling options on and off in applications.
+The creation functions are similar to those of the normal button. See GButton.check_button.
+val GButton.check_button : ?label:string -&amp;gt; ?use_mnemonic:bool -&amp;gt; ?</description>
+    </item>
+    
+    <item>
+      <title>Radio buttons</title>
+      <link>https://ohama.github.io/ocaml/lablgtk2-tutorial/buttonwidget/radiobuttons/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://ohama.github.io/ocaml/lablgtk2-tutorial/buttonwidget/radiobuttons/</guid>
+      <description>Radio buttons are similar to check buttons except they are grouped so that only one may be selected/depressed at a time. This is good for places in your application where you need to select from a short list of options.
+Creating a new radio button is done with one of these calls; see GButton.radio_button:
+val GButton.radio_button : ?group:Gtk.radio_button Gtk.group -&amp;gt; ?label:string -&amp;gt; ?use_mnemonic:bool -&amp;gt; ?stock:GtkStock.id -&amp;gt; ?relief:Gtk.Tags.relief_style -&amp;gt; ?active:bool -&amp;gt; ?</description>
+    </item>
+    
+  </channel>
+</rss>
