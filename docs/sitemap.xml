@@ -3,31 +3,23 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>https://ohama.github.io/ocaml/ocamllex-tutorial/11.usagetips/11.1.keywordtable/</loc>
+    <loc>https://ohama.github.io/ocaml/ocamllex-tutorial/intro/</loc>
   </url>
   
   <url>
-    <loc>https://ohama.github.io/ocaml/ocamllex-tutorial/12.examples/12.1.translate/</loc>
+    <loc>https://ohama.github.io/ocaml/ocamllex-tutorial/usagetips/keywordtable/</loc>
   </url>
   
   <url>
-    <loc>https://ohama.github.io/ocaml/ocamllex-tutorial/13.license/13.1.license/</loc>
+    <loc>https://ohama.github.io/ocaml/ocamllex-tutorial/license/licenseinflex/</loc>
   </url>
   
   <url>
-    <loc>https://ohama.github.io/ocaml/ocamllex-tutorial/01.intro/</loc>
+    <loc>https://ohama.github.io/ocaml/ocamllex-tutorial/actions/position/</loc>
   </url>
   
   <url>
-    <loc>https://ohama.github.io/ocaml/ocamlyacc-tutorial/introduction/</loc>
-  </url>
-  
-  <url>
-    <loc>https://ohama.github.io/ocaml/ocamllex-tutorial/</loc>
-  </url>
-  
-  <url>
-    <loc>https://ohama.github.io/ocaml/ocamllex-tutorial/06.actions/position/</loc>
+    <loc>https://ohama.github.io/ocaml/ocamllex-tutorial/examples/translate/</loc>
   </url>
   
   <url>
@@ -35,15 +27,119 @@
   </url>
   
   <url>
-    <loc>https://ohama.github.io/ocaml/ocamllex-tutorial/11.usagetips/11.2.nestedcomments/</loc>
+    <loc>https://ohama.github.io/ocaml/ocamllex-tutorial/license/copyright/</loc>
   </url>
   
   <url>
-    <loc>https://ohama.github.io/ocaml/ocamllex-tutorial/12.examples/12.2.wordcount/</loc>
+    <loc>https://ohama.github.io/ocaml/ocamllex-tutorial/usagetips/nestedcomments/</loc>
   </url>
   
   <url>
-    <loc>https://ohama.github.io/ocaml/ocamllex-tutorial/13.license/13.2.ocamllexcopyright/</loc>
+    <loc>https://ohama.github.io/ocaml/ocamllex-tutorial/simpleexample/</loc>
+  </url>
+  
+  <url>
+    <loc>https://ohama.github.io/ocaml/ocamllex-tutorial/examples/wordcount/</loc>
+  </url>
+  
+  <url>
+    <loc>https://ohama.github.io/ocaml/ocamllex-tutorial/formatofinputfile/</loc>
+  </url>
+  
+  <url>
+    <loc>https://ohama.github.io/ocaml/ocamllex-tutorial/examples/toylanguage/</loc>
+  </url>
+  
+  <url>
+    <loc>https://ohama.github.io/ocaml/ocamllex-tutorial/patterns/</loc>
+  </url>
+  
+  <url>
+    <loc>https://ohama.github.io/ocaml/ocamllex-tutorial/howmatched/</loc>
+  </url>
+  
+  <url>
+    <loc>https://ohama.github.io/ocaml/ocamllex-tutorial/actions/</loc>
+  </url>
+  
+  <url>
+    <loc>https://ohama.github.io/ocaml/ocamllex-tutorial/generatedscanner/</loc>
+  </url>
+  
+  <url>
+    <loc>https://ohama.github.io/ocaml/ocamllex-tutorial/startcondition/</loc>
+  </url>
+  
+  <url>
+    <loc>https://ohama.github.io/ocaml/ocamllex-tutorial/interfacewithocamlyacc/</loc>
+  </url>
+  
+  <url>
+    <loc>https://ohama.github.io/ocaml/ocamlyacc-tutorial/license/bisonlicense/</loc>
+  </url>
+  
+  <url>
+    <loc>https://ohama.github.io/ocaml/ocamlyacc-tutorial/grammar/grammaroutline/</loc>
+  </url>
+  
+  <url>
+    <loc>https://ohama.github.io/ocaml/lablgtk2-tutorial/gettingstarted/helloworld/</loc>
+  </url>
+  
+  <url>
+    <loc>https://ohama.github.io/ocaml/ocamlyacc-tutorial/introduction/</loc>
+  </url>
+  
+  <url>
+    <loc>https://ohama.github.io/ocaml/ocamlyacc-tutorial/concepts/languagsandcfg/</loc>
+  </url>
+  
+  <url>
+    <loc>https://ohama.github.io/ocaml/ocamlyacc-tutorial/parseralgorithm/lookaheadtokens/</loc>
+  </url>
+  
+  <url>
+    <loc>https://ohama.github.io/ocaml/lablgtk2-tutorial/movingon/moreonsignalhandlers/</loc>
+  </url>
+  
+  <url>
+    <loc>https://ohama.github.io/ocaml/ocamllex-tutorial/options/</loc>
+  </url>
+  
+  <url>
+    <loc>https://ohama.github.io/ocaml/ocamlyacc-tutorial/invokingocamlyacc/options/</loc>
+  </url>
+  
+  <url>
+    <loc>https://ohama.github.io/ocaml/ocamlyacc-tutorial/parserinterface/parserfunctions/</loc>
+  </url>
+  
+  <url>
+    <loc>https://ohama.github.io/ocaml/ocamlyacc-tutorial/examples/reverspolishcalculator/</loc>
+  </url>
+  
+  <url>
+    <loc>https://ohama.github.io/ocaml/lablgtk2-tutorial/introduction/</loc>
+  </url>
+  
+  <url>
+    <loc>https://ohama.github.io/ocaml/ocamllex-tutorial/</loc>
+  </url>
+  
+  <url>
+    <loc>https://ohama.github.io/ocaml/ocamllex-tutorial/usagetips/</loc>
+  </url>
+  
+  <url>
+    <loc>https://ohama.github.io/ocaml/ocamllex-tutorial/examples/</loc>
+  </url>
+  
+  <url>
+    <loc>https://ohama.github.io/ocaml/ocamllex-tutorial/license/</loc>
+  </url>
+  
+  <url>
+    <loc>https://ohama.github.io/ocaml/lablgtk2-tutorial/gettingstarted/compiling/</loc>
   </url>
   
   <url>
@@ -51,73 +147,188 @@
   </url>
   
   <url>
+    <loc>https://ohama.github.io/ocaml/ocamlyacc-tutorial/license/copyright/</loc>
+  </url>
+  
+  <url>
+    <loc>https://ohama.github.io/ocaml/ocamlyacc-tutorial/concepts/formalrule/</loc>
+  </url>
+  
+  <url>
+    <loc>https://ohama.github.io/ocaml/lablgtk2-tutorial/gettingstarted/</loc>
+  </url>
+  
+  <url>
+    <loc>https://ohama.github.io/ocaml/ocamlyacc-tutorial/examples/infixcalculator/</loc>
+  </url>
+  
+  <url>
+    <loc>https://ohama.github.io/ocaml/ocamlyacc-tutorial/parserinterface/lexicalfunctions/</loc>
+  </url>
+  
+  <url>
+    <loc>https://ohama.github.io/ocaml/ocamlyacc-tutorial/parseralgorithm/operatorprecedence/</loc>
+  </url>
+  
+  <url>
+    <loc>https://ohama.github.io/ocaml/ocamlyacc-tutorial/parseralgorithm/shiftreduceconflicts/</loc>
+  </url>
+  
+  <url>
+    <loc>https://ohama.github.io/ocaml/ocamlyacc-tutorial/grammar/symbols/</loc>
+  </url>
+  
+  <url>
+    <loc>https://ohama.github.io/ocaml/lablgtk2-tutorial/movingon/upgradedhelloworld/</loc>
+  </url>
+  
+  <url>
     <loc>https://ohama.github.io/ocaml/ocamlyacc-tutorial/</loc>
   </url>
   
   <url>
-    <loc>https://ohama.github.io/ocaml/ocamllex-tutorial/02.simpleexample/</loc>
+    <loc>https://ohama.github.io/ocaml/ocamlyacc-tutorial/parserinterface/errorfunctions/</loc>
   </url>
   
   <url>
-    <loc>https://ohama.github.io/ocaml/ocamllex-tutorial/12.examples/12.3.toylanguage/</loc>
+    <loc>https://ohama.github.io/ocaml/ocamlyacc-tutorial/examples/</loc>
   </url>
   
   <url>
-    <loc>https://ohama.github.io/ocaml/ocamllex-tutorial/03.formatofinputfile/</loc>
+    <loc>https://ohama.github.io/ocaml/lablgtk2-tutorial/movingon/</loc>
   </url>
   
   <url>
-    <loc>https://ohama.github.io/ocaml/ocamllex-tutorial/04.patterns/</loc>
+    <loc>https://ohama.github.io/ocaml/ocamlyacc-tutorial/concepts/semanticvalues/</loc>
   </url>
   
   <url>
-    <loc>https://ohama.github.io/ocaml/ocamllex-tutorial/05.howmatched/</loc>
+    <loc>https://ohama.github.io/ocaml/ocamlyacc-tutorial/examples/simpleerrorrecovery/</loc>
   </url>
   
   <url>
-    <loc>https://ohama.github.io/ocaml/ocamllex-tutorial/06.actions/</loc>
+    <loc>https://ohama.github.io/ocaml/ocamlyacc-tutorial/grammar/syntaxofrules/</loc>
   </url>
   
   <url>
-    <loc>https://ohama.github.io/ocaml/ocamllex-tutorial/07.generatedscanner/</loc>
+    <loc>https://ohama.github.io/ocaml/lablgtk2-tutorial/gettingstarted/signalandcallback/</loc>
   </url>
   
   <url>
-    <loc>https://ohama.github.io/ocaml/ocamllex-tutorial/08.startcondition/</loc>
+    <loc>https://ohama.github.io/ocaml/lablgtk2-tutorial/</loc>
   </url>
   
   <url>
-    <loc>https://ohama.github.io/ocaml/ocamllex-tutorial/09.interfacewithocamlyacc/</loc>
+    <loc>https://ohama.github.io/ocaml/ocamlyacc-tutorial/parseralgorithm/contextdependentprecedence/</loc>
   </url>
   
   <url>
-    <loc>https://ohama.github.io/ocaml/ocamllex-tutorial/10.options/</loc>
+    <loc>https://ohama.github.io/ocaml/lablgtk2-tutorial/gettingstarted/events/</loc>
   </url>
   
   <url>
-    <loc>https://ohama.github.io/ocaml/ocamllex-tutorial/11.usagetips/</loc>
+    <loc>https://ohama.github.io/ocaml/ocamlyacc-tutorial/grammar/</loc>
   </url>
   
   <url>
-    <loc>https://ohama.github.io/ocaml/ocamllex-tutorial/12.examples/</loc>
+    <loc>https://ohama.github.io/ocaml/ocamlyacc-tutorial/examples/locationtrackingcalculator/</loc>
   </url>
   
   <url>
-    <loc>https://ohama.github.io/ocaml/ocamllex-tutorial/13.license/</loc>
+    <loc>https://ohama.github.io/ocaml/ocamlyacc-tutorial/grammar/recursiverules/</loc>
+  </url>
+  
+  <url>
+    <loc>https://ohama.github.io/ocaml/ocamlyacc-tutorial/concepts/semanticactions/</loc>
+  </url>
+  
+  <url>
+    <loc>https://ohama.github.io/ocaml/lablgtk2-treeview-tutorial/</loc>
+  </url>
+  
+  <url>
+    <loc>https://ohama.github.io/ocaml/ocamlyacc-tutorial/grammar/definesemantics/</loc>
+  </url>
+  
+  <url>
+    <loc>https://ohama.github.io/ocaml/ocamlyacc-tutorial/concepts/locations/</loc>
+  </url>
+  
+  <url>
+    <loc>https://ohama.github.io/ocaml/ocamlyacc-tutorial/examples/multifunctioncalculator/</loc>
+  </url>
+  
+  <url>
+    <loc>https://ohama.github.io/ocaml/ocamlyacc-tutorial/parseralgorithm/parserstates/</loc>
+  </url>
+  
+  <url>
+    <loc>https://ohama.github.io/ocaml/ocamlyacc-tutorial/parserinterface/</loc>
+  </url>
+  
+  <url>
+    <loc>https://ohama.github.io/ocaml/lablgtk2-tutorial/gettingstarted/steppingthroughhelloworld/</loc>
+  </url>
+  
+  <url>
+    <loc>https://ohama.github.io/ocaml/ocamlyacc-tutorial/concepts/ocamlyaccoutput/</loc>
+  </url>
+  
+  <url>
+    <loc>https://ohama.github.io/ocaml/ocamlyacc-tutorial/parseralgorithm/</loc>
+  </url>
+  
+  <url>
+    <loc>https://ohama.github.io/ocaml/ocamlyacc-tutorial/parseralgorithm/reducereduceconflicts/</loc>
+  </url>
+  
+  <url>
+    <loc>https://ohama.github.io/ocaml/ocamlyacc-tutorial/grammar/trackinglocations/</loc>
+  </url>
+  
+  <url>
+    <loc>https://ohama.github.io/ocaml/ocamlyacc-tutorial/errorrecovery/</loc>
+  </url>
+  
+  <url>
+    <loc>https://ohama.github.io/ocaml/ocamlyacc-tutorial/parseralgorithm/mysteriousreducereductconflicts/</loc>
+  </url>
+  
+  <url>
+    <loc>https://ohama.github.io/ocaml/ocamlyacc-tutorial/grammar/nonterminal/</loc>
+  </url>
+  
+  <url>
+    <loc>https://ohama.github.io/ocaml/ocamlyacc-tutorial/grammar/declarations/</loc>
+  </url>
+  
+  <url>
+    <loc>https://ohama.github.io/ocaml/ocamlyacc-tutorial/concepts/stages/</loc>
+  </url>
+  
+  <url>
+    <loc>https://ohama.github.io/ocaml/ocamlyacc-tutorial/debugging/</loc>
+  </url>
+  
+  <url>
+    <loc>https://ohama.github.io/ocaml/ocamlyacc-tutorial/concepts/overalllayout/</loc>
+  </url>
+  
+  <url>
+    <loc>https://ohama.github.io/ocaml/ocamlyacc-tutorial/invokingocamlyacc/</loc>
+  </url>
+  
+  <url>
+    <loc>https://ohama.github.io/ocaml/ocamlyacc-tutorial/license/</loc>
   </url>
   
   <url>
     <loc>https://ohama.github.io/ocaml/readme/</loc>
-    <priority>0</priority>
   </url>
   
   <url>
     <loc>https://ohama.github.io/ocaml/categories/</loc>
     <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://ohama.github.io/ocaml/ocamlyacc-tutorial/concepts/languages/</loc>
   </url>
   
   <url>

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Ocamllex Tutorial on Documentation for Hugo Learn Theme</title>
+    <title>ocamllex tutorial on Documentation for Hugo Learn Theme</title>
     <link>https://ohama.github.io/ocaml/ocamllex-tutorial/</link>
-    <description>Recent content in Ocamllex Tutorial on Documentation for Hugo Learn Theme</description>
+    <description>Recent content in ocamllex tutorial on Documentation for Hugo Learn Theme</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-US</language>
     
@@ -12,91 +12,91 @@
     
     <item>
       <title>Introduction</title>
-      <link>https://ohama.github.io/ocaml/ocamllex-tutorial/01.intro/</link>
+      <link>https://ohama.github.io/ocaml/ocamllex-tutorial/intro/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://ohama.github.io/ocaml/ocamllex-tutorial/01.intro/</guid>
+      <guid>https://ohama.github.io/ocaml/ocamllex-tutorial/intro/</guid>
       <description>ocamllex is a tool for generating scanners: programs which recognized lexical patterns in text. ocamllex reads the given input files, for a description of a scanner to generate. The description is in the form of pairs of regular expressions and Ocaml code, called rules. ocamllex generates as output a Ocaml source file which defines lexical analyzer functions. This file is compiled and linked to produce an executable. When the executable is run, it analyzes its input for occurrences of the regular expressions.</description>
     </item>
     
     <item>
       <title>Some simple examples</title>
-      <link>https://ohama.github.io/ocaml/ocamllex-tutorial/02.simpleexample/</link>
+      <link>https://ohama.github.io/ocaml/ocamllex-tutorial/simpleexample/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://ohama.github.io/ocaml/ocamllex-tutorial/02.simpleexample/</guid>
+      <guid>https://ohama.github.io/ocaml/ocamllex-tutorial/simpleexample/</guid>
       <description>First some simple examples to get the flavor of how one uses ocamllex. The following ocamllex input specifies a scanner which whenever it encounters the string &amp;ldquo;current_directory&amp;rdquo; will replace it with the current directory:
 { } rule translate = parse | &amp;quot;current_directory&amp;quot;	{ print_string (Sys.getcwd ()); translate lexbuf } | _ as c	{ print_char c; translate lexbuf } | eof	{ exit 0 }  In the first rule, &amp;ldquo;current_directory&amp;rdquo; is the pattern and the expression between braces is the action.</description>
     </item>
     
     <item>
       <title>Format of the input file</title>
-      <link>https://ohama.github.io/ocaml/ocamllex-tutorial/03.formatofinputfile/</link>
+      <link>https://ohama.github.io/ocaml/ocamllex-tutorial/formatofinputfile/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://ohama.github.io/ocaml/ocamllex-tutorial/03.formatofinputfile/</guid>
+      <guid>https://ohama.github.io/ocaml/ocamllex-tutorial/formatofinputfile/</guid>
       <description>The ocamllex input file consists of four sections; header, definitions, rules and trailer section:
 (* header section *) { &amp;lt;header&amp;gt; } (* definitions section *) let &amp;lt;ident&amp;gt; = &amp;lt;regexp&amp;gt; let ...	(* rules section *) rule &amp;lt;entrypoint_1&amp;gt; [arg1... argn] = parse | &amp;lt;pattern&amp;gt; { &amp;lt;action&amp;gt; } | ... | &amp;lt;pattern&amp;gt; { &amp;lt;action&amp;gt; } and &amp;lt;entrypoint_2&amp;gt; [arg1... argn] = parse ... and ... (* trailer section *) { &amp;lt;trailer&amp;gt; }  Comments are delimited by (* and *), as in Caml.</description>
     </item>
     
     <item>
       <title>Patterns</title>
-      <link>https://ohama.github.io/ocaml/ocamllex-tutorial/04.patterns/</link>
+      <link>https://ohama.github.io/ocaml/ocamllex-tutorial/patterns/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://ohama.github.io/ocaml/ocamllex-tutorial/04.patterns/</guid>
+      <guid>https://ohama.github.io/ocaml/ocamllex-tutorial/patterns/</guid>
       <description>The patterns in the input are written using regular expressions in the style of lex, with a more Caml-like syntax. These are:
  &amp;lsquo;c&amp;rsquo;: match the character &amp;lsquo;c&amp;rsquo;. The character constant is the same syntax as Objective Caml character. _: (underscore) match any character. eof: match an end-of-file . &amp;ldquo;foo&amp;rdquo;: the literal string &amp;ldquo;foo&amp;rdquo;. The syntax is the same syntax as Objective Caml string constants. [&amp;lsquo;x&amp;rsquo; &amp;lsquo;y&amp;rsquo; &amp;lsquo;z&amp;rsquo;]: character set; in this case, the pattern matches either an &amp;lsquo;x&amp;rsquo;, a &amp;lsquo;y&amp;rsquo;, or a &amp;lsquo;z&amp;rsquo; .</description>
     </item>
     
     <item>
       <title>How the input is matched</title>
-      <link>https://ohama.github.io/ocaml/ocamllex-tutorial/05.howmatched/</link>
+      <link>https://ohama.github.io/ocaml/ocamllex-tutorial/howmatched/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://ohama.github.io/ocaml/ocamllex-tutorial/05.howmatched/</guid>
+      <guid>https://ohama.github.io/ocaml/ocamllex-tutorial/howmatched/</guid>
       <description>When the generated scanner is run, it analyzes its input looking for strings which match any of its patterns. If it finds more than one match, it takes the one matching the most text (the &amp;ldquo;longest match&amp;rdquo; principle). If it finds two or more matches of the same length, the rule listed first in the ocamllex input file is chosen (the &amp;ldquo;first match&amp;rdquo; principle).
 Once the match is determined, the text corresponding to the match (called the token) is made available in the form of a string.</description>
     </item>
     
     <item>
       <title>The generted scanner</title>
-      <link>https://ohama.github.io/ocaml/ocamllex-tutorial/07.generatedscanner/</link>
+      <link>https://ohama.github.io/ocaml/ocamllex-tutorial/generatedscanner/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://ohama.github.io/ocaml/ocamllex-tutorial/07.generatedscanner/</guid>
+      <guid>https://ohama.github.io/ocaml/ocamllex-tutorial/generatedscanner/</guid>
       <description>The output of ocamllex is the file lex.ml when it is invoked as ocamllex lex.mll. The generated file contains the scanning functions, a number of tables used by it for matching tokens, and a number of auxiliary routines. The scanning functions are declared as followings:
 let &amp;lt;entrypoint&amp;gt; [arg1... argn] lexbuf = ... and ...  where the fuction entrypoint has n + 1 arguments. n arguments come from the definition of the rules secton.</description>
     </item>
     
     <item>
-      <title>8. Start conditions</title>
-      <link>https://ohama.github.io/ocaml/ocamllex-tutorial/08.startcondition/</link>
+      <title>Start conditions</title>
+      <link>https://ohama.github.io/ocaml/ocamllex-tutorial/startcondition/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://ohama.github.io/ocaml/ocamllex-tutorial/08.startcondition/</guid>
-      <description>Introduction Ocamlyacc is a general-purpose parser generator that converts a grammar description for an LALR(1) context-free grammar into a Ocaml program to parse that grammar. Once you are proficient with Ocamlyacc, you may use it to develop a wide range of language parsers, from those used in simple desk calculators to complex programming languages.
-Ocamlyacc is very close to the well-known yacc (or bison) commands that can be found in most C programming environments.</description>
+      <guid>https://ohama.github.io/ocaml/ocamllex-tutorial/startcondition/</guid>
+      <description>ocamllex provides a mechanism for conditionally activating rules. When you want do activate the other rule, just call the other entrypoint function. For example, the following has two rules, one for finding tokens and one for skipping comments.
+{} rule token = parse | [&#39; &#39; &#39;\t&#39; &#39;\n&#39;]+ (* skip spaces *) { token lexbuf } | &amp;quot;(*&amp;quot; (* activate &amp;quot;comment&amp;quot; rule *) { comment lexbuf } ... and comment = parse | &amp;quot;*)&amp;quot; (* go to the &amp;quot;token&amp;quot; rule *) { token lexbuf } | _ (* skip comments *) { comment lexbuf } .</description>
     </item>
     
     <item>
-      <title>9. Interfacing with ocamlyacc</title>
-      <link>https://ohama.github.io/ocaml/ocamllex-tutorial/09.interfacewithocamlyacc/</link>
+      <title>Interfacing with ocamlyacc</title>
+      <link>https://ohama.github.io/ocaml/ocamllex-tutorial/interfacewithocamlyacc/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://ohama.github.io/ocaml/ocamllex-tutorial/09.interfacewithocamlyacc/</guid>
-      <description>Introduction Ocamlyacc is a general-purpose parser generator that converts a grammar description for an LALR(1) context-free grammar into a Ocaml program to parse that grammar. Once you are proficient with Ocamlyacc, you may use it to develop a wide range of language parsers, from those used in simple desk calculators to complex programming languages.
-Ocamlyacc is very close to the well-known yacc (or bison) commands that can be found in most C programming environments.</description>
+      <guid>https://ohama.github.io/ocaml/ocamllex-tutorial/interfacewithocamlyacc/</guid>
+      <description>One of the main uses of ocamllex is as a companion to the ocamlyacc parser-generator. ocamlyacc parsers call one of the scanning functions to find the next input token. The routine is supposed to return the type of the next token with an associated value. To use ocamllex with ocamlyacc, scanner functions should use parser module to refer token types, which are defined in `%tokens&amp;rsquo; attributes appearing in the ocamlyacc input.</description>
     </item>
     
     <item>
-      <title>10. Options</title>
-      <link>https://ohama.github.io/ocaml/ocamllex-tutorial/10.options/</link>
+      <title>Options</title>
+      <link>https://ohama.github.io/ocaml/ocamllex-tutorial/options/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://ohama.github.io/ocaml/ocamllex-tutorial/10.options/</guid>
-      <description>Introduction Ocamlyacc is a general-purpose parser generator that converts a grammar description for an LALR(1) context-free grammar into a Ocaml program to parse that grammar. Once you are proficient with Ocamlyacc, you may use it to develop a wide range of language parsers, from those used in simple desk calculators to complex programming languages.
-Ocamlyacc is very close to the well-known yacc (or bison) commands that can be found in most C programming environments.</description>
+      <guid>https://ohama.github.io/ocaml/ocamllex-tutorial/options/</guid>
+      <description>ocamllex has the following options:
+ &amp;rdquo;-o output-file&amp;rdquo;  &amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp; By default, ocamllex produces lexer.ml, when ocamllex is invoked as &amp;ldquo;ocamllex lexer.mll&amp;rdquo;. You can change the name of the output file using -o option.
+ &amp;rdquo;-ml&amp;rdquo;  &amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp; By default, ocamllex produces code that uses the Caml built-in automata interpreter. Using this option, the automaton is coded as Caml functions. This option is useful for debugging ocamllex, but it&amp;rsquo;s not recommended for production lexers.</description>
     </item>
     
   </channel>

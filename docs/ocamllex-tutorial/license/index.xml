@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>13. License on Documentation for Hugo Learn Theme</title>
+    <link>https://ohama.github.io/ocaml/ocamllex-tutorial/license/</link>
+    <description>Recent content in 13. License on Documentation for Hugo Learn Theme</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-US</language>
+    
+	<atom:link href="https://ohama.github.io/ocaml/ocamllex-tutorial/license/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>License in flex manual</title>
+      <link>https://ohama.github.io/ocaml/ocamllex-tutorial/license/licenseinflex/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://ohama.github.io/ocaml/ocamllex-tutorial/license/licenseinflex/</guid>
+      <description>Copyright &amp;copy; 1990 The Regents of the University of California. All rights reserved.
+This code is derived from software contributed to Berkeley by Vern Paxson.
+The United States Government has rights in this work pursuant to contract no. DE-AC03-76SF00098 between the United States Department of Energy and the University of California.
+Redistribution and use in source and binary forms with or without modification are permitted provided that: (1) source distributions retain this entire copyright notice and comment, and (2) distributions including binaries display the following acknowledgement: &amp;ldquo;This product includes software developed by the University of California, Berkeley and its contributors&amp;rdquo; in the documentation or other materials provided with the distribution and in all advertising materials mentioning features or use of this software.</description>
+    </item>
+    
+    <item>
+      <title>Copyright and permission</title>
+      <link>https://ohama.github.io/ocaml/ocamllex-tutorial/license/copyright/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://ohama.github.io/ocaml/ocamllex-tutorial/license/copyright/</guid>
+      <description>Ocamllex Adaptation Copyright and Permissions Notice Copyright &amp;copy; 2004 SooHyoung Oh.
+Permission is granted to make and distribute verbatim copies of this manual provided the copyright notice and this permission notice are preserved on all copies.
+Permission is granted to copy and distribute modified versions of this document under the conditions for verbatim copying, provided that this copyright notice is included exactly as in the original, and that the entire resulting derived work is distributed under the terms of a permission notice identical to this one.</description>
+    </item>
+    
+  </channel>
+</rss>

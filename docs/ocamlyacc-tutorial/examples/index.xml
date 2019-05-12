@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Examples on Documentation for Hugo Learn Theme</title>
+    <link>https://ohama.github.io/ocaml/ocamlyacc-tutorial/examples/</link>
+    <description>Recent content in Examples on Documentation for Hugo Learn Theme</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-US</language>
+    
+	<atom:link href="https://ohama.github.io/ocaml/ocamlyacc-tutorial/examples/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Reverse Polish Notation Calculator</title>
+      <link>https://ohama.github.io/ocaml/ocamlyacc-tutorial/examples/reverspolishcalculator/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://ohama.github.io/ocaml/ocamlyacc-tutorial/examples/reverspolishcalculator/</guid>
+      <description>The first example is that of a simple double-precision reverse polish notation calculator (a calculator using postfix operators). This example provides a good starting point, since operator precedence is not an issue. The second example will illustrate how operator precedence is handled.
+The source code for this calculator is named rpcalc.mly. The .mly extension is a convention used for Ocamlyacc input files.
+Declarations for &amp;ldquo;rpcalc&amp;rdquo; Here are the Ocaml and Ocamlyacc declarations for the reverse polish notation calculator.</description>
+    </item>
+    
+    <item>
+      <title>Infix Notation Calculator</title>
+      <link>https://ohama.github.io/ocaml/ocamlyacc-tutorial/examples/infixcalculator/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://ohama.github.io/ocaml/ocamlyacc-tutorial/examples/infixcalculator/</guid>
+      <description>We now modify rpcalc to handle infix operators instead of postfix. Infix notation involves the concept of operator precedence and the need for parentheses nested to arbitrary depth. Here is the Ocamlyacc code for calc.mly, an infix desk-top calculator.
+/* file: calc.mly */ /* Infix notatoin calculator -- calc */ %{ open Printf %} /* Ocamlyacc Declarations */ %token NEWLINE %token LPAREN RPAREN %token &amp;lt;float&amp;gt; NUM %token PLUS MINUS MULTIPLY DIVIDE CARET %left PLUS MINUS %left MULTIPLY DIVIDE %left NEG	/* negation -- unary minus */ %right CARET	/* exponentiation */ %start input %type &amp;lt;unit&amp;gt; input /* Grammar follows */ %% input:	/* empty */	{ } | input line	{ } ; line:	NEWLINE	{ } | exp NEWLINE	{ printf &amp;quot;\t%.</description>
+    </item>
+    
+    <item>
+      <title>Simple Error Recovery</title>
+      <link>https://ohama.github.io/ocaml/ocamlyacc-tutorial/examples/simpleerrorrecovery/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://ohama.github.io/ocaml/ocamlyacc-tutorial/examples/simpleerrorrecovery/</guid>
+      <description>Up to this point, this manual has not addressed the issue of error recovery&amp;mdash;how to continue parsing after the parser detects a syntax error. All we have handled is error reporting with parse_error. Recall that by default, the parser function raises exception after calling parse_error. This means that an erroneous input line causes the calculator program to raise exception and exit. Now we show how to rectify this deficiency.
+The Ocamlyacc language itself includes the reserved word error, which may be included in the grammar rules.</description>
+    </item>
+    
+    <item>
+      <title>Location Tracking Calculator</title>
+      <link>https://ohama.github.io/ocaml/ocamlyacc-tutorial/examples/locationtrackingcalculator/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://ohama.github.io/ocaml/ocamlyacc-tutorial/examples/locationtrackingcalculator/</guid>
+      <description>This example extends the infix notation calculator with location tracking. This feature will be used to improve the error messages. For the sake of clarity, this example is a simple integer calculator, since most of the work needed to use locations will be done in the lexical analyser.
+3.4.1. Declarations for ltcalc
+The Ocaml and Ocamlyacc declarations for the location tracking calculator are the same as the declarations for the infix notation calculator except open Lexing.</description>
+    </item>
+    
+    <item>
+      <title>Multi-Function Calculator</title>
+      <link>https://ohama.github.io/ocaml/ocamlyacc-tutorial/examples/multifunctioncalculator/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://ohama.github.io/ocaml/ocamlyacc-tutorial/examples/multifunctioncalculator/</guid>
+      <description>Now that the basics of Ocamlyacc have been discussed, it is time to move on to a more advanced problem. The above calculators provided only five functions, +, -, *, / and ^. It would be nice to have a calculator that provides other mathematical functions such as sin, cos, etc.
+In this example, we will show how to implement built-in functions whose syntax has this form:
+function_name (argument)  At the same time, we will add memory to the calculator, by allowing you to create named variables, store values in them, and use them later.</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Getting started on Documentation for Hugo Learn Theme</title>
+    <link>https://ohama.github.io/ocaml/lablgtk2-tutorial/gettingstarted/</link>
+    <description>Recent content in Getting started on Documentation for Hugo Learn Theme</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-US</language>
+    
+	<atom:link href="https://ohama.github.io/ocaml/lablgtk2-tutorial/gettingstarted/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Hello world in GTK</title>
+      <link>https://ohama.github.io/ocaml/lablgtk2-tutorial/gettingstarted/helloworld/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://ohama.github.io/ocaml/lablgtk2-tutorial/gettingstarted/helloworld/</guid>
+      <description>Now for a program with a widget (a button). It&amp;rsquo;s the classic hello world a la GTK.
+(* file: hello.ml *) (* This is a callback function. *) let hello () = print_endline &amp;quot;Hello World&amp;quot;; flush stdout (* Another callback function. * If you return [false] in the &amp;quot;delete_event&amp;quot; signal handler, * GTK will emit the &amp;quot;destroy&amp;quot; signal. Returning [true] means * you don&#39;t want the window to be destroyed. * This is useful for popping up &#39;are you sure you want to quit?</description>
+    </item>
+    
+    <item>
+      <title>Compiling hello world</title>
+      <link>https://ohama.github.io/ocaml/lablgtk2-tutorial/gettingstarted/compiling/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://ohama.github.io/ocaml/lablgtk2-tutorial/gettingstarted/compiling/</guid>
+      <description>To compile use:
+ocamlc -I +lablgtk2 -o helloworld lablgtk.cma gtkInit.cmo helloworld.ml  The options are:
+ -I +lablgtk2: adds the subdirectory lablgtk2 of the standard library to the search path. In that directory, there are compiled interface files (.cmi), compiled object code files (.cmo), libraries (.cma) related with lablgtk2.
+ -o helloworld: specify the name of the output file produced by the linker.
+  The library and object that are usually linked in are:</description>
+    </item>
+    
+    <item>
+      <title>Theory of Signals and Callbacks</title>
+      <link>https://ohama.github.io/ocaml/lablgtk2-tutorial/gettingstarted/signalandcallback/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://ohama.github.io/ocaml/lablgtk2-tutorial/gettingstarted/signalandcallback/</guid>
+      <description>Before we look in detail at helloworld, we&amp;rsquo;ll discuss signals and callbacks. GTK is an event driven toolkit, which means it will sleep in GMain.Main.main until an event occurs and control is passed to the appropriate function.
+This passing of control is done using the idea of &amp;ldquo;signals&amp;rdquo;. (Note that these signals are not the same as the Unix system signals, and are not implemented using them, although the terminology is almost identical.</description>
+    </item>
+    
+    <item>
+      <title>Events</title>
+      <link>https://ohama.github.io/ocaml/lablgtk2-tutorial/gettingstarted/events/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://ohama.github.io/ocaml/lablgtk2-tutorial/gettingstarted/events/</guid>
+      <description>In addition to the signal mechanism described above, there is a set of events that reflect the Window event mechanism. Callbacks may also be attached to these events. These events are: (see event_signals)
+ any button_press button_release scroll motion_notify delete destroy expose key_press key_release enter_notify leave_notify configure focus_in focus_out map unmap property_notify selection_clear selection_request selection_notify proximity_in proximity_out visibility_notify client no_expose window_state  In order to connect a callback function to one of these events you use the #event#connect method, using one of the above event names as the event_signal_name like this:</description>
+    </item>
+    
+    <item>
+      <title>Stepping throught hello world</title>
+      <link>https://ohama.github.io/ocaml/lablgtk2-tutorial/gettingstarted/steppingthroughhelloworld/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://ohama.github.io/ocaml/lablgtk2-tutorial/gettingstarted/steppingthroughhelloworld/</guid>
+      <description>Now that we know the theory behind this, let&amp;rsquo;s clarify by walking through the example helloworld program.
+Here is the callback function that will be called when the button is &amp;ldquo;clicked&amp;rdquo;. We ignore both the widget and the data in this example, but it is not hard to do things with them. The next example will use the data argument to tell us which button was pressed.
+let hello () = print_endline &amp;quot;Hello World&amp;quot;; flush stdout  The next callback is a bit special.</description>
+    </item>
+    
+  </channel>
+</rss>
