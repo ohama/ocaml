@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Moving on on Documentation for Hugo Learn Theme</title>
+    <link>https://ohama.github.io/ocaml/lablgtk2-tutorial/movingon/</link>
+    <description>Recent content in Moving on on Documentation for Hugo Learn Theme</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-US</language>
+    
+	<atom:link href="https://ohama.github.io/ocaml/lablgtk2-tutorial/movingon/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>More on signal handlers</title>
+      <link>https://ohama.github.io/ocaml/lablgtk2-tutorial/movingon/moreonsignalhandlers/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://ohama.github.io/ocaml/lablgtk2-tutorial/movingon/moreonsignalhandlers/</guid>
+      <description>Lets take another look at the #connect#signal_name declaration.
+#connect#signal_name ~callback:(unit -&amp;gt; unit) -&amp;gt; GtkSignal.id  Notice the GtkSignal.id return value? This is a tag that identifies your callback function. As stated above, you may have as many callbacks per signal and per object as you need, and each will be executed in turn, in the order they were attached.
+This tag allows you to remove this callback from the list by using #misc#disconnect method:</description>
+    </item>
+    
+    <item>
+      <title>Upgraded hello world</title>
+      <link>https://ohama.github.io/ocaml/lablgtk2-tutorial/movingon/upgradedhelloworld/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://ohama.github.io/ocaml/lablgtk2-tutorial/movingon/upgradedhelloworld/</guid>
+      <description>Let&amp;rsquo;s take a look at a slightly improved helloworld with better examples of callbacks. This will also introduce us to our next topic, packing widgets.
+(* file: hello2.ml *) let clicked msg () = print_endline msg; flush stdout let delete_event ev = GMain.Main.quit (); false let main () = (* Create a new window and sets the border width and title of the window. *) let window = GWindow.window ~title:&amp;quot;Hello Buttons!</description>
+    </item>
+    
+  </channel>
+</rss>

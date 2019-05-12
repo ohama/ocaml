@@ -1,0 +1,3469 @@
+<!DOCTYPE html>
+<html lang="en" class="js csstransforms3d">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="Hugo 0.54.0" />
+    <meta name="description" content="The Ocamlyacc declarations section of a Ocamlyacc grammar defines the symbols used in formulating the grammar and the data types of semantic values.">
+<meta name="author" content="Mathieu Cornic">
+
+    <link rel="icon" href="/ocaml/images/favicon.png" type="image/png">
+
+    <title>Ocamlyacc Declarations :: Documentation for Hugo Learn Theme</title>
+
+    
+    <link href="/ocaml/css/nucleus.css?1557622755" rel="stylesheet">
+    <link href="/ocaml/css/fontawesome-all.min.css?1557622755" rel="stylesheet">
+    <link href="/ocaml/css/hybrid.css?1557622755" rel="stylesheet">
+    <link href="/ocaml/css/featherlight.min.css?1557622755" rel="stylesheet">
+    <link href="/ocaml/css/perfect-scrollbar.min.css?1557622755" rel="stylesheet">
+    <link href="/ocaml/css/auto-complete.css?1557622755" rel="stylesheet">
+    <link href="/ocaml/css/atom-one-dark-reasonable.css?1557622755" rel="stylesheet">
+    <link href="/ocaml/css/theme.css?1557622755" rel="stylesheet">
+    <link href="/ocaml/css/hugo-theme.css?1557622755" rel="stylesheet">
+    
+      <link href="/ocaml/css/theme-green.css?1557622755" rel="stylesheet">
+    
+
+    <script src="/ocaml/js/jquery-3.3.1.min.js?1557622755"></script>
+
+    <style type="text/css">
+      :root #header + #content > #left > #rlblock_left{
+          display:none !important;
+      }
+      
+        :not(pre) > code + span.copy-to-clipboard {
+            display: none;
+        }
+      
+    </style>
+    
+  </head>
+  <body class="" data-url="/ocaml/ocamlyacc-tutorial/grammar/declarations/">
+    <nav id="sidebar" class="">
+
+
+
+  <div id="header-wrapper">
+    <div id="header">
+      <svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="36.139763mm"
+   height="8.5127325mm"
+   viewBox="0 0 36.139762 8.5127325"
+   version="1.1"
+   id="svg102"
+   inkscape:version="0.92.4 (5da689c313, 2019-01-14)"
+   sodipodi:docname="ohama7.svg">
+  <defs
+     id="defs96" />
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="0.35"
+     inkscape:cx="-75.714286"
+     inkscape:cy="559.99998"
+     inkscape:document-units="mm"
+     inkscape:current-layer="layer1"
+     showgrid="false"
+     inkscape:window-width="1920"
+     inkscape:window-height="1017"
+     inkscape:window-x="-8"
+     inkscape:window-y="-8"
+     inkscape:window-maximized="1"
+     showborder="false"
+     fit-margin-top="0"
+     fit-margin-left="0"
+     fit-margin-right="0"
+     fit-margin-bottom="0" />
+  <metadata
+     id="metadata99">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(3.4445889e-8,-288.48726)">
+    <g
+       aria-label="ohama"
+       transform="matrix(0.26458333,0,0,0.26458333,-24.075001,184.82581)"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:40px;line-height:1.25;font-family:'The Brandy';-inkscape-font-specification:'The Brandy, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none"
+       id="flowRoot104">
+      <path
+         d="m 105.78773,420.71438 c 3.8,-0.44 7.28,-3.08001 10.56,-6.84001 l -2.08,-0.84 c -1.24,1.68001 -4.72,4.68001 -6.76,4.96 4.88,-10.03999 -3.04,-14.36 -7.839996,-10.88 -2.36,-1.12 -5.92,0.24 -7.88,5.48001 -1.48,4.03999 -1.28,9 3.96,10.71999 2.8,0.92 7.879996,0.04 10.039996,-2.59999 z m -5.76,-9.40001 c 2.8,-5.28 7.28,-2.08 1.28,6.48 -2.199996,-0.24 -2.479996,-4.16 -1.28,-6.48 z m -3.039996,9.44 c -1.12,-0.64 -0.88,-3.35999 -0.16,-5.12 0.08,1.76001 1.36,3.6 2.76,4.32001 -0.92,1.27999 -1.96,1.15999 -2.6,0.79999 z"
+         id="path112"
+         inkscape:connector-curvature="0" />
+      <path
+         d="m 127.60586,423.87437 c 5.12,1.08001 12.84,-7.76 14.32,-9.96 l -2.28,-0.8 c -0.68,0.96 -6.76,7.32 -7.8,6.12 -1,-1.2 5.88,-11.72 0.6,-12.88 -2.8,-0.6 -6.68,1.4 -8.92,3.32 0.44,-1.2 1.08,-3 1.8,-4.2 14.88,-2.56 13.96,-13.04 7.72,-13.63999 -11.6,-1.12 -18.28,19.91999 -20.8,26.91999 -0.6,1.64001 -0.36,4.24 1.6,4.88 0.96,0.32001 2.52,0.56 4.88,-0.23999 0.48,-3.28001 1.68,-6.76001 3.12,-9.20001 1.44,-1.72 4.28,-3.79999 5.36,-3.96 2.32,-0.32 -6.04,11.76 -0.12,13.52 0.16,0.04 0.32,0.08 0.52,0.12 z m 4.88,-24.91999 c -1.52,2.15999 -6.2,3.44 -6.2,3.44 4.72,-8.64001 7.6,-5.36001 6.2,-3.44 z"
+         id="path114"
+         inkscape:connector-curvature="0" />
+      <path
+         d="m 150.71836,418.11437 c -0.32,2.76 0.08,5.04001 2.16,5.64 3.96,1.16 12.6,-7.56 14.08,-9.84 l -2.24,-0.8 c -1.32,1.8 -5.72,5.16001 -6.92,5.36 -2.8,0.36001 2.56,-10.56 3.04,-11.84 -0.4,-1.96 -5.12,-2.91999 -6.6,0 -0.16,0.48 -0.44,1.16 -0.76,2 -4.28,-5.56 -10.92,-1.67999 -13.56,3.84 -4.76,9.88 2.8,15.84 10.8,5.64 z m -4.64,-1.51999 c -0.96,-3.04001 3.76,-9.72001 6.72,-6.16001 -0.44,1.2 -0.88,2.52001 -1.28,3.88 -1.88,1.88 -4.8,4.2 -5.44,2.28001 z"
+         id="path116"
+         inkscape:connector-curvature="0" />
+      <path
+         d="m 200.27648,413.11437 c -0.68,0.96 -6.76,7.32 -7.8,6.12 -1,-1.2 5.92,-11.8 0.44,-12.88 -2.64,-0.48 -6.04,1.2 -8.28,3 0.04,-1.56 -0.44,-2.63999 -2.04,-3 -2.76,-0.6 -6.68,1.4 -8.92,3.32 0.44,-1.16 0.4,-1.32 1.36,-2.51999 -0.76,-1.96001 -5.84,-2.56 -7.8,0 -1.76,4.87999 -3.68,7.95999 -4.84,11.59999 -0.52,1.68 -0.36,4.24 1.6,4.88 1,0.32001 2.56,0.56 4.88,-0.23999 0.48,-3.28001 1.68,-6.76001 3.12,-9.20001 1.44,-1.72 4.28,-3.79999 5.36,-3.96 2.32,-0.32 -6,11.76 -0.08,13.52 0.84,0.28 2.56,0.12 3.6,-0.47999 0.04,-2.96001 1.88,-7 2.96,-10.40001 1.48,-1.32 3.24,-2.52 4.08,-2.64 2.32,-0.32 -6.04,11.76 -0.12,13.52 5.12,1.68 13.24,-7.56 14.72,-9.84 z"
+         id="path118"
+         inkscape:connector-curvature="0" />
+      <path
+         d="m 211.34336,418.11437 c -0.32,2.76 0.08,5.04001 2.16,5.64 3.96,1.16 12.6,-7.56 14.08,-9.84 l -2.24,-0.8 c -1.32,1.8 -5.72,5.16001 -6.92,5.36 -2.8,0.36001 2.56,-10.56 3.04,-11.84 -0.4,-1.96 -5.12,-2.91999 -6.6,0 -0.16,0.48 -0.44,1.16 -0.76,2 -4.28,-5.56 -10.92,-1.67999 -13.56,3.84 -4.76,9.88 2.8,15.84 10.8,5.64 z m -4.64,-1.51999 c -0.96,-3.04001 3.76,-9.72001 6.72,-6.16001 -0.44,1.2 -0.88,2.52001 -1.28,3.88 -1.88,1.88 -4.8,4.2 -5.44,2.28001 z"
+         id="path120"
+         inkscape:connector-curvature="0" />
+    </g>
+  </g>
+</svg>
+
+    </div>
+    
+        <div class="searchbox">
+    <label for="search-by"><i class="fas fa-search"></i></label>
+    <input data-search-input id="search-by" type="search" placeholder="Search...">
+    <span data-search-clear=""><i class="fas fa-times"></i></span>
+</div>
+
+<script type="text/javascript" src="/ocaml/js/lunr.min.js?1557622755"></script>
+<script type="text/javascript" src="/ocaml/js/auto-complete.js?1557622755"></script>
+<script type="text/javascript">
+    
+        var baseurl = "https:\/\/ohama.github.io\/ocaml";
+    
+</script>
+<script type="text/javascript" src="/ocaml/js/search.js?1557622755"></script>
+
+    
+  </div>
+
+    <div class="highlightable">
+    <ul class="topics">
+
+        
+          
+          
+
+
+ 
+  
+    
+    <li data-nav-id="/ocaml/ocamllex-tutorial/" title="ocamllex tutorial" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/ocaml/ocamllex-tutorial/">
+          ocamllex tutorial
+          
+      </a>
+      
+      
+        <ul>
+          
+          
+            
+          
+          
+          
+        
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/ocaml/ocamllex-tutorial/intro/" title="Introduction" class="dd-item ">
+        <a href="/ocaml/ocamllex-tutorial/intro/">
+        1. Introduction
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/ocaml/ocamllex-tutorial/simpleexample/" title="Some simple examples" class="dd-item ">
+        <a href="/ocaml/ocamllex-tutorial/simpleexample/">
+        2. Some simple examples
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/ocaml/ocamllex-tutorial/formatofinputfile/" title="Format of the input file" class="dd-item ">
+        <a href="/ocaml/ocamllex-tutorial/formatofinputfile/">
+        3. Format of the input file
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/ocaml/ocamllex-tutorial/patterns/" title="Patterns" class="dd-item ">
+        <a href="/ocaml/ocamllex-tutorial/patterns/">
+        4. Patterns
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/ocaml/ocamllex-tutorial/howmatched/" title="How the input is matched" class="dd-item ">
+        <a href="/ocaml/ocamllex-tutorial/howmatched/">
+        5. How the input is matched
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+    <li data-nav-id="/ocaml/ocamllex-tutorial/actions/" title="Actions" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/ocaml/ocamllex-tutorial/actions/">
+          6. Actions
+          
+      </a>
+      
+      
+        <ul>
+          
+          
+          
+          
+        
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/ocaml/ocamllex-tutorial/actions/position/" title="Position" class="dd-item ">
+        <a href="/ocaml/ocamllex-tutorial/actions/position/">
+        6.1 Position
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+        
+        </ul>
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/ocaml/ocamllex-tutorial/generatedscanner/" title="The generted scanner" class="dd-item ">
+        <a href="/ocaml/ocamllex-tutorial/generatedscanner/">
+        7. The generted scanner
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/ocaml/ocamllex-tutorial/startcondition/" title="Start conditions" class="dd-item ">
+        <a href="/ocaml/ocamllex-tutorial/startcondition/">
+        8. Start conditions
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/ocaml/ocamllex-tutorial/interfacewithocamlyacc/" title="Interfacing with ocamlyacc" class="dd-item ">
+        <a href="/ocaml/ocamllex-tutorial/interfacewithocamlyacc/">
+        9. Interfacing with ocamlyacc
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/ocaml/ocamllex-tutorial/options/" title="Options" class="dd-item ">
+        <a href="/ocaml/ocamllex-tutorial/options/">
+        10. Options
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+    <li data-nav-id="/ocaml/ocamllex-tutorial/usagetips/" title="Usage tips" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/ocaml/ocamllex-tutorial/usagetips/">
+          11. Usage tips
+          
+      </a>
+      
+      
+        <ul>
+          
+          
+          
+          
+        
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/ocaml/ocamllex-tutorial/usagetips/keywordtable/" title="Keyword table" class="dd-item ">
+        <a href="/ocaml/ocamllex-tutorial/usagetips/keywordtable/">
+        11.1 Keyword table
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/ocaml/ocamllex-tutorial/usagetips/nestedcomments/" title="Nested comments" class="dd-item ">
+        <a href="/ocaml/ocamllex-tutorial/usagetips/nestedcomments/">
+        11.2 Nested comments
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+        
+        </ul>
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+    <li data-nav-id="/ocaml/ocamllex-tutorial/examples/" title="Examples" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/ocaml/ocamllex-tutorial/examples/">
+          12. Examples
+          
+      </a>
+      
+      
+        <ul>
+          
+          
+          
+          
+        
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/ocaml/ocamllex-tutorial/examples/translate/" title="Translate" class="dd-item ">
+        <a href="/ocaml/ocamllex-tutorial/examples/translate/">
+        12.1 Translate
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/ocaml/ocamllex-tutorial/examples/wordcount/" title="Word count" class="dd-item ">
+        <a href="/ocaml/ocamllex-tutorial/examples/wordcount/">
+        12.2 Word count
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/ocaml/ocamllex-tutorial/examples/toylanguage/" title="Toy language" class="dd-item ">
+        <a href="/ocaml/ocamllex-tutorial/examples/toylanguage/">
+        12.3 Toy language
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+        
+        </ul>
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+    <li data-nav-id="/ocaml/ocamllex-tutorial/license/" title="13. License" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/ocaml/ocamllex-tutorial/license/">
+          13. License
+          
+      </a>
+      
+      
+        <ul>
+          
+          
+          
+          
+        
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/ocaml/ocamllex-tutorial/license/licenseinflex/" title="License in flex manual" class="dd-item ">
+        <a href="/ocaml/ocamllex-tutorial/license/licenseinflex/">
+        13.1 License in flex manual
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/ocaml/ocamllex-tutorial/license/copyright/" title="Copyright and permission" class="dd-item ">
+        <a href="/ocaml/ocamllex-tutorial/license/copyright/">
+        13.2 Copyright and permission
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+        
+        </ul>
+              
+    </li>
+  
+ 
+
+            
+          
+        
+        </ul>
+              
+    </li>
+  
+ 
+
+          
+          
+
+
+ 
+  
+    
+    <li data-nav-id="/ocaml/ocamlyacc-tutorial/" title="ocamlyacc tutorial" class="dd-item 
+        parent
+        
+        
+        ">
+      <a href="/ocaml/ocamlyacc-tutorial/">
+          ocamlyacc tutorial
+          
+      </a>
+      
+      
+        <ul>
+          
+          
+            
+          
+          
+          
+        
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/ocaml/ocamlyacc-tutorial/introduction/" title="Introduction" class="dd-item ">
+        <a href="/ocaml/ocamlyacc-tutorial/introduction/">
+        1. Introduction
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+    <li data-nav-id="/ocaml/ocamlyacc-tutorial/concepts/" title="Concepts of ocamlyacc" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/ocaml/ocamlyacc-tutorial/concepts/">
+          2. Concepts of ocamlyacc
+          
+      </a>
+      
+      
+        <ul>
+          
+          
+          
+          
+        
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/ocaml/ocamlyacc-tutorial/concepts/languagsandcfg/" title="Languages and context-free grammars" class="dd-item ">
+        <a href="/ocaml/ocamlyacc-tutorial/concepts/languagsandcfg/">
+        Languages and context-free grammars
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/ocaml/ocamlyacc-tutorial/concepts/formalrule/" title="From Foraml Rules to Ocamlyacc Input" class="dd-item ">
+        <a href="/ocaml/ocamlyacc-tutorial/concepts/formalrule/">
+        From Foraml Rules to Ocamlyacc Input
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/ocaml/ocamlyacc-tutorial/concepts/semanticvalues/" title="Semantic values" class="dd-item ">
+        <a href="/ocaml/ocamlyacc-tutorial/concepts/semanticvalues/">
+        Semantic values
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/ocaml/ocamlyacc-tutorial/concepts/semanticactions/" title="Semantic actions" class="dd-item ">
+        <a href="/ocaml/ocamlyacc-tutorial/concepts/semanticactions/">
+        Semantic actions
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/ocaml/ocamlyacc-tutorial/concepts/locations/" title="Locations" class="dd-item ">
+        <a href="/ocaml/ocamlyacc-tutorial/concepts/locations/">
+        Locations
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/ocaml/ocamlyacc-tutorial/concepts/ocamlyaccoutput/" title="Ocamlyacc output" class="dd-item ">
+        <a href="/ocaml/ocamlyacc-tutorial/concepts/ocamlyaccoutput/">
+        Ocamlyacc output
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/ocaml/ocamlyacc-tutorial/concepts/stages/" title="Stages in use ocamlyacc" class="dd-item ">
+        <a href="/ocaml/ocamlyacc-tutorial/concepts/stages/">
+        Stages in use ocamlyacc
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/ocaml/ocamlyacc-tutorial/concepts/overalllayout/" title="Overall layout of grammar" class="dd-item ">
+        <a href="/ocaml/ocamlyacc-tutorial/concepts/overalllayout/">
+        Overall layout of grammar
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+        
+        </ul>
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+    <li data-nav-id="/ocaml/ocamlyacc-tutorial/examples/" title="Examples" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/ocaml/ocamlyacc-tutorial/examples/">
+          3. Examples
+          
+      </a>
+      
+      
+        <ul>
+          
+          
+          
+          
+        
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/ocaml/ocamlyacc-tutorial/examples/reverspolishcalculator/" title="Reverse Polish Notation Calculator" class="dd-item ">
+        <a href="/ocaml/ocamlyacc-tutorial/examples/reverspolishcalculator/">
+        Reverse Polish Notation Calculator
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/ocaml/ocamlyacc-tutorial/examples/infixcalculator/" title="Infix Notation Calculator" class="dd-item ">
+        <a href="/ocaml/ocamlyacc-tutorial/examples/infixcalculator/">
+        Infix Notation Calculator
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/ocaml/ocamlyacc-tutorial/examples/simpleerrorrecovery/" title="Simple Error Recovery" class="dd-item ">
+        <a href="/ocaml/ocamlyacc-tutorial/examples/simpleerrorrecovery/">
+        Simple Error Recovery
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/ocaml/ocamlyacc-tutorial/examples/locationtrackingcalculator/" title="Location Tracking Calculator" class="dd-item ">
+        <a href="/ocaml/ocamlyacc-tutorial/examples/locationtrackingcalculator/">
+        Location Tracking Calculator
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/ocaml/ocamlyacc-tutorial/examples/multifunctioncalculator/" title="Multi-Function Calculator" class="dd-item ">
+        <a href="/ocaml/ocamlyacc-tutorial/examples/multifunctioncalculator/">
+        Multi-Function Calculator
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+        
+        </ul>
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+    <li data-nav-id="/ocaml/ocamlyacc-tutorial/grammar/" title="Grammar Files" class="dd-item 
+        parent
+        
+        
+        ">
+      <a href="/ocaml/ocamlyacc-tutorial/grammar/">
+          4. Grammar Files
+          
+      </a>
+      
+      
+        <ul>
+          
+          
+          
+          
+        
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/ocaml/ocamlyacc-tutorial/grammar/grammaroutline/" title="Grammar outline" class="dd-item ">
+        <a href="/ocaml/ocamlyacc-tutorial/grammar/grammaroutline/">
+        Grammar outline
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/ocaml/ocamlyacc-tutorial/grammar/symbols/" title="Symbols, Terminal and Nonterminal" class="dd-item ">
+        <a href="/ocaml/ocamlyacc-tutorial/grammar/symbols/">
+        Symbols, Terminal and Nonterminal
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/ocaml/ocamlyacc-tutorial/grammar/syntaxofrules/" title="Syntax of grammar rules" class="dd-item ">
+        <a href="/ocaml/ocamlyacc-tutorial/grammar/syntaxofrules/">
+        Syntax of grammar rules
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/ocaml/ocamlyacc-tutorial/grammar/recursiverules/" title="Recursive Rules" class="dd-item ">
+        <a href="/ocaml/ocamlyacc-tutorial/grammar/recursiverules/">
+        Recursive Rules
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/ocaml/ocamlyacc-tutorial/grammar/definesemantics/" title="Defineing Language Semantics" class="dd-item ">
+        <a href="/ocaml/ocamlyacc-tutorial/grammar/definesemantics/">
+        Defineing Language Semantics
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/ocaml/ocamlyacc-tutorial/grammar/trackinglocations/" title="Tracking Locations" class="dd-item ">
+        <a href="/ocaml/ocamlyacc-tutorial/grammar/trackinglocations/">
+        Tracking Locations
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/ocaml/ocamlyacc-tutorial/grammar/nonterminal/" title="Nonterminal Symbols" class="dd-item ">
+        <a href="/ocaml/ocamlyacc-tutorial/grammar/nonterminal/">
+        Nonterminal Symbols
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/ocaml/ocamlyacc-tutorial/grammar/declarations/" title="Ocamlyacc Declarations" class="dd-item active">
+        <a href="/ocaml/ocamlyacc-tutorial/grammar/declarations/">
+        Ocamlyacc Declarations
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+        
+        </ul>
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+    <li data-nav-id="/ocaml/ocamlyacc-tutorial/parserinterface/" title="Parser interface" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/ocaml/ocamlyacc-tutorial/parserinterface/">
+          5. Parser interface
+          
+      </a>
+      
+      
+        <ul>
+          
+          
+          
+          
+        
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/ocaml/ocamlyacc-tutorial/parserinterface/parserfunctions/" title="Parser Functions" class="dd-item ">
+        <a href="/ocaml/ocamlyacc-tutorial/parserinterface/parserfunctions/">
+        Parser Functions
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/ocaml/ocamlyacc-tutorial/parserinterface/lexicalfunctions/" title="Lexical Functions" class="dd-item ">
+        <a href="/ocaml/ocamlyacc-tutorial/parserinterface/lexicalfunctions/">
+        Lexical Functions
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/ocaml/ocamlyacc-tutorial/parserinterface/errorfunctions/" title="Error Functions" class="dd-item ">
+        <a href="/ocaml/ocamlyacc-tutorial/parserinterface/errorfunctions/">
+        Error Functions
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+        
+        </ul>
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+    <li data-nav-id="/ocaml/ocamlyacc-tutorial/parseralgorithm/" title="Parser algorithm" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/ocaml/ocamlyacc-tutorial/parseralgorithm/">
+          6. Parser algorithm
+          
+      </a>
+      
+      
+        <ul>
+          
+          
+          
+          
+        
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/ocaml/ocamlyacc-tutorial/parseralgorithm/lookaheadtokens/" title="Lookahead Tokens" class="dd-item ">
+        <a href="/ocaml/ocamlyacc-tutorial/parseralgorithm/lookaheadtokens/">
+        Lookahead Tokens
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/ocaml/ocamlyacc-tutorial/parseralgorithm/operatorprecedence/" title="Operator Precedence" class="dd-item ">
+        <a href="/ocaml/ocamlyacc-tutorial/parseralgorithm/operatorprecedence/">
+        Operator Precedence
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/ocaml/ocamlyacc-tutorial/parseralgorithm/shiftreduceconflicts/" title="Shift Reduct Conflicts" class="dd-item ">
+        <a href="/ocaml/ocamlyacc-tutorial/parseralgorithm/shiftreduceconflicts/">
+        Shift Reduct Conflicts
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/ocaml/ocamlyacc-tutorial/parseralgorithm/contextdependentprecedence/" title="Context-Dependent Precedence" class="dd-item ">
+        <a href="/ocaml/ocamlyacc-tutorial/parseralgorithm/contextdependentprecedence/">
+        Context-Dependent Precedence
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/ocaml/ocamlyacc-tutorial/parseralgorithm/parserstates/" title="Parser States" class="dd-item ">
+        <a href="/ocaml/ocamlyacc-tutorial/parseralgorithm/parserstates/">
+        Parser States
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/ocaml/ocamlyacc-tutorial/parseralgorithm/reducereduceconflicts/" title="Reduce/Reduce Conflicts" class="dd-item ">
+        <a href="/ocaml/ocamlyacc-tutorial/parseralgorithm/reducereduceconflicts/">
+        Reduce/Reduce Conflicts
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/ocaml/ocamlyacc-tutorial/parseralgorithm/mysteriousreducereductconflicts/" title="Misterious Reduce/Reduce Conflicts" class="dd-item ">
+        <a href="/ocaml/ocamlyacc-tutorial/parseralgorithm/mysteriousreducereductconflicts/">
+        Misterious Reduce/Reduce Conflicts
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+        
+        </ul>
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/ocaml/ocamlyacc-tutorial/errorrecovery/" title="Error Recovery" class="dd-item ">
+        <a href="/ocaml/ocamlyacc-tutorial/errorrecovery/">
+        7. Error Recovery
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/ocaml/ocamlyacc-tutorial/debugging/" title="Debugging your parser" class="dd-item ">
+        <a href="/ocaml/ocamlyacc-tutorial/debugging/">
+        8. Debugging your parser
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+    <li data-nav-id="/ocaml/ocamlyacc-tutorial/invokingocamlyacc/" title="Invoking Ocamlyacc" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/ocaml/ocamlyacc-tutorial/invokingocamlyacc/">
+          9. Invoking Ocamlyacc
+          
+      </a>
+      
+      
+        <ul>
+          
+          
+          
+          
+        
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/ocaml/ocamlyacc-tutorial/invokingocamlyacc/options/" title="Options" class="dd-item ">
+        <a href="/ocaml/ocamlyacc-tutorial/invokingocamlyacc/options/">
+        Options
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+        
+        </ul>
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+    <li data-nav-id="/ocaml/ocamlyacc-tutorial/license/" title="License" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/ocaml/ocamlyacc-tutorial/license/">
+          10. License
+          
+      </a>
+      
+      
+        <ul>
+          
+          
+          
+          
+        
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/ocaml/ocamlyacc-tutorial/license/bisonlicense/" title="Bison license" class="dd-item ">
+        <a href="/ocaml/ocamlyacc-tutorial/license/bisonlicense/">
+        Bison license
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/ocaml/ocamlyacc-tutorial/license/copyright/" title="Copyright and permission" class="dd-item ">
+        <a href="/ocaml/ocamlyacc-tutorial/license/copyright/">
+        Copyright and permission
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+        
+        </ul>
+              
+    </li>
+  
+ 
+
+            
+          
+        
+        </ul>
+              
+    </li>
+  
+ 
+
+          
+          
+
+
+ 
+  
+    
+    <li data-nav-id="/ocaml/lablgtk2-tutorial/" title="lablgtk2 tutorial" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/ocaml/lablgtk2-tutorial/">
+          lablgtk2 tutorial
+          
+      </a>
+      
+      
+        <ul>
+          
+          
+            
+          
+          
+          
+        
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/ocaml/lablgtk2-tutorial/introduction/" title="introduction" class="dd-item ">
+        <a href="/ocaml/lablgtk2-tutorial/introduction/">
+        1. introduction
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+    <li data-nav-id="/ocaml/lablgtk2-tutorial/gettingstarted/" title="Getting started" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/ocaml/lablgtk2-tutorial/gettingstarted/">
+          2. Getting started
+          
+      </a>
+      
+      
+        <ul>
+          
+          
+          
+          
+        
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/ocaml/lablgtk2-tutorial/gettingstarted/helloworld/" title="Hello world in GTK" class="dd-item ">
+        <a href="/ocaml/lablgtk2-tutorial/gettingstarted/helloworld/">
+        Hello world in GTK
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/ocaml/lablgtk2-tutorial/gettingstarted/compiling/" title="Compiling hello world" class="dd-item ">
+        <a href="/ocaml/lablgtk2-tutorial/gettingstarted/compiling/">
+        Compiling hello world
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/ocaml/lablgtk2-tutorial/gettingstarted/signalandcallback/" title="Theory of Signals and Callbacks" class="dd-item ">
+        <a href="/ocaml/lablgtk2-tutorial/gettingstarted/signalandcallback/">
+        Theory of Signals and Callbacks
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/ocaml/lablgtk2-tutorial/gettingstarted/events/" title="Events" class="dd-item ">
+        <a href="/ocaml/lablgtk2-tutorial/gettingstarted/events/">
+        Events
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/ocaml/lablgtk2-tutorial/gettingstarted/steppingthroughhelloworld/" title="Stepping throught hello world" class="dd-item ">
+        <a href="/ocaml/lablgtk2-tutorial/gettingstarted/steppingthroughhelloworld/">
+        Stepping throught hello world
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+        
+        </ul>
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+    <li data-nav-id="/ocaml/lablgtk2-tutorial/movingon/" title="Moving on" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/ocaml/lablgtk2-tutorial/movingon/">
+          3. Moving on
+          
+      </a>
+      
+      
+        <ul>
+          
+          
+          
+          
+        
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/ocaml/lablgtk2-tutorial/movingon/moreonsignalhandlers/" title="More on signal handlers" class="dd-item ">
+        <a href="/ocaml/lablgtk2-tutorial/movingon/moreonsignalhandlers/">
+        More on signal handlers
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/ocaml/lablgtk2-tutorial/movingon/upgradedhelloworld/" title="Upgraded hello world" class="dd-item ">
+        <a href="/ocaml/lablgtk2-tutorial/movingon/upgradedhelloworld/">
+        Upgraded hello world
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+        
+        </ul>
+              
+    </li>
+  
+ 
+
+            
+          
+        
+        </ul>
+              
+    </li>
+  
+ 
+
+          
+          
+
+
+ 
+  
+    
+    <li data-nav-id="/ocaml/lablgtk2-treeview-tutorial/" title="lablgtk2 treeview tutorial" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/ocaml/lablgtk2-treeview-tutorial/">
+          lablgtk2 treeview tutorial
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+          
+         
+    </ul>
+
+    
+    
+      <section id="shortcuts">
+        <h3>More</h3>
+        <ul>
+          
+              <li> 
+                  <a class="padding" href="https://ohama.github.io/ocaml/tags"><i class='fas fa-tags'></i> Tags</a>
+              </li>
+          
+        </ul>
+      </section>
+    
+
+    
+    <section id="footer">
+      <center>
+    
+
+    
+
+    
+
+    <p>Built with <a href="https://gohugo.io/">Hugo</a></p>
+</center>
+
+<script async defer src="https://buttons.github.io/buttons.js"></script>
+
+    </section>
+  </div>
+</nav>
+
+
+
+
+
+        <section id="body">
+        <div id="overlay"></div>
+        <div class="padding highlightable">
+              
+              <div>
+                <div id="top-bar">
+                
+                
+                <div id="breadcrumbs" itemscope="" itemtype="http://data-vocabulary.org/Breadcrumb">
+                    <span id="sidebar-toggle-span">
+                        <a href="#" id="sidebar-toggle" data-sidebar-toggle="">
+                          <i class="fas fa-bars"></i>
+                        </a>
+                    </span>
+                  
+                  <span id="toc-menu"><i class="fas fa-list-alt"></i></span>
+                  
+                  <span class="links">
+                 
+                 
+                    
+          
+          
+            
+            
+          
+          
+            
+            
+          
+          
+            
+            
+          
+          
+            <a href='/ocaml/'>Tutorials</a> > <a href='/ocaml/ocamlyacc-tutorial/'>ocamlyacc tutorial</a> > <a href='/ocaml/ocamlyacc-tutorial/grammar/'>Grammar Files</a> > Ocamlyacc Declarations
+          
+         
+          
+         
+          
+         
+          
+        
+                 
+                  </span>
+                </div>
+                
+                    <div class="progress">
+    <div class="wrapper">
+
+    </div>
+</div>
+
+                
+              </div>
+            </div>
+            
+        <div id="head-tags">
+        
+        </div>
+        
+        <div id="body-inner">
+          
+            <h1>
+              
+              Ocamlyacc Declarations
+            </h1>
+          
+
+        
+
+
+
+<p>The Ocamlyacc declarations section of a Ocamlyacc grammar defines the symbols used in formulating the grammar and the data types of semantic values. See Symbols.</p>
+
+<p>All token type must be declared. Nonterminal symbols must be declared if you need to specify which data type to use for the semantic value (see Data Types of Semantic Values).</p>
+
+<p>The first rule in the file also specifies the start symbol, by default. If you want some other symbol to be the start symbol, you must declare it explicitly (see Languages and Context-Free Grammars).</p>
+
+<p>4.7.1. Token Type Names</p>
+
+<p>The basic way to declare a token type name (terminal symbol) is as follows:</p>
+
+<p>%token name &hellip; name
+%token <type> name &hellip; name</p>
+
+<p>Ocamlyacc will convert this into a token type in the parser, so that the lexer function can use the name name to stand for this token type&rsquo;s code.</p>
+
+<p>In the event that the token has a value, you must augment the %token declaration to include the data type alternative delimited by angle-brackets (see Data Types of Semantic Values).</p>
+
+<p>For example:</p>
+
+<p>%token <float> NUM  /* define toke NUM and its type */</p>
+
+<p>The type part is an arbitrary Caml type expression,</p>
+
+<p>4.7.2. Operator Precedence</p>
+
+<p>Use the %left, %right or %nonassoc declaration to specify token&rsquo;s precedence and associativity, all at once. These are called precedence declarations. See Operator Precedence, for general information on operator precedence.</p>
+
+<p>The syntax of a precedence declaration is</p>
+
+<p>%left symbols &hellip;symbols
+%right symbols &hellip;symbols
+%nonassoc symbols &hellip;symbols</p>
+
+<p>They specify the associativity and relative precedence for all the symbols:</p>
+
+<p>The associativity of an operator op determines how repeated uses of the operator nest: whether x op y op z is parsed by grouping x with y first or by grouping y with z first. %left specifies left-associativity (grouping x with y first) and %right specifies right-associativity (grouping y with z first). %nonassoc specifies no associativity, which means that x op y op z is considered a syntax error.</p>
+
+<p>The precedence of an operator determines how it nests with other operators. All the tokens declared in a single precedence declaration have equal precedence and nest together according to their associativity. When two tokens declared in different precedence declarations associate, the one declared later has the higher precedence and is grouped first.</p>
+
+<p>4.7.3. Nonterminal Symbols</p>
+
+<p>You can declare the value type of each nonterminal symbol for which values are used. This is done with a %type declaration, like this:</p>
+
+<p>%type <type> nonterminal &hellip; nonterminal</p>
+
+<p>Here nonterminal is the name of a nonterminal symbol, and type is the name of the type that you want. You can give any number of start nonterminal symbols in the same %type declaration, if they have the same value type. Use spaces to separate the symbol names.</p>
+
+<p>This is necessary for start symbols. For the type part, see Token Type Names.</p>
+
+<p>4.7.4. The Start-Symbol</p>
+
+<p>You have to declare the start symbols using %start declaration as follows:</p>
+
+<p>%start symbol &hellip; symbol</p>
+
+<p>Each start symbol has a parsing function with the same name in the output file so you can use it as an entry point for the grammar. As noted eariler, type should be assinged to each start symbol using %type directive (see Nonterminal Symbols).</p>
+
+<p>4.7.5. Ocamlyacc Declaration Summary</p>
+
+<p>Here is a summary of the declarations used to define a grammar:</p>
+
+<p>%token Declare a terminal symbol (token type name) with no precedence or associativity specified (see Token Type Names).</p>
+
+<p>%right Declare a terminal symbol (token type name) that is right-associative (see Operator Precedence).</p>
+
+<p>%left Declare a terminal symbol (token type name) that is left-associative (see Operator Precedence).</p>
+
+<p>%nonassoc Declare a terminal symbol (token type name) that is nonassociative (using it in a way that would be associative is a syntax error) (see Operator Precedence).</p>
+
+<p>%type Declare the type of semantic values for a nonterminal symbol (see Nonterminal Symbols).</p>
+
+<p>%start Specify the grammar&rsquo;s start symbol (see The Start-Symbol).</p>
+
+
+<footer class=" footline" >
+	
+</footer>
+
+
+        
+        </div> 
+        
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+
+(function() {
+      
+      
+      if (window.location.hostname == "localhost")
+                return;
+
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      var disqus_shortname = '';
+      dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com/" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+
+      </div>
+
+    <div id="navigation">
+        
+        
+        
+        
+            
+            
+                
+                    
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                        
+                        
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                        
+                        
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                        
+                        
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                        
+                        
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+        
+        
+
+
+	 
+	 
+    </div>
+
+    </section>
+    
+    <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
+      <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
+    </div>
+    <script src="/ocaml/js/clipboard.min.js?1557622755"></script>
+    <script src="/ocaml/js/perfect-scrollbar.min.js?1557622755"></script>
+    <script src="/ocaml/js/perfect-scrollbar.jquery.min.js?1557622755"></script>
+    <script src="/ocaml/js/jquery.sticky.js?1557622755"></script>
+    <script src="/ocaml/js/featherlight.min.js?1557622755"></script>
+    <script src="/ocaml/js/html5shiv-printshiv.min.js?1557622755"></script>
+    <script src="/ocaml/js/highlight.pack.js?1557622755"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+    <script src="/ocaml/js/modernizr.custom-3.6.0.js?1557622755"></script>
+    <script src="/ocaml/js/learn.js?1557622755"></script>
+    <script src="/ocaml/js/hugo-learn.js?1557622755"></script>
+
+    <link href="/ocaml/mermaid/mermaid.css?1557622755" type="text/css" rel="stylesheet" />
+    <script src="/ocaml/mermaid/mermaid.js?1557622755"></script>
+    <script>
+        mermaid.initialize({ startOnLoad: true });
+    </script>
+    <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-105947713-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+  </body>
+</html>
+
