@@ -1,0 +1,6 @@
+calc.cmo: calc.cmi 
+calc.cmx: calc.cmi 
+lexer.cmo: calc.cmi 
+lexer.cmx: calc.cmx 
+main.cmo: lexer.cmo 
+main.cmx: lexer.cmx 
