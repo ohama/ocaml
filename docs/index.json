@@ -39,7 +39,7 @@
 	"title": "Tutorials",
 	"tags": [],
 	"description": "",
-	"content": "  ocamllex tutorial  This is a tutorial on how to use ocamllex.\n ocamlyacc tutorial  This is a tutorial on how to use ocamlyacc.\n lablgtk2 tutorial  lablgtk2 tutorial\n lablgtk2 treeview tutorial  lablgtk2 treeview tutorial\n   \n "
+	"content": "  ocamllex tutorial  This is a tutorial on how to use ocamllex.\n ocamlyacc tutorial  This is a tutorial on how to use ocamlyacc.\n lablgtk2 tutorial  lablgtk2 tutorial\n lablgtk2 treeview tutorial  Under construction\n   \n "
 },
 {
 	"uri": "https://ohama.github.io/ocaml/ocamllex-tutorial/license/copyright/",
@@ -270,7 +270,7 @@
 	"title": "ocamllex tutorial",
 	"tags": [],
 	"description": "This is a tutorial on how to use ocamllex.",
-	"content": " This is a tutorial on how to use ocamllex which is distributed with Ocaml language.\nAbout this document Lots of part of this document are borrowed from the flex manual.\nAll license term in this document is NOT related with ocamlyacc; it is ONLY for this document.\nPlease mail all comments and suggestions to me.\nThe companion tutorial for ocamlyacc is available at ocamlyacc tutorial.\nT1) You can find the ocamllex tutorial pdf file for printing.\nT2) You can find the ocamllex tutorial pdf file for printing.\nThe source of the examples used in this document can be found ocamllex examples.\n  Related files   ocamllex-tutorial.pdf  (133 ko)    "
+	"content": " This is a tutorial on how to use ocamllex which is distributed with Ocaml language.\nAbout this document Lots of part of this document are borrowed from the flex manual.\nAll license term in this document is NOT related with ocamlyacc; it is ONLY for this document.\nPlease mail all comments and suggestions to me.\nThe companion tutorial for ocamlyacc is available at ocamlyacc tutorial.\nThe source of the examples used in this document can be found ocaml/src/ocamllex-examples.\n  Related files   ocamllex-tutorial.pdf  (133 ko)    "
 },
 {
 	"uri": "https://ohama.github.io/ocaml/ocamllex-tutorial/usagetips/",
@@ -647,8 +647,8 @@
 	"uri": "https://ohama.github.io/ocaml/lablgtk2-treeview-tutorial/",
 	"title": "lablgtk2 treeview tutorial",
 	"tags": [],
-	"description": "lablgtk2 treeview tutorial",
-	"content": ""
+	"description": "Under construction",
+	"content": "This is a tutorial on how to use GTK+ 2.0 GtkTreeView widget in Ocaml language. Ocaml has a very nice Gtk+ interface called LablGtk in which GtkTreeView widget is implemented as GTree module.\nThe LablGtk version used here is LablGTK 2.4.0.\nThis tutorial is adapted from the original C language version written by Tim-Philipp Muller.\nPlease mail all comments and suggestions about Ocaml adaptation to ohama100@gmail.com\nSome examples can be found in treeview_tutorial_examples directory\nThe latest version can be found at https://ohama.github.io/ocaml/lablgtk2-treeview-tutorial/index.html.\n\u0026ldquo;Gtk+ 2.0 Tutorial using Ocaml\u0026rdquo; can be found at https://ohama.github.io/ocaml/lablgtk2-tutorial/index.html.\nFirst revision: 2004-09-18\nLast updated: 2019-05-05\nThis page is under construction.\n "
 },
 {
 	"uri": "https://ohama.github.io/ocaml/ocamlyacc-tutorial/grammar/definesemantics/",
