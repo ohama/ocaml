@@ -39,7 +39,7 @@
 	"title": "Tutorials",
 	"tags": [],
 	"description": "",
-	"content": "  ocamllex tutorial  This is a tutorial on how to use ocamllex.\n ocamlyacc tutorial  This is a tutorial on how to use ocamlyacc.\n lablgtk2 tutorial  lablgtk2 tutorial\n lablgtk2 treeview tutorial  Under construction\n   \n "
+	"content": "The project is hosted on GitHub where you can report issues, fork the project and submit pull requests.\n ocamllex tutorial  This is a tutorial on how to use ocamllex.\n ocamlyacc tutorial  This is a tutorial on how to use ocamlyacc.\n lablgtk2 tutorial  lablgtk2 tutorial\n lablgtk2 treeview tutorial  Under construction\n   \n "
 },
 {
 	"uri": "https://ohama.github.io/ocaml/ocamllex-tutorial/license/copyright/",
