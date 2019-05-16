@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Scribble, drawing program on Documentation for Hugo Learn Theme</title>
+    <link>https://ohama.github.io/ocaml/lablgtk2-tutorial/scribble/</link>
+    <description>Recent content in Scribble, drawing program on Documentation for Hugo Learn Theme</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-US</language>
+    
+	<atom:link href="https://ohama.github.io/ocaml/lablgtk2-tutorial/scribble/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Event handling</title>
+      <link>https://ohama.github.io/ocaml/lablgtk2-tutorial/scribble/eventhandling/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://ohama.github.io/ocaml/lablgtk2-tutorial/scribble/eventhandling/</guid>
+      <description>The GTK signals we have already discussed are for high-level actions, such as a menu item being selected. However, sometimes it is useful to learn about lower-level occurrences, such as the mouse being moved, or a key being pressed. There are also GTK signals corresponding to these low-level events. The handlers for these signals have an extra parameter which is a structure containing information about the event. For instance, motion event handlers are passed a GdkEvent.</description>
+    </item>
+    
+    <item>
+      <title>Drawing</title>
+      <link>https://ohama.github.io/ocaml/lablgtk2-tutorial/scribble/drawingareawidget/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://ohama.github.io/ocaml/lablgtk2-tutorial/scribble/drawingareawidget/</guid>
+      <description>We now turn to the process of drawing on the screen. The widget we use for this is the DrawingArea widget. A drawing area widget is essentially an X window and nothing more. It is a blank canvas in which we can draw whatever we like. A drawing area is created using the call:
+val GMisc.drawing_area : ?width:int -&amp;gt; ?height:int -&amp;gt; ?packing:(GObj.widget -&amp;gt; unit) -&amp;gt; ?show:bool -&amp;gt; unit -&amp;gt; drawing_area The arguments width and height specifies the default size of the drawing area.</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,319 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN">
+<HTML
+><HEAD
+><TITLE
+>Ocamllex Tutorial</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet Version 1.7"><LINK
+REL="NEXT"
+TITLE="Introduction"
+HREF="chap-ocamllex.html"><LINK
+REL="STYLESHEET"
+TYPE="text/css"
+HREF="./ocamllex-tutorial.css"></HEAD
+><BODY
+CLASS="book"
+BGCOLOR="#FFFFFF"
+TEXT="#000000"
+LINK="#0000FF"
+VLINK="#840084"
+ALINK="#0000FF"
+><DIV
+CLASS="BOOK"
+><A
+NAME="ocamllex-tutorial"
+></A
+><DIV
+CLASS="TITLEPAGE"
+><H1
+CLASS="title"
+><A
+NAME="AEN2"
+>Ocamllex Tutorial</A
+></H1
+><H3
+CLASS="author"
+><A
+NAME="AEN6"
+></A
+>Ocamllex Adaptation: SooHyoung Oh</H3
+><DIV
+><DIV
+CLASS="abstract"
+><P
+></P
+><A
+NAME="AEN9"
+></A
+><P
+>&#13;      This is a tutorial on how to use <TT
+CLASS="literal"
+>ocamllex</TT
+>
+      which is distributed with
+      <A
+HREF="http://caml.inria.fr/index-eng.html"
+TARGET="_top"
+>Ocaml language</A
+>.
+      </P
+><P
+>&#13;      This document borrowed lots of part from
+      <A
+HREF="http://www.gnu.org/software/flex/manual/"
+TARGET="_top"
+>flex manual</A
+>.
+      </P
+><P
+>&#13;            Please mail all comments and suggestions to <CODE
+CLASS="email"
+>&#60;<A
+HREF="mailto:shoh at compiler dot kaist dot ac dot kr"
+>shoh at compiler dot kaist dot ac dot kr</A
+>&#62;</CODE
+>
+      </P
+><P
+>&#13;            This tutorial is work-in-progress. The latest version can
+            be found at <A
+HREF="http://pllab.kaist.ac.kr/~shoh/ocaml/ocamllex-ocamlyacc/ocamllex-tutorial/index.html"
+TARGET="_top"
+>&#13;            http://pllab.kaist.ac.kr/~shoh/ocaml/ocamllex-ocamlyacc/ocamllex-tutorial/index.html</A
+>.
+      </P
+><P
+>&#13;      The companion tutorial for <TT
+CLASS="literal"
+>ocamlyacc</TT
+> is available
+      at <A
+HREF="http://pllab.kaist.ac.kr/~shoh/ocaml/ocamllex-ocamlyacc/ocamlyacc-tutorial/index.html"
+TARGET="_top"
+>&#13;      http://pllab.kaist.ac.kr/~shoh/ocaml/ocamllex-ocamlyacc/ocamlyacc-tutorial/index.html</A
+>.
+      </P
+><P
+>&#13;	    You can find the source of this document in
+            <A
+HREF="http://pllab.kaist.ac.kr/~shoh/ocaml/ocamllex-ocamlyacc/ocamllex-tutorial-src.tar.gz"
+TARGET="_top"
+>ocamllex-tutorial-src.tar.gz</A
+>.
+	    For printing,
+            <A
+HREF="http://pllab.kaist.ac.kr/~shoh/ocaml/ocamllex-ocamlyacc/ocamllex-tutorial.pdf"
+TARGET="_top"
+>pdf (A4 size)</A
+> is presented,
+	    and there is
+            <A
+HREF="http://pllab.kaist.ac.kr/~shoh/ocaml/ocamllex-ocamlyacc/ocamllex-tutorial.tar.gz"
+TARGET="_top"
+>html (tar.gz)</A
+>.
+      </P
+><P
+>&#13;	    You can download the source of examples used in this document from
+            <A
+HREF="http://pllab.kaist.ac.kr/~shoh/ocaml/ocamllex-ocamlyacc/ocamllex-examples.tar.gz"
+TARGET="_top"
+>ocamllex-examples.tar.gz</A
+>.
+      </P
+><P
+>&#13;            Last updated: 2004-11-16
+      </P
+><P
+></P
+></DIV
+></DIV
+><HR></DIV
+><DIV
+CLASS="TOC"
+><DL
+><DT
+><B
+>Table of Contents</B
+></DT
+><DT
+>1. <A
+HREF="chap-ocamllex.html"
+>Introduction</A
+></DT
+><DT
+>2. <A
+HREF="sec-ocamllex-some-simple-examples.html"
+>Some simple examples</A
+></DT
+><DT
+>3. <A
+HREF="sec-ocamllex-format-of-the-input-file.html"
+>Format of the input file</A
+></DT
+><DT
+>4. <A
+HREF="sec-ocamllex-patterns.html"
+>Patterns</A
+></DT
+><DT
+>5. <A
+HREF="sec-ocamllex-how-the-input-is-matched.html"
+>How the input is matched</A
+></DT
+><DT
+>6. <A
+HREF="sec-ocamllex-actions.html"
+>Actions</A
+></DT
+><DD
+><DL
+><DT
+>6.1. <A
+HREF="sec-ocamllex-actions.html#sec-position"
+>Position</A
+></DT
+></DL
+></DD
+><DT
+>7. <A
+HREF="sec-ocamllex-generated-scanner.html"
+>The generated scanner</A
+></DT
+><DT
+>8. <A
+HREF="sec-ocamllex-start-conditions.html"
+>Start conditions</A
+></DT
+><DT
+>9. <A
+HREF="sec-ocamllex-interfacing.html"
+>Interfacing with <TT
+CLASS="literal"
+>ocamlyacc</TT
+></A
+></DT
+><DT
+>10. <A
+HREF="sec-ocamllex-options.html"
+>Options</A
+></DT
+><DT
+>11. <A
+HREF="chap-usage-tips.html"
+>Usage Tips</A
+></DT
+><DD
+><DL
+><DT
+>11.1. <A
+HREF="chap-usage-tips.html#sec-hashtable"
+>Keyword Hashtable</A
+></DT
+><DT
+>11.2. <A
+HREF="sec-nested-comments.html"
+>Nested Comments</A
+></DT
+></DL
+></DD
+><DT
+>12. <A
+HREF="chap-examples.html"
+>Examples</A
+></DT
+><DD
+><DL
+><DT
+>12.1. <A
+HREF="chap-examples.html#sec-translate"
+>Translate</A
+></DT
+><DT
+>12.2. <A
+HREF="sec-word-count.html"
+>Word Count</A
+></DT
+><DT
+>12.3. <A
+HREF="sec-toy-language.html"
+>Toy Language</A
+></DT
+></DL
+></DD
+><DT
+>13. <A
+HREF="chap-license.html"
+>License</A
+></DT
+><DD
+><DL
+><DT
+>13.1. <A
+HREF="chap-license.html#sec-flex-license"
+>License in flex manual</A
+></DT
+><DT
+>13.2. <A
+HREF="sec-copyright-ocamllex.html"
+>Ocamllex Adaptation Copyright and Permissions Notice</A
+></DT
+></DL
+></DD
+></DL
+></DIV
+></DIV
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="95%"><TABLE
+SUMMARY="Footer navigation table"
+WIDTH="95%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>&nbsp;</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+>&nbsp;</TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="chap-ocamllex.html"
+ACCESSKEY="N"
+>Next &#62;&#62;&#62;</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>&nbsp;</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+>&nbsp;</TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>Introduction</TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>

@@ -1,0 +1,651 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN""http://www.w3.org/TR/html4/loose.dtd">
+<HTML
+><HEAD
+><TITLE
+>Ocamlyacc Tutorial</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet Version 1.79"><LINK
+REL="NEXT"
+TITLE="Introduction"
+HREF="c33.html"></HEAD
+><BODY
+CLASS="book"
+BGCOLOR="#FFFFFF"
+TEXT="#000000"
+LINK="#0000FF"
+VLINK="#840084"
+ALINK="#0000FF"
+><DIV
+CLASS="BOOK"
+><A
+NAME="ocamlyacc-tutorial"
+></A
+><DIV
+CLASS="TITLEPAGE"
+><H1
+CLASS="title"
+><A
+NAME="AEN2"
+>Ocamlyacc Tutorial</A
+></H1
+><H3
+CLASS="author"
+><A
+NAME="AEN6"
+></A
+>Ocamlyacc Adaptation: SooHyoung Oh</H3
+><DIV
+><DIV
+CLASS="abstract"
+><P
+></P
+><A
+NAME="AEN9"
+></A
+><P
+>&#13;      This is a tutorial on how to use <TT
+CLASS="literal"
+>ocamlyacc</TT
+>
+      which is distributed with
+      <A
+HREF="http://ocaml.org"
+TARGET="_top"
+>Ocaml language</A
+>.
+      </P
+><P
+>&#13;      Lots of part of this document are borrowed from the
+      <A
+HREF="https://www.gnu.org/software/bison/"
+TARGET="_top"
+>bison</A
+> manual.
+      </P
+><P
+>&#13;      All license term in this document is NOT related with ocamlyacc; it is ONLY for this document.
+      </P
+><P
+>&#13;            Please mail all comments and suggestions to <CODE
+CLASS="email"
+>&#60;<A
+HREF="mailto:ohama100 at gmail dot com"
+>ohama100 at gmail dot com</A
+>&#62;</CODE
+>
+      </P
+><P
+>&#13;            The latest version can
+            be found at <A
+HREF="https://ohama.github.io/ocaml/ocamllex-ocamlyacc/ocamlyacc-tutorial/index.html"
+TARGET="_top"
+>&#13;            https://ohama.github.io/ocaml/ocamllex-ocamlyacc/ocamlyacc-tutorial/index.html</A
+>.
+      </P
+><P
+>&#13;      The companion tutorial for <TT
+CLASS="literal"
+>ocamllex</TT
+> is available
+      at <A
+HREF="https://ohama.github.io/ocaml/ocamllex-ocamlyacc/ocamllex-tutorial/index.html"
+TARGET="_top"
+>&#13;      https://ohama.github.io/ocaml/ocamllex-ocamlyacc/ocamllex-tutorial/index.html</A
+>.
+      </P
+><P
+>&#13;	You can find the source of this document in
+	<A
+HREF="https://ohama.github.io/ocaml/ocamllex-ocamlyacc/tutorial"
+TARGET="_top"
+>tutorial</A
+> directory.
+	For who wants the other form,
+	<A
+HREF="https://ohama.github.io/ocaml/ocamllex-ocamlyacc/ocamlyacc-tutorial.pdf"
+TARGET="_top"
+>pdf</A
+> for printing.
+      </P
+><P
+>&#13;	The source of the examples used in this document can be found
+	<A
+HREF="https://ohama.github.io/ocaml/ocamllex-ocamlyacc/ocamlyacc-examples"
+TARGET="_top"
+>ocamlyacc-examples</A
+> directory.
+      </P
+><P
+>&#13;<SPAN
+CLASS="emphasis"
+><I
+CLASS="emphasis"
+>&#13;This document is just a re-formatting of the old one. There have been many improvements since then in Ocaml programming language but those are not reflected in this document.
+</I
+></SPAN
+>
+      </P
+><P
+>&#13;            First release: 2004-11-16
+      </P
+><P
+>&#13;            Last updated: 2019-05-05
+      </P
+><P
+></P
+></DIV
+></DIV
+><HR></DIV
+><DIV
+CLASS="TOC"
+><DL
+><DT
+><B
+>Table of Contents</B
+></DT
+><DT
+>1. <A
+HREF="c33.html"
+>Introduction</A
+></DT
+><DT
+>2. <A
+HREF="c42.html"
+>The Concepts of Ocamlyacc</A
+></DT
+><DD
+><DL
+><DT
+>2.1. <A
+HREF="c42.html#sec-language-and-grammar"
+>Languages and Context-Free Grammars</A
+></DT
+><DT
+>2.2. <A
+HREF="x77.html"
+>From Formal Rules to Ocamlyacc Input</A
+></DT
+><DT
+>2.3. <A
+HREF="x99.html"
+>Semantic Values</A
+></DT
+><DT
+>2.4. <A
+HREF="x121.html"
+>Semantic Actions</A
+></DT
+><DT
+>2.5. <A
+HREF="x130.html"
+>Locations</A
+></DT
+><DT
+>2.6. <A
+HREF="x138.html"
+>Ocamlyacc Output: the Parser File</A
+></DT
+><DT
+>2.7. <A
+HREF="x148.html"
+>Stages in Using Ocamlyacc</A
+></DT
+><DT
+>2.8. <A
+HREF="x172.html"
+>The Overall Layout of a Ocamlyacc Grammar</A
+></DT
+></DL
+></DD
+><DT
+>3. <A
+HREF="c193.html"
+>Examples</A
+></DT
+><DD
+><DL
+><DT
+>3.1. <A
+HREF="c193.html#sec-reverse-polish-notation-calculator"
+>Reverse Polish Notation Calculator</A
+></DT
+><DD
+><DL
+><DT
+>3.1.1. <A
+HREF="c193.html#sec-declarations-for-rpcalc"
+>Declarations for "rpcalc"</A
+></DT
+><DT
+>3.1.2. <A
+HREF="c193.html#sec-grammar-rules-for-rpcalc"
+>Grammar Rules for rpcalc</A
+></DT
+><DT
+>3.1.3. <A
+HREF="c193.html#sec-rpcalc-lexical-analyzer"
+>The rpcalc Lexical Analyzer</A
+></DT
+><DT
+>3.1.4. <A
+HREF="c193.html#sec-controlling-function"
+>The Controlling Function</A
+></DT
+><DT
+>3.1.5. <A
+HREF="c193.html#sec-error-reporting-routine"
+>The Error Reporting Routine</A
+></DT
+><DT
+>3.1.6. <A
+HREF="c193.html#sec-running-ocamlyacc"
+>Running Ocamlyacc to Make the Parser</A
+></DT
+><DT
+>3.1.7. <A
+HREF="c193.html#sec-compiling"
+>Compiling the Parser File</A
+></DT
+></DL
+></DD
+><DT
+>3.2. <A
+HREF="x343.html"
+>Infix Notation Calculator: calc</A
+></DT
+><DT
+>3.3. <A
+HREF="x367.html"
+>Simple Error Recovery</A
+></DT
+><DT
+>3.4. <A
+HREF="x381.html"
+>Location Tracking Calculator: ltcalc</A
+></DT
+><DD
+><DL
+><DT
+>3.4.1. <A
+HREF="x381.html#sec-declarations-for-ltcalc"
+>Declarations for ltcalc</A
+></DT
+><DT
+>3.4.2. <A
+HREF="x381.html#sec-grammar-rules-for-ltcalc"
+>Grammar Rules for ltcalc</A
+></DT
+><DT
+>3.4.3. <A
+HREF="x381.html#sec-ltcalc-lexical-analyzer"
+>The "ltcalc" Lexical Analyzer</A
+></DT
+></DL
+></DD
+><DT
+>3.5. <A
+HREF="x417.html"
+>Multi-Function Calculator: mfcalc</A
+></DT
+><DD
+><DL
+><DT
+>3.5.1. <A
+HREF="x417.html#sec-declarations-for-mfcalc"
+>Declarations for mfcalc</A
+></DT
+><DT
+>3.5.2. <A
+HREF="x417.html#sec-grammar-rules-for-mfcalc"
+>Grammar Rules for mfcalc</A
+></DT
+><DT
+>3.5.3. <A
+HREF="x417.html#sec-mfcalc-symbol-table"
+>The mfcalc Symbol Table</A
+></DT
+></DL
+></DD
+></DL
+></DD
+><DT
+>4. <A
+HREF="c480.html"
+>Ocamlyacc Grammar Files</A
+></DT
+><DD
+><DL
+><DT
+>4.1. <A
+HREF="c480.html#sec-outline"
+>Outline of a Ocamlyacc Grammar</A
+></DT
+><DD
+><DL
+><DT
+>4.1.1. <A
+HREF="c480.html#sec-header-section"
+>The Header Section</A
+></DT
+><DT
+>4.1.2. <A
+HREF="c480.html#sec-ocamlyacc-declaration-section"
+>The Ocamlyacc Declarations Section</A
+></DT
+><DT
+>4.1.3. <A
+HREF="c480.html#sec-grammar-rules-section"
+>The Grammar Rules Section</A
+></DT
+><DT
+>4.1.4. <A
+HREF="c480.html#sec-trailer-section"
+>The Trailer Section</A
+></DT
+></DL
+></DD
+><DT
+>4.2. <A
+HREF="x528.html"
+>Symbols, Terminal and Nonterminal</A
+></DT
+><DT
+>4.3. <A
+HREF="x557.html"
+>Syntax of Grammar Rules</A
+></DT
+><DT
+>4.4. <A
+HREF="x604.html"
+>Recursive Rules</A
+></DT
+><DT
+>4.5. <A
+HREF="x623.html"
+>Defining Language Semantics</A
+></DT
+><DD
+><DL
+><DT
+>4.5.1. <A
+HREF="x623.html#sec-data-types-of-semantic-values"
+>Data Types of Semantic Values</A
+></DT
+><DT
+>4.5.2. <A
+HREF="x623.html#sec-actions"
+>Actions</A
+></DT
+></DL
+></DD
+><DT
+>4.6. <A
+HREF="x658.html"
+>Tracking Locations</A
+></DT
+><DD
+><DL
+><DT
+>4.6.1. <A
+HREF="x658.html#sec-data-type-of-locations"
+>Data Type of Locations</A
+></DT
+><DT
+>4.6.2. <A
+HREF="x658.html#sec-actions-and-locations"
+>Actions and Locations</A
+></DT
+></DL
+></DD
+><DT
+>4.7. <A
+HREF="x702.html"
+>Ocamlyacc Declarations</A
+></DT
+><DD
+><DL
+><DT
+>4.7.1. <A
+HREF="x702.html#sec-token-type-names"
+>Token Type Names</A
+></DT
+><DT
+>4.7.2. <A
+HREF="x702.html#sec-operator-precedence-decl"
+>Operator Precedence</A
+></DT
+><DT
+>4.7.3. <A
+HREF="x702.html#sec-nonterminal-symbols"
+>Nonterminal Symbols</A
+></DT
+><DT
+>4.7.4. <A
+HREF="x702.html#sec-start-symbol"
+>The Start-Symbol</A
+></DT
+><DT
+>4.7.5. <A
+HREF="x702.html#sec-ocamlyacc-declaration-summary"
+>Ocamlyacc Declaration Summary</A
+></DT
+></DL
+></DD
+></DL
+></DD
+><DT
+>5. <A
+HREF="c820.html"
+>Parser Interface</A
+></DT
+><DD
+><DL
+><DT
+>5.1. <A
+HREF="c820.html#sec-parser-function"
+>The Parser Function</A
+></DT
+><DT
+>5.2. <A
+HREF="x840.html"
+>The Lexical Analyzer Function</A
+></DT
+><DT
+>5.3. <A
+HREF="x848.html"
+>The Error Reporting Function</A
+></DT
+></DL
+></DD
+><DT
+>6. <A
+HREF="c866.html"
+>The Ocamlyacc Parser Algorithm</A
+></DT
+><DD
+><DL
+><DT
+>6.1. <A
+HREF="c866.html#sec-look-ahead-tokens"
+>Look-Ahead Tokens</A
+></DT
+><DT
+>6.2. <A
+HREF="x911.html"
+>Shift/Reduce Conflicts</A
+></DT
+><DT
+>6.3. <A
+HREF="x934.html"
+>Operator Precedence</A
+></DT
+><DD
+><DL
+><DT
+>6.3.1. <A
+HREF="x934.html#sec-when-precedence-is-needed"
+>When Precedence is Needed</A
+></DT
+><DT
+>6.3.2. <A
+HREF="x934.html#sec-specifying-operator-precedence"
+>Specifying Operator Precedence</A
+></DT
+><DT
+>6.3.3. <A
+HREF="x934.html#sec-precedence-examples"
+>Precedence Examples</A
+></DT
+><DT
+>6.3.4. <A
+HREF="x934.html#sec-how-precedence-works"
+>How Precedence Works</A
+></DT
+></DL
+></DD
+><DT
+>6.4. <A
+HREF="x996.html"
+>Context-Dependent Precedence</A
+></DT
+><DT
+>6.5. <A
+HREF="x1018.html"
+>Parser States</A
+></DT
+><DT
+>6.6. <A
+HREF="x1026.html"
+>Reduce/Reduce Conflicts</A
+></DT
+><DT
+>6.7. <A
+HREF="x1068.html"
+>Mysterious Reduce/Reduce Conflicts</A
+></DT
+></DL
+></DD
+><DT
+>7. <A
+HREF="c1102.html"
+>Error Recovery</A
+></DT
+><DT
+>8. <A
+HREF="c1133.html"
+>Debugging Your Parser</A
+></DT
+><DT
+>9. <A
+HREF="c1152.html"
+>Invoking Ocamlyacc</A
+></DT
+><DD
+><DL
+><DT
+>9.1. <A
+HREF="c1152.html#sec-ocamlyacc-options"
+>Ocamlyacc Options</A
+></DT
+></DL
+></DD
+><DT
+>10. <A
+HREF="c1183.html"
+>License of This Document</A
+></DT
+><DD
+><DL
+><DT
+>10.1. <A
+HREF="c1183.html#sec-bison-license"
+>Bison License</A
+></DT
+><DD
+><DL
+><DT
+>10.1.1. <A
+HREF="c1183.html#sec-license-bison-manual"
+>License of bison manual</A
+></DT
+><DT
+>10.1.2. <A
+HREF="c1183.html#sec-condition-for-using-bison"
+>Conditions for Using Bison</A
+></DT
+><DT
+>10.1.3. <A
+HREF="c1183.html#sec-copying-this-manual"
+>Copying This Manual</A
+></DT
+><DT
+>10.1.4. <A
+HREF="c1183.html#AEN1314"
+>GNU General Public License</A
+></DT
+></DL
+></DD
+><DT
+>10.2. <A
+HREF="x1427.html"
+>Ocamlyacc Adaptation Copyright and Permissions Notice</A
+></DT
+></DL
+></DD
+></DL
+></DIV
+></DIV
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+SUMMARY="Footer navigation table"
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>&nbsp;</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+>&nbsp;</TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="c33.html"
+ACCESSKEY="N"
+>Next</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>&nbsp;</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+>&nbsp;</TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>Introduction</TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>

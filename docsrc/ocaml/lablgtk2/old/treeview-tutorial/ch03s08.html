@@ -1,0 +1,51 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"><title>Storing GObjects (Pixbufs etc.)</title><meta name="generator" content="DocBook XSL Stylesheets V1.61.2"><link rel="home" href="index.html" title="GTK+ 2.0 Tree View Tutorial using Ocaml"><link rel="up" href="ch03.html" title="Chapter 3. GTree.models for Data Storage: GTree.list_store and GTree.tree_store"><link rel="previous" href="ch03s07.html" title="Removing Multiple Rows"><link rel="next" href="ch04.html" title="Chapter 4. Creating a Tree View"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">Storing GObjects (Pixbufs etc.)</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="ch03s07.html">Prev</a> </td><th width="60%" align="center">Chapter 3. GTree.models for Data Storage: GTree.list_store and GTree.tree_store</th><td width="20%" align="right"> <a accesskey="n" href="ch04.html">Next</a></td></tr></table><hr></div><div class="sect1" lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="sec-treemodel-storing-gobjects"></a>Storing GObjects (Pixbufs etc.)</h2></div></div><div></div></div><p>
+A special case are <tt class="literal">GObject</tt> types, like <tt class="literal">GDK_TYPE_PIXBUF</tt>,
+that get stored in a list or tree store. The store will not make a copy of the object, rather
+it will increase the object's refcount. The store will then unref the object again if it is
+no longer needed (ie. a new object is stored in the old object's place, the current value
+is replaced by NULL, the row is removed, or the store is destroyed).
+</p><p>
+From a developer perspective, this means that you need to <tt class="literal">g_object_unref</tt>
+an object that you have just added to the store if you want the store to automatically dispose
+of it when no longer needed. This is because on object creation, the object has an initial
+refcount of 1, which is "your" refcount, and the object will only be destroyed when it
+reaches a refcount of 0. Here is the life cycle of a pixbuf:
+</p><pre class="programlisting">
+  GtkListStore *list_store;
+  GtkTreeIter   iter;
+  GdkPixbuf    *pixbuf;
+  GError       *error = NULL;
+
+  list_store = gtk_list_store_new (2, GDK_TYPE_PIXBUF, G_TYPE_STRING);
+
+  pixbuf = gdk_pixbuf_new_from_file("icon.png", &amp;error);
+
+  /* pixbuf has a refcount of 1 after creation */
+
+  if (error)
+  {
+    g_critical ("Could not load pixbuf: %s\n", error-&gt;message);
+    g_error_free(error);
+    return;
+  }
+
+  gtk_list_store_append(list_store, &amp;iter);
+
+  gtk_list_store_set(list_store, &amp;iter, 0, pixbuf, 1, "foo", -1);
+
+  /* pixbuf has a refcount of 2 now, as the list store has added its own reference */
+
+  g_object_unref(pixbuf);
+
+  /* pixbuf has a refcount of 1 now that we have released our initial reference */
+
+  /* we don't want an icon in that row any longer */
+  gtk_list_store_set(list_store, &amp;iter, 0, NULL, -1);
+
+  /* pixbuf has automatically been destroyed after its refcount has reached 0.
+   *  The list store called g_object_unref() on the pixbuf when it replaced
+   *  the object in the store with a new value (NULL). */
+</pre><p>
+Having learned how to add, manipulate, and retrieve data from a store, the next step is to get that data
+displayed in a <tt class="literal">GtkTreeView</tt> widget.
+</p></div><div class="navfooter"><hr><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="ch03s07.html">Prev</a> </td><td width="20%" align="center"><a accesskey="u" href="ch03.html">Up</a></td><td width="40%" align="right"> <a accesskey="n" href="ch04.html">Next</a></td></tr><tr><td width="40%" align="left" valign="top">Removing Multiple Rows </td><td width="20%" align="center"><a accesskey="h" href="index.html">Home</a></td><td width="40%" align="right" valign="top"> Chapter 4. Creating a Tree View</td></tr></table></div></body></html>

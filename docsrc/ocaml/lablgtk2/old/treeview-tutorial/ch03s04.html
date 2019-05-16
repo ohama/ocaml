@@ -1,0 +1,31 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"><title>Manipulating Row Data</title><meta name="generator" content="DocBook XSL Stylesheets V1.61.2"><link rel="home" href="index.html" title="GTK+ 2.0 Tree View Tutorial using Ocaml"><link rel="up" href="ch03.html" title="Chapter 3. GTree.models for Data Storage: GTree.list_store and GTree.tree_store"><link rel="previous" href="ch03s03.html" title="Adding Rows to a Store"><link rel="next" href="ch03s05.html" title="Retrieving Row Data"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">Manipulating Row Data</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="ch03s03.html">Prev</a> </td><th width="60%" align="center">Chapter 3. GTree.models for Data Storage: GTree.list_store and GTree.tree_store</th><td width="20%" align="right"> <a accesskey="n" href="ch03s05.html">Next</a></td></tr></table><hr></div><div class="sect1" lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="sec-treemodel-data-manipulation"></a>Manipulating Row Data</h2></div></div><div></div></div><p>
+Adding empty rows to a data store is not terribly exciting, so let's see how we can add or change data in the store.
+</p><p>
+<a href="http://compiler.kaist.ac.kr/~shoh/ocaml/lablgtk2/lablgtk-2.4.0/doc/html/GTree.list_store.html#METHODset" target="_top"><tt class="literal">GTree.list_store#set</tt></a>
+(<a href="http://developer.gnome.org/doc/API/2.0/gtk/GtkListStore.html#gtk-list-store-set" target="_top"><tt class="literal">gtk_list_store_set</tt></a>) and
+<a href="http://compiler.kaist.ac.kr/~shoh/ocaml/lablgtk2/lablgtk-2.4.0/doc/html/GTree.tree_store.html#METHODset" target="_top"><tt class="literal">GTree.tree_store#set</tt></a>
+(<a href="http://developer.gnome.org/doc/API/2.0/gtk/GtkTreeStore.html#gtk-tree-store-set" target="_top"><tt class="literal">gtk_tree_store_set</tt></a>) are used
+to manipulate a given row's data.
+Both <tt class="literal">GTree.list_store#set</tt> and <tt class="literal">GTree.tree_store#set</tt> take
+three arguments.
+The first argument is the iter pointing to the row whose data we want
+to change.
+The second argument, the column, refers to the model column which we want to change.
+The third argument, the data, should be of the same data type as the model column.
+</p><p>
+Here is an example where we create a store that stores two strings and one integer for each row:
+</p><pre class="programlisting">
+  let cols = new GTree.column_list in
+  let col_first_name = cols#add Gobject.Data.string in
+  let col_last_name = cols#add Gobject.Data.string in
+  let col_year_born = cols#add Gobject.Data.int in
+  let liststore = GTree.list_store cols in
+
+  (* Append an empty row to the list store. Iter will point to the new row *)
+  let row = liststore#append () in
+
+  (* Fill fields with some data *)
+  liststore#set ~row ~column:col_first_name "Joe";
+  liststore#set ~row ~column:col_last_name "Average";
+  liststore#set ~row ~column:col_year_born 1970;
+</pre></div><div class="navfooter"><hr><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="ch03s03.html">Prev</a> </td><td width="20%" align="center"><a accesskey="u" href="ch03.html">Up</a></td><td width="40%" align="right"> <a accesskey="n" href="ch03s05.html">Next</a></td></tr><tr><td width="40%" align="left" valign="top">Adding Rows to a Store </td><td width="20%" align="center"><a accesskey="h" href="index.html">Home</a></td><td width="40%" align="right" valign="top"> Retrieving Row Data</td></tr></table></div></body></html>

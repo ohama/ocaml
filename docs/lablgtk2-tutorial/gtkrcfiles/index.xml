@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>GTK&#39;s rc files on Documentation for Hugo Learn Theme</title>
+    <link>https://ohama.github.io/ocaml/lablgtk2-tutorial/gtkrcfiles/</link>
+    <description>Recent content in GTK&#39;s rc files on Documentation for Hugo Learn Theme</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-US</language>
+    
+	<atom:link href="https://ohama.github.io/ocaml/lablgtk2-tutorial/gtkrcfiles/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Functions for rc files</title>
+      <link>https://ohama.github.io/ocaml/lablgtk2-tutorial/gtkrcfiles/functionforrcfiles/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://ohama.github.io/ocaml/lablgtk2-tutorial/gtkrcfiles/functionforrcfiles/</guid>
+      <description>When your application starts, it reads the default RC files. which are [SYSCONFDIR]/gtk-2.0/gtkrc and .gtkrc-2.0 in the users home directory. ([SYSCONFDIR] defaults to /usr/local/etc.) You can add default file:
+val GMain.Rc.add_default_file : string -&amp;gt; unit If you wish to have a special set of widgets that can take on a different style from others, or any other logical division of widgets, use a call to:
+method misc#set_name : string -&amp;gt; unit Passing your newly created widget as the first argument, and the name you wish to give it as the second.</description>
+    </item>
+    
+    <item>
+      <title>GTK&#39;s rc file format</title>
+      <link>https://ohama.github.io/ocaml/lablgtk2-tutorial/gtkrcfiles/gtkrcfileformat/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://ohama.github.io/ocaml/lablgtk2-tutorial/gtkrcfiles/gtkrcfileformat/</guid>
+      <description>The format of the GTK file is illustrated in the example below. This is the testgtkrc file from the GTK distribution, but I&amp;rsquo;ve added a few comments and things. You may wish to include this explanation in your application to allow the user to fine tune his application.
+There are several directives to change the attributes of a widget.
+ fg - Sets the foreground color of a widget.
+ bg - Sets the background color of a widget.</description>
+    </item>
+    
+    <item>
+      <title>Example rc file</title>
+      <link>https://ohama.github.io/ocaml/lablgtk2-tutorial/gtkrcfiles/examplercfile/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://ohama.github.io/ocaml/lablgtk2-tutorial/gtkrcfiles/examplercfile/</guid>
+      <description># pixmap_path &amp;#34;&amp;lt;dir 1&amp;gt;:&amp;lt;dir 2&amp;gt;:&amp;lt;dir 3&amp;gt;:...&amp;#34; # pixmap_path &amp;#34;/usr/include/X11R6/pixmaps:/home/imain/pixmaps&amp;#34; # # style &amp;lt;name&amp;gt; [= &amp;lt;name&amp;gt;] # { # &amp;lt;option&amp;gt; # } # # widget &amp;lt;widget_set&amp;gt; style &amp;lt;style_name&amp;gt; # widget_class &amp;lt;widget_class_set&amp;gt; style &amp;lt;style_name&amp;gt; # Here is a list of all the possible states. Note that some do not apply to # certain widgets. # # NORMAL - The normal state of a widget, without the mouse over top of # it, and not being pressed, etc.</description>
+    </item>
+    
+  </channel>
+</rss>

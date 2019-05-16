@@ -1,0 +1,96 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"><title>Chapter 8. Editable Cells</title><meta name="generator" content="DocBook XSL Stylesheets V1.61.2"><link rel="home" href="index.html" title="GTK+ 2.0 Tree View Tutorial using Ocaml"><link rel="up" href="index.html" title="GTK+ 2.0 Tree View Tutorial using Ocaml"><link rel="previous" href="ch07s02.html" title="Sorting and Tree View Column Headers"><link rel="next" href="ch08s02.html" title="Editable Toggle and Radio Button Cells"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">Chapter 8. Editable Cells</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="ch07s02.html">Prev</a> </td><th width="60%" align="center"> </th><td width="20%" align="right"> <a accesskey="n" href="ch08s02.html">Next</a></td></tr></table><hr></div><div class="chapter" lang="en"><div class="titlepage"><div><div><h2 class="title"><a name="sec-editable-cells"></a>Chapter 8. Editable Cells</h2></div></div><div></div></div><div class="toc"><p><b>Table of Contents</b></p><dl><dt><a href="ch08.html#sec-editable-cells-text">Editable Text Cells</a></dt><dd><dl><dt><a href="ch08.html#sec-editable-cells-text-set">Setting the cursor to a specific cell</a></dt></dl></dd><dt><a href="ch08s02.html">Editable Toggle and Radio Button Cells</a></dt></dl></div><div class="sect1" lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="sec-editable-cells-text"></a>Editable Text Cells</h2></div></div><div></div></div><p>
+With <tt class="literal">GTree.cell_render_text</tt> you can not only display
+text, but you can also allow the user to edit a single cell's text
+right in the tree view by double-clicking on a cell.
+</p><p>
+To make this work you need to tell the cell renderer that a cell is
+editable, which you can do by setting the <tt class="literal">`EDITABLE</tt>
+property of the text cell renderer in question to <tt class="literal">true</tt>.
+You can either do this on a per-row basis (which allows you to set each
+single cell either editable or not) by connecting the <tt class="literal">"editable"</tt>
+property to a boolean type column in your tree model using attributes; or you
+can just do a ...
+</p><pre class="programlisting">
+  let renderer = GTree.cell_renderer_text [`EDITABLE true; ...] in
+</pre><p>
+... when you create the renderer, which sets all rows in that particular
+renderer column to be editable.
+</p><p>
+Now that our cells are editable, we also want to be notified when a cell has
+been edited. This can be achieved by connecting to the cell renderer's
+<tt class="literal">"edited"</tt> signal like this:
+</p><pre class="programlisting">
+  renderer#connect#edited ~callback:cell_edited_callback;
+</pre><p>
+This callback is then called whenever a cell has been edited.
+We can pass a model as a parameter of the callback function,
+as we probably want to store the new value in the model.
+</p><p>
+The <tt class="literal">"edited"</tt> signal callback looks like this:
+</p><pre class="programlisting">
+method edited : callback:(Gtk.tree_path -&gt; string -&gt; unit) -&gt; GtkSignal.id
+</pre><p>
+The tree path is passed to the <tt class="literal">"edited"</tt> signal callback.
+
+You can convert this into an iter with
+<a href="http://compiler.kaist.ac.kr/~shoh/ocaml/lablgtk2/lablgtk-2.4.0/doc/html/GTree.model.html#METHODget_iter" target="_top"><tt class="literal">GTree.model#get_iter</tt></a>.
+</p><p>
+Note that the cell renderer will not change the data for you in the store.
+After a cell has been edited, you will only receive an <tt class="literal">"edited"</tt>
+signal. If you do not change the data in the store, the old text will be rendered
+again as if nothing had happened.
+</p><p>
+If you have multiple (renderer) columns with editable cells, it is not necessary
+to have a different callback for each renderer, you can use the same callback
+for all renderers, and attach some data to each renderer, which you can later
+retrieve again in the callback to know which renderer/column has been edited.
+This is done like this, for example:
+</p><pre class="programlisting">
+...
+let cols = new GTree.column_list
+let col_name = cols#add Gobject.Data.string
+let col_age = cols#add Gobject.Data.int
+...
+
+let cell_edited_callback index path str =
+  ...
+
+let create_view () =
+  ...
+  let renderer = GTree.cell_renderer_text [`EDITABLE true] in
+  renderer#connect#edited ~callback:(cell_edited_callback col_name.index);
+  ...
+  let renderer = GTree.cell_renderer_text [`EDITABLE true] in
+  renderer#connect#edited ~callback:(cell_edited_callback col_age.index);
+  ...
+</pre><p>
+The <tt class="literal">column</tt> such as <tt class="literal">col_name</tt> and
+<tt class="literal">col_age</tt> has a field called <tt class="literal">index</tt>
+which is unique in a <tt class="literal">GTree.column_list</tt>.
+</p><div class="sect2" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="sec-editable-cells-text-set"></a>Setting the cursor to a specific cell</h3></div></div><div></div></div><p>
+You can move the cursor to a specific cell in a tree view with
+<a href="http://compiler.kaist.ac.kr/~shoh/ocaml/lablgtk2/lablgtk-2.4.0/doc/html/GTree.view.html#METHODset_cursor" target="_top"><tt class="literal">GTree.view#set_cursor</tt></a>
+(<a href="http://developer.gnome.org/doc/API/2.0/gtk/GtkTreeView.html#gtk-tree-view-set-cursor" target="_top"><tt class="literal">gtk_tree_view_set_cursor</tt></a>),
+
+and start editing
+the cell if you want to. Similarly, you can get the current row and focus column with
+<a href="http://compiler.kaist.ac.kr/~shoh/ocaml/lablgtk2/lablgtk-2.4.0/doc/html/GTree.view.html#METHODget_cursor" target="_top"><tt class="literal">GTree.view#get_cursor</tt></a>
+(<a href="http://developer.gnome.org/doc/API/2.0/gtk/GtkTreeView.html#gtk-tree-view-get-cursor" target="_top"><tt class="literal">gtk_tree_view_get_cursor</tt></a>).
+Use
+<a href="http://compiler.kaist.ac.kr/~shoh/ocaml/lablgtk2/lablgtk-2.4.0/doc/html/GObj.misc_ops.html#METHODgrab_focus" target="_top"><tt class="literal">misc#grab_focus</tt></a> method
+(<a href="http://developer.gnome.org/doc/API/2.0/gtk/GtkWidget.html#gtk-widget-grab-focus" target="_top"><tt class="literal">gtk_widget_grab_focus(treeview)</tt></a>) will make sure that the tree view
+has the keyboard focus.
+</p><p>
+As the API reference points out, the tree view needs to be realised for cell editing to
+happen. In other words: If you want to start editing a specific cell right at program
+startup, you need to set up an idle timeout with
+<a href="http://compiler.kaist.ac.kr/~shoh/ocaml/lablgtk2/lablgtk-2.4.0/doc/html/GMain.Idle.html#VALadd" target="_top"><tt class="literal">GMain.Idle.add</tt></a>
+(<a href="http://developer.gnome.org/doc/API/2.0/glib/glib-The-Main-Event-Loop.html#g-idle-add" target="_top"><tt class="literal">g_idle_add</tt></a>) that does this for you as soon as the window and
+everything else has been realised (return <tt class="literal">false</tt> in the
+timeout to make it run only once).
+
+</p><p>
+Connect to the tree view's <tt class="literal">"cursor-changed"</tt> and/or
+<tt class="literal">"move-cursor"</tt> signals to keep track of the current
+position of the cursor.
+</p></div></div></div><div class="navfooter"><hr><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="ch07s02.html">Prev</a> </td><td width="20%" align="center"><a accesskey="u" href="index.html">Up</a></td><td width="40%" align="right"> <a accesskey="n" href="ch08s02.html">Next</a></td></tr><tr><td width="40%" align="left" valign="top">Sorting and Tree View Column Headers </td><td width="20%" align="center"><a accesskey="h" href="index.html">Home</a></td><td width="40%" align="right" valign="top"> Editable Toggle and Radio Button Cells</td></tr></table></div></body></html>

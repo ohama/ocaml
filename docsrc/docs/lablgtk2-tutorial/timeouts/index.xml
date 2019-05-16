@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Timeouts and idle functions on Documentation for Hugo Learn Theme</title>
+    <link>https://ohama.github.io/ocaml/lablgtk2-tutorial/timeouts/</link>
+    <description>Recent content in Timeouts and idle functions on Documentation for Hugo Learn Theme</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-US</language>
+    
+	<atom:link href="https://ohama.github.io/ocaml/lablgtk2-tutorial/timeouts/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Timeouts</title>
+      <link>https://ohama.github.io/ocaml/lablgtk2-tutorial/timeouts/timeouts/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://ohama.github.io/ocaml/lablgtk2-tutorial/timeouts/timeouts/</guid>
+      <description>You may be wondering how you make GTK do useful work when in gtk_main. Well, you have several options. Using the following function you can create a timeout function that will be called every &amp;ldquo;interval&amp;rdquo; milliseconds.
+val GMain.Timeout.add : ms:int -&amp;gt; callback:(unit -&amp;gt; bool) -&amp;gt; id The first argument is the number of milliseconds between calls to your function. The second argument is the function you wish to have called. The return value is an integer &amp;ldquo;tag&amp;rdquo; which may be used to stop the timeout by calling:</description>
+    </item>
+    
+    <item>
+      <title>Idle functions</title>
+      <link>https://ohama.github.io/ocaml/lablgtk2-tutorial/timeouts/idlefunctions/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://ohama.github.io/ocaml/lablgtk2-tutorial/timeouts/idlefunctions/</guid>
+      <description>What if you have a function which you want to be called when nothing else is happening?
+val GMain.Idle.add : callback:(unit -&amp;gt; bool) -&amp;gt; id This causes GTK to call the specified function whenever nothing else is happening.
+val GMain.Idle.remove : id -&amp;gt; unit I won&amp;rsquo;t explain the meaning of the arguments as they follow very much like the ones above. The callback function of GMain.Idle.add will be called whenever the opportunity arises.</description>
+    </item>
+    
+  </channel>
+</rss>

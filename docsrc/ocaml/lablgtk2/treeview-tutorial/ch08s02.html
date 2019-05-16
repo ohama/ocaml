@@ -1,0 +1,28 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"><title>Editable Toggle and Radio Button Cells</title><meta name="generator" content="DocBook XSL Stylesheets V1.61.2"><link rel="home" href="index.html" title="GTK+ 2.0 Tree View Tutorial using Ocaml"><link rel="up" href="ch08.html" title="Chapter 8. Editable Cells"><link rel="previous" href="ch08.html" title="Chapter 8. Editable Cells"><link rel="next" href="ch09.html" title="Chapter 9. Other Resources"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">Editable Toggle and Radio Button Cells</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="ch08.html">Prev</a> </td><th width="60%" align="center">Chapter 8. Editable Cells</th><td width="20%" align="right"> <a accesskey="n" href="ch09.html">Next</a></td></tr></table><hr></div><div class="sect1" lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="sec-editable-cells-toggle"></a>Editable Toggle and Radio Button Cells</h2></div></div><div></div></div><p>
+Just like you can set a <tt class="literal">GTree.cell_renderer_text</tt> editable,
+you can specify whether a <tt class="literal">GTree.cell_renderer_toggle</tt> should
+change its state when clicked by setting the <tt class="literal">`ACTIVATABLE</tt>
+property - either when you create the renderer (in which case all cells in
+that column will be clickable) or by connecting the renderer property to a
+model column of boolean type via attributes.
+</p><p>
+Connect to the <tt class="literal">"toggled"</tt> signal of the toggle cell
+renderer to be notified when the user clicks on a toggle button
+(or radio button). The user click will not change the value in the
+store, or the appearance of the value rendered. The toggle button will
+only change state when you update the value in the store. Until then
+it will be in an "inconsistent" state, which is also why you should
+read the current value of that cell from the model, and not from the
+cell renderer.
+</p><p>
+The <tt class="literal">"toggled"</tt> signal callback looks like this:
+</p><pre class="programlisting">
+method toggled : callback:(Gtk.tree_path -&gt; unit) -&gt; GtkSignal.id
+</pre><p>
+Just like with the <tt class="literal">"edited"</tt> signal of the text cell renderer,
+the tree path is passed to the <tt class="literal">"toggled"</tt> signal callback.
+
+You can convert it into an iter with
+<a href="http://compiler.kaist.ac.kr/~shoh/ocaml/lablgtk2/lablgtk-2.4.0/doc/html/GTree.model.html#METHODget_iter" target="_top"><tt class="literal">GTree.model#get_iter</tt></a>.
+
+</p></div><div class="navfooter"><hr><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="ch08.html">Prev</a> </td><td width="20%" align="center"><a accesskey="u" href="ch08.html">Up</a></td><td width="40%" align="right"> <a accesskey="n" href="ch09.html">Next</a></td></tr><tr><td width="40%" align="left" valign="top">Chapter 8. Editable Cells </td><td width="20%" align="center"><a accesskey="h" href="index.html">Home</a></td><td width="40%" align="right" valign="top"> Chapter 9. Other Resources</td></tr></table></div></body></html>

@@ -1,0 +1,158 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"><title>Chapter 6. Selections, Double-Clicks and Context Menus</title><meta name="generator" content="DocBook XSL Stylesheets V1.61.2"><link rel="home" href="index.html" title="GTK+ 2.0 Tree View Tutorial using Ocaml"><link rel="up" href="index.html" title="GTK+ 2.0 Tree View Tutorial using Ocaml"><link rel="previous" href="ch05s08.html" title="How to Pack Icons into the Tree View"><link rel="next" href="ch06s02.html" title="Double-Clicks on a Row"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">Chapter 6. Selections, Double-Clicks and Context Menus</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="ch05s08.html">Prev</a> </td><th width="60%" align="center"> </th><td width="20%" align="right"> <a accesskey="n" href="ch06s02.html">Next</a></td></tr></table><hr></div><div class="chapter" lang="en"><div class="titlepage"><div><div><h2 class="title"><a name="sec-sel-click-menus"></a>Chapter 6. Selections, Double-Clicks and Context Menus</h2></div></div><div></div></div><div class="toc"><p><b>Table of Contents</b></p><dl><dt><a href="ch06.html#sec-selections">Handling Selections</a></dt><dd><dl><dt><a href="ch06.html#sec-selections-modes">Selection Modes</a></dt><dt><a href="ch06.html#sec-selections-current">Getting the Currently Selected Rows</a></dt><dt><a href="ch06.html#sec-selections-function">Using Selection Functions</a></dt><dt><a href="ch06.html#sec-selections-check-row">Checking Whether a Row is Selected</a></dt><dt><a href="ch06.html#sec-selections-selecting-rows">Selecting and Unselecting Rows</a></dt></dl></dd><dt><a href="ch06s02.html">Double-Clicks on a Row</a></dt><dt><a href="ch06s03.html">Context Menus on Right Click</a></dt></dl></div><div class="sect1" lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="sec-selections"></a>Handling Selections</h2></div></div><div></div></div><p>
+One of the most basic features of a list or tree view is that rows can be selected or unselected.
+Selections are handled using the
+<a href="http://compiler.kaist.ac.kr/~shoh/ocaml/lablgtk2/lablgtk-2.4.0/doc/html/GTree.selection.html" target="_top"><tt class="literal">GTree.selection</tt></a>
+(<a href="http://developer.gnome.org/doc/API/2.0/gtk/GtkTreeSelection.html" target="_top"><tt class="literal">GtkTreeSelection</tt></a>) object of a tree view. Every
+tree view automatically has a <tt class="literal">GTree.selection</tt> associated with it, and you can
+get it using
+<a href="http://compiler.kaist.ac.kr/~shoh/ocaml/lablgtk2/lablgtk-2.4.0/doc/html/GTree.view.html#METHODselection" target="_top"><tt class="literal">GTree.view#selection</tt></a> method
+(<a href="http://developer.gnome.org/doc/API/2.0/gtk/GtkTreeView.html#gtk-tree-view-get-selection" target="_top"><tt class="literal">gtk_tree_view_get_selection</tt></a>).
+Selections are handled completely on
+the tree view side, which means that the model knows nothing about which rows are selected or not.
+There is no particular reason why selection handling could not have been implemented with functions
+that access the tree view widget directly, but for reasons of API cleanliness and code clarity the
+Gtk+ developers decided to create this special <tt class="literal">GTree.selection</tt> object that then
+internally deals with the tree view widget. You will never need to create a tree selection object,
+it will be created for you automatically when you create a new tree view. You only need to use said
+<tt class="literal">selection</tt> method to get the selection object.
+</p><p>
+There are three ways to deal with tree view selections: either you get a list of the currently selected
+rows whenever you need it, for example within a context menu function, or you keep track of all select
+and unselect actions and keep a list of the currently selected rows around for whenever you need them;
+as a last resort, you can also traverse your list or tree and check each single row for whether it is
+selected or not (which you need to do if you want all rows that are <span class="emphasis"><em>not</em></span> selected
+for example).
+</p><div class="sect2" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="sec-selections-modes"></a>Selection Modes</h3></div></div><div></div></div><p>
+You can use <tt class="literal">set_mode</tt> method of
+the <tt class="literal">GTree.selection</tt> object
+to influence the way that selections are
+handled. There are four selection modes:
+</p><div class="itemizedlist"><ul type="disc"><li>
+   <tt class="literal">`NONE</tt> - no items can be selected
+  </li><li>
+   <tt class="literal">`SINGLE</tt> - no more than one item can be selected
+  </li><li>
+   <tt class="literal">`BROWSE</tt> - exactly one item is always selected
+  </li><li>
+   <tt class="literal">`MULTIPLE</tt> - anything between no item and all items can be selected
+  </li></ul></div></div><div class="sect2" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="sec-selections-current"></a>Getting the Currently Selected Rows</h3></div></div><div></div></div><p>
+You can
+
+get a
+<tt class="literal">Gtk.tree_path list</tt> of the selected rows using
+<a href="http://compiler.kaist.ac.kr/~shoh/ocaml/lablgtk2/lablgtk-2.4.0/doc/html/GTree.selection.html#METHODget_selected_rows" target="_top"><tt class="literal">get_selected_rows</tt></a> method
+(<a href="http://developer.gnome.org/doc/API/2.0/gtk/GtkTreeSelection.html#gtk-tree-selection-get-selected-rows" target="_top"><tt class="literal">gtk_tree_selection_get_selected_rows</tt></a>).
+
+</p><p>
+
+It is used like this:
+</p><pre class="programlisting">
+...
+let cols = new GTree.column_list
+let col_name = cols#add Gobject.Data.string
+let col_age = cols#add Gobject.Data.int
+...
+
+let selection_changed (model:#GTree.model) selection () =
+  let pr path =
+    let row = model#get_iter path in
+    let name = model#get ~row ~column:col_name in
+    let age = model#get ~row ~column:col_age in
+    Printf.printf "(%s, %d)\n" name age;
+    flush stdout
+  in
+  List.iter pr selection#get_selected_rows
+  
+let create_view ~model ~packing () =
+  ...
+  view#selection#set_mode `MULTIPLE;
+  view#selection#connect#changed ~callback:(selection_changed model view#selection);
+  ...
+</pre><p>
+One thing you need to be aware of is that you need to take care
+
+when
+looping through the list that <tt class="literal">get_selected_rows</tt> returns
+(because it contains paths, and when you remove rows in the middle, then the old paths will
+point to either a non-existing row, or to another row than the one selected). You have two ways
+around this problem: one way is to use the solution to removing multiple rows that has been
+<a href="ch03s06.html" title="Removing Rows">described above</a>, ie. to get tree row references
+for all selected rows and then remove the rows one by one; the other solution is to sort the
+list of selected tree paths so that the last rows come first in the list, so that you remove
+rows from the end of the list or tree. You cannot remove rows from within a foreach callback in
+any case, that is simply not allowed.
+</p></div><div class="sect2" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="sec-selections-function"></a>Using Selection Functions</h3></div></div><div></div></div><p>
+You can set up a custom selection function with
+<a href="http://compiler.kaist.ac.kr/~shoh/ocaml/lablgtk2/lablgtk-2.4.0/doc/html/GTree.selection.html#METHODset_select_function" target="_top"><tt class="literal">GTree.selection#set_select_function</tt></a>
+(<a href="http://developer.gnome.org/doc/API/2.0/gtk/GtkTreeSelection.html#gtk-tree-selection-set-select-function" target="_top"><tt class="literal">gtk_tree_selection_set_select_function</tt></a>).
+This
+function will then be called every time a row is going to be selected or
+unselected (meaning: it will be called before the selection status of that
+row is changed). Selection functions are commonly used for the following things:
+</p><div class="orderedlist"><ol type="1"><li><p>
+    ... to keep track of the currently selected items (then you maintain a list
+    of selected items yourself). In this case, note again that your selection
+    function is called <span class="emphasis"><em>before</em></span> the row's selection status is
+    changed. In other words: if the row is <span class="emphasis"><em>going to be</em></span>
+    selected, then the boolean parameter that is passed
+    to the selection function is still <tt class="literal">false</tt>. Also note that
+    the selection function might not always be called when a row is removed,
+    so you either have to unselect a row before you remove it to make sure your
+    selection function is called and removes the row from your list, or check
+    the validity of a row when you process the selection list you keep. You
+    should not store tree paths in your self-maintained list of of selected rows,
+    because whenever rows are added or removed or the model is resorted the paths
+    might point to other rows. Use tree row references or other unique means of
+    identifying a row instead.
+  </p></li><li><p>
+   ... to tell Gtk+ whether it is allowed to select or unselect that specific row
+   (you should make sure though that it is otherwise obvious to a user whether a
+   row can be selected or not, otherwise the user will be confused if she just
+   cannot select or unselect a row). This is done by returning <tt class="literal">true</tt> or <tt class="literal">false</tt> in the
+   selection function.
+  </p></li><li><p>
+   ... to take additional action whenever a row is selected or unselected.
+  </p></li></ol></div><p>
+Yet another simple example:
+</p><pre class="programlisting">
+let view_selection_func (model:#GTree.model) path currently_selected =
+  let row = model#get_iter path in
+  let name = model#get ~row ~column:col_name in
+  if not currently_selected
+  then Printf.printf "%s is going to be selected.\n" name
+  else Printf.printf "%s is going to be unselected.\n" name;
+  flush stdout;
+  true (* allow selection state to change *)
+
+let create_view ~model ~packing () =
+  let view = GTree.view ~model ~packing () in
+  ..
+  view#selection#set_select_function (view_selection_func model);
+  ...
+</pre></div><div class="sect2" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="sec-selections-check-row"></a>Checking Whether a Row is Selected</h3></div></div><div></div></div><p>
+You can check whether a given row is selected or not using the functions
+
+<a href="http://compiler.kaist.ac.kr/~shoh/ocaml/lablgtk2/lablgtk-2.4.0/doc/html/GTree.selection.html#METHODiter_is_selected" target="_top"><tt class="literal">GTree.selection#iter_is_selected</tt></a>
+(<a href="http://developer.gnome.org/doc/API/2.0/gtk/GtkTreeSelection.html#gtk-tree-selection-iter-is-selected" target="_top"><tt class="literal">gtk_tree_selection_iter_is_selected</tt></a>)
+or
+<a href="http://compiler.kaist.ac.kr/~shoh/ocaml/lablgtk2/lablgtk-2.4.0/doc/html/GTree.selection.html#METHODpath_is_selected" target="_top"><tt class="literal">GTree.selection#path_is_selected</tt></a>
+(<a href="http://developer.gnome.org/doc/API/2.0/gtk/GtkTreeSelection.html#gtk-tree-selection-path-is-selected" target="_top"><tt class="literal">gtk_tree_selection_path_is_selected</tt></a>).
+If you want to know all rows that are <span class="emphasis"><em>not</em></span> selected,
+for example, you could just traverse the whole list or tree, and use the
+above functions to check for each row whether it is selected or not.
+</p></div><div class="sect2" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="sec-selections-selecting-rows"></a>Selecting and Unselecting Rows</h3></div></div><div></div></div><p>
+You can select or unselect rows manually with
+<a href="http://compiler.kaist.ac.kr/~shoh/ocaml/lablgtk2/lablgtk-2.4.0/doc/html/GTree.selection.html#METHODselect_iter" target="_top"><tt class="literal">GTree.selection#select_iter</tt></a>
+(<a href="http://developer.gnome.org/doc/API/2.0/gtk/GtkTreeSelection.html#gtk-tree-selection-select-iter" target="_top"><tt class="literal">gtk_tree_selection_select_iter</tt></a>),
+<a href="http://compiler.kaist.ac.kr/~shoh/ocaml/lablgtk2/lablgtk-2.4.0/doc/html/GTree.selection.html#METHODselect_path" target="_top"><tt class="literal">GTree.selection#select_path</tt></a>
+(<a href="http://developer.gnome.org/doc/API/2.0/gtk/GtkTreeSelection.html#gtk-tree-selection-select-path" target="_top"><tt class="literal">gtk_tree_selection_select_path</tt></a>),
+<a href="http://compiler.kaist.ac.kr/~shoh/ocaml/lablgtk2/lablgtk-2.4.0/doc/html/GTree.selection.html#METHODunselect_iter" target="_top"><tt class="literal">GTree.selection#unselect_iter</tt></a>
+(<a href="http://developer.gnome.org/doc/API/2.0/gtk/GtkTreeSelection.html#gtk-tree-selection-unselect-iter" target="_top"><tt class="literal">gtk_tree_selection_unselect_iter</tt></a>),
+<a href="http://compiler.kaist.ac.kr/~shoh/ocaml/lablgtk2/lablgtk-2.4.0/doc/html/GTree.selection.html#METHODunselect_path" target="_top"><tt class="literal">GTree.selection#unselect_path</tt></a>
+(<a href="http://developer.gnome.org/doc/API/2.0/gtk/GtkTreeSelection.html#gtk-tree-selection-unselect-path" target="_top"><tt class="literal">gtk_tree_selection_unselect_path</tt></a>),
+<a href="http://compiler.kaist.ac.kr/~shoh/ocaml/lablgtk2/lablgtk-2.4.0/doc/html/GTree.selection.html#METHODselect_all" target="_top"><tt class="literal">GTree.selection#select_all</tt></a>
+(<a href="http://developer.gnome.org/doc/API/2.0/gtk/GtkTreeSelection.html#gtk-tree-selection-select-all" target="_top"><tt class="literal">gtk_tree_selection_select_all</tt></a>), and
+<a href="http://compiler.kaist.ac.kr/~shoh/ocaml/lablgtk2/lablgtk-2.4.0/doc/html/GTree.selection.html#METHODunselect_all" target="_top"><tt class="literal">GTree.selection#unselect_all</tt></a>
+(<a href="http://developer.gnome.org/doc/API/2.0/gtk/GtkTreeSelection.html#gtk-tree-selection-unselect-all" target="_top"><tt class="literal">gtk_tree_selection_unselect_all</tt></a>)
+should you ever need to do that.
+</p></div></div></div><div class="navfooter"><hr><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="ch05s08.html">Prev</a> </td><td width="20%" align="center"><a accesskey="u" href="index.html">Up</a></td><td width="40%" align="right"> <a accesskey="n" href="ch06s02.html">Next</a></td></tr><tr><td width="40%" align="left" valign="top">How to Pack Icons into the Tree View </td><td width="20%" align="center"><a accesskey="h" href="index.html">Home</a></td><td width="40%" align="right" valign="top"> Double-Clicks on a Row</td></tr></table></div></body></html>

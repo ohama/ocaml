@@ -1,0 +1,24 @@
+---
+title: "Using adjustments"
+description: "Using adjustments"
+weight: 20
+---
+
+The adjustable widgets can be roughly divided into those which use and require specific units for these values and those which treat them as arbitrary numbers. The group which treats the values as arbitrary numbers includes the range widgets (scrollbars and scales, the progress bar widget, and the spin button widget). These widgets are all the widgets which are typically "adjusted" directly by the user with the mouse or keyboard. They will treat the lower and upper values of an adjustment as a range within which the user can manipulate the adjustment's value. By default, they will only modify the value of an adjustment.
+
+The other group includes the text widget, the viewport widget, the compound list widget, and the scrolled window widget. All of these widgets use pixel values for their adjustments. These are also all widgets which are typically "adjusted" indirectly using scrollbars. While all widgets which use adjustments can either create their own adjustments or use ones you supply, you'll generally want to let this particular category of widgets create its own adjustments. Usually, they will eventually override all the values except the value itself in whatever adjustments you give them, but the results are, in general, undefined (meaning, you'll have to read the source code to find out, and it may be different from widget to widget).
+
+Now, you're probably thinking, since text widgets and viewports insist on setting everything except the value of their adjustments, while scrollbars will only touch the adjustment's value, if you share an adjustment object between a scrollbar and a text widget, manipulating the scrollbar will automagically adjust the viewport widget? Of course it will! Just like this:
+
+``` ocaml
+  ...
+
+  (* creates its own adjustments *)
+  let viewport = GBin.viewport () in
+
+  (* uses the newly-created adjustment for the scrollbar as well *)
+  let vscrollbar = GRange.scrollbar `VERTICAL ~adjustment:viewport#vadjustment ()
+  in
+
+  ...
+```

@@ -1,0 +1,284 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"><title>Refering to Rows: Gtk.tree_iter, Gtk.tree_path, Gtk.row_reference, GTree.row_reference</title><meta name="generator" content="DocBook XSL Stylesheets V1.61.2"><link rel="home" href="index.html" title="GTK+ 2.0 Tree View Tutorial using Ocaml"><link rel="up" href="ch03.html" title="Chapter 3. GTree.models for Data Storage: GTree.list_store and GTree.tree_store"><link rel="previous" href="ch03.html" title="Chapter 3. GTree.models for Data Storage: GTree.list_store and GTree.tree_store"><link rel="next" href="ch03s03.html" title="Adding Rows to a Store"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">Refering to Rows: Gtk.tree_iter, Gtk.tree_path, Gtk.row_reference, GTree.row_reference</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="ch03.html">Prev</a> </td><th width="60%" align="center">Chapter 3. GTree.models for Data Storage: GTree.list_store and GTree.tree_store</th><td width="20%" align="right"> <a accesskey="n" href="ch03s03.html">Next</a></td></tr></table><hr></div><div class="sect1" lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="sec-treemodel-rowref"></a>Refering to Rows: Gtk.tree_iter, Gtk.tree_path, Gtk.row_reference, GTree.row_reference</h2></div></div><div></div></div><p>
+There are different ways to refer to a specific row. The two you will have to deal with are
+<tt class="literal">Gtk.tree_iter</tt> and <tt class="literal">Gtk.tree_path</tt>.
+</p><div class="sect2" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="sec-treemodel-rowref-path"></a>Gtk.tree_path</h3></div><div><h4 class="subtitle">Describing a row 'geographically'</h4></div></div><div></div></div><p>
+A <tt class="literal">Gtk.tree_path</tt> is a comparatively straight-forward way to describe the
+logical position of a row in the model. As a <tt class="literal">GTree.view</tt> always displays
+<span class="emphasis"><em>all</em></span> rows in a model, a tree path always describes the same row in both model and view.
+</p><div class="figure"><a name="sec-treemodel-treepath-sshot"></a><p class="title"><b>Figure 3.1. Tree Paths</b></p><div class="screenshot"><div class="mediaobject"><img src="images/treepath.png" alt="Tree Paths"></div></div></div><p>
+The picture shows the tree path in string form next to the label. Basically,
+it just counts the children from the imaginary root of the tree view. An
+empty tree path string would specify that imaginary invisible root. Now
+'Songs' is the first child (from the root) and thus its tree path is just "0".
+'Videos' is the second child from the root, and its tree path is "1". 'oggs'
+is the second child of the first item from the root, so its tree path is "0:1".
+So you just count your way down from the root to the row in question, and you
+get your tree path.
+</p><p>
+To clarify this, a tree path of "3:9:4:1" would basically mean
+<span class="emphasis"><em>in human language</em></span> (attention - this is not what it really means!)
+something along the lines of: go to the 3rd top-level row. Now go to the 9th child
+of that row. Proceed to the 4th child of the previous row. Then continue to the
+1st child of that. Now you are at the row this tree path describes.
+This is not what it means for Gtk+ though. While humans start counting at 1, computers
+usually start counting at 0. So the real meaning of the tree path "3:9:4:1" is: Go to the
+4th top-level row. Then go to the 10th child of that row. Then pick the 4th child of the
+last row. Continue to the 2nd child of the previous row. Now you are at the row this
+tree path describes. :)
+</p><p>
+The implication of this way of refering to rows is as follows: if you insert or delete
+rows in the middle or the rows are resorted, a tree path might suddenly refer to a
+completely different row than it refered to before the insertion/deletion/resorting. This
+is important to keep in mind.
+(See the <a href="ch03s02.html#sec-treemodel-rowref-rowref" title="Gtk.row_reference, GTree.row_reference">section on
+<tt class="literal">Gtk.row_reference</tt>s below</a> for a tree path that keeps updating
+itself to make sure it always refers to the same row when the model changes).
+</p><p>
+This effect becomes apparent if you imagine what would happen if we were to delete the
+row entitled 'funny clips' from the tree in the above picture. The row 'movie clips' would
+suddenly be the first and only child of 'clips', and be described by the tree path that
+formerly belonged to 'movie clips', ie. "1:0:0".
+</p><p>
+You can get a new <tt class="literal">Gtk.tree_path</tt> from a
+path in string form using
+<a href="http://compiler.kaist.ac.kr/~shoh/ocaml/lablgtk2/lablgtk-2.4.0/doc/html/GTree.Path.html#VALfrom_string" target="_top"><tt class="literal">GTree.Path.from_string</tt></a>,
+and you can convert a given <tt class="literal">Gtk.tree_path</tt> into its string
+notation with
+<a href="http://compiler.kaist.ac.kr/~shoh/ocaml/lablgtk2/lablgtk-2.4.0/doc/html/GTree.Path.html#VALto_string" target="_top"><tt class="literal">GTree.Path.to_string</tt></a>.
+Usually you will
+rarely have to handle the string notation, it is described here merely to
+demonstrate the concept of tree paths.
+</p><p>
+Instead of the string notation, <tt class="literal">Gtk.tree_path</tt> uses an integer
+array internally. You can get the depth (ie. the nesting level) of a tree path
+with
+<a href="http://compiler.kaist.ac.kr/~shoh/ocaml/lablgtk2/lablgtk-2.4.0/doc/html/GTree.Path.html#VALget_depth" target="_top"><tt class="literal">GTree.Path.get_depth</tt></a>
+(<a href="http://developer.gnome.org/doc/API/2.0/gtk/GtkTreeModel.html#gtk-tree-path-get-depth" target="_top"><tt class="literal">gtk_tree_path_get_depth</tt></a>).
+A depth of 0 is the imaginary
+invisible root node of the tree view and model. A depth of 1 means that the
+tree path describes a top-level row. As lists are just trees without child nodes,
+all rows in a list always have tree paths of depth 1.
+<a href="http://compiler.kaist.ac.kr/~shoh/ocaml/lablgtk2/lablgtk-2.4.0/doc/html/GTree.Path.html#VALget_indices" target="_top"><tt class="literal">GTree.Path.get_indices</tt></a>
+(<a href="http://developer.gnome.org/doc/API/2.0/gtk/GtkTreeModel.html#gtk-tree-path-get-indices" target="_top"><tt class="literal">gtk_tree_path_get_indices</tt></a>)
+returns the internal integer
+array of a tree path. You will rarely need to operate with those either.
+</p><p>
+If you operate with tree paths, you are most likely to use a given tree path,
+and use functions like
+
+<a href="http://compiler.kaist.ac.kr/~shoh/ocaml/lablgtk2/lablgtk-2.4.0/doc/html/GTree.Path.html#VALup" target="_top"><tt class="literal">GTree.Path.up</tt></a>
+(<a href="http://developer.gnome.org/doc/API/2.0/gtk/GtkTreeModel.html#gtk_tree_path_up" target="_top"><tt class="literal">gtk_tree_path_up</tt></a>),
+<a href="http://compiler.kaist.ac.kr/~shoh/ocaml/lablgtk2/lablgtk-2.4.0/doc/html/GTree.Path.html#VALdown" target="_top"><tt class="literal">GTree.Path.down</tt></a>
+(<a href="http://developer.gnome.org/doc/API/2.0/gtk/GtkTreeModel.html#gtk-tree-path-down" target="_top"><tt class="literal">gtk_tree_path_down</tt></a>),
+<a href="http://compiler.kaist.ac.kr/~shoh/ocaml/lablgtk2/lablgtk-2.4.0/doc/html/GTree.Path.html#VALnext" target="_top"><tt class="literal">GTree.Path.next</tt></a>
+(<a href="http://developer.gnome.org/doc/API/2.0/gtk/GtkTreeModel.html#gtk-tree-path-next" target="_top"><tt class="literal">gtk_tree_path_next</tt></a>),
+<a href="http://compiler.kaist.ac.kr/~shoh/ocaml/lablgtk2/lablgtk-2.4.0/doc/html/GTree.Path.html#VALprev" target="_top"><tt class="literal">GTree.Path.prev</tt></a>
+(<a href="http://developer.gnome.org/doc/API/2.0/gtk/GtkTreeModel.html#gtk-tree-path-prev" target="_top"><tt class="literal">gtk_tree_path_prev</tt></a>), or
+<a href="http://compiler.kaist.ac.kr/~shoh/ocaml/lablgtk2/lablgtk-2.4.0/doc/html/GTree.Path.html#VALis_ancestor" target="_top"><tt class="literal">GTree.Path.is_ancestor</tt></a>
+(<a href="http://developer.gnome.org/doc/API/2.0/gtk/GtkTreeModel.html#gtk-tree-path-is-ancestor" target="_top"><tt class="literal">gtk_tree_path_is_ancestor</tt></a>).
+
+Note that this way you can construct and operate on tree paths that refer to
+rows that do not exist in model or view! The only way to check whether a
+path is valid for a specific model (ie. the row described by the path exists)
+is to convert the path into an iter using
+<a href="http://compiler.kaist.ac.kr/~shoh/ocaml/lablgtk2/lablgtk-2.4.0/doc/html/GTree.model.html#METHODget_iter" target="_top"><tt class="literal">GTree.model#get_iter</tt></a>
+(<a href="http://developer.gnome.org/doc/API/2.0/gtk/GtkTreeModel.html#gtk-tree-model-get-iter" target="_top"><tt class="literal">gtk_tree_model_get_iter</tt></a>).
+</p><p>
+<tt class="literal">Gtk.tree_path</tt> is an opaque structure, with its details hidden from the compiler.
+If you need to make a copy of a tree path, use
+<a href="http://compiler.kaist.ac.kr/~shoh/ocaml/lablgtk2/lablgtk-2.4.0/doc/html/GTree.Path.html#VALcopy" target="_top"><tt class="literal">GTree.Path.copy</tt></a>
+(<a href="http://developer.gnome.org/doc/API/2.0/gtk/GtkTreeModel.html#gtk-tree-path-copy" target="_top"><tt class="literal">gtk_tree_path_copy</tt></a>).
+</p></div><div class="sect2" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="sec-treemodel-rowref-iter"></a>Gtk.tree_iter</h3></div><div><h4 class="subtitle">Refering to a row in model-speak</h4></div></div><div></div></div><p>
+Another way to refer to a row in a list or tree is <tt class="literal">Gtk.tree_iter</tt>. A tree iter is just a
+structure that contains a couple of pointers that mean something to the model you are using. Tree iters are
+used internally by models, and they often contain a direct pointer to the internal data of the row in question.
+You should never look at the content of a tree iter and you must not modify it directly either.
+</p><p>
+All tree models (and therefore also <tt class="literal">GTree.list_store</tt> and <tt class="literal">GTree.tree_store</tt>)
+must support the
+<a href="http://compiler.kaist.ac.kr/~shoh/ocaml/lablgtk2/lablgtk-2.4.0/doc/html/GTree.model.html" target="_top"><tt class="literal">GTree.model</tt></a>
+(<a href="http://developer.gnome.org/doc/API/2.0/gtk/GtkTreeModel.html" target="_top"><tt class="literal">GtkTreeModel</tt></a>)
+functions that operate on tree iters (e.g. get
+the tree iter for the first child of the row specified by a given tree iter, get the first row in the
+list/tree, get the n-th child of a given iter etc.). Some of these functions are:
+</p><div class="itemizedlist"><ul type="disc"><li>
+   <a href="http://compiler.kaist.ac.kr/~shoh/ocaml/lablgtk2/lablgtk-2.4.0/doc/html/GTree.model.html#METHODget_iter_first" target="_top"><tt class="literal">GTree.model#get_iter_first</tt></a>
+   (<a href="http://developer.gnome.org/doc/API/2.0/gtk/GtkTreeModel.html#gtk-tree-model-get-iter-first" target="_top"><tt class="literal">gtk_tree_model_get_iter_first</tt></a>)
+   - sets the given iter to the first top-level item in the list or tree
+  </li><li>
+   <a href="http://compiler.kaist.ac.kr/~shoh/ocaml/lablgtk2/lablgtk-2.4.0/doc/html/GTree.model.html#METHODiter_next" target="_top"><tt class="literal">GTree.model#iter_next</tt></a>
+   (<a href="http://developer.gnome.org/doc/API/2.0/gtk/GtkTreeModel.html#gtk-tree-model-iter-next" target="_top"><tt class="literal">gtk_tree_model_iter_next</tt></a>)
+   - sets the given iter to the next item at the current level in a list or tree.
+  </li><li>
+   <a href="http://compiler.kaist.ac.kr/~shoh/ocaml/lablgtk2/lablgtk-2.4.0/doc/html/GTree.model.html#METHODiter_children" target="_top"><tt class="literal">GTree.model#iter_children</tt></a>
+   (<a href="http://developer.gnome.org/doc/API/2.0/gtk/GtkTreeModel.html#gtk-tree-model-iter-children" target="_top"><tt class="literal">gtk_tree_model_iter_children</tt></a>)
+   - sets the first given iter to the first child of the row referenced by
+     the second iter (not very useful for lists, mostly useful for trees).
+  </li><li>
+   <a href="http://compiler.kaist.ac.kr/~shoh/ocaml/lablgtk2/lablgtk-2.4.0/doc/html/GTree.model.html#METHODiter_n_children" target="_top"><tt class="literal">GTree.model#iter_n_children</tt></a>
+   (<a href="http://developer.gnome.org/doc/API/2.0/gtk/GtkTreeModel.html#gtk-tree-model-iter-n-children" target="_top"><tt class="literal">gtk_tree_model_iter_n_children</tt></a>)
+   - returns the number of children the row referenced by the provided
+     iter has. If you pass <tt class="literal">NULL</tt> instead of a pointer to an iter structure, this function will return
+     the number of top-level rows. You can also use this function to count the number of items in a list store.
+  </li><li>
+   <a href="http://compiler.kaist.ac.kr/~shoh/ocaml/lablgtk2/lablgtk-2.4.0/doc/html/GTree.model.html#METHODiter_children" target="_top"><tt class="literal">GTree.model#iter_children</tt></a>
+   (<a href="http://developer.gnome.org/doc/API/2.0/gtk/GtkTreeModel.html#gtk-tree-model-iter-nth-child" target="_top"><tt class="literal">gtk_tree_model_iter_nth_child</tt></a>)
+   - sets the first iter to the n-th child of the row referenced
+     by the second iter. If you pass <tt class="literal">NULL</tt> instead of a pointer to an iter structure as the second
+     iter, you can get the first iter set to the n-th row of a list.
+  </li><li>
+   <a href="http://compiler.kaist.ac.kr/~shoh/ocaml/lablgtk2/lablgtk-2.4.0/doc/html/GTree.model.html#METHODiter_parent" target="_top"><tt class="literal">GTree.model#iter_parent</tt></a>
+   (<a href="http://developer.gnome.org/doc/API/2.0/gtk/GtkTreeModel.html#gtk-tree-model-iter-parent" target="_top"><tt class="literal">gtk_tree_model_iter_parent</tt></a>)
+   - returns the iter to the parent of the row referenced by the
+     given iter (does nothing for lists, only useful for trees).
+  </li></ul></div><p>
+There are more functions that operate on iters. Check out the
+<a href="http://compiler.kaist.ac.kr/~shoh/ocaml/lablgtk2/lablgtk-2.4.0/doc/html/GTree.model.html" target="_top"><tt class="literal">GTree.model</tt></a>
+(<a href="http://developer.gnome.org/doc/API/2.0/gtk/GtkTreeModel.html" target="_top">
+<tt class="literal">GtkTreeModel</tt> API reference</a>)
+for details.
+</p><p>
+You might notice that there is no <tt class="literal">GTree.model#iter_prev</tt>. This is unlikely to be
+implemented for a variety of reasons. It should be fairly simple to write a helper function that provides
+this functionality though once you have read this section.
+</p><p>
+Tree iters are used to retrieve data from the store, and to put data into the store. You also get a tree iter
+as result if you add a new row to the store using <tt class="literal">GTree.list_store#append</tt> or
+<tt class="literal">GTree.tree_store#append</tt>.
+</p><p>
+Tree iters are often only valid for a short time, and might become invalid if the store changes with some
+models.
+There is a better way to keep track of a row over time: <tt class="literal">Gtk.row_reference</tt>
+</p></div><div class="sect2" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="sec-treemodel-rowref-rowref"></a>Gtk.row_reference, GTree.row_reference</h3></div><div><h4 class="subtitle">Keeping track of rows even when the model changes</h4></div></div><div></div></div><p>
+A <tt class="literal">Gtk.row_reference</tt> is basically an object that takes a tree path,
+and watches a model for changes. If anything changes, like rows getting inserted or
+removed, or rows getting re-ordered, the tree row reference object will keep the given
+tree path up to date, so that it always points to the same row as before. In case the
+given row is removed, the tree row reference will become invalid.
+</p><p>
+<tt class="literal">GTree.row_reference</tt> class is the wrapper class of <tt class="literal">Gtk.row_reference</tt>.
+</p><p>
+A new tree row reference <tt class="literal">GTree.row_reference</tt> can be created with
+<a href="http://compiler.kaist.ac.kr/~shoh/ocaml/lablgtk2/lablgtk-2.4.0/doc/html/GTree.model.html#METHODget_row_reference" target="_top"><tt class="literal">GTree.model#get_row_reference</tt></a>
+(<a href="http://developer.gnome.org/doc/API/2.0/gtk/GtkTreeModel.html#gtk-tree-row-reference-new" target="_top"><tt class="literal">gtk_tree_row_reference_new</tt></a>),
+given a model and a tree path. After
+that, the tree row reference will keep updating the path whenever the model changes. The current
+tree path of the row originally refered to when the tree row reference was created can be
+retrieved with
+
+<a href="http://compiler.kaist.ac.kr/~shoh/ocaml/lablgtk2/lablgtk-2.4.0/doc/html/GTree.row_reference.html#METHODpath" target="_top"><tt class="literal">GTree.row_reference#path</tt></a>
+(<a href="http://developer.gnome.org/doc/API/2.0/gtk/GtkTreeModel.html#gtk-tree-row-reference-get-path" target="_top"><tt class="literal">gtk_tree_row_reference_get_path</tt></a>).
+</p><p>
+You can check whether the row referenced still exists with
+<a href="http://compiler.kaist.ac.kr/~shoh/ocaml/lablgtk2/lablgtk-2.4.0/doc/html/GTree.row_reference.html#METHODvalid" target="_top"><tt class="literal">GTree.row_reference#valid</tt></a>
+(<a href="http://developer.gnome.org/doc/API/2.0/gtk/GtkTreeModel.html#gtk-tree-row-reference-valid" target="_top"><tt class="literal">gtk_tree_row_reference_valid</tt></a>).
+</p><p>
+For the curious: internally, the tree row reference connects to the tree model's
+<tt class="literal">"row-inserted"</tt>, <tt class="literal">"row-deleted"</tt>, and
+<tt class="literal">"rows-reordered"</tt> signals and updates its internal tree path
+whenever something happened to the model that affects the position of the
+referenced row.
+</p><p>
+Note that using tree row references entails a small overhead. This is hardly significant
+for 99.9% of all applications out there, but when you have multiple thousands of rows
+and/or row references, this might be something to keep in mind (because whenever rows are
+inserted, removed, or reordered, a signal will be sent out and processed for each
+row reference).
+</p><p>
+If you have read the tutorial only up to here so far, it is hard to
+explain really what tree row references are good for. An example
+where tree row references come in handy can be found further below
+in the <a href="ch03s07.html" title="Removing Multiple Rows">section on removing multiple rows in one go</a>.
+</p><p>
+In practice, a programmer can either use tree row references to keep track of rows over time,
+or store tree iters directly (if, and only if, the model has persistent iters). Both
+<tt class="literal">GTree.list_store</tt> and <tt class="literal">GTree.tree_store</tt> have persistent iters,
+so storing iters is possible. However, using tree row references is definitively the
+Right Way(tm) to do things, even though it comes with some overhead that might impact
+performance in case of trees that have a very large number of rows (in that
+case it might be preferable to write a custom model anyway though). Especially beginners
+might find it easier to handle and store tree row references than iters, because tree
+row references are handled by pointer value, which you can easily add to a <tt class="literal">GList</tt>
+or pointer array, while it is easy to store tree iters in a wrong way.
+</p></div><div class="sect2" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="sec-treemodel-rowref-usage"></a>Usage</h3></div></div><div></div></div><p>
+Tree iters can easily be converted into tree paths using
+<a href="http://compiler.kaist.ac.kr/~shoh/ocaml/lablgtk2/lablgtk-2.4.0/doc/html/GTree.model.html#METHODget_path" target="_top"><tt class="literal">GTree.model#get_path</tt></a>
+(<a href="http://developer.gnome.org/doc/API/2.0/gtk/GtkTreeModel.html#gtk-tree-model-get-path" target="_top"><tt class="literal">gtk_tree_model_get_path</tt></a>),
+and tree
+paths can easily be converted into tree iters using
+<a href="http://compiler.kaist.ac.kr/~shoh/ocaml/lablgtk2/lablgtk-2.4.0/doc/html/GTree.model.html#METHODget_iter" target="_top"><tt class="literal">GTree.model#get_iter</tt></a>
+(<a href="http://developer.gnome.org/doc/API/2.0/gtk/GtkTreeModel.html#gtk-tree-model-get-iter" target="_top"><tt class="literal">gtk_tree_model_get_iter</tt></a>).
+Here is an example that shows how to get the iter from the tree path that
+is passed to us from the tree view in the <tt class="literal">"row-activated"</tt>
+signal callback. We need the iter here to retrieve data from the store
+</p><pre class="programlisting">
+(************************************************************
+ *                                                          *
+ * Converting a GtkTreePath into a GtkTreeIter              *
+ *                                                          *
+ ************************************************************)
+
+(************************************************************
+ *
+ * on_row_activated: a row has been double-clicked
+ *
+ ************************************************************)
+let on_row_activated view path col =
+  let model = view#model in
+  let iter = model#get_iter path in
+  let name = model#get iter col_name in
+  Printf.printf "The row containing the name '%s' has been double-clicked.\n" name
+</pre><p>
+Tree row references
+reveal the current path of a row with <tt class="literal">gtk_tree_row_reference_get_path</tt>. There is no direct
+way to get a tree iter from a tree row reference, you have to retrieve the tree row reference's path first and
+then convert that into a tree iter.
+</p><p>
+As tree iters are only valid for a short time, they are usually allocated on the stack, as in
+the following example (keep in mind that <tt class="literal">Gtk.tree_iter</tt> is just a structure
+that contains data fields you do not need to know anything about):
+</p><pre class="programlisting">
+ (************************************************************
+  *                                                          *
+  *  Going through every row in a list store                 *
+  *                                                          *
+  ************************************************************)
+
+  let traverse_list_store liststore =
+    (* Get first row in list store *)
+    let first = liststore#get_iter_first in
+    match first with
+    | Some iter -&gt;
+       (* ... do something with that row using the iter ...          *)
+       (* Here set the col_first_name column *)
+       liststore#set ~row:iter ~column:col_first_name "Joe";
+
+       (* Make iter point to the next row in the list store *)
+       while liststore#iter_next iter do
+         (* Again, do something with that row using the iter ...          *)
+         (* Again, here set the col_first_name column *)
+         liststore#set ~row:iter ~column:col_first_name "Jane";
+       done
+    | None -&gt; ()
+</pre><p>
+The code above asks the model to fill the iter structure to make it point to the first
+row in the list store. If there is a first row and the list store is not empty, the
+iter will be set, and
+
+<a href="http://compiler.kaist.ac.kr/~shoh/ocaml/lablgtk2/lablgtk-2.4.0/doc/html/GTree.model.html#METHODget_iter_first" target="_top"><tt class="literal">GTree.model#get_iter_first</tt></a>
+(<a href="http://developer.gnome.org/doc/API/2.0/gtk/GtkTreeModel.html#gtk-tree-model-get-iter-first" target="_top"><tt class="literal">gtk_tree_model_get_iter_first</tt></a>)
+will return
+<tt class="literal">Some _</tt>. If there is no first row, it will just return <tt class="literal">None</tt>.
+If a first row exists, the while loop will be entered and we change some of the first
+row's data. Then we ask the model to make the given iter point to the next row, until there
+are no more rows, which is when 
+
+<a href="http://compiler.kaist.ac.kr/~shoh/ocaml/lablgtk2/lablgtk-2.4.0/doc/html/GTree.model.html#METHODiter_next" target="_top"><tt class="literal">GTree.model#iter_next</tt></a>
+(<a href="http://developer.gnome.org/doc/API/2.0/gtk/GtkTreeModel.html#gtk-tree-model-iter-next" target="_top"><tt class="literal">gtk_tree_model_iter_next</tt></a>)
+returns <tt class="literal">false</tt>.
+Instead of traversing the list store we could also have used
+
+<a href="http://compiler.kaist.ac.kr/~shoh/ocaml/lablgtk2/lablgtk-2.4.0/doc/html/GTree.model.html#METHODforeach" target="_top"><tt class="literal">GTree.model#foreach</tt></a>
+(<a href="http://developer.gnome.org/doc/API/2.0/gtk/GtkTreeModel.html#gtk-tree-model-foreach" target="_top"><tt class="literal">gtk_tree_model_foreach</tt></a>).
+
+</p></div></div><div class="navfooter"><hr><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="ch03.html">Prev</a> </td><td width="20%" align="center"><a accesskey="u" href="ch03.html">Up</a></td><td width="40%" align="right"> <a accesskey="n" href="ch03s03.html">Next</a></td></tr><tr><td width="40%" align="left" valign="top">Chapter 3. GTree.models for Data Storage: GTree.list_store and GTree.tree_store </td><td width="20%" align="center"><a accesskey="h" href="index.html">Home</a></td><td width="40%" align="right" valign="top"> Adding Rows to a Store</td></tr></table></div></body></html>

@@ -1,0 +1,231 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN""http://www.w3.org/TR/html4/loose.dtd">
+<HTML
+><HEAD
+><TITLE
+>Recursive Rules</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet Version 1.79"><LINK
+REL="HOME"
+TITLE="Ocamlyacc Tutorial"
+HREF="index.html"><LINK
+REL="UP"
+TITLE="Ocamlyacc Grammar Files"
+HREF="c480.html"><LINK
+REL="PREVIOUS"
+TITLE="Syntax of Grammar Rules"
+HREF="x557.html"><LINK
+REL="NEXT"
+TITLE="Defining Language Semantics"
+HREF="x623.html"></HEAD
+><BODY
+CLASS="sect1"
+BGCOLOR="#FFFFFF"
+TEXT="#000000"
+LINK="#0000FF"
+VLINK="#840084"
+ALINK="#0000FF"
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+SUMMARY="Header navigation table"
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="3"
+ALIGN="center"
+>Ocamlyacc Tutorial</TH
+></TR
+><TR
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="bottom"
+><A
+HREF="x557.html"
+ACCESSKEY="P"
+>Prev</A
+></TD
+><TD
+WIDTH="80%"
+ALIGN="center"
+VALIGN="bottom"
+>Chapter 4. Ocamlyacc Grammar Files</TD
+><TD
+WIDTH="10%"
+ALIGN="right"
+VALIGN="bottom"
+><A
+HREF="x623.html"
+ACCESSKEY="N"
+>Next</A
+></TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="100%"></DIV
+><DIV
+CLASS="sect1"
+><H1
+CLASS="sect1"
+><A
+NAME="sec-recursive-rules"
+>4.4. Recursive Rules</A
+></H1
+><P
+>&#13;A rule is called <TT
+CLASS="literal"
+>recursive</TT
+> when its <SPAN
+CLASS="emphasis"
+><I
+CLASS="emphasis"
+>result</I
+></SPAN
+> nonterminal appears
+also on its right hand side.  Nearly all Ocamlyacc grammars need to use
+recursion, because that is the only way to define a sequence of any number
+of a particular thing.  Consider this recursive definition of a
+comma-separated sequence of one or more expressions:
+</P
+><PRE
+CLASS="programlisting"
+>&#13;expseq1:  exp			{}
+        | expseq1 COMMA exp		{}
+        ;
+
+</PRE
+><P
+>&#13;Since the recursive use of <TT
+CLASS="literal"
+>expseq1</TT
+> is the leftmost symbol
+in the right hand side, we call this <TT
+CLASS="literal"
+>left recursion</TT
+>.
+By contrast, here
+the same construct is defined using <TT
+CLASS="literal"
+>right recursion</TT
+>:
+</P
+><PRE
+CLASS="programlisting"
+>&#13;expseq1:  exp			{}
+        | exp COMMA expseq1		{}
+        ;
+</PRE
+><P
+>&#13;Any kind of sequence can be defined using either left recursion or
+right recursion, but you should always use left recursion, because it
+can parse a sequence of any number of elements with bounded stack
+space.  Right recursion uses up space on the Ocamlyacc stack in proportion
+to the number of elements in the sequence, because all the elements
+must be shifted onto the stack before the rule can be applied even
+once.
+See <A
+HREF="c866.html"
+>The Ocamyacc Parser Algorithm</A
+>,
+for further explanation of this.
+</P
+><P
+>&#13;<TT
+CLASS="literal"
+>Indirect</TT
+> or <TT
+CLASS="literal"
+>mutual</TT
+> recursion occurs when the result of the
+rule does not appear directly on its right hand side, but does appear
+in rules for other nonterminals which do appear on its right hand
+side.
+</P
+><P
+>&#13;For example:
+</P
+><PRE
+CLASS="programlisting"
+>&#13;expr:     primary			{}
+        | primary PLUS primary	{}
+        ;
+
+primary:  constant			{}
+        | LPAREN expr RPAREN	{}
+        ;
+</PRE
+><P
+>&#13;defines two mutually-recursive nonterminals, since each refers to the
+other.
+</P
+></DIV
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+SUMMARY="Footer navigation table"
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="x557.html"
+ACCESSKEY="P"
+>Prev</A
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="index.html"
+ACCESSKEY="H"
+>Home</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="x623.html"
+ACCESSKEY="N"
+>Next</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>Syntax of Grammar Rules</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="c480.html"
+ACCESSKEY="U"
+>Up</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>Defining Language Semantics</TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>

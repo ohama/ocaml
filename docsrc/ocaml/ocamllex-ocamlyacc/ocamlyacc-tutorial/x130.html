@@ -1,0 +1,176 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN""http://www.w3.org/TR/html4/loose.dtd">
+<HTML
+><HEAD
+><TITLE
+>Locations</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet Version 1.79"><LINK
+REL="HOME"
+TITLE="Ocamlyacc Tutorial"
+HREF="index.html"><LINK
+REL="UP"
+TITLE="The Concepts of Ocamlyacc"
+HREF="c42.html"><LINK
+REL="PREVIOUS"
+TITLE="Semantic Actions"
+HREF="x121.html"><LINK
+REL="NEXT"
+TITLE="Ocamlyacc Output: the Parser File"
+HREF="x138.html"></HEAD
+><BODY
+CLASS="sect1"
+BGCOLOR="#FFFFFF"
+TEXT="#000000"
+LINK="#0000FF"
+VLINK="#840084"
+ALINK="#0000FF"
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+SUMMARY="Header navigation table"
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="3"
+ALIGN="center"
+>Ocamlyacc Tutorial</TH
+></TR
+><TR
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="bottom"
+><A
+HREF="x121.html"
+ACCESSKEY="P"
+>Prev</A
+></TD
+><TD
+WIDTH="80%"
+ALIGN="center"
+VALIGN="bottom"
+>Chapter 2. The Concepts of Ocamlyacc</TD
+><TD
+WIDTH="10%"
+ALIGN="right"
+VALIGN="bottom"
+><A
+HREF="x138.html"
+ACCESSKEY="N"
+>Next</A
+></TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="100%"></DIV
+><DIV
+CLASS="sect1"
+><H1
+CLASS="sect1"
+><A
+NAME="sec-locations"
+>2.5. Locations</A
+></H1
+><P
+>&#13;Many applications, like interpreters or compilers, have to produce verbose
+and useful error messages. To achieve this, one must be able to keep track of
+the <SPAN
+CLASS="emphasis"
+><I
+CLASS="emphasis"
+>textual position</I
+></SPAN
+>, or <SPAN
+CLASS="emphasis"
+><I
+CLASS="emphasis"
+>location</I
+></SPAN
+>, of each syntactic construct.
+Ocamlyacc provides a mechanism for handling these locations.
+</P
+><P
+>&#13;Each token has a semantic value. In a similar fashion, each token has an
+associated location, but the type of locations is the same for all tokens and
+groupings. Moreover, the output parser is equipped with a data
+structure for storing locations
+(see <A
+HREF="x658.html"
+>Locations</A
+>, for more details).
+</P
+><P
+>&#13;Like semantic values, locations can be reached in actions
+using functions of the Parsing module.
+</P
+></DIV
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+SUMMARY="Footer navigation table"
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="x121.html"
+ACCESSKEY="P"
+>Prev</A
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="index.html"
+ACCESSKEY="H"
+>Home</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="x138.html"
+ACCESSKEY="N"
+>Next</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>Semantic Actions</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="c42.html"
+ACCESSKEY="U"
+>Up</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>Ocamlyacc Output: the Parser File</TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>

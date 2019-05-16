@@ -1,0 +1,234 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN">
+<HTML
+><HEAD
+><TITLE
+>Parser Interface</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet Version 1.7"><LINK
+REL="HOME"
+TITLE="Ocamlyacc Tutorial"
+HREF="ocamlyacc-tutorial.html"><LINK
+REL="PREVIOUS"
+TITLE="Ocamlyacc Declarations"
+HREF="sec-ocamlyacc-declarations.html"><LINK
+REL="NEXT"
+TITLE="The Lexical Analyzer Function"
+HREF="sec-lexical-analyzer-function.html"><LINK
+REL="STYLESHEET"
+TYPE="text/css"
+HREF="./ocamlyacc-tutorial.css"></HEAD
+><BODY
+CLASS="chapter"
+BGCOLOR="#FFFFFF"
+TEXT="#000000"
+LINK="#0000FF"
+VLINK="#840084"
+ALINK="#0000FF"
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+SUMMARY="Header navigation table"
+WIDTH="95%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="3"
+ALIGN="center"
+>Ocamlyacc Tutorial</TH
+></TR
+><TR
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="bottom"
+><A
+HREF="sec-ocamlyacc-declarations.html"
+ACCESSKEY="P"
+>&#60;&#60;&#60; Previous</A
+></TD
+><TD
+WIDTH="80%"
+ALIGN="center"
+VALIGN="bottom"
+></TD
+><TD
+WIDTH="10%"
+ALIGN="right"
+VALIGN="bottom"
+><A
+HREF="sec-lexical-analyzer-function.html"
+ACCESSKEY="N"
+>Next &#62;&#62;&#62;</A
+></TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="95%"></DIV
+><DIV
+CLASS="chapter"
+><H1
+><A
+NAME="chap-parser-interface"
+></A
+>Chapter 5. Parser Interface</H1
+><P
+>&#13;The Ocamlyacc parser is actually Ocaml functions named
+after <I
+CLASS="emphasis"
+>start symbols</I
+>
+(see <A
+HREF="sec-ocamlyacc-declarations.html#sec-start-symbol"
+>The Start-Symbol</A
+>).
+Here we
+describe the interface conventions of <I
+CLASS="emphasis"
+>parser functions</I
+>
+and the other
+functions that it needs to use.
+</P
+><DIV
+CLASS="sect1"
+><H1
+CLASS="sect1"
+><A
+NAME="sec-parser-function"
+>5.1. The Parser Function</A
+></H1
+><P
+>&#13;To cause parsing to occur, you call the <I
+CLASS="emphasis"
+>parser function</I
+>
+with two parameters.
+The first parameter is the lexical analyzer function of type
+</P
+><TABLE
+BORDER="0"
+BGCOLOR="#e3e3c4"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="programlisting"
+>&#13;	Lexing.lexbuf -&#62; token
+</PRE
+></TD
+></TR
+></TABLE
+><P
+>&#13;and the second is a value of <TT
+CLASS="literal"
+>Lexing.lexbuf</TT
+> type.
+</P
+><P
+>&#13;If the start symbol is <TT
+CLASS="literal"
+>parse</TT
+>
+in the file <TT
+CLASS="literal"
+>parser.mly</TT
+> and
+the lexer function is is <TT
+CLASS="literal"
+>token</TT
+> of the file
+<TT
+CLASS="literal"
+>lexer.mll</TT
+>,
+the typical usage is:
+</P
+><TABLE
+BORDER="0"
+BGCOLOR="#e3e3c4"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="programlisting"
+>&#13;	let lexbuf = Lexing.from_channel stdin in
+	...
+	let result = Parser.parse Lexer.token lexbuf in
+	...
+</PRE
+></TD
+></TR
+></TABLE
+><P
+>&#13;This parser
+function reads tokens, executes actions, and ultimately returns when it
+encounters end-of-input or an unrecoverable syntax error.
+
+</P
+></DIV
+></DIV
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="95%"><TABLE
+SUMMARY="Footer navigation table"
+WIDTH="95%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="sec-ocamlyacc-declarations.html"
+ACCESSKEY="P"
+>&#60;&#60;&#60; Previous</A
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="ocamlyacc-tutorial.html"
+ACCESSKEY="H"
+>Home</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="sec-lexical-analyzer-function.html"
+ACCESSKEY="N"
+>Next &#62;&#62;&#62;</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>Ocamlyacc Declarations</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+>&nbsp;</TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>The Lexical Analyzer Function</TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>

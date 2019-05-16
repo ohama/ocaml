@@ -1,0 +1,254 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN""http://www.w3.org/TR/html4/loose.dtd">
+<HTML
+><HEAD
+><TITLE
+>Shift/Reduce Conflicts</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet Version 1.79"><LINK
+REL="HOME"
+TITLE="Ocamlyacc Tutorial"
+HREF="index.html"><LINK
+REL="UP"
+TITLE="The Ocamlyacc Parser Algorithm"
+HREF="c866.html"><LINK
+REL="PREVIOUS"
+TITLE="The Ocamlyacc Parser Algorithm"
+HREF="c866.html"><LINK
+REL="NEXT"
+TITLE="Operator Precedence"
+HREF="x934.html"></HEAD
+><BODY
+CLASS="sect1"
+BGCOLOR="#FFFFFF"
+TEXT="#000000"
+LINK="#0000FF"
+VLINK="#840084"
+ALINK="#0000FF"
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+SUMMARY="Header navigation table"
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="3"
+ALIGN="center"
+>Ocamlyacc Tutorial</TH
+></TR
+><TR
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="bottom"
+><A
+HREF="c866.html"
+ACCESSKEY="P"
+>Prev</A
+></TD
+><TD
+WIDTH="80%"
+ALIGN="center"
+VALIGN="bottom"
+>Chapter 6. The Ocamlyacc Parser Algorithm</TD
+><TD
+WIDTH="10%"
+ALIGN="right"
+VALIGN="bottom"
+><A
+HREF="x934.html"
+ACCESSKEY="N"
+>Next</A
+></TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="100%"></DIV
+><DIV
+CLASS="sect1"
+><H1
+CLASS="sect1"
+><A
+NAME="sec-shift-reduce-conflicts"
+>6.2. Shift/Reduce Conflicts</A
+></H1
+><P
+>&#13;Suppose we are parsing a language which has if-then and if-then-else
+statements, with a pair of rules like this:
+</P
+><PRE
+CLASS="programlisting"
+>&#13;if_stmt:
+          IF expr THEN stmt
+        | IF expr THEN stmt ELSE stmt
+        ;
+</PRE
+><P
+>&#13;Here we assume that <TT
+CLASS="literal"
+>IF</TT
+>, <TT
+CLASS="literal"
+>THEN</TT
+> and <TT
+CLASS="literal"
+>ELSE</TT
+> are
+terminal symbols for specific keyword tokens.
+</P
+><P
+>&#13;When the <TT
+CLASS="literal"
+>ELSE</TT
+> token is read and becomes the look-ahead token, the
+contents of the stack (assuming the input is valid) are just right for
+reduction by the first rule.  But it is also legitimate to shift the
+<TT
+CLASS="literal"
+>ELSE</TT
+>, because that would lead to eventual reduction by the second
+rule.
+</P
+><P
+>&#13;This situation, where either a shift or a reduction would be valid, is
+called a <TT
+CLASS="literal"
+>shift/reduce conflict</TT
+>.  Ocamlyacc is designed to resolve
+these conflicts by choosing to shift, unless otherwise directed by
+operator precedence declarations.  To see the reason for this, let's
+contrast it with the other alternative.
+</P
+><P
+>&#13;Since the parser prefers to shift the <TT
+CLASS="literal"
+>ELSE</TT
+>, the result is to attach
+the else-clause to the innermost if-statement, making these two inputs
+equivalent:
+</P
+><PRE
+CLASS="programlisting"
+>&#13;if x then if y then win (); else lose;
+
+if x then do; if y then win (); else lose; end;
+</PRE
+><P
+>&#13;But if the parser chose to reduce when possible rather than shift, the
+result would be to attach the else-clause to the outermost if-statement,
+making these two inputs equivalent:
+</P
+><PRE
+CLASS="programlisting"
+>&#13;if x then if y then win (); else lose;
+
+if x then do; if y then win (); end; else lose;
+</PRE
+><P
+>&#13;The conflict exists because the grammar as written is ambiguous: either
+parsing of the simple nested if-statement is legitimate.  The established
+convention is that these ambiguities are resolved by attaching the
+else-clause to the innermost if-statement; this is what Ocamlyacc accomplishes
+by choosing to shift rather than reduce.  (It would ideally be cleaner to
+write an unambiguous grammar, but that is very hard to do in this case.)
+This particular ambiguity was first encountered in the specifications of
+Algol 60 and is called the ``dangling <TT
+CLASS="literal"
+>else</TT
+>'' ambiguity.
+</P
+><P
+>&#13;The definition of <TT
+CLASS="literal"
+>if_stmt</TT
+> above is solely to blame for the
+conflict, but the conflict does not actually appear without additional
+rules.  Here is a complete Ocamlyacc input file that actually manifests the
+conflict:
+</P
+><PRE
+CLASS="programlisting"
+>&#13;%token IF THEN ELSE variable
+%%
+stmt:     expr
+        | if_stmt
+        ;
+
+if_stmt:
+          IF expr THEN stmt
+        | IF expr THEN stmt ELSE stmt
+        ;
+
+expr:     variable
+        ;
+</PRE
+></DIV
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+SUMMARY="Footer navigation table"
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="c866.html"
+ACCESSKEY="P"
+>Prev</A
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="index.html"
+ACCESSKEY="H"
+>Home</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="x934.html"
+ACCESSKEY="N"
+>Next</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>The Ocamlyacc Parser Algorithm</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="c866.html"
+ACCESSKEY="U"
+>Up</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>Operator Precedence</TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>

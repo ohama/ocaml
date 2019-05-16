@@ -1,0 +1,18 @@
+---
+title: "Timeouts"
+description: "Using the following function you can create a timeout function that will be called every _interval_ milliseconds."
+weight: 10
+---
+
+You may be wondering how you make GTK do useful work when in gtk_main. Well, you have several options.
+Using the following function you can create a timeout function that will be called every "interval" milliseconds.
+
+``` ocaml
+val GMain.Timeout.add : ms:int -> callback:(unit -> bool) -> id
+```
+The first argument is the number of milliseconds between calls to your function. The second argument is the function you wish to have called. The return value is an integer "tag" which may be used to stop the timeout by calling:
+
+``` ocaml
+val GMain.Timeout.remove : id -> unit
+```
+You may also stop the timeout function by returning false from your callback function. Obviously this means if you want your function to continue to be called, it should return true.

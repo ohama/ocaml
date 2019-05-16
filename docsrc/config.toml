@@ -1,0 +1,96 @@
+baseURL = "https://ohama.github.io/ocaml"
+# baseURL = "/"
+languageCode = "en-US"
+defaultContentLanguage = "en"
+
+publishDir = "docs"
+
+title = "Hugo Learn Documentation"
+theme = "learn"
+# themesdir = "../.."
+metaDataFormat = "yaml"
+defaultContentLanguageInSubdir= true
+
+pygmentsCodefences = true
+# pygmentsStyle = "tango"
+# pygmentsStyle = "vim"
+# pygmentsStyle = "native"
+# pygmentsStyle = "monokai"
+# pygmentsStyle = "fruity"
+pygmentsStyle = "dracula"
+
+# disqusShortname = "ohama-github-io"
+
+[params]
+  # editURL = "https://github.com/matcornic/hugo-theme-learn/edit/master/exampleSite/content/"
+  description = "Documentation for Hugo Learn Theme"
+  author = "Mathieu Cornic"
+  showVisitedLinks = false
+  disableBreadcrumb = false
+  disableNextPrev = true
+  disableSearch = false
+  disableInlineCopyToClipBoard = true
+  themeVariant = "green"
+
+[outputs]
+home = [ "HTML", "RSS", "JSON"]
+
+[Languages]
+[Languages.en]
+title = "Documentation for Hugo Learn Theme"
+weight = 1
+languageName = "English"
+
+# [[Languages.en.menu.shortcuts]]
+# name = "html/ocamlyacc tutorial"
+# url = "/html/ocamlyacc-tutorial/index.html"
+# weight = 10
+# 
+# [[Languages.en.menu.shortcuts]]
+# name = "html/ocamllex tutorial"
+# url = "/html/ocamllex-tutorial/index.html"
+# weight = 11
+
+# [[Languages.en.menu.shortcuts]]
+# name = "<i class='fas fa-fw fa-bookmark'></i> Hugo Documentation"
+# identifier = "hugodoc"
+# url = "https://gohugo.io/"
+# weight = 20
+
+# [[Languages.en.menu.shortcuts]]
+# name = "<i class='fas fa-fw fa-bullhorn'></i> Credits"
+# url = "/credits"
+# weight = 30
+# 
+# [Languages.fr]
+# title = "Documentation du thème Hugo Learn"
+# weight = 2
+# languageName = "Français"
+# 
+# [[Languages.fr.menu.shortcuts]]
+# name = "<i class='fab fa-fw fa-github'></i> Repo Github"
+# identifier = "ds"
+# url = "https://github.com/matcornic/hugo-theme-learn"
+# weight = 10
+# 
+# [[Languages.fr.menu.shortcuts]]
+# name = "<i class='fas fa-fw fa-camera'></i> Vitrine"
+# url = "/showcase"
+# weight = 11
+# 
+# [[Languages.fr.menu.shortcuts]]
+# name = "<i class='fas fa-fw fa-bookmark'></i> Documentation Hugo"
+# identifier = "hugodoc"
+# url = "https://gohugo.io/"
+# weight = 20
+# 
+# [[Languages.fr.menu.shortcuts]]
+# name = "<i class='fas fa-fw fa-bullhorn'></i> Crédits"
+# url = "/credits"
+# weight = 30
+
+[[Languages.en.menu.shortcuts]]
+name = "<i class='fas fa-tags'></i> Tags"
+url = "/tags"
+weight = 30
+

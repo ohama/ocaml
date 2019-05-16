@@ -1,0 +1,93 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"><title>Adding Rows to a Store</title><meta name="generator" content="DocBook XSL Stylesheets V1.61.2"><link rel="home" href="index.html" title="GTK+ 2.0 Tree View Tutorial using Ocaml"><link rel="up" href="ch03.html" title="Chapter 3. GTree.models for Data Storage: GTree.list_store and GTree.tree_store"><link rel="previous" href="ch03s02.html" title="Refering to Rows: Gtk.tree_iter, Gtk.tree_path, Gtk.row_reference, GTree.row_reference"><link rel="next" href="ch03s04.html" title="Manipulating Row Data"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">Adding Rows to a Store</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="ch03s02.html">Prev</a> </td><th width="60%" align="center">Chapter 3. GTree.models for Data Storage: GTree.list_store and GTree.tree_store</th><td width="20%" align="right"> <a accesskey="n" href="ch03s04.html">Next</a></td></tr></table><hr></div><div class="sect1" lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="sec-treemodel-add-rows"></a>Adding Rows to a Store</h2></div></div><div></div></div><div class="sect2" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="sec-liststore-add-rows"></a>Adding Rows to a List Store</h3></div></div><div></div></div><p>
+Rows are added to a list store with
+<a href="http://compiler.kaist.ac.kr/~shoh/ocaml/lablgtk2/lablgtk-2.4.0/doc/html/GTree.list_store.html#METHODappend" target="_top"><tt class="literal">GTree.list_store#append</tt></a>
+(<a href="http://developer.gnome.org/doc/API/2.0/gtk/GtkListStore.html#gtk-list-store-append" target="_top"><tt class="literal">gtk_list_store_append</tt></a>).
+This will insert a new empty row at the end of the list. There are other functions,
+documented in the
+<a href="http://compiler.kaist.ac.kr/~shoh/ocaml/lablgtk2/lablgtk-2.4.0/doc/html/GTree.list_store.html" target="_top"><tt class="literal">GTree.list_store</tt></a>
+(<a href="http://developer.gnome.org/doc/API/2.0/gtk/GtkListStore.html" target="_top">
+GtkListStore API reference</a>),
+that give you more control
+about where exactly the new row is inserted, but as they work very similar to
+<tt class="literal">GTree.list_store#append</tt> and are fairly straight-forward to use,
+we will not deal with them here.
+</p><p>
+Here is a simple example of how to create a list store and add some (empty) rows to it:
+</p><pre class="programlisting">
+  let cols = new GTree.column_list in
+  let col_name = cols#add Gobject.Data.string in
+  let liststore = GTree.list_store cols in
+
+  (* Append an empty row to the list store. Iter will point to the new row *)
+  let iter = liststore#append () in
+
+  (* Append an empty row to the list store. Iter will point to the new row *)
+  let iter = liststore#append () in
+
+  (* Append an empty row to the list store. Iter will point to the new row *)
+  let iter = liststore#append () in
+</pre><p>
+This in itself is not very useful yet of course. We will add data to the rows in the next section.
+</p></div><div class="sect2" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="sec-treestore-add-rows"></a>Adding Rows to a Tree Store</h3></div></div><div></div></div><p>
+Adding rows to a tree store works similar to adding rows to a list store, only that
+<a href="http://compiler.kaist.ac.kr/~shoh/ocaml/lablgtk2/lablgtk-2.4.0/doc/html/GTree.tree_store.html#METHODappend" target="_top"><tt class="literal">GTree.tree_store#append</tt></a>
+(<a href="http://developer.gnome.org/doc/API/2.0/gtk/GtkTreeStore.html#gtk-tree-store-append" target="_top"><tt class="literal">gtk_tree_store_append</tt></a>)
+is the function to use and one more
+argument is required, namely the tree iter to the parent of the row to insert.
+If you do NOT supply instead of providing the tree iter of another row, a new top-level
+row will be inserted. If you do provide a parent tree iter, the new empty row will be
+inserted after any already existing children of the parent. Again, there are other ways
+to insert a row into the tree store and they are documented in the
+<a href="http://compiler.kaist.ac.kr/~shoh/ocaml/lablgtk2/lablgtk-2.4.0/doc/html/GTree.tree_store.html" target="_top"><tt class="literal">GTree.tree_store</tt></a>
+(<a href="http://developer.gnome.org/doc/API/2.0/gtk/GtkTreeStore.html" target="_top">GtkTreeStore API reference manual</a>).
+Another short example:
+</p><pre class="programlisting">
+  let cols = new GTree.column_list in
+  let col_name = cols#add Gobject.Data.string in
+  let treestore = GTree.tree_store cols in
+
+  (* Append an empty top-level row to the tree store.
+   *  Iter will point to the new row *)
+  let iter = treestore#append () in
+
+  (* Append another empty top-level row to the tree store.
+   *  Iter will point to the new row *)
+  let iter = treestore#append () in
+
+  (* Append a child to the row we just added.
+   *  Child will point to the new row *)
+  let child = treestore#append ~parent:iter () in
+
+  (* Get the first row, and add a child to it as well (could have been done
+   *  right away earlier of course, this is just for demonstration purposes) *)
+  match treestore#get_iter_first with
+  | Some iter -&gt;
+      (* Child will point to new row *)
+      let child = treestore#append ~parent:iter () in
+      ...
+  | None -&gt;
+      prerr_endline "Oops, we should have a first row in the tree store!"
+</pre></div><div class="sect2" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="sec-treestore-adding-many-rows"></a>Speed Issues when Adding a Lot of Rows</h3></div></div><div></div></div><p>
+A common scenario is that a model needs to be filled with a lot of rows at some point, either at start-up,
+or when some file is opened. An equally common scenario is that this takes an awfully long time even on powerful
+machines once the model contains more than a couple of thousand rows, with an exponentially decreasing rate of
+insertion. As already pointed out above,  writing a custom model
+ might be the best thing to do in this case. Nevertheless, there are some things you can do to work around
+this problem and speed things up a bit even with the stock Gtk+ models:
+</p><p>
+Firstly, you should detach your list store or tree store from the tree view before doing your mass insertions, then
+do your insertions, and only connect your store to the tree view again when you are done with your insertions. Like this:
+</p><pre class="programlisting">
+  ...
+  let model = view#model in
+  view#set_model None;		(* Detach model from view *)
+  ... (* insert a couple of thousand rows *) ...
+  view#set_model (Some model);	(* Re-attach model to view *)
+  ...
+</pre><p>
+Secondly, you should make sure that sorting is disabled while you are doing your mass insertions, otherwise your store
+might be resorted after each and every single row insertion, which is going to be everything but fast.
+</p><p>
+Thirdly, you should not keep around a lot of tree row references if you have so many rows, because with each
+insertion (or removal) every single tree row reference will check whether its path needs to be updated or not.
+</p></div></div><div class="navfooter"><hr><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="ch03s02.html">Prev</a> </td><td width="20%" align="center"><a accesskey="u" href="ch03.html">Up</a></td><td width="40%" align="right"> <a accesskey="n" href="ch03s04.html">Next</a></td></tr><tr><td width="40%" align="left" valign="top">Refering to Rows: Gtk.tree_iter, Gtk.tree_path, Gtk.row_reference, GTree.row_reference </td><td width="20%" align="center"><a accesskey="h" href="index.html">Home</a></td><td width="40%" align="right" valign="top"> Manipulating Row Data</td></tr></table></div></body></html>

@@ -1,0 +1,19 @@
+---
+title: "Theory of Signals and Callbacks"
+description : "Theory of Signals and Callbacks"
+weight: 30
+---
+
+Before we look in detail at helloworld, we'll discuss signals and callbacks. GTK is an event driven toolkit, which means it will sleep in GMain.Main.main until an event occurs and control is passed to the appropriate function.
+
+This passing of control is done using the idea of "signals". (Note that these signals are not the same as the Unix system signals, and are not implemented using them, although the terminology is almost identical.) When an event occurs, such as the press of a mouse button, the appropriate signal will be "emitted" by the widget that was pressed. This is how GTK does most of its useful work. There are signals that all widgets inherit, such as "destroy", and there are signals that are widget specific, such as "toggled" on a toggle button.
+
+To make a button perform an action, we set up a signal handler to catch these signals and call the appropriate function. This is done by using a function such as:
+
+``` ocaml
+widget#connect#signal_name ~callback:(unit -> unit) -> GtkSignal.id
+```
+
+where the widget is the one which will be emitting the signal, and the signal_name is the name of the signal you wish to catch. The callback is the function you wish to be called when it is caught.
+
+

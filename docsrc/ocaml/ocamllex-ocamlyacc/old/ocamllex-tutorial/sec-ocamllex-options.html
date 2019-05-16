@@ -1,0 +1,234 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN">
+<HTML
+><HEAD
+><TITLE
+>Options</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet Version 1.7"><LINK
+REL="HOME"
+TITLE="Ocamllex Tutorial"
+HREF="ocamllex-tutorial.html"><LINK
+REL="PREVIOUS"
+TITLE="Interfacing with ocamlyacc"
+HREF="sec-ocamllex-interfacing.html"><LINK
+REL="NEXT"
+TITLE="Usage Tips"
+HREF="chap-usage-tips.html"><LINK
+REL="STYLESHEET"
+TYPE="text/css"
+HREF="./ocamllex-tutorial.css"></HEAD
+><BODY
+CLASS="chapter"
+BGCOLOR="#FFFFFF"
+TEXT="#000000"
+LINK="#0000FF"
+VLINK="#840084"
+ALINK="#0000FF"
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+SUMMARY="Header navigation table"
+WIDTH="95%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="3"
+ALIGN="center"
+>Ocamllex Tutorial</TH
+></TR
+><TR
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="bottom"
+><A
+HREF="sec-ocamllex-interfacing.html"
+ACCESSKEY="P"
+>&#60;&#60;&#60; Previous</A
+></TD
+><TD
+WIDTH="80%"
+ALIGN="center"
+VALIGN="bottom"
+></TD
+><TD
+WIDTH="10%"
+ALIGN="right"
+VALIGN="bottom"
+><A
+HREF="chap-usage-tips.html"
+ACCESSKEY="N"
+>Next &#62;&#62;&#62;</A
+></TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="95%"></DIV
+><DIV
+CLASS="chapter"
+><H1
+><A
+NAME="sec-ocamllex-options"
+></A
+>Chapter 10. Options</H1
+><P
+>&#13;<TT
+CLASS="literal"
+>ocamllex</TT
+> has the following options:
+</P
+><P
+></P
+><UL
+><LI
+><P
+><TT
+CLASS="literal"
+>-o</TT
+> <I
+CLASS="emphasis"
+>output-file</I
+>
+  </P
+><P
+>&#13;  By default, <TT
+CLASS="literal"
+>ocamllex</TT
+> produces
+  <I
+CLASS="emphasis"
+>lexer</I
+><TT
+CLASS="literal"
+>.ml</TT
+>,
+  when <TT
+CLASS="literal"
+>ocamllex</TT
+> is invoked as
+  "<TT
+CLASS="literal"
+>ocamllex</TT
+> <I
+CLASS="emphasis"
+>lexer</I
+><TT
+CLASS="literal"
+>.mll</TT
+>".
+  You can change the name of the output file using <TT
+CLASS="literal"
+>-o</TT
+> option.
+  </P
+></LI
+><LI
+><P
+><TT
+CLASS="literal"
+>-ml</TT
+>
+  </P
+><P
+>&#13;  By default, <TT
+CLASS="literal"
+>ocamllex</TT
+> produces
+  code that uses the Caml built-in automata interpreter.
+  Using this option, the automaton is coded as Caml functions.
+  This option is useful for debugging <TT
+CLASS="literal"
+>ocamllex</TT
+>,
+  but it's not recommended for production lexers.
+  </P
+></LI
+><LI
+><P
+><TT
+CLASS="literal"
+>-q</TT
+>
+  </P
+><P
+>&#13;  By default, <TT
+CLASS="literal"
+>ocamllex</TT
+> outputs informational
+  messages to standard output.
+  If you use <TT
+CLASS="literal"
+>-q</TT
+> option, they are suppressed.
+  </P
+></LI
+></UL
+></DIV
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="95%"><TABLE
+SUMMARY="Footer navigation table"
+WIDTH="95%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="sec-ocamllex-interfacing.html"
+ACCESSKEY="P"
+>&#60;&#60;&#60; Previous</A
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="ocamllex-tutorial.html"
+ACCESSKEY="H"
+>Home</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="chap-usage-tips.html"
+ACCESSKEY="N"
+>Next &#62;&#62;&#62;</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>Interfacing with <TT
+CLASS="literal"
+>ocamlyacc</TT
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+>&nbsp;</TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>Usage Tips</TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>
