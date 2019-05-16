@@ -1,0 +1,435 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN">
+<HTML
+><HEAD
+><TITLE
+>Operator Precedence</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet Version 1.7"><LINK
+REL="HOME"
+TITLE="Ocamlyacc Tutorial"
+HREF="ocamlyacc-tutorial.html"><LINK
+REL="UP"
+TITLE="The Ocamlyacc Parser Algorithm"
+HREF="chap-parser-algorithm.html"><LINK
+REL="PREVIOUS"
+TITLE="Shift/Reduce Conflicts"
+HREF="sec-shift-reduce-conflicts.html"><LINK
+REL="NEXT"
+TITLE="Context-Dependent Precedence"
+HREF="sec-context-dependent-precedence.html"><LINK
+REL="STYLESHEET"
+TYPE="text/css"
+HREF="./ocamlyacc-tutorial.css"></HEAD
+><BODY
+CLASS="sect1"
+BGCOLOR="#FFFFFF"
+TEXT="#000000"
+LINK="#0000FF"
+VLINK="#840084"
+ALINK="#0000FF"
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+SUMMARY="Header navigation table"
+WIDTH="95%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="3"
+ALIGN="center"
+>Ocamlyacc Tutorial</TH
+></TR
+><TR
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="bottom"
+><A
+HREF="sec-shift-reduce-conflicts.html"
+ACCESSKEY="P"
+>&#60;&#60;&#60; Previous</A
+></TD
+><TD
+WIDTH="80%"
+ALIGN="center"
+VALIGN="bottom"
+>Chapter 6. The Ocamlyacc Parser Algorithm</TD
+><TD
+WIDTH="10%"
+ALIGN="right"
+VALIGN="bottom"
+><A
+HREF="sec-context-dependent-precedence.html"
+ACCESSKEY="N"
+>Next &#62;&#62;&#62;</A
+></TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="95%"></DIV
+><DIV
+CLASS="sect1"
+><H1
+CLASS="sect1"
+><A
+NAME="sec-operator-precedence"
+>6.3. Operator Precedence</A
+></H1
+><P
+>&#13;Another situation where shift/reduce conflicts appear is in arithmetic
+expressions.  Here shifting is not always the preferred resolution; the
+Ocamlyacc declarations for operator precedence allow you to specify when to
+shift and when to reduce.
+
+</P
+><DIV
+CLASS="sect2"
+><H2
+CLASS="sect2"
+><A
+NAME="sec-when-precedence-is-needed"
+>6.3.1. When Precedence is Needed</A
+></H2
+><P
+>&#13;Consider the following ambiguous grammar fragment (ambiguous because the
+input <TT
+CLASS="literal"
+>1 - 2 * 3</TT
+> can be parsed in two different ways):
+</P
+><TABLE
+BORDER="0"
+BGCOLOR="#e3e3c4"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="programlisting"
+>&#13;expr:     expr MINUS expr
+        | expr MULTIPLY expr
+        | expr LT expr
+        | LPAREN expr RPAREN 
+        ...
+        ;
+</PRE
+></TD
+></TR
+></TABLE
+><P
+>&#13;Suppose the parser has seen the tokens <TT
+CLASS="literal"
+>1</TT
+>, <TT
+CLASS="literal"
+>-</TT
+> and <TT
+CLASS="literal"
+>2</TT
+>;
+should it reduce them via the rule for the subtraction operator?  It
+depends on the next token.  Of course, if the next token is <TT
+CLASS="literal"
+>)</TT
+>, we
+must reduce; shifting is invalid because no single rule can reduce the
+token sequence <TT
+CLASS="literal"
+>- 2 )</TT
+> or anything starting with that.  But if
+the next token is <TT
+CLASS="literal"
+>*</TT
+> or <TT
+CLASS="literal"
+>**</TT
+>, we have a choice: either
+shifting or reduction would allow the parse to complete, but with
+different results.
+</P
+><P
+>&#13;To decide which one Ocamlyacc should do, we must consider the results.  If
+the next operator token <I
+CLASS="emphasis"
+>op</I
+> is shifted, then it must be reduced
+first in order to permit another opportunity to reduce the difference.
+The result is (in effect) <TT
+CLASS="literal"
+>1 - (2 op 3)</TT
+>.  On the other
+hand, if the subtraction is reduced before shifting <I
+CLASS="emphasis"
+>op</I
+>, the result
+is <TT
+CLASS="literal"
+>(1 - 2) op 3</TT
+>.  Clearly, then, the choice of shift or
+reduce should depend on the relative precedence of the operators
+<TT
+CLASS="literal"
+>-</TT
+> and <I
+CLASS="emphasis"
+>op</I
+>: <TT
+CLASS="literal"
+>*</TT
+> should be shifted first, but not
+<TT
+CLASS="literal"
+>**</TT
+>.
+</P
+><P
+>&#13;What about input such as <TT
+CLASS="literal"
+>1 - 2 - 5</TT
+>; should this be
+<TT
+CLASS="literal"
+>(1 - 2) - 5</TT
+> or should it be <TT
+CLASS="literal"
+>1 - (2 - 5)</TT
+>?  For most
+operators we prefer the former, which is called <TT
+CLASS="literal"
+>left association</TT
+>.
+The latter alternative, <TT
+CLASS="literal"
+>right association</TT
+>, is desirable for
+assignment operators.  The choice of left or right association is a
+matter of whether the parser chooses to shift or reduce when the stack
+contains <TT
+CLASS="literal"
+>1 - 2</TT
+> and the look-ahead token is <TT
+CLASS="literal"
+>-</TT
+>: shifting
+makes right-associativity.
+</P
+></DIV
+><DIV
+CLASS="sect2"
+><H2
+CLASS="sect2"
+><A
+NAME="sec-specifying-operator-precedence"
+>6.3.2. Specifying Operator Precedence</A
+></H2
+><P
+>&#13;Ocamlyacc allows you to specify these choices with the operator precedence
+declarations <TT
+CLASS="literal"
+>%left</TT
+> and <TT
+CLASS="literal"
+>%right</TT
+>.  Each such declaration
+contains a list of tokens, which are operators whose precedence and
+associativity is being declared.  The <TT
+CLASS="literal"
+>%left</TT
+> declaration makes all
+those operators left-associative and the <TT
+CLASS="literal"
+>%right</TT
+> declaration makes
+them right-associative.  A third alternative is <TT
+CLASS="literal"
+>%nonassoc</TT
+>, which
+declares that it is a syntax error to find the same operator twice ``in a
+row''.
+</P
+><P
+>&#13;The relative precedence of different operators is controlled by the
+order in which they are declared.  The first <TT
+CLASS="literal"
+>%left</TT
+> or
+<TT
+CLASS="literal"
+>%right</TT
+> declaration in the file declares the operators whose
+precedence is lowest, the next such declaration declares the operators
+whose precedence is a little higher, and so on.
+</P
+></DIV
+><DIV
+CLASS="sect2"
+><H2
+CLASS="sect2"
+><A
+NAME="sec-precedence-examples"
+>6.3.3. Precedence Examples</A
+></H2
+><P
+>&#13;In our example, we would want the following declarations:
+</P
+><TABLE
+BORDER="0"
+BGCOLOR="#e3e3c4"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="programlisting"
+>&#13;%left LT
+%left MINUS
+%left MULTIPLY
+</PRE
+></TD
+></TR
+></TABLE
+><P
+>&#13;In a more complete example, which supports other operators as well, we
+would declare them in groups of equal precedence.  For example, <TT
+CLASS="literal"
+>'+'</TT
+> is
+declared with <TT
+CLASS="literal"
+>'-'</TT
+>:
+</P
+><TABLE
+BORDER="0"
+BGCOLOR="#e3e3c4"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="programlisting"
+>&#13;%left LT GT EQ NE LE GE
+%left PLUS MINUS
+%left MULTIPLY DIVIDE
+</PRE
+></TD
+></TR
+></TABLE
+><P
+>&#13;(Here <TT
+CLASS="literal"
+>NE</TT
+> and so on stand for the operators for ``not equal''
+and so on.  We assume that these tokens are more than one character long
+and therefore are represented by names, not character literals.)
+</P
+></DIV
+><DIV
+CLASS="sect2"
+><H2
+CLASS="sect2"
+><A
+NAME="sec-how-precedence-works"
+>6.3.4. How Precedence Works</A
+></H2
+><P
+>&#13;The first effect of the precedence declarations is to assign precedence
+levels to the terminal symbols declared.  The second effect is to assign
+precedence levels to certain rules: each rule gets its precedence from the
+last terminal symbol mentioned in the components.  (You can also specify
+explicitly the precedence of a rule.
+See <A
+HREF="sec-context-dependent-precedence.html"
+>Context-Dependent Precedence</A
+>.)
+</P
+><P
+>&#13;Finally, the resolution of conflicts works by comparing the
+precedence of the rule being considered with that of the
+look-ahead token.  If the token's precedence is higher, the
+choice is to shift.  If the rule's precedence is higher, the
+choice is to reduce.  If they have equal precedence, the choice
+is made based on the associativity of that precedence level.  The
+verbose output file made by <TT
+CLASS="literal"
+>-v</TT
+>
+(see <A
+HREF="chap-invoking-ocamlyacc.html"
+>Invoking Ocamlyacc</A
+>)
+says
+how each conflict was resolved.
+</P
+><P
+>&#13;Not all rules and not all tokens have precedence.  If either the rule or
+the look-ahead token has no precedence, then the default is to shift.
+</P
+></DIV
+></DIV
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="95%"><TABLE
+SUMMARY="Footer navigation table"
+WIDTH="95%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="sec-shift-reduce-conflicts.html"
+ACCESSKEY="P"
+>&#60;&#60;&#60; Previous</A
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="ocamlyacc-tutorial.html"
+ACCESSKEY="H"
+>Home</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="sec-context-dependent-precedence.html"
+ACCESSKEY="N"
+>Next &#62;&#62;&#62;</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>Shift/Reduce Conflicts</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="chap-parser-algorithm.html"
+ACCESSKEY="U"
+>Up</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>Context-Dependent Precedence</TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>

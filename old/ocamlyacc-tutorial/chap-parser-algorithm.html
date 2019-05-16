@@ -1,0 +1,365 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN">
+<HTML
+><HEAD
+><TITLE
+>The Ocamlyacc Parser Algorithm</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet Version 1.7"><LINK
+REL="HOME"
+TITLE="Ocamlyacc Tutorial"
+HREF="ocamlyacc-tutorial.html"><LINK
+REL="PREVIOUS"
+TITLE="The Error Reporting Function"
+HREF="sec-error-reporting-function.html"><LINK
+REL="NEXT"
+TITLE="Shift/Reduce Conflicts"
+HREF="sec-shift-reduce-conflicts.html"><LINK
+REL="STYLESHEET"
+TYPE="text/css"
+HREF="./ocamlyacc-tutorial.css"></HEAD
+><BODY
+CLASS="chapter"
+BGCOLOR="#FFFFFF"
+TEXT="#000000"
+LINK="#0000FF"
+VLINK="#840084"
+ALINK="#0000FF"
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+SUMMARY="Header navigation table"
+WIDTH="95%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="3"
+ALIGN="center"
+>Ocamlyacc Tutorial</TH
+></TR
+><TR
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="bottom"
+><A
+HREF="sec-error-reporting-function.html"
+ACCESSKEY="P"
+>&#60;&#60;&#60; Previous</A
+></TD
+><TD
+WIDTH="80%"
+ALIGN="center"
+VALIGN="bottom"
+></TD
+><TD
+WIDTH="10%"
+ALIGN="right"
+VALIGN="bottom"
+><A
+HREF="sec-shift-reduce-conflicts.html"
+ACCESSKEY="N"
+>Next &#62;&#62;&#62;</A
+></TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="95%"></DIV
+><DIV
+CLASS="chapter"
+><H1
+><A
+NAME="chap-parser-algorithm"
+></A
+>Chapter 6. The Ocamlyacc Parser Algorithm</H1
+><P
+>&#13;As Ocamlyacc reads tokens, it pushes them onto a stack along with their
+semantic values.  The stack is called the <TT
+CLASS="literal"
+>parser stack</TT
+>.  Pushing a
+token is traditionally called <TT
+CLASS="literal"
+>shifting</TT
+>.
+</P
+><P
+>&#13;For example, suppose the infix calculator has read <TT
+CLASS="literal"
+>1 + 5 *</TT
+>, with a
+<TT
+CLASS="literal"
+>3</TT
+> to come.  The stack will have four elements, one for each token
+that was shifted.
+</P
+><P
+>&#13;But the stack does not always have an element for each token read.  When
+the last <I
+CLASS="emphasis"
+>n</I
+> tokens and groupings shifted match the components of a
+grammar rule, they can be combined according to that rule.  This is called
+<TT
+CLASS="literal"
+>reduction</TT
+>.  Those tokens and groupings are replaced on the stack by a
+single grouping whose symbol is the result (left hand side) of that rule.
+Running the rule's action is part of the process of reduction, because this
+is what computes the semantic value of the resulting grouping.
+</P
+><P
+>&#13;For example, if the infix calculator's parser stack contains this:
+</P
+><TABLE
+BORDER="0"
+BGCOLOR="#e3e3c4"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="programlisting"
+>&#13;1 + 5 * 3
+</PRE
+></TD
+></TR
+></TABLE
+><P
+>&#13;and the next input token is a newline character, then the last three
+elements can be reduced to 15 via the rule:
+</P
+><TABLE
+BORDER="0"
+BGCOLOR="#e3e3c4"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="programlisting"
+>&#13;expr: expr MULTIPLY expr;
+</PRE
+></TD
+></TR
+></TABLE
+><P
+>&#13;Then the stack contains just these three elements:
+</P
+><TABLE
+BORDER="0"
+BGCOLOR="#e3e3c4"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="programlisting"
+>&#13;1 + 15
+</PRE
+></TD
+></TR
+></TABLE
+><P
+>&#13;At this point, another reduction can be made, resulting in the single value
+16.  Then the newline token can be shifted.
+</P
+><P
+>&#13;The parser tries, by shifts and reductions, to reduce the entire input down
+to a single grouping whose symbol is the grammar's start-symbol
+(see <A
+HREF="chap-concepts-of-ocamlyacc.html#sec-language-and-grammar"
+>Languages and Context-Free Grammars</A
+>).
+</P
+><P
+>&#13;This kind of parser is known in the literature as a bottom-up parser.
+
+
+</P
+><DIV
+CLASS="sect1"
+><H1
+CLASS="sect1"
+><A
+NAME="sec-look-ahead-tokens"
+>6.1. Look-Ahead Tokens</A
+></H1
+><P
+>&#13;The Ocamlyacc parser does <I
+CLASS="emphasis"
+>not</I
+> always reduce immediately as soon as the
+last <I
+CLASS="emphasis"
+>n</I
+> tokens and groupings match a rule.  This is because such a
+simple strategy is inadequate to handle most languages.  Instead, when a
+reduction is possible, the parser sometimes ``looks ahead'' at the next
+token in order to decide what to do.
+</P
+><P
+>&#13;When a token is read, it is not immediately shifted; first it becomes the
+<TT
+CLASS="literal"
+>look-ahead token</TT
+>, which is not on the stack.  Now the parser can
+perform one or more reductions of tokens and groupings on the stack, while
+the look-ahead token remains off to the side.  When no more reductions
+should take place, the look-ahead token is shifted onto the stack.  This
+does not mean that all possible reductions have been done; depending on the
+token type of the look-ahead token, some rules may choose to delay their
+application.
+</P
+><P
+>&#13;Here is a simple case where look-ahead is needed.  These three rules define
+expressions which contain binary addition operators and postfix unary
+factorial operators (<TT
+CLASS="literal"
+>FACTORIAL</TT
+> for '!'),
+and allow parentheses for grouping.
+</P
+><TABLE
+BORDER="0"
+BGCOLOR="#e3e3c4"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="programlisting"
+>&#13;expr:     term PLUS expr
+        | term
+        ;
+
+term:     LPAREN expr RPAREN
+        | term FACTORIAL 
+        | NUMBER
+        ;
+</PRE
+></TD
+></TR
+></TABLE
+><P
+>&#13;Suppose that the tokens <TT
+CLASS="literal"
+>1 + 2</TT
+> have been read and shifted;
+what should be done?  If the following token is <TT
+CLASS="literal"
+>RPAREN</TT
+>,
+then the first three tokens must be reduced to form an <TT
+CLASS="literal"
+>expr</TT
+>.
+This is the only valid
+course, because shifting
+the <TT
+CLASS="literal"
+>RPAREN</TT
+> would produce a sequence of symbols
+<TT
+CLASS="literal"
+>term RPAREN</TT
+>, and no rule allows this.
+</P
+><P
+>&#13;If the following token is <TT
+CLASS="literal"
+>FACTORIAL</TT
+>, that is '!',
+then it must be shifted immediately so
+that <TT
+CLASS="literal"
+>2 !</TT
+> can be reduced to make a
+<TT
+CLASS="literal"
+>term</TT
+>.
+If instead the
+parser were to reduce before shifting,
+<TT
+CLASS="literal"
+>1 + 2</TT
+> would become an
+<TT
+CLASS="literal"
+>expr</TT
+>.
+It would then be impossible to shift the <TT
+CLASS="literal"
+>!</TT
+> because
+doing so would produce on the stack the sequence of symbols
+<TT
+CLASS="literal"
+>expr FACTORIAL</TT
+>.
+No rule allows that sequence.
+</P
+></DIV
+></DIV
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="95%"><TABLE
+SUMMARY="Footer navigation table"
+WIDTH="95%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="sec-error-reporting-function.html"
+ACCESSKEY="P"
+>&#60;&#60;&#60; Previous</A
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="ocamlyacc-tutorial.html"
+ACCESSKEY="H"
+>Home</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="sec-shift-reduce-conflicts.html"
+ACCESSKEY="N"
+>Next &#62;&#62;&#62;</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>The Error Reporting Function</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+>&nbsp;</TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>Shift/Reduce Conflicts</TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>

@@ -1,0 +1,261 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN">
+<HTML
+><HEAD
+><TITLE
+>Context-Dependent Precedence</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet Version 1.7"><LINK
+REL="HOME"
+TITLE="Ocamlyacc Tutorial"
+HREF="ocamlyacc-tutorial.html"><LINK
+REL="UP"
+TITLE="The Ocamlyacc Parser Algorithm"
+HREF="chap-parser-algorithm.html"><LINK
+REL="PREVIOUS"
+TITLE="Operator Precedence"
+HREF="sec-operator-precedence.html"><LINK
+REL="NEXT"
+TITLE="Parser States"
+HREF="sec-parser-states.html"><LINK
+REL="STYLESHEET"
+TYPE="text/css"
+HREF="./ocamlyacc-tutorial.css"></HEAD
+><BODY
+CLASS="sect1"
+BGCOLOR="#FFFFFF"
+TEXT="#000000"
+LINK="#0000FF"
+VLINK="#840084"
+ALINK="#0000FF"
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+SUMMARY="Header navigation table"
+WIDTH="95%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="3"
+ALIGN="center"
+>Ocamlyacc Tutorial</TH
+></TR
+><TR
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="bottom"
+><A
+HREF="sec-operator-precedence.html"
+ACCESSKEY="P"
+>&#60;&#60;&#60; Previous</A
+></TD
+><TD
+WIDTH="80%"
+ALIGN="center"
+VALIGN="bottom"
+>Chapter 6. The Ocamlyacc Parser Algorithm</TD
+><TD
+WIDTH="10%"
+ALIGN="right"
+VALIGN="bottom"
+><A
+HREF="sec-parser-states.html"
+ACCESSKEY="N"
+>Next &#62;&#62;&#62;</A
+></TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="95%"></DIV
+><DIV
+CLASS="sect1"
+><H1
+CLASS="sect1"
+><A
+NAME="sec-context-dependent-precedence"
+>6.4. Context-Dependent Precedence</A
+></H1
+><P
+>&#13;Often the precedence of an operator depends on the context.  This sounds
+outlandish at first, but it is really very common.  For example, a minus
+sign typically has a very high precedence as a unary operator, and a
+somewhat lower precedence (lower than multiplication) as a binary operator.
+</P
+><P
+>&#13;The Ocamlyacc precedence declarations, <TT
+CLASS="literal"
+>%left</TT
+>, <TT
+CLASS="literal"
+>%right</TT
+> and
+<TT
+CLASS="literal"
+>%nonassoc</TT
+>, can only be used once for a given token; so a token has
+only one precedence declared in this way.  For context-dependent
+precedence, you need to use an additional mechanism: the <TT
+CLASS="literal"
+>%prec</TT
+>
+modifier for rules.
+</P
+><P
+>&#13;The <TT
+CLASS="literal"
+>%prec</TT
+> modifier declares the precedence of a particular rule by
+specifying a terminal symbol whose precedence should be used for that rule.
+It's not necessary for that symbol to appear otherwise in the rule.  The
+modifier's syntax is:
+</P
+><TABLE
+BORDER="0"
+BGCOLOR="#e3e3c4"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="programlisting"
+>&#13;%prec <I
+CLASS="emphasis"
+>terminal-symbol</I
+>
+</PRE
+></TD
+></TR
+></TABLE
+><P
+>&#13;and it is written after the components of the rule.  Its effect is to
+assign the rule the precedence of <I
+CLASS="emphasis"
+>terminal-symbol</I
+>, overriding
+the precedence that would be deduced for it in the ordinary way.  The
+altered rule precedence then affects how conflicts involving that rule
+are resolved
+(see <A
+HREF="sec-operator-precedence.html"
+>Operator Precedence</A
+>).
+</P
+><P
+>&#13;Here is how <TT
+CLASS="literal"
+>%prec</TT
+> solves the problem of unary minus.  First, declare
+a precedence for a fictitious terminal symbol named <TT
+CLASS="literal"
+>UMINUS</TT
+>.  There
+are no tokens of this type, but the symbol serves to stand for its
+precedence:
+</P
+><TABLE
+BORDER="0"
+BGCOLOR="#e3e3c4"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="programlisting"
+>&#13;...
+%left PLUS MINUS
+%left MULTIPLY
+%left UMINUS
+</PRE
+></TD
+></TR
+></TABLE
+><P
+>&#13;Now the precedence of <TT
+CLASS="literal"
+>UMINUS</TT
+> can be used in specific rules:
+</P
+><TABLE
+BORDER="0"
+BGCOLOR="#e3e3c4"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="programlisting"
+>&#13;exp:    ...
+        | exp MINUS exp
+        ...
+        | MINUS exp %prec UMINUS
+</PRE
+></TD
+></TR
+></TABLE
+></DIV
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="95%"><TABLE
+SUMMARY="Footer navigation table"
+WIDTH="95%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="sec-operator-precedence.html"
+ACCESSKEY="P"
+>&#60;&#60;&#60; Previous</A
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="ocamlyacc-tutorial.html"
+ACCESSKEY="H"
+>Home</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="sec-parser-states.html"
+ACCESSKEY="N"
+>Next &#62;&#62;&#62;</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>Operator Precedence</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="chap-parser-algorithm.html"
+ACCESSKEY="U"
+>Up</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>Parser States</TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>

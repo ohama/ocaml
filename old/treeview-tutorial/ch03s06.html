@@ -1,0 +1,80 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"><title>Removing Rows</title><meta name="generator" content="DocBook XSL Stylesheets V1.61.2"><link rel="home" href="index.html" title="GTK+ 2.0 Tree View Tutorial using Ocaml"><link rel="up" href="ch03.html" title="Chapter 3. GTree.models for Data Storage: GTree.list_store and GTree.tree_store"><link rel="previous" href="ch03s05.html" title="Retrieving Row Data"><link rel="next" href="ch03s07.html" title="Removing Multiple Rows"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">Removing Rows</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="ch03s05.html">Prev</a> </td><th width="60%" align="center">Chapter 3. GTree.models for Data Storage: GTree.list_store and GTree.tree_store</th><td width="20%" align="right"> <a accesskey="n" href="ch03s07.html">Next</a></td></tr></table><hr></div><div class="sect1" lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="sec-treemodel-remove-row"></a>Removing Rows</h2></div></div><div></div></div><p>
+Rows can easily be removed with
+<a href="http://compiler.kaist.ac.kr/~shoh/ocaml/lablgtk2/lablgtk-2.4.0/doc/html/GTree.list_store.html#METHODremove" target="_top"><tt class="literal">GTree.list_store#remove</tt></a>
+(<a href="http://developer.gnome.org/doc/API/2.0/gtk/GtkListStore.html#gtk-list-store-remove" target="_top"><tt class="literal">gtk_list_store_remove</tt></a>) and
+<a href="http://compiler.kaist.ac.kr/~shoh/ocaml/lablgtk2/lablgtk-2.4.0/doc/html/GTree.tree_store.html#METHODremove" target="_top"><tt class="literal">GTree.tree_store#remove</tt></a>
+(<a href="http://developer.gnome.org/doc/API/2.0/gtk/GtkTreeStore.html#gtk-tree-store-remove" target="_top"><tt class="literal">gtk_tree_store_remove</tt></a>).
+The removed row will
+automatically be removed from the tree view as well.
+</p><p>
+Removing a single row is fairly straight forward: you need to get the iter that
+identifies the row you want to remove, and then use one of the above functions.
+Here is a simple example that removes a row when you double-click on it (bad from
+a user interface point of view, but then it is just an example):
+</p><pre class="programlisting">
+  let on_row_activated view path col =
+    print_endline "Row has been double-clicked. Removing row.";
+
+    let model = view#model in
+
+    let iter = model#get_iter path in
+    model#remove iter;	(* It returns bool *)
+    ()			(* We have to return () in callback. *)
+
+  let create_treeview () =
+    ...
+    treeview#connect#row_activated ~callback:(on_row_activated treeview);
+    ...
+</pre><p>
+<span class="emphasis"><em>Note:</em></span>
+<a href="http://compiler.kaist.ac.kr/~shoh/ocaml/lablgtk2/lablgtk-2.4.0/doc/html/GTree.list_store.html#METHODremove" target="_top"><tt class="literal">GTree.list_store#remove</tt></a>
+(<a href="http://developer.gnome.org/doc/API/2.0/gtk/GtkListStore.html#gtk-list-store-remove" target="_top"><tt class="literal">gtk_list_store_remove</tt></a>) and
+<a href="http://compiler.kaist.ac.kr/~shoh/ocaml/lablgtk2/lablgtk-2.4.0/doc/html/GTree.tree_store.html#METHODremove" target="_top"><tt class="literal">GTree.tree_store#remove</tt></a>
+(<a href="http://developer.gnome.org/doc/API/2.0/gtk/GtkTreeStore.html#gtk-tree-store-remove" target="_top"><tt class="literal">gtk_tree_store_remove</tt></a>)
+both have slightly different
+semantics in Gtk+-2.0 and Gtk+-2.2 and later. In Gtk+-2.0, both functions do
+not return a value, while in later Gtk+ versions those functions return either
+<tt class="literal">true</tt> or <tt class="literal">false</tt> to indicate whether the
+iter given has been set to the next valid row (or invalidated if there is no
+next row).
+(The current LablGTK2 supports Gtk+-2.4 and
+<tt class="literal">remove</tt> method returns <tt class="literal">true</tt> or
+<tt class="literal">false</tt>.)
+This is important to keep in mind when writing code that is supposed
+to work with all Gtk+-2.x versions. In that case you should just ignore the
+value returned (as in the call above) and check the iter with
+<a href="http://compiler.kaist.ac.kr/~shoh/ocaml/lablgtk2/lablgtk-2.4.0/doc/html/GTree.list_store.html#METHODiter_is_valid" target="_top"><tt class="literal">GTree.list_store#iter_is_valid</tt></a>
+(<a href="http://developer.gnome.org/doc/API/2.0/gtk/GtkListStore.html#gtk-list-store-iter-is-valid" target="_top"><tt class="literal">gtk_list_store_iter_is_valid</tt></a>)
+if you need it.
+</p><p>
+If you want to remove the n-th row from a list (or the n-th child of a tree node),
+you have two approaches: either you first create a <tt class="literal">GtkTreePath</tt>
+that describes that row and then turn it into an iter and remove it; or you take
+the iter of the parent node and use
+<a href="http://compiler.kaist.ac.kr/~shoh/ocaml/lablgtk2/lablgtk-2.4.0/doc/html/GTree.model.html#METHODiter_children" target="_top"><tt class="literal">iter_children</tt></a> method
+(<a href="http://developer.gnome.org/doc/API/2.0/gtk/GtkTreeModel.html#gtk-tree-model-iter-nth-child" target="_top"><tt class="literal">gtk_tree_model_iter_nth_child</tt></a>)
+(which will also work
+for list stores if you use <tt class="literal">None</tt> as the parent iter). Of course
+you could also start with the iter of the first top-level row, and then step-by-step
+move it to the row you want, although that seems a rather awkward way of doing it.
+</p><p>
+The following code snippet will remove the n-th row of a list if it exists:
+</p><pre class="programlisting">
+
+   (******************************************************************
+    *
+    *  list_store_remove_nth_row
+    *
+    *  Removes the nth row of a list store if it exists.
+    *
+    *  Returns true on success or false if the row does not exist.
+    *
+    ******************************************************************)
+
+   let list_store_remove_nth_row store n =
+     try
+       let iter = store#iter_children ~nth:n None in
+       store#remove iter;
+       true
+     with Invalid_arg _ -&gt; false
+</pre></div><div class="navfooter"><hr><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="ch03s05.html">Prev</a> </td><td width="20%" align="center"><a accesskey="u" href="ch03.html">Up</a></td><td width="40%" align="right"> <a accesskey="n" href="ch03s07.html">Next</a></td></tr><tr><td width="40%" align="left" valign="top">Retrieving Row Data </td><td width="20%" align="center"><a accesskey="h" href="index.html">Home</a></td><td width="40%" align="right" valign="top"> Removing Multiple Rows</td></tr></table></div></body></html>
